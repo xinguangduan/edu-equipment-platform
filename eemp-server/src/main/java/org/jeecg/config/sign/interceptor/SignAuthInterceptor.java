@@ -3,10 +3,11 @@ package org.jeecg.config.sign.interceptor;
 
 import java.io.PrintWriter;
 import java.util.SortedMap;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.util.DateUtils;
@@ -15,12 +16,9 @@ import org.jeecg.config.sign.util.HttpUtils;
 import org.jeecg.config.sign.util.SignUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.alibaba.fastjson.JSON;
-
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * 签名拦截器
+ *
  * @author qinfeng
  */
 @Slf4j
@@ -60,14 +58,14 @@ public class SignAuthInterceptor implements HandlerInterceptor {
         }
 
         //2.校验签名
-        boolean isSigned = SignUtil.verifySign(allParams,headerSign);
+        boolean isSigned = SignUtil.verifySign(allParams, headerSign);
 
         if (isSigned) {
-            log.debug("Sign 签名通过！Header Sign : {}",headerSign);
+            log.debug("Sign 签名通过！Header Sign : {}", headerSign);
             return true;
         } else {
             log.error("request URI = " + request.getRequestURI());
-            log.error("Sign 签名校验失败！Header Sign : {}",headerSign);
+            log.error("Sign 签名校验失败！Header Sign : {}", headerSign);
             //校验失败返回前端
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");

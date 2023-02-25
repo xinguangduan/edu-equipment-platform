@@ -1,5 +1,9 @@
 package org.jeecg.common.util;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -9,10 +13,6 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.Map;
-
 /**
  * 调用 Restful 接口 Util
  *
@@ -21,7 +21,21 @@ import java.util.Map;
 @Slf4j
 public class RestUtil {
 
+    /**
+     * RestAPI 调用器
+     */
+    private final static RestTemplate RT;
+    public static String path = null;
     private static String domain = null;
+
+    static {
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(3000);
+        requestFactory.setReadTimeout(3000);
+        RT = new RestTemplate(requestFactory);
+        // 解决乱码问题
+        RT.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+    }
 
     public static String getDomain() {
         if (domain == null) {
@@ -29,15 +43,13 @@ public class RestUtil {
             // issues/2959
             // 微服务版集成企业微信单点登录
             // 因为微服务版没有端口号，导致 SpringContextUtils.getDomain() 方法获取的域名的端口号变成了:-1所以出问题了，只需要把这个-1给去掉就可以了。
-            String port=":-1";
+            String port = ":-1";
             if (domain.endsWith(port)) {
                 domain = domain.substring(0, domain.length() - 3);
             }
         }
         return domain;
     }
-
-    public static String path = null;
 
     public static String getPath() {
         if (path == null) {
@@ -51,30 +63,16 @@ public class RestUtil {
         try {
             basepath = getDomain() + getPath();
         } catch (Exception e) {
-            log.warn(e.getMessage(),e);
+            log.warn(e.getMessage(), e);
         }
 
         //定时任务情况下，通过request是获取不到domain的，这种情况下通过配置获取pc后台域名
-        if(oConvertUtils.isEmpty(basepath)){
+        if (oConvertUtils.isEmpty(basepath)) {
             JeecgBaseConfig jeecgBaseConfig = SpringContextUtils.getBean(JeecgBaseConfig.class);
             basepath = jeecgBaseConfig.getDomainUrl().getPc();
         }
         log.info(" RestUtil.getBaseUrl: " + basepath);
         return basepath;
-    }
-
-    /**
-     * RestAPI 调用器
-     */
-    private final static RestTemplate RT;
-
-    static {
-        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        requestFactory.setConnectTimeout(3000);
-        requestFactory.setReadTimeout(3000);
-        RT = new RestTemplate(requestFactory);
-        // 解决乱码问题
-        RT.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
     }
 
     public static RestTemplate getRestTemplate() {
@@ -205,7 +203,7 @@ public class RestUtil {
      * @return ResponseEntity<responseType>
      */
     public static <T> ResponseEntity<T> request(String url, HttpMethod method, HttpHeaders headers, JSONObject variables, Object params, Class<T> responseType) {
-        log.info(" RestUtil  --- request ---  url = "+ url);
+        log.info(" RestUtil  --- request ---  url = " + url);
         if (StringUtils.isEmpty(url)) {
             throw new RuntimeException("url 不能为空");
         }

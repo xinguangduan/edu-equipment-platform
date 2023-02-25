@@ -1,12 +1,12 @@
 package org.jeecg.modules.system.security;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.common.util.security.AbstractQueryBlackListHandler;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 字典组件 执行sql前校验 只校验表字典

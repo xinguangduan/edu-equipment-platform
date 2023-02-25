@@ -13,18 +13,13 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
 /**
-* 单体启动类
-* 报错提醒: 未集成mongo报错，可以打开启动类上面的注释 exclude={MongoAutoConfiguration.class}
-*/
+ * 单体启动类
+ * 报错提醒: 未集成mongo报错，可以打开启动类上面的注释 exclude={MongoAutoConfiguration.class}
+ */
 @Slf4j
 @SpringBootApplication
 //@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
 public class Application extends SpringBootServletInitializer {
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
-    }
 
     public static void main(String[] args) throws UnknownHostException {
         ConfigurableApplicationContext application = SpringApplication.run(Application.class, args);
@@ -39,6 +34,11 @@ public class Application extends SpringBootServletInitializer {
                 "Swagger文档: \thttp://" + ip + ":" + port + path + "/doc.html\n" +
                 "----------------------------------------------------------");
 
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Application.class);
     }
 
 }

@@ -1,11 +1,13 @@
 package org.jeecg.modules.system.controller;
 
 
+import java.util.Arrays;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
-import com.baomidou.dynamic.datasource.creator.DruidDataSourceCreator;
-import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -13,7 +15,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.annotation.AutoLog;
 import org.jeecg.common.exception.JeecgBootException;
@@ -27,12 +28,6 @@ import org.jeecg.modules.system.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @Description: 多数据源管理
@@ -103,7 +98,7 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
         //update-begin-author:taoyan date:2022-8-10 for: jdbc连接地址漏洞问题
         try {
             JdbcSecurityUtil.validate(sysDataSource.getDbUrl());
-        }catch (JeecgBootException e){
+        } catch (JeecgBootException e) {
             log.error(e.toString());
             return Result.error("操作失败：" + e.getMessage());
         }
@@ -119,7 +114,7 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
      */
     @AutoLog(value = "多数据源管理-编辑")
     @ApiOperation(value = "多数据源管理-编辑", notes = "多数据源管理-编辑")
-    @RequestMapping(value = "/edit", method ={RequestMethod.PUT, RequestMethod.POST})
+    @RequestMapping(value = "/edit", method = {RequestMethod.PUT, RequestMethod.POST})
     public Result<?> edit(@RequestBody SysDataSource sysDataSource) {
         //update-begin-author:taoyan date:2022-8-10 for: jdbc连接地址漏洞问题
         try {
@@ -156,7 +151,7 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
     @DeleteMapping(value = "/deleteBatch")
     public Result<?> deleteBatch(@RequestParam(name = "ids") String ids) {
         List<String> idList = Arrays.asList(ids.split(","));
-        idList.forEach(item->{
+        idList.forEach(item -> {
             SysDataSource sysDataSource = sysDataSourceService.getById(item);
             DataSourceCachePool.removeCache(sysDataSource.getCode());
         });
@@ -177,7 +172,7 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
         SysDataSource sysDataSource = sysDataSourceService.getById(id);
         //密码解密
         String dbPassword = sysDataSource.getDbPassword();
-        if(StringUtils.isNotBlank(dbPassword)){
+        if (StringUtils.isNotBlank(dbPassword)) {
             String decodedStr = SecurityUtil.jiemi(dbPassword);
             sysDataSource.setDbPassword(decodedStr);
         }

@@ -1,5 +1,10 @@
 package org.jeecg.config.shiro.filters;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
@@ -11,11 +16,6 @@ import org.jeecg.config.shiro.JwtToken;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Description: 鉴权登录拦截器
@@ -31,8 +31,10 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
      */
     private boolean allowOrigin = true;
 
-    public JwtFilter(){}
-    public JwtFilter(boolean allowOrigin){
+    public JwtFilter() {
+    }
+
+    public JwtFilter(boolean allowOrigin) {
         this.allowOrigin = allowOrigin;
     }
 
@@ -50,7 +52,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
             executeLogin(request, response);
             return true;
         } catch (Exception e) {
-            JwtUtil.responseError(response,401,CommonConstant.TOKEN_IS_INVALID_MSG);
+            JwtUtil.responseError(response, 401, CommonConstant.TOKEN_IS_INVALID_MSG);
             return false;
             //throw new AuthenticationException("Token失效，请重新登录", e);
         }
@@ -83,7 +85,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        if(allowOrigin){
+        if (allowOrigin) {
             httpServletResponse.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, httpServletRequest.getHeader(HttpHeaders.ORIGIN));
             // 允许客户端请求方法
             httpServletResponse.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET,POST,OPTIONS,PUT,DELETE");

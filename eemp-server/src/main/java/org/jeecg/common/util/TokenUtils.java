@@ -1,5 +1,7 @@
 package org.jeecg.common.util;
 
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jeecg.common.api.CommonAPI;
@@ -9,8 +11,6 @@ import org.jeecg.common.desensitization.util.SensitiveInfoUtil;
 import org.jeecg.common.exception.JeecgBoot401Exception;
 import org.jeecg.common.system.util.JwtUtil;
 import org.jeecg.common.system.vo.LoginUser;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author scott
@@ -76,6 +76,7 @@ public class TokenUtils {
 
     /**
      * 刷新token（保证用户在线操作不掉线）
+     *
      * @param token
      * @param userName
      * @param passWord

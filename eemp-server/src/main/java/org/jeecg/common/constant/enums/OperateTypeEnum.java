@@ -50,22 +50,6 @@ public enum OperateTypeEnum {
     String code;
 
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     /**
      * 构造器
      *
@@ -76,7 +60,6 @@ public enum OperateTypeEnum {
         this.type = type;
         this.code = code;
     }
-
 
     /**
      * 根据请求名称匹配
@@ -91,5 +74,21 @@ public enum OperateTypeEnum {
             }
         }
         return CommonConstant.OPERATE_TYPE_1;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

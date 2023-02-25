@@ -1,5 +1,5 @@
 spring:
   application:
-    name: jeecg-system
+    name: edu-equipment-management-platform
   profiles:
     active: '@profile.name@'

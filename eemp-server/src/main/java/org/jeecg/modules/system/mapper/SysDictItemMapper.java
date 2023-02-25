@@ -1,10 +1,10 @@
 package org.jeecg.modules.system.mapper;
 
+import java.util.List;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Select;
 import org.jeecg.modules.system.entity.SysDictItem;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import java.util.List;
 
 /**
  * <p>
@@ -18,6 +18,7 @@ public interface SysDictItemMapper extends BaseMapper<SysDictItem> {
 
     /**
      * 通过字典id查询字典项
+     *
      * @param mainId 字典id
      * @return
      */

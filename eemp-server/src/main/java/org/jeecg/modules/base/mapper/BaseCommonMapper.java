@@ -12,9 +12,10 @@ public interface BaseCommonMapper {
 
     /**
      * 保存日志
+     *
      * @param dto
      */
     @InterceptorIgnore(illegalSql = "true", tenantLine = "true")
-    void saveLog(@Param("dto")LogDTO dto);
+    void saveLog(@Param("dto") LogDTO dto);
 
 }

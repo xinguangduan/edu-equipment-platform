@@ -4,6 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * 将枚举类转化成字典数据
+ *
  * @Author taoYan
  * @Date 2022/7/8 10:34
  **/

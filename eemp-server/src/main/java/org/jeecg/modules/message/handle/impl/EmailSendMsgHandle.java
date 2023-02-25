@@ -1,5 +1,11 @@
 package org.jeecg.modules.message.handle.impl;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.List;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.dto.message.MessageDTO;
@@ -17,12 +23,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.List;
-
 /**
  * @Description: 邮箱发送信息
  * @author: jeecg-boot
@@ -31,18 +31,14 @@ import java.util.List;
 @Component("emailSendMsgHandle")
 public class EmailSendMsgHandle implements ISendMsgHandle {
     static String emailFrom;
+    @Autowired
+    SysUserMapper sysUserMapper;
+    @Autowired
+    private RedisUtil redisUtil;
 
     public static void setEmailFrom(String emailFrom) {
         EmailSendMsgHandle.emailFrom = emailFrom;
     }
-
-    @Autowired
-    SysUserMapper sysUserMapper;
-
-    @Autowired
-    private RedisUtil redisUtil;
-
-
 
     @Override
     public void sendMsg(String esReceiver, String esTitle, String esContent) {
@@ -50,7 +46,7 @@ public class EmailSendMsgHandle implements ISendMsgHandle {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = null;
         //update-begin-author：taoyan date:20200811 for:配置类数据获取
-        if(oConvertUtils.isEmpty(emailFrom)){
+        if (oConvertUtils.isEmpty(emailFrom)) {
             StaticConfig staticConfig = SpringContextUtils.getBean(StaticConfig.class);
             setEmailFrom(staticConfig.getEmailFrom());
         }
@@ -77,15 +73,15 @@ public class EmailSendMsgHandle implements ISendMsgHandle {
         String content = messageDTO.getContent();
         String title = messageDTO.getTitle();
         String realNameExp = "{REALNAME}";
-        for(SysUser user: list){
+        for (SysUser user : list) {
             String email = user.getEmail();
-            if(email==null || "".equals(email)){
+            if (email == null || "".equals(email)) {
                 continue;
             }
-            if(content.indexOf(realNameExp)>0){
+            if (content.indexOf(realNameExp) > 0) {
                 content = content.replace(realNameExp, user.getRealname());
             }
-            if(content.indexOf(CommonConstant.LOGIN_TOKEN)>0){
+            if (content.indexOf(CommonConstant.LOGIN_TOKEN) > 0) {
                 String token = getToken(user);
                 try {
                     content = content.replace(CommonConstant.LOGIN_TOKEN, URLEncoder.encode(token, "UTF-8"));
@@ -93,13 +89,14 @@ public class EmailSendMsgHandle implements ISendMsgHandle {
                     log.error("邮件消息token编码失败", e.getMessage());
                 }
             }
-            log.info("邮件内容："+ content);
+            log.info("邮件内容：" + content);
             sendMsg(email, title, content);
         }
     }
 
     /**
      * 获取token
+     *
      * @param user
      * @return
      */

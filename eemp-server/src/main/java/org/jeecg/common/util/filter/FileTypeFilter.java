@@ -1,13 +1,11 @@
 package org.jeecg.common.util.filter;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Description: 校验上传文件敏感后缀
@@ -16,11 +14,14 @@ import java.util.regex.Pattern;
  */
 public class FileTypeFilter {
 
-    /**文件后缀*/
-    private static String[] forbidType = {"jsp","php"};
-
-    /**初始化文件头类型，不够的自行补充*/
+    /**
+     * 初始化文件头类型，不够的自行补充
+     */
     final static HashMap<String, String> FILE_TYPE_MAP = new HashMap<>();
+    /**
+     * 文件后缀
+     */
+    private static String[] forbidType = {"jsp", "php"};
 
     static {
         FILE_TYPE_MAP.put("3c25402070616765206c", "jsp");

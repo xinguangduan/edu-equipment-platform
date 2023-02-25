@@ -1,5 +1,8 @@
 package org.jeecg.modules.system.rule;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.netty.util.internal.StringUtil;
@@ -8,9 +11,6 @@ import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.common.util.YouBianCodeUtil;
 import org.jeecg.modules.system.entity.SysDepart;
 import org.jeecg.modules.system.service.ISysDepartService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author scott

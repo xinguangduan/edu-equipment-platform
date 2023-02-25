@@ -1,5 +1,11 @@
 package org.jeecg.modules.system.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Arrays;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -16,12 +22,6 @@ import org.jeecg.modules.system.service.ISysCheckRuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Arrays;
 
 /**
  * @Description: 编码校验规则
@@ -112,7 +112,7 @@ public class SysCheckRuleController extends JeecgController<SysCheckRule, ISysCh
      */
     @AutoLog(value = "编码校验规则-编辑")
     @ApiOperation(value = "编码校验规则-编辑", notes = "编码校验规则-编辑")
-    @RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
+    @RequestMapping(value = "/edit", method = {RequestMethod.PUT, RequestMethod.POST})
     public Result edit(@RequestBody SysCheckRule sysCheckRule) {
         sysCheckRuleService.updateById(sysCheckRule);
         return Result.ok("编辑成功!");

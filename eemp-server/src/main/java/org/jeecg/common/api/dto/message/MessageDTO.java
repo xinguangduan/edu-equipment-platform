@@ -1,19 +1,20 @@
 package org.jeecg.common.api.dto.message;
 
-import lombok.Data;
-import org.jeecg.common.constant.CommonConstant;
-
 import java.io.Serializable;
 import java.util.Map;
 
+import lombok.Data;
+import org.jeecg.common.constant.CommonConstant;
+
 /**
  * 普通消息
+ *
  * @author: jeecg-boot
  */
 @Data
 public class MessageDTO implements Serializable {
     private static final long serialVersionUID = -5690444483968058442L;
-    
+
     /**
      * 发送人(用户登录账户)
      */
@@ -53,13 +54,13 @@ public class MessageDTO implements Serializable {
     protected String templateCode;
     /**
      * 消息类型：org.jeecg.common.constant.enums.MessageTypeEnum
-     *  XT("system",  "系统消息")
-     *  YJ("email",  "邮件消息")
-     *  DD("dingtalk", "钉钉消息")
-     *  QYWX("wechat_enterprise", "企业微信")
+     * XT("system",  "系统消息")
+     * YJ("email",  "邮件消息")
+     * DD("dingtalk", "钉钉消息")
+     * QYWX("wechat_enterprise", "企业微信")
      */
     protected String type;
-    
+
     /**
      * 是否发送Markdown格式的消息
      */
@@ -71,15 +72,15 @@ public class MessageDTO implements Serializable {
     protected Map<String, Object> data;
     //update-end---author:taoyan ---date::20220705  for：支持自定义推送类型，邮件、钉钉、企业微信、系统消息-----------
     //-----------------------------------------------------------------------
-    
-    
-    public MessageDTO(){
+
+
+    public MessageDTO() {
     }
 
     /**
      * 构造器1 系统消息
      */
-    public MessageDTO(String fromUser,String toUser,String title, String content){
+    public MessageDTO(String fromUser, String toUser, String title, String content) {
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.title = title;
@@ -91,7 +92,7 @@ public class MessageDTO implements Serializable {
     /**
      * 构造器2 支持设置category 1:消息  2:系统消息
      */
-    public MessageDTO(String fromUser,String toUser,String title, String content, String category){
+    public MessageDTO(String fromUser, String toUser, String title, String content, String category) {
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.title = title;

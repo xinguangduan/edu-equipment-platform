@@ -1,9 +1,9 @@
 package org.jeecg.modules.ngalain.service;
 
-import com.alibaba.fastjson.JSONArray;
-
 import java.util.List;
 import java.util.Map;
+
+import com.alibaba.fastjson.JSONArray;
 
 /**
  * @Description: NgAlainService接口
@@ -12,6 +12,7 @@ import java.util.Map;
 public interface NgAlainService {
     /**
      * 菜单
+     *
      * @param id
      * @return JSONArray
      * @throws Exception
@@ -20,6 +21,7 @@ public interface NgAlainService {
 
     /**
      * jeecg菜单
+     *
      * @param id
      * @return JSONArray
      * @throws Exception
@@ -28,10 +30,11 @@ public interface NgAlainService {
 
     /**
      * 获取字典值
+     *
      * @param table
      * @param key
      * @param value
-     * @return List<Map<String, String>>
+     * @return List<Map < String, String>>
      */
     public List<Map<String, String>> getDictByTable(String table, String key, String value);
 }

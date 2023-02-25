@@ -2,6 +2,7 @@ package org.jeecg.common.constant.enums;
 
 /**
  * LowApp 切面注解枚举
+ *
  * @date 2022-1-5
  * @author: jeecg-boot
  */
@@ -15,7 +16,9 @@ public enum LowAppAopEnum {
      * 删除方法（包含单个和批量删除）
      */
     DELETE,
-    /** 复制表单操作 */
+    /**
+     * 复制表单操作
+     */
     COPY,
 
     /**

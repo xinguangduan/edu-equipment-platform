@@ -1,5 +1,9 @@
 package org.jeecg.common.util.dynamic.db;
 
+import java.io.StringWriter;
+import java.util.Map;
+import java.util.regex.Pattern;
+
 import freemarker.cache.StringTemplateLoader;
 import freemarker.core.ParseException;
 import freemarker.core.TemplateClassResolver;
@@ -10,10 +14,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.jeecg.common.constant.DataBaseConstant;
 import org.jeecg.common.constant.SymbolConstant;
 import org.jeecgframework.codegenerate.generate.util.SimpleFormat;
-
-import java.io.StringWriter;
-import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * @author 赵俊夫
@@ -39,12 +39,12 @@ public class FreemarkerParseFactory {
      * SQL 缓存
      */
     private static final Configuration SQL_CONFIG = new Configuration();
-
-    private static StringTemplateLoader stringTemplateLoader = new StringTemplateLoader();
-
-    /**使用内嵌的(?ms)打开单行和多行模式*/
+    /**
+     * 使用内嵌的(?ms)打开单行和多行模式
+     */
     private final static Pattern NOTES_PATTERN = Pattern
             .compile("(?ms)/\\*.*?\\*/|^\\s*//.*?$");
+    private static StringTemplateLoader stringTemplateLoader = new StringTemplateLoader();
 
     static {
         TPL_CONFIG.setClassForTemplateLoading(
@@ -121,12 +121,13 @@ public class FreemarkerParseFactory {
      * @param paras      参数
      * @return String 模板解析后内容
      */
-    public static String parseTemplateContent(String tplContent,Map<String, Object> paras) {
+    public static String parseTemplateContent(String tplContent, Map<String, Object> paras) {
         return parseTemplateContent(tplContent, paras, false);
     }
+
     public static String parseTemplateContent(String tplContent, Map<String, Object> paras, boolean keepSpace) {
         try {
-            String sqlUnderline="sql_";
+            String sqlUnderline = "sql_";
             StringWriter swriter = new StringWriter();
             if (stringTemplateLoader.findTemplateSource(sqlUnderline + tplContent.hashCode()) == null) {
                 stringTemplateLoader.putTemplate(sqlUnderline + tplContent.hashCode(), tplContent);
@@ -165,11 +166,11 @@ public class FreemarkerParseFactory {
         }
         // 去掉 最后是 where这样的问题
         //where空格 "where "
-        String whereSpace = DataBaseConstant.SQL_WHERE+" ";
+        String whereSpace = DataBaseConstant.SQL_WHERE + " ";
         //"where and"
-        String whereAnd = DataBaseConstant.SQL_WHERE+" and";
+        String whereAnd = DataBaseConstant.SQL_WHERE + " and";
         //", where"
-        String commaWhere = SymbolConstant.COMMA+" "+DataBaseConstant.SQL_WHERE;
+        String commaWhere = SymbolConstant.COMMA + " " + DataBaseConstant.SQL_WHERE;
         //", "
         String commaSpace = SymbolConstant.COMMA + " ";
         if (sql.endsWith(DataBaseConstant.SQL_WHERE) || sql.endsWith(whereSpace)) {

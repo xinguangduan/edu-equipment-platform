@@ -7,17 +7,29 @@ package org.jeecg.common.system.vo;
  * @date: 2022年08月11日 9:48
  */
 public class SysFilesModel {
-    /**主键id*/
+    /**
+     * 主键id
+     */
     private String id;
-    /**文件名称*/
+    /**
+     * 文件名称
+     */
     private String fileName;
-    /**文件地址*/
+    /**
+     * 文件地址
+     */
     private String url;
-    /**文档类型（folder:文件夹 excel:excel doc:word pp:ppt image:图片  archive:其他文档 video:视频）*/
+    /**
+     * 文档类型（folder:文件夹 excel:excel doc:word pp:ppt image:图片  archive:其他文档 video:视频）
+     */
     private String fileType;
-    /**文件上传类型(temp/本地上传(临时文件) manage/知识库)*/
+    /**
+     * 文件上传类型(temp/本地上传(临时文件) manage/知识库)
+     */
     private String storeType;
-    /**文件大小（kb）*/
+    /**
+     * 文件大小（kb）
+     */
     private Double fileSize;
 
     public String getId() {

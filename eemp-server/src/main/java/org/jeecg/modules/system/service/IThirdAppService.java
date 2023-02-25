@@ -1,18 +1,20 @@
 package org.jeecg.modules.system.service;
 
+import java.util.List;
+
 import org.jeecg.common.api.dto.message.MessageDTO;
 import org.jeecg.modules.system.vo.thirdapp.SyncInfoVo;
 
-import java.util.List;
-
 /**
  * 第三方App对接
+ *
  * @author: jeecg-boot
  */
 public interface IThirdAppService {
 
     /**
      * 获取AccessToken
+     *
      * @return String
      */
     String getAccessToken();
@@ -23,6 +25,7 @@ public interface IThirdAppService {
      * 同步逻辑：<br>
      * 1. 先判断是否同步过，有则修改，无则创建；<br>
      * 2. 本地没有但第三方App里有则删除第三方App里的。
+     *
      * @param ids
      * @return 成功返回true
      */
@@ -34,6 +37,7 @@ public interface IThirdAppService {
      * 同步逻辑：<br>
      * 1. 先判断是否同步过，有则修改，无则创建；<br>
      * 2. 本地没有但第三方App里有则删除第三方App里的。
+     *
      * @param ids
      * @return 成功返回true
      */
@@ -45,8 +49,9 @@ public interface IThirdAppService {
      * 同步逻辑：先判断是否同步过，有则修改、无则创建<br>
      * 注意：同步人员的状态，比如离职、禁用、逻辑删除等。
      * (特殊点：1、目前逻辑特意做的不删除用户，防止企业微信提前上线，用户已经存在，但是平台无此用户。
-     *  企业微信支持禁用账号；钉钉不支持
-     *  2、企业微信里面是手机号激活，只能用户自己改，不允许通过接口改)
+     * 企业微信支持禁用账号；钉钉不支持
+     * 2、企业微信里面是手机号激活，只能用户自己改，不允许通过接口改)
+     *
      * @param ids
      * @return 成功返回空数组，失败返回错误信息
      */
@@ -81,6 +86,7 @@ public interface IThirdAppService {
 
     /**
      * 发送消息
+     *
      * @param message
      * @return boolean
      */

@@ -1,11 +1,13 @@
 package org.jeecg.common.api.dto.message;
 
-import lombok.Data;
 import java.io.Serializable;
 import java.util.Map;
 
+import lombok.Data;
+
 /**
  * 模板消息
+ *
  * @author: jeecg-boot
  */
 @Data
@@ -30,20 +32,19 @@ public class TemplateMessageDTO extends TemplateDTO implements Serializable {
     protected String title;
 
 
-    public TemplateMessageDTO(){
+    public TemplateMessageDTO() {
 
     }
 
     /**
      * 构造器1 发模板消息用
      */
-    public TemplateMessageDTO(String fromUser, String toUser,String title, Map<String, String> templateParam, String templateCode){
+    public TemplateMessageDTO(String fromUser, String toUser, String title, Map<String, String> templateParam, String templateCode) {
         super(templateCode, templateParam);
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.title = title;
     }
-
 
 
 }

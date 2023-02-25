@@ -1,13 +1,14 @@
 package org.jeecg.common.api.dto;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * online 拦截器权限判断
  * cloud api 用到的接口传输对象
+ *
  * @author: jeecg-boot
  */
 @Data
@@ -30,11 +31,11 @@ public class OnlineAuthDTO implements Serializable {
      */
     private String onlineFormUrl;
 
-    public OnlineAuthDTO(){
+    public OnlineAuthDTO() {
 
     }
 
-    public OnlineAuthDTO(String username, List<String> possibleUrl, String onlineFormUrl){
+    public OnlineAuthDTO(String username, List<String> possibleUrl, String onlineFormUrl) {
         this.username = username;
         this.possibleUrl = possibleUrl;
         this.onlineFormUrl = onlineFormUrl;

@@ -1,9 +1,6 @@
 package org.jeecg.config.vo;
 
-import javax.print.DocFlavor;
-
 /**
- *
  * @author: scott
  * @date: 2022年04月18日 20:35
  */

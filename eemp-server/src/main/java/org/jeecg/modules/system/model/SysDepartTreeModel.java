@@ -1,38 +1,44 @@
 package org.jeecg.modules.system.model;
 
-import org.jeecg.modules.system.entity.SysDepart;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import org.jeecg.modules.system.entity.SysDepart;
+
 /**
  * <p>
  * 部门表 存储树结构数据的实体类
  * <p>
- * 
+ *
  * @Author Steve
- * @Since 2019-01-22 
+ * @Since 2019-01-22
  */
-public class SysDepartTreeModel implements Serializable{
-	
+public class SysDepartTreeModel implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
-    /** 对应SysDepart中的id字段,前端数据树中的key*/
+
+    /**
+     * 对应SysDepart中的id字段,前端数据树中的key
+     */
     private String key;
 
-    /** 对应SysDepart中的id字段,前端数据树中的value*/
+    /**
+     * 对应SysDepart中的id字段,前端数据树中的value
+     */
     private String value;
 
-    /** 对应depart_name字段,前端数据树中的title*/
+    /**
+     * 对应depart_name字段,前端数据树中的title
+     */
     private String title;
 
 
     private boolean isLeaf;
     // 以下所有字段均与SysDepart相同
-    
+
     private String id;
 
     private String parentId;
@@ -46,7 +52,7 @@ public class SysDepartTreeModel implements Serializable{
     private Integer departOrder;
 
     private String description;
-    
+
     private String orgCategory;
 
     private String orgType;
@@ -76,19 +82,22 @@ public class SysDepartTreeModel implements Serializable{
     private Date updateTime;
 
     //update-begin---author:wangshuai ---date:20200308  for：[JTC-119]在部门管理菜单下设置部门负责人，新增字段部门负责人ids
-    /**部门负责人ids*/
+    /**
+     * 部门负责人ids
+     */
     private String directorUserIds;
     //update-end---author:wangshuai ---date:20200308  for：[JTC-119]在部门管理菜单下设置部门负责人，新增字段部门负责人ids
-    
+
     private List<SysDepartTreeModel> children = new ArrayList<>();
 
 
     /**
      * 将SysDepart对象转换成SysDepartTreeModel对象
+     *
      * @param sysDepart
      */
-	public SysDepartTreeModel(SysDepart sysDepart) {
-		this.key = sysDepart.getId();
+    public SysDepartTreeModel(SysDepart sysDepart) {
+        this.key = sysDepart.getId();
         this.value = sysDepart.getId();
         this.title = sysDepart.getDepartName();
         this.id = sysDepart.getId();
@@ -115,45 +124,46 @@ public class SysDepartTreeModel implements Serializable{
         this.directorUserIds = sysDepart.getDirectorUserIds();
     }
 
+    public SysDepartTreeModel() {
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public boolean getIsLeaf() {
         return isLeaf;
     }
 
     public void setIsLeaf(boolean isleaf) {
-         this.isLeaf = isleaf;
+        this.isLeaf = isleaf;
     }
 
     public String getKey() {
-		return key;
-	}
+        return key;
+    }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
 
-	public void setKey(String key) {
-		this.key = key;
-	}
+    public String getValue() {
+        return value;
+    }
 
+    public void setValue(String value) {
+        this.value = value;
+    }
 
-	public String getValue() {
-		return value;
-	}
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	public String getId() {
+    public String getId() {
         return id;
     }
 
@@ -166,8 +176,8 @@ public class SysDepartTreeModel implements Serializable{
     }
 
     public void setChildren(List<SysDepartTreeModel> children) {
-        if (children==null){
-            this.isLeaf=true;
+        if (children == null) {
+            this.isLeaf = true;
         }
         this.children = children;
     }
@@ -180,10 +190,6 @@ public class SysDepartTreeModel implements Serializable{
         this.parentId = parentId;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public String getDepartName() {
         return departName;
     }
@@ -191,16 +197,16 @@ public class SysDepartTreeModel implements Serializable{
     public void setDepartName(String departName) {
         this.departName = departName;
     }
-    
+
     public String getOrgCategory() {
-		return orgCategory;
-	}
+        return orgCategory;
+    }
 
-	public void setOrgCategory(String orgCategory) {
-		this.orgCategory = orgCategory;
-	}
+    public void setOrgCategory(String orgCategory) {
+        this.orgCategory = orgCategory;
+    }
 
-	public String getOrgType() {
+    public String getOrgType() {
         return orgType;
     }
 
@@ -336,8 +342,6 @@ public class SysDepartTreeModel implements Serializable{
         this.updateTime = updateTime;
     }
 
-    public SysDepartTreeModel() { }
-
     public String getDirectorUserIds() {
         return directorUserIds;
     }
@@ -352,11 +356,11 @@ public class SysDepartTreeModel implements Serializable{
     @Override
     public boolean equals(Object o) {
         if (this == o) {
-			return true;
-		}
+            return true;
+        }
         if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
+            return false;
+        }
         SysDepartTreeModel model = (SysDepartTreeModel) o;
         return Objects.equals(id, model.id) &&
                 Objects.equals(parentId, model.parentId) &&
@@ -382,7 +386,7 @@ public class SysDepartTreeModel implements Serializable{
                 Objects.equals(directorUserIds, model.directorUserIds) &&
                 Objects.equals(children, model.children);
     }
-    
+
     /**
      * 重写hashCode方法
      */
@@ -390,9 +394,9 @@ public class SysDepartTreeModel implements Serializable{
     public int hashCode() {
 
         return Objects.hash(id, parentId, departName, departNameEn, departNameAbbr,
-        		departOrder, description, orgCategory, orgType, orgCode, mobile, fax, address, 
-        		memo, status, delFlag, qywxIdentifier, createBy, createTime, updateBy, updateTime,
-        		children,directorUserIds);
+                departOrder, description, orgCategory, orgType, orgCode, mobile, fax, address,
+                memo, status, delFlag, qywxIdentifier, createBy, createTime, updateBy, updateTime,
+                children, directorUserIds);
     }
 
 }

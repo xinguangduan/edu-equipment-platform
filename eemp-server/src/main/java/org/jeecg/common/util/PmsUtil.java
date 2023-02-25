@@ -1,14 +1,14 @@
 package org.jeecg.common.util;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Date;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * @Description: PmsUtil
@@ -20,11 +20,6 @@ public class PmsUtil {
 
 
     private static String uploadPath;
-
-    @Value("${jeecg.path.upload}")
-    public void setUploadPath(String uploadPath) {
-        PmsUtil.uploadPath = uploadPath;
-    }
 
     public static String saveErrorTxtByList(List<String> msg, String name) {
         Date d = new Date();
@@ -60,6 +55,11 @@ public class PmsUtil {
             log.info("excel导入生成错误日志文件异常:" + e.getMessage());
         }
         return saveDir + name + ".txt";
+    }
+
+    @Value("${jeecg.path.upload}")
+    public void setUploadPath(String uploadPath) {
+        PmsUtil.uploadPath = uploadPath;
     }
 
 }

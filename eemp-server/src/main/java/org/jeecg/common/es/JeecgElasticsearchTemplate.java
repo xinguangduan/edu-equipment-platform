@@ -1,5 +1,7 @@
 package org.jeecg.common.es;
 
+import java.util.*;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
-
 /**
  * 关于 ElasticSearch 的一些方法（创建索引、添加数据、查询等）
  *
@@ -23,20 +23,27 @@ import java.util.*;
 @Slf4j
 @Component
 public class JeecgElasticsearchTemplate {
-    /** es服务地址 */
-    private String baseUrl;
-    private final String FORMAT_JSON = "format=json";
-    /** Elasticsearch 的版本号 */
-    private String version = null;
-
-    /**ElasticSearch 最大可返回条目数*/
+    /**
+     * ElasticSearch 最大可返回条目数
+     */
     public static final int ES_MAX_SIZE = 10000;
-
-    /**es7*/
+    /**
+     * es7
+     */
     public static final String IE_SEVEN = "7";
-
-    /**url not found 404*/
+    /**
+     * url not found 404
+     */
     public static final String URL_NOT_FOUND = "404 Not Found";
+    private final String FORMAT_JSON = "format=json";
+    /**
+     * es服务地址
+     */
+    private String baseUrl;
+    /**
+     * Elasticsearch 的版本号
+     */
+    private String version = null;
 
     public JeecgElasticsearchTemplate(@Value("${jeecg.elasticsearch.cluster-nodes}") String baseUrl, @Value("${jeecg.elasticsearch.check-enabled}") boolean checkEnabled) {
         log.debug("JeecgElasticsearchTemplate BaseURL：" + baseUrl);
@@ -337,9 +344,9 @@ public class JeecgElasticsearchTemplate {
                     emptyKeys.add(key);
                 }
                 //2、剔除上传控件值(会导致ES同步失败，报异常failed to parse field [ge_pic] of type [text] )
-                if (oConvertUtils.isNotEmpty(value) && value.indexOf("[{")!=-1) {
+                if (oConvertUtils.isNotEmpty(value) && value.indexOf("[{") != -1) {
                     emptyKeys.add(key);
-                    log.info("-------剔除上传控件字段------------key: "+ key);
+                    log.info("-------剔除上传控件字段------------key: " + key);
                 }
             }
             for (String key : emptyKeys) {
@@ -445,8 +452,8 @@ public class JeecgElasticsearchTemplate {
     /**
      * @param source （源滤波器）指定返回的字段，传null返回所有字段
      * @param query
-     * @param from    从第几条数据开始
-     * @param size    返回条目数
+     * @param from   从第几条数据开始
+     * @param size   返回条目数
      * @return { "query": query }
      */
     public JSONObject buildQuery(List<String> source, JSONObject query, int from, int size) {

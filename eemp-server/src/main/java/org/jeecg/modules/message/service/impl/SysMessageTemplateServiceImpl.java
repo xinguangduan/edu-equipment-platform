@@ -1,17 +1,18 @@
 package org.jeecg.modules.message.service.impl;
 
+import java.util.List;
+
 import org.jeecg.common.system.base.service.impl.JeecgServiceImpl;
 import org.jeecg.modules.message.entity.SysMessageTemplate;
 import org.jeecg.modules.message.mapper.SysMessageTemplateMapper;
 import org.jeecg.modules.message.service.ISysMessageTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 /**
  * @Description: 消息模板
  * @Author: jeecg-boot
- * @Date:  2019-04-09
+ * @Date: 2019-04-09
  * @Version: V1.0
  */
 @Service

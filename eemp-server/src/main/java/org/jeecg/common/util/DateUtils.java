@@ -21,6 +21,13 @@ import org.springframework.util.StringUtils;
  */
 public class DateUtils extends PropertyEditorSupport {
 
+    /**
+     * 以毫秒表示的时间
+     */
+    private static final long DAY_IN_MILLIS = 24 * 3600 * 1000;
+    private static final long HOUR_IN_MILLIS = 3600 * 1000;
+    private static final long MINUTE_IN_MILLIS = 60 * 1000;
+    private static final long SECOND_IN_MILLIS = 1000;
     public static ThreadLocal<SimpleDateFormat> date_sdf = new ThreadLocal<SimpleDateFormat>() {
         @Override
         protected SimpleDateFormat initialValue() {
@@ -65,15 +72,8 @@ public class DateUtils extends PropertyEditorSupport {
     };
 
     /**
-     * 以毫秒表示的时间
-     */
-    private static final long DAY_IN_MILLIS = 24 * 3600 * 1000;
-    private static final long HOUR_IN_MILLIS = 3600 * 1000;
-    private static final long MINUTE_IN_MILLIS = 60 * 1000;
-    private static final long SECOND_IN_MILLIS = 1000;
-
-    /**
      * 指定模式的时间格式
+     *
      * @param pattern
      * @return
      */
@@ -211,7 +211,7 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 日期转换为字符串
      *
-     * @param date     日期
+     * @param date    日期
      * @param dateSdf 日期格式
      * @return 字符串
      */
@@ -638,6 +638,26 @@ public class DateUtils extends PropertyEditorSupport {
         return Long.valueOf(DateUtils.yyyymmddhhmmss.get().format(new Date()));
     }
 
+    public static int getYear() {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(getDate());
+        return calendar.get(Calendar.YEAR);
+    }
+
+    /**
+     * 将字符串转成时间
+     *
+     * @param str
+     * @return
+     */
+    public static Date parseDatetime(String str) {
+        try {
+            return datetimeFormat.get().parse(str);
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     /**
      * String类型 转换为Date, 如果参数长度为10 转换格式”yyyy-MM-dd“ 如果参数长度为19 转换格式”yyyy-MM-dd
      * HH:mm:ss“ * @param text String类型的时间值
@@ -663,25 +683,6 @@ public class DateUtils extends PropertyEditorSupport {
         } else {
             setValue(null);
         }
-    }
-
-    public static int getYear() {
-        GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(getDate());
-        return calendar.get(Calendar.YEAR);
-    }
-
-    /**
-     * 将字符串转成时间
-     * @param str
-     * @return
-     */
-    public static Date parseDatetime(String str){
-        try {
-            return datetimeFormat.get().parse(str);
-        }catch (Exception e){
-        }
-        return null;
     }
 
 }

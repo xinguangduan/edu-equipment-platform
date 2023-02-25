@@ -1,5 +1,9 @@
 package org.jeecg.modules.controller;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.dto.DataLogDTO;
@@ -14,13 +18,10 @@ import org.jeecg.modules.system.service.impl.SysBaseApiImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 
 /**
  * 服务化 system模块 对外接口请求类
+ *
  * @author: jeecg-boot
  */
 @Slf4j
@@ -39,47 +40,52 @@ public class SystemApiController {
 
     /**
      * 发送系统消息
+     *
      * @param message 使用构造器赋值参数 如果不设置category(消息类型)则默认为2 发送系统消息
      */
     @PostMapping("/sendSysAnnouncement")
-    public void sendSysAnnouncement(@RequestBody MessageDTO message){
+    public void sendSysAnnouncement(@RequestBody MessageDTO message) {
         sysBaseApi.sendSysAnnouncement(message);
     }
 
     /**
      * 发送消息 附带业务参数
+     *
      * @param message 使用构造器赋值参数
      */
     @PostMapping("/sendBusAnnouncement")
-    public void sendBusAnnouncement(@RequestBody BusMessageDTO message){
+    public void sendBusAnnouncement(@RequestBody BusMessageDTO message) {
         sysBaseApi.sendBusAnnouncement(message);
     }
 
     /**
      * 通过模板发送消息
+     *
      * @param message 使用构造器赋值参数
      */
     @PostMapping("/sendTemplateAnnouncement")
-    public void sendTemplateAnnouncement(@RequestBody TemplateMessageDTO message){
+    public void sendTemplateAnnouncement(@RequestBody TemplateMessageDTO message) {
         sysBaseApi.sendTemplateAnnouncement(message);
     }
 
     /**
      * 通过模板发送消息 附带业务参数
+     *
      * @param message 使用构造器赋值参数
      */
     @PostMapping("/sendBusTemplateAnnouncement")
-    public void sendBusTemplateAnnouncement(@RequestBody BusTemplateMessageDTO message){
+    public void sendBusTemplateAnnouncement(@RequestBody BusTemplateMessageDTO message) {
         sysBaseApi.sendBusTemplateAnnouncement(message);
     }
 
     /**
      * 通过消息中心模板，生成推送内容
+     *
      * @param templateDTO 使用构造器赋值参数
      * @return
      */
     @PostMapping("/parseTemplateByCode")
-    public String parseTemplateByCode(@RequestBody TemplateDTO templateDTO){
+    public String parseTemplateByCode(@RequestBody TemplateDTO templateDTO) {
         return sysBaseApi.parseTemplateByCode(templateDTO);
     }
 
@@ -87,85 +93,94 @@ public class SystemApiController {
      * 根据业务类型busType及业务busId修改消息已读
      */
     @GetMapping("/updateSysAnnounReadFlag")
-    public void updateSysAnnounReadFlag(@RequestParam("busType") String busType, @RequestParam("busId")String busId){
+    public void updateSysAnnounReadFlag(@RequestParam("busType") String busType, @RequestParam("busId") String busId) {
         sysBaseApi.updateSysAnnounReadFlag(busType, busId);
     }
 
     /**
      * 根据用户账号查询用户信息
+     *
      * @param username
      * @return
      */
     @GetMapping("/getUserByName")
-    public LoginUser getUserByName(@RequestParam("username") String username){
+    public LoginUser getUserByName(@RequestParam("username") String username) {
         return sysBaseApi.getUserByName(username);
     }
 
     /**
      * 根据用户id查询用户信息
+     *
      * @param id
      * @return
      */
     @GetMapping("/getUserById")
-    LoginUser getUserById(@RequestParam("id") String id){
+    LoginUser getUserById(@RequestParam("id") String id) {
         return sysBaseApi.getUserById(id);
     }
 
     /**
      * 通过用户账号查询角色集合
+     *
      * @param username
      * @return
      */
     @GetMapping("/getRolesByUsername")
-    List<String> getRolesByUsername(@RequestParam("username") String username){
+    List<String> getRolesByUsername(@RequestParam("username") String username) {
         return sysBaseApi.getRolesByUsername(username);
     }
 
     /**
      * 通过用户账号查询部门集合
+     *
      * @param username
      * @return 部门 id
      */
     @GetMapping("/getDepartIdsByUsername")
-    List<String> getDepartIdsByUsername(@RequestParam("username") String username){
+    List<String> getDepartIdsByUsername(@RequestParam("username") String username) {
         return sysBaseApi.getDepartIdsByUsername(username);
     }
 
     /**
      * 通过用户账号查询部门 name
+     *
      * @param username
      * @return 部门 name
      */
     @GetMapping("/getDepartNamesByUsername")
-    List<String> getDepartNamesByUsername(@RequestParam("username") String username){
+    List<String> getDepartNamesByUsername(@RequestParam("username") String username) {
         return sysBaseApi.getDepartNamesByUsername(username);
     }
 
 
     /**
      * 获取数据字典
+     *
      * @param code
      * @return
      */
     @GetMapping("/queryDictItemsByCode")
-    List<DictModel> queryDictItemsByCode(@RequestParam("code") String code){
+    List<DictModel> queryDictItemsByCode(@RequestParam("code") String code) {
         return sysBaseApi.queryDictItemsByCode(code);
     }
 
     /**
      * 获取有效的数据字典
+     *
      * @param code
      * @return
      */
     @GetMapping("/queryEnableDictItemsByCode")
-    List<DictModel> queryEnableDictItemsByCode(@RequestParam("code") String code){
+    List<DictModel> queryEnableDictItemsByCode(@RequestParam("code") String code) {
         return sysBaseApi.queryEnableDictItemsByCode(code);
     }
 
 
-    /** 查询所有的父级字典，按照create_time排序 */
+    /**
+     * 查询所有的父级字典，按照create_time排序
+     */
     @GetMapping("/queryAllDict")
-    List<DictModel> queryAllDict(){
+    List<DictModel> queryAllDict() {
 //        try{
 //            //睡10秒，gateway网关5秒超时，会触发熔断降级操作
 //            Thread.sleep(10000);
@@ -179,63 +194,69 @@ public class SystemApiController {
 
     /**
      * 查询所有分类字典
+     *
      * @return
      */
     @GetMapping("/queryAllSysCategory")
-    List<SysCategoryModel> queryAllSysCategory(){
+    List<SysCategoryModel> queryAllSysCategory() {
         return sysBaseApi.queryAllSysCategory();
     }
 
 
     /**
      * 查询所有部门 作为字典信息 id -->value,departName -->text
+     *
      * @return
      */
     @GetMapping("/queryAllDepartBackDictModel")
-    List<DictModel> queryAllDepartBackDictModel(){
+    List<DictModel> queryAllDepartBackDictModel() {
         return sysBaseApi.queryAllDepartBackDictModel();
     }
 
     /**
      * 获取所有角色 带参
      * roleIds 默认选中角色
+     *
      * @return
      */
     @GetMapping("/queryAllRole")
-    public List<ComboModel> queryAllRole(@RequestParam(name = "roleIds",required = false)String[] roleIds){
-        if(roleIds==null || roleIds.length==0){
+    public List<ComboModel> queryAllRole(@RequestParam(name = "roleIds", required = false) String[] roleIds) {
+        if (roleIds == null || roleIds.length == 0) {
             return sysBaseApi.queryAllRole();
-        }else{
+        } else {
             return sysBaseApi.queryAllRole(roleIds);
         }
     }
 
     /**
      * 通过用户账号查询角色Id集合
+     *
      * @param username
      * @return
      */
     @GetMapping("/getRoleIdsByUsername")
-    public List<String> getRoleIdsByUsername(@RequestParam("username")String username){
+    public List<String> getRoleIdsByUsername(@RequestParam("username") String username) {
         return sysBaseApi.getRoleIdsByUsername(username);
     }
 
     /**
      * 通过部门编号查询部门id
+     *
      * @param orgCode
      * @return
      */
     @GetMapping("/getDepartIdsByOrgCode")
-    public String getDepartIdsByOrgCode(@RequestParam("orgCode")String orgCode){
+    public String getDepartIdsByOrgCode(@RequestParam("orgCode") String orgCode) {
         return sysBaseApi.getDepartIdsByOrgCode(orgCode);
     }
 
     /**
      * 查询所有部门
+     *
      * @return
      */
     @GetMapping("/getAllSysDepart")
-    public List<SysDepartModel> getAllSysDepart(){
+    public List<SysDepartModel> getAllSysDepart() {
         return sysBaseApi.getAllSysDepart();
     }
 
@@ -246,29 +267,30 @@ public class SystemApiController {
      * @return
      */
     @GetMapping("/getDynamicDbSourceById")
-    DynamicDataSourceModel getDynamicDbSourceById(@RequestParam("dbSourceId")String dbSourceId){
+    DynamicDataSourceModel getDynamicDbSourceById(@RequestParam("dbSourceId") String dbSourceId) {
         return sysBaseApi.getDynamicDbSourceById(dbSourceId);
     }
 
 
-
     /**
      * 根据部门Id获取部门负责人
+     *
      * @param deptId
      * @return
      */
     @GetMapping("/getDeptHeadByDepId")
-    public List<String> getDeptHeadByDepId(@RequestParam("deptId") String deptId){
+    public List<String> getDeptHeadByDepId(@RequestParam("deptId") String deptId) {
         return sysBaseApi.getDeptHeadByDepId(deptId);
     }
 
     /**
      * 查找父级部门
+     *
      * @param departId
      * @return
      */
     @GetMapping("/getParentDepartId")
-    public DictModel getParentDepartId(@RequestParam("departId")String departId){
+    public DictModel getParentDepartId(@RequestParam("departId") String departId) {
         return sysBaseApi.getParentDepartId(departId);
     }
 
@@ -279,17 +301,18 @@ public class SystemApiController {
      * @return
      */
     @GetMapping("/getDynamicDbSourceByCode")
-    public DynamicDataSourceModel getDynamicDbSourceByCode(@RequestParam("dbSourceCode") String dbSourceCode){
+    public DynamicDataSourceModel getDynamicDbSourceByCode(@RequestParam("dbSourceCode") String dbSourceCode) {
         return sysBaseApi.getDynamicDbSourceByCode(dbSourceCode);
     }
 
     /**
      * 给指定用户发消息
+     *
      * @param userIds
      * @param cmd
      */
     @GetMapping("/sendWebSocketMsg")
-    public void sendWebSocketMsg(String[] userIds, String cmd){
+    public void sendWebSocketMsg(String[] userIds, String cmd) {
         sysBaseApi.sendWebSocketMsg(userIds, cmd);
     }
 
@@ -297,71 +320,77 @@ public class SystemApiController {
     /**
      * 根据id获取所有参与用户
      * userIds
+     *
      * @return
      */
     @GetMapping("/queryAllUserByIds")
-    public List<LoginUser> queryAllUserByIds(@RequestParam("userIds") String[] userIds){
+    public List<LoginUser> queryAllUserByIds(@RequestParam("userIds") String[] userIds) {
         return sysBaseApi.queryAllUserByIds(userIds);
     }
 
     /**
      * 查询所有用户 返回ComboModel
+     *
      * @return
      */
     @GetMapping("/queryAllUserBackCombo")
-    public List<ComboModel> queryAllUserBackCombo(){
+    public List<ComboModel> queryAllUserBackCombo() {
         return sysBaseApi.queryAllUserBackCombo();
     }
 
     /**
      * 分页查询用户 返回JSONObject
+     *
      * @return
      */
     @GetMapping("/queryAllUser")
-    public JSONObject queryAllUser(@RequestParam(name="userIds",required=false)String userIds, @RequestParam(name="pageNo",required=false) Integer pageNo,@RequestParam(name="pageSize",required=false) int pageSize){
+    public JSONObject queryAllUser(@RequestParam(name = "userIds", required = false) String userIds, @RequestParam(name = "pageNo", required = false) Integer pageNo, @RequestParam(name = "pageSize", required = false) int pageSize) {
         return sysBaseApi.queryAllUser(userIds, pageNo, pageSize);
     }
-
 
 
     /**
      * 将会议签到信息推动到预览
      * userIds
-     * @return
+     *
      * @param userId
+     * @return
      */
     @GetMapping("/meetingSignWebsocket")
-    public void meetingSignWebsocket(@RequestParam("userId")String userId){
+    public void meetingSignWebsocket(@RequestParam("userId") String userId) {
         sysBaseApi.meetingSignWebsocket(userId);
     }
 
     /**
      * 根据name获取所有参与用户
      * userNames
+     *
      * @return
      */
     @GetMapping("/queryUserByNames")
-    public List<LoginUser> queryUserByNames(@RequestParam("userNames")String[] userNames){
+    public List<LoginUser> queryUserByNames(@RequestParam("userNames") String[] userNames) {
         return sysBaseApi.queryUserByNames(userNames);
     }
 
     /**
      * 获取用户的角色集合
+     *
      * @param username
      * @return
      */
     @GetMapping("/getUserRoleSet")
-    public Set<String> getUserRoleSet(@RequestParam("username")String username){
+    public Set<String> getUserRoleSet(@RequestParam("username") String username) {
         return sysBaseApi.getUserRoleSet(username);
     }
 
     /**
      * 获取用户的权限集合
+     *
      * @param username
      * @return
      */
     @GetMapping("/getUserPermissionSet")
-    public Set<String> getUserPermissionSet(@RequestParam("username") String username){
+    public Set<String> getUserPermissionSet(@RequestParam("username") String username) {
         return sysBaseApi.getUserPermissionSet(username);
     }
 
@@ -369,32 +398,35 @@ public class SystemApiController {
 
     /**
      * 判断是否有online访问的权限
+     *
      * @param onlineAuthDTO
      * @return
      */
     @PostMapping("/hasOnlineAuth")
-    public boolean hasOnlineAuth(@RequestBody OnlineAuthDTO onlineAuthDTO){
+    public boolean hasOnlineAuth(@RequestBody OnlineAuthDTO onlineAuthDTO) {
         return sysBaseApi.hasOnlineAuth(onlineAuthDTO);
     }
 
     /**
      * 查询用户角色信息
+     *
      * @param username
      * @return
      */
     @GetMapping("/queryUserRoles")
-    public Set<String> queryUserRoles(@RequestParam("username") String username){
+    public Set<String> queryUserRoles(@RequestParam("username") String username) {
         return sysUserService.getUserRolesSet(username);
     }
 
 
     /**
      * 查询用户权限信息
+     *
      * @param username
      * @return
      */
     @GetMapping("/queryUserAuths")
-    public Set<String> queryUserAuths(@RequestParam("username") String username){
+    public Set<String> queryUserAuths(@RequestParam("username") String username) {
         return sysUserService.getUserPermissionsSet(username);
     }
 
@@ -402,109 +434,122 @@ public class SystemApiController {
      * 通过部门id获取部门全部信息
      */
     @GetMapping("/selectAllById")
-    public SysDepartModel selectAllById(@RequestParam("id") String id){
+    public SysDepartModel selectAllById(@RequestParam("id") String id) {
         return sysBaseApi.selectAllById(id);
     }
 
     /**
      * 根据用户id查询用户所属公司下所有用户ids
+     *
      * @param userId
      * @return
      */
     @GetMapping("/queryDeptUsersByUserId")
-    public List<String> queryDeptUsersByUserId(@RequestParam("userId") String userId){
+    public List<String> queryDeptUsersByUserId(@RequestParam("userId") String userId) {
         return sysBaseApi.queryDeptUsersByUserId(userId);
     }
 
 
     /**
      * 查询数据权限
+     *
      * @return
      */
     @GetMapping("/queryPermissionDataRule")
-    public List<SysPermissionDataRuleModel> queryPermissionDataRule(@RequestParam("component") String component, @RequestParam("requestPath")String requestPath, @RequestParam("username") String username){
+    public List<SysPermissionDataRuleModel> queryPermissionDataRule(@RequestParam("component") String component, @RequestParam("requestPath") String requestPath, @RequestParam("username") String username) {
         return sysBaseApi.queryPermissionDataRule(component, requestPath, username);
     }
 
     /**
      * 查询用户信息
+     *
      * @param username
      * @return
      */
     @GetMapping("/getCacheUser")
-    public SysUserCacheInfo getCacheUser(@RequestParam("username") String username){
+    public SysUserCacheInfo getCacheUser(@RequestParam("username") String username) {
         return sysBaseApi.getCacheUser(username);
     }
 
     /**
      * 普通字典的翻译
+     *
      * @param code
      * @param key
      * @return
      */
     @GetMapping("/translateDict")
-    public String translateDict(@RequestParam("code") String code, @RequestParam("key") String key){
+    public String translateDict(@RequestParam("code") String code, @RequestParam("key") String key) {
         return sysBaseApi.translateDict(code, key);
     }
 
 
     /**
      * 36根据多个用户账号(逗号分隔)，查询返回多个用户信息
+     *
      * @param usernames
      * @return
      */
     @RequestMapping("/queryUsersByUsernames")
-    List<JSONObject> queryUsersByUsernames(@RequestParam("usernames") String usernames){
+    List<JSONObject> queryUsersByUsernames(@RequestParam("usernames") String usernames) {
         return this.sysBaseApi.queryUsersByUsernames(usernames);
     }
 
     /**
      * 37根据多个用户id(逗号分隔)，查询返回多个用户信息
+     *
      * @param ids
      * @return
      */
     @RequestMapping("/queryUsersByIds")
-    List<JSONObject> queryUsersByIds(@RequestParam("ids") String ids){
+    List<JSONObject> queryUsersByIds(@RequestParam("ids") String ids) {
         return this.sysBaseApi.queryUsersByIds(ids);
     }
 
     /**
      * 38根据多个部门编码(逗号分隔)，查询返回多个部门信息
+     *
      * @param orgCodes
      * @return
      */
     @GetMapping("/queryDepartsByOrgcodes")
-    List<JSONObject> queryDepartsByOrgcodes(@RequestParam("orgCodes") String orgCodes){
+    List<JSONObject> queryDepartsByOrgcodes(@RequestParam("orgCodes") String orgCodes) {
         return this.sysBaseApi.queryDepartsByOrgcodes(orgCodes);
     }
 
     /**
      * 39根据多个部门ID(逗号分隔)，查询返回多个部门信息
+     *
      * @param ids
      * @return
      */
     @GetMapping("/queryDepartsByIds")
-    List<JSONObject> queryDepartsByIds(@RequestParam("ids") String ids){
+    List<JSONObject> queryDepartsByIds(@RequestParam("ids") String ids) {
         return this.sysBaseApi.queryDepartsByIds(ids);
     }
 
     /**
      * 40发送邮件消息
+     *
      * @param email
      * @param title
      * @param content
      */
     @GetMapping("/sendEmailMsg")
-    public void sendEmailMsg(@RequestParam("email")String email,@RequestParam("title")String title,@RequestParam("content")String content){
-         this.sysBaseApi.sendEmailMsg(email,title,content);
-    };
+    public void sendEmailMsg(@RequestParam("email") String email, @RequestParam("title") String title, @RequestParam("content") String content) {
+        this.sysBaseApi.sendEmailMsg(email, title, content);
+    }
+
+    ;
+
     /**
      * 41 获取公司下级部门和公司下所有用户信息
+     *
      * @param orgCode
      */
     @GetMapping("/getDeptUserByOrgCode")
-    List<Map> getDeptUserByOrgCode(@RequestParam("orgCode")String orgCode){
-       return this.sysBaseApi.getDeptUserByOrgCode(orgCode);
+    List<Map> getDeptUserByOrgCode(@RequestParam("orgCode") String orgCode) {
+        return this.sysBaseApi.getDeptUserByOrgCode(orgCode);
     }
 
     /**
@@ -527,7 +572,7 @@ public class SystemApiController {
      */
     @GetMapping("/loadDictItem")
     public List<String> loadDictItem(@RequestParam("dictCode") String dictCode, @RequestParam("keys") String keys) {
-        if(!dictQueryBlackListHandler.isPass(dictCode)){
+        if (!dictQueryBlackListHandler.isPass(dictCode)) {
             log.error(dictQueryBlackListHandler.getError());
             return null;
         }
@@ -543,7 +588,7 @@ public class SystemApiController {
      */
     @GetMapping("/getDictItems")
     public List<DictModel> getDictItems(@RequestParam("dictCode") String dictCode) {
-        if(!dictQueryBlackListHandler.isPass(dictCode)){
+        if (!dictQueryBlackListHandler.isPass(dictCode)) {
             log.error(dictQueryBlackListHandler.getError());
             return null;
         }
@@ -571,7 +616,7 @@ public class SystemApiController {
      */
     @GetMapping("/loadDictItemByKeyword")
     public List<DictModel> loadDictItemByKeyword(@RequestParam("dictCode") String dictCode, @RequestParam("keyword") String keyword, @RequestParam(value = "pageSize", required = false) Integer pageSize) {
-        if(!dictQueryBlackListHandler.isPass(dictCode)){
+        if (!dictQueryBlackListHandler.isPass(dictCode)) {
             log.error(dictQueryBlackListHandler.getError());
             return null;
         }
@@ -580,27 +625,29 @@ public class SystemApiController {
 
     /**
      * 48 普通字典的翻译，根据多个dictCode和多条数据，多个以逗号分割
+     *
      * @param dictCodes
      * @param keys
      * @return
      */
     @GetMapping("/translateManyDict")
-    public Map<String, List<DictModel>> translateManyDict(@RequestParam("dictCodes") String dictCodes, @RequestParam("keys") String keys){
+    public Map<String, List<DictModel>> translateManyDict(@RequestParam("dictCodes") String dictCodes, @RequestParam("keys") String keys) {
         return this.sysBaseApi.translateManyDict(dictCodes, keys);
     }
 
 
     /**
      * 获取表数据字典 【接口签名验证】
+     *
      * @param table
      * @param text
      * @param code
      * @return
      */
     @GetMapping("/queryTableDictItemsByCode")
-    List<DictModel> queryTableDictItemsByCode(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code){
-        String str = table+","+text+","+code;
-        if(!dictQueryBlackListHandler.isPass(str)){
+    List<DictModel> queryTableDictItemsByCode(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code) {
+        String str = table + "," + text + "," + code;
+        if (!dictQueryBlackListHandler.isPass(str)) {
             log.error(dictQueryBlackListHandler.getError());
             return null;
         }
@@ -609,6 +656,7 @@ public class SystemApiController {
 
     /**
      * 查询表字典 支持过滤数据 【接口签名验证】
+     *
      * @param table
      * @param text
      * @param code
@@ -616,9 +664,9 @@ public class SystemApiController {
      * @return
      */
     @GetMapping("/queryFilterTableDictInfo")
-    List<DictModel> queryFilterTableDictInfo(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("filterSql") String filterSql){
-        String str = table+","+text+","+code;
-        if(!dictQueryBlackListHandler.isPass(str)){
+    List<DictModel> queryFilterTableDictInfo(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("filterSql") String filterSql) {
+        String str = table + "," + text + "," + code;
+        if (!dictQueryBlackListHandler.isPass(str)) {
             log.error(dictQueryBlackListHandler.getError());
             return null;
         }
@@ -631,6 +679,7 @@ public class SystemApiController {
     /**
      * 【接口签名验证】
      * 查询指定table的 text code 获取字典，包含text和value
+     *
      * @param table
      * @param text
      * @param code
@@ -639,9 +688,9 @@ public class SystemApiController {
      */
     @Deprecated
     @GetMapping("/queryTableDictByKeys")
-    public List<String> queryTableDictByKeys(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("keyArray") String[] keyArray){
-        String str = table+","+text+","+code;
-        if(!dictQueryBlackListHandler.isPass(str)){
+    public List<String> queryTableDictByKeys(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("keyArray") String[] keyArray) {
+        String str = table + "," + text + "," + code;
+        if (!dictQueryBlackListHandler.isPass(str)) {
             log.error(dictQueryBlackListHandler.getError());
             return null;
         }
@@ -651,6 +700,7 @@ public class SystemApiController {
 
     /**
      * 字典表的 翻译【接口签名验证】
+     *
      * @param table
      * @param text
      * @param code
@@ -658,9 +708,9 @@ public class SystemApiController {
      * @return
      */
     @GetMapping("/translateDictFromTable")
-    public String translateDictFromTable(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("key") String key){
-        String str = table+","+text+","+code;
-        if(!dictQueryBlackListHandler.isPass(str)){
+    public String translateDictFromTable(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("key") String key) {
+        String str = table + "," + text + "," + code;
+        if (!dictQueryBlackListHandler.isPass(str)) {
             log.error(dictQueryBlackListHandler.getError());
             return null;
         }
@@ -682,8 +732,8 @@ public class SystemApiController {
      */
     @GetMapping("/translateDictFromTableByKeys")
     public List<DictModel> translateDictFromTableByKeys(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("keys") String keys) {
-        String str = table+","+text+","+code;
-        if(!dictQueryBlackListHandler.isPass(str)){
+        String str = table + "," + text + "," + code;
+        if (!dictQueryBlackListHandler.isPass(str)) {
             log.error(dictQueryBlackListHandler.getError());
             return null;
         }
@@ -692,57 +742,64 @@ public class SystemApiController {
 
     /**
      * 发送模板信息
+     *
      * @param message
      */
     @PostMapping("/sendTemplateMessage")
-    public void sendTemplateMessage(@RequestBody MessageDTO message){
+    public void sendTemplateMessage(@RequestBody MessageDTO message) {
         sysBaseApi.sendTemplateMessage(message);
     }
 
     /**
      * 获取消息模板内容
+     *
      * @param code
      * @return
      */
     @GetMapping("/getTemplateContent")
-    public String getTemplateContent(@RequestParam("code") String code){
+    public String getTemplateContent(@RequestParam("code") String code) {
         return this.sysBaseApi.getTemplateContent(code);
     }
 
     /**
      * 保存数据日志
+     *
      * @param dataLogDto
      */
     @PostMapping("/saveDataLog")
-    public void saveDataLog(@RequestBody DataLogDTO dataLogDto){
+    public void saveDataLog(@RequestBody DataLogDTO dataLogDto) {
         this.sysBaseApi.saveDataLog(dataLogDto);
     }
 
     @PostMapping("/addSysFiles")
-    public void addSysFiles(@RequestBody SysFilesModel sysFilesModel){this.sysBaseApi.addSysFiles(sysFilesModel);}
+    public void addSysFiles(@RequestBody SysFilesModel sysFilesModel) {
+        this.sysBaseApi.addSysFiles(sysFilesModel);
+    }
 
     @GetMapping("/getFileUrl")
-    public String getFileUrl(@RequestParam(name="fileId") String fileId){
+    public String getFileUrl(@RequestParam(name = "fileId") String fileId) {
         return this.sysBaseApi.getFileUrl(fileId);
     }
 
     /**
      * 更新头像
+     *
      * @param loginUser
      * @return
      */
     @PutMapping("/updateAvatar")
-    public void updateAvatar(@RequestBody LoginUser loginUser){
+    public void updateAvatar(@RequestBody LoginUser loginUser) {
         this.sysBaseApi.updateAvatar(loginUser);
     }
 
     /**
      * 向app端 websocket推送聊天刷新消息
+     *
      * @param userId
      * @return
      */
     @GetMapping("/sendAppChatSocket")
-    public void sendAppChatSocket(@RequestParam(name="userId") String userId){
+    public void sendAppChatSocket(@RequestParam(name = "userId") String userId) {
         this.sysBaseApi.sendAppChatSocket(userId);
     }
 
@@ -750,18 +807,19 @@ public class SystemApiController {
     /**
      * VUEN-2584【issue】平台sql注入漏洞几个问题
      * 部分特殊函数 可以将查询结果混夹在错误信息中，导致数据库的信息暴露
+     *
      * @param e
      * @return
      */
     @ExceptionHandler(java.sql.SQLException.class)
-    public Result<?> handleSQLException(Exception e){
+    public Result<?> handleSQLException(Exception e) {
         String msg = e.getMessage();
         String extractvalue = "extractvalue";
         String updatexml = "updatexml";
-        if(msg!=null && (msg.toLowerCase().indexOf(extractvalue)>=0 || msg.toLowerCase().indexOf(updatexml)>=0)){
+        if (msg != null && (msg.toLowerCase().indexOf(extractvalue) >= 0 || msg.toLowerCase().indexOf(updatexml) >= 0)) {
             return Result.error("校验失败，sql解析异常！");
         }
         return Result.error("校验失败，sql解析异常！" + msg);
     }
-    
+
 }

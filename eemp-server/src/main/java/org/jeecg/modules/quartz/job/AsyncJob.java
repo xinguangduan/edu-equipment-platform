@@ -6,11 +6,9 @@ import org.quartz.*;
 
 /**
  * @Description: 同步定时任务测试
- *
+ * <p>
  * 此处的同步是指 当定时任务的执行时间大于任务的时间间隔时
  * 会等待第一个任务执行完成才会走第二个任务
- *
- *
  * @author: taoyan
  * @date: 2020年06月19日
  */
@@ -29,7 +27,7 @@ public class AsyncJob implements Job {
             e.printStackTrace();
         }
         //测试发现 每5秒执行一次
-        log.info(" --- 执行完毕，时间："+DateUtils.now()+"---");
+        log.info(" --- 执行完毕，时间：" + DateUtils.now() + "---");
     }
 
 }

@@ -5,7 +5,6 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,7 +31,7 @@ public class SysRolePermission implements Serializable {
      */
     @TableId(type = IdType.ASSIGN_ID)
     private String id;
-    
+
     /**
      * 角色id
      */
@@ -42,7 +41,7 @@ public class SysRolePermission implements Serializable {
      * 权限id
      */
     private String permissionId;
-    
+
     /**
      * 数据权限
      */
@@ -51,8 +50,8 @@ public class SysRolePermission implements Serializable {
     /**
      * 操作时间
      */
-    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date operateDate;
 
     /**
@@ -61,11 +60,11 @@ public class SysRolePermission implements Serializable {
     private String operateIp;
 
     public SysRolePermission() {
-   	}
-       
-   	public SysRolePermission(String roleId, String permissionId) {
-   		this.roleId = roleId;
-   		this.permissionId = permissionId;
-   	}
+    }
+
+    public SysRolePermission(String roleId, String permissionId) {
+        this.roleId = roleId;
+        this.permissionId = permissionId;
+    }
 
 }

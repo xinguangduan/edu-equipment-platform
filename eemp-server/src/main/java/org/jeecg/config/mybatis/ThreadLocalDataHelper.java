@@ -1,8 +1,9 @@
 package org.jeecg.config.mybatis;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
@@ -24,11 +25,11 @@ public class ThreadLocalDataHelper {
     /**
      * 设置请求参数
      *
-     * @param key  参数key
+     * @param key   参数key
      * @param value 参数值
      */
     public static void put(String key, Object value) {
-        if(ObjectUtil.isNotEmpty(value)) {
+        if (ObjectUtil.isNotEmpty(value)) {
             DATA_MAP.put(key, value);
             REQUEST_DATA.set(DATA_MAP);
         }

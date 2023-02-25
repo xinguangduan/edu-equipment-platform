@@ -1,5 +1,7 @@
 package org.jeecg.modules.system.rule;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.extern.slf4j.Slf4j;
@@ -9,8 +11,6 @@ import org.jeecg.common.util.YouBianCodeUtil;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysCategory;
 import org.jeecg.modules.system.mapper.SysCategoryMapper;
-
-import java.util.List;
 
 /**
  * @Author scott

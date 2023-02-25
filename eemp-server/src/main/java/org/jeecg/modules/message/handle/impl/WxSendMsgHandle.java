@@ -10,10 +10,10 @@ import org.jeecg.modules.message.handle.ISendMsgHandle;
 @Slf4j
 public class WxSendMsgHandle implements ISendMsgHandle {
 
-	@Override
-	public void sendMsg(String esReceiver, String esTitle, String esContent) {
-		// TODO Auto-generated method stub
-		log.info("发微信消息模板");
-	}
+    @Override
+    public void sendMsg(String esReceiver, String esTitle, String esContent) {
+        // TODO Auto-generated method stub
+        log.info("发微信消息模板");
+    }
 
 }

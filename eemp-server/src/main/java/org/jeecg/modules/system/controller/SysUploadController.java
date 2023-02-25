@@ -1,5 +1,7 @@
 package org.jeecg.modules.system.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.exception.JeecgBootException;
@@ -15,10 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * minio文件上传示例
+ *
  * @author: jeecg-boot
  */
 @Slf4j
@@ -30,6 +31,7 @@ public class SysUploadController {
 
     /**
      * 上传
+     *
      * @param request
      */
     @PostMapping(value = "/uploadMinio")
@@ -43,7 +45,7 @@ public class SysUploadController {
             throw new JeecgBootException("上传目录bizPath，格式非法！");
         }
 
-        if(oConvertUtils.isEmpty(bizPath)){
+        if (oConvertUtils.isEmpty(bizPath)) {
             bizPath = "";
         }
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -52,8 +54,8 @@ public class SysUploadController {
         // 获取文件名
         String orgName = file.getOriginalFilename();
         orgName = CommonUtils.getFileName(orgName);
-        String fileUrl =  MinioUtil.upload(file,bizPath);
-        if(oConvertUtils.isEmpty(fileUrl)){
+        String fileUrl = MinioUtil.upload(file, bizPath);
+        if (oConvertUtils.isEmpty(fileUrl)) {
             return Result.error("上传失败,请检查配置信息是否正确!");
         }
         //保存文件信息

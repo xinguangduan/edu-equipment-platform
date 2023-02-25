@@ -1,5 +1,8 @@
 package org.jeecg.config.mybatis.aspect;
 
+import java.lang.reflect.Method;
+import javax.servlet.http.HttpServletRequest;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,9 +13,6 @@ import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.config.mybatis.ThreadLocalDataHelper;
 import org.springframework.stereotype.Component;
-
-import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Method;
 
 /**
  * 动态table切换 切面处理

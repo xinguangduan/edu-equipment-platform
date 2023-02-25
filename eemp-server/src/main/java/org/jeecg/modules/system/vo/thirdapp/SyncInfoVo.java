@@ -1,9 +1,9 @@
 package org.jeecg.modules.system.vo.thirdapp;
 
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * 同步结果信息，包含成功的信息和失败的信息

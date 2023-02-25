@@ -1,5 +1,8 @@
 package org.jeecg.modules.system.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -21,59 +24,56 @@ import org.jeecg.modules.system.service.ISysThirdAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-
 /**
  * @Description: 第三方登录账号表
  * @Author: jeecg-boot
- * @Date:   2020-11-17
+ * @Date: 2020-11-17
  * @Version: V1.0
  */
 @Service
 @Slf4j
 public class SysThirdAccountServiceImpl extends ServiceImpl<SysThirdAccountMapper, SysThirdAccount> implements ISysThirdAccountService {
-    
+
     @Autowired
-    private  SysThirdAccountMapper sysThirdAccountMapper;
-    
+    private SysThirdAccountMapper sysThirdAccountMapper;
+
     @Autowired
     private SysUserMapper sysUserMapper;
     @Autowired
     private SysRoleMapper sysRoleMapper;
     @Autowired
     private SysUserRoleMapper sysUserRoleMapper;
-    
+
     @Override
-    public void updateThirdUserId(SysUser sysUser,String thirdUserUuid) {
+    public void updateThirdUserId(SysUser sysUser, String thirdUserUuid) {
         //修改第三方登录账户表使其进行添加用户id
         LambdaQueryWrapper<SysThirdAccount> query = new LambdaQueryWrapper<>();
-        query.eq(SysThirdAccount::getThirdUserUuid,thirdUserUuid);
+        query.eq(SysThirdAccount::getThirdUserUuid, thirdUserUuid);
         SysThirdAccount account = sysThirdAccountMapper.selectOne(query);
         SysThirdAccount sysThirdAccount = new SysThirdAccount();
         sysThirdAccount.setSysUserId(sysUser.getId());
         //根据当前用户id和登录方式查询第三方登录表
         LambdaQueryWrapper<SysThirdAccount> thirdQuery = new LambdaQueryWrapper<>();
-        thirdQuery.eq(SysThirdAccount::getSysUserId,sysUser.getId());
-        thirdQuery.eq(SysThirdAccount::getThirdType,account.getThirdType());
+        thirdQuery.eq(SysThirdAccount::getSysUserId, sysUser.getId());
+        thirdQuery.eq(SysThirdAccount::getThirdType, account.getThirdType());
         SysThirdAccount sysThirdAccounts = sysThirdAccountMapper.selectOne(thirdQuery);
-        if(sysThirdAccounts!=null){
+        if (sysThirdAccounts != null) {
             sysThirdAccount.setThirdUserId(sysThirdAccounts.getThirdUserId());
             sysThirdAccountMapper.deleteById(sysThirdAccounts.getId());
         }
         //更新用户账户表sys_user_id
-        sysThirdAccountMapper.update(sysThirdAccount,query);
+        sysThirdAccountMapper.update(sysThirdAccount, query);
     }
-    
+
     @Override
     public SysUser createUser(String phone, String thirdUserUuid) {
-       //先查询第三方，获取登录方式
+        //先查询第三方，获取登录方式
         LambdaQueryWrapper<SysThirdAccount> query = new LambdaQueryWrapper<>();
-        query.eq(SysThirdAccount::getThirdUserUuid,thirdUserUuid);
+        query.eq(SysThirdAccount::getThirdUserUuid, thirdUserUuid);
         SysThirdAccount account = sysThirdAccountMapper.selectOne(query);
         //通过用户名查询数据库是否已存在
         SysUser userByName = sysUserMapper.getUserByName(thirdUserUuid);
-        if(null!=userByName){
+        if (null != userByName) {
             //如果账号存在的话，则自动加上一个时间戳
             String format = DateUtils.yyyymmddhhmmss.get().format(new Date());
             thirdUserUuid = thirdUserUuid + format;
@@ -96,10 +96,10 @@ public class SysThirdAccountServiceImpl extends ServiceImpl<SysThirdAccountMappe
         //更新用户第三方账户表的userId
         SysThirdAccount sysThirdAccount = new SysThirdAccount();
         sysThirdAccount.setSysUserId(s);
-        sysThirdAccountMapper.update(sysThirdAccount,query);
+        sysThirdAccountMapper.update(sysThirdAccount, query);
         return user;
     }
-    
+
     public String saveThirdUser(SysUser sysUser) {
         //保存用户
         String userid = UUIDGenerator.generate();
@@ -118,7 +118,7 @@ public class SysThirdAccountServiceImpl extends ServiceImpl<SysThirdAccountMappe
     @Override
     public SysThirdAccount getOneBySysUserId(String sysUserId, String thirdType) {
         LambdaQueryWrapper<SysThirdAccount> queryWrapper = new LambdaQueryWrapper<>();
-        log.info("getSysUserId: {} ,getThirdType: {}",sysUserId,thirdType);
+        log.info("getSysUserId: {} ,getThirdType: {}", sysUserId, thirdType);
         queryWrapper.eq(SysThirdAccount::getSysUserId, sysUserId);
         queryWrapper.eq(SysThirdAccount::getThirdType, thirdType);
         return super.getOne(queryWrapper);

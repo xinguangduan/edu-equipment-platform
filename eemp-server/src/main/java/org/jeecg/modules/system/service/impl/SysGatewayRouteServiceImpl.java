@@ -1,5 +1,7 @@
 package org.jeecg.modules.system.service.impl;
 
+import java.util.List;
+
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -8,7 +10,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.base.BaseMap;
 import org.jeecg.common.constant.CacheConstant;
-import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.GlobalConstants;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysGatewayRoute;
@@ -18,10 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @Description: gateway路由管理
@@ -33,10 +30,9 @@ import java.util.Map;
 @Slf4j
 public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMapper, SysGatewayRoute> implements ISysGatewayRouteService {
 
+    private static final String STRING_STATUS = "status";
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
-
-    private static final String STRING_STATUS = "status";
 
     @Override
     public void addRoute2Redis(String key) {
@@ -59,9 +55,9 @@ public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMappe
             String id = json.getString("id");
             //update-begin-author:taoyan date:20211025 for: oracle路由网关新增小bug /issues/I4EV2J
             SysGatewayRoute route;
-            if(oConvertUtils.isEmpty(id)){
+            if (oConvertUtils.isEmpty(id)) {
                 route = new SysGatewayRoute();
-            }else{
+            } else {
                 route = getById(id);
             }
             //update-end-author:taoyan date:20211025 for: oracle路由网关新增小bug /issues/I4EV2J

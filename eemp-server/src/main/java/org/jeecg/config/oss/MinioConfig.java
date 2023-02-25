@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Minio文件上传配置文件
+ *
  * @author: jeecg-boot
  */
 @Slf4j
@@ -25,11 +26,11 @@ public class MinioConfig {
     private String bucketName;
 
     @Bean
-    public void initMinio(){
-        if(!minioUrl.startsWith(CommonConstant.STR_HTTP)){
+    public void initMinio() {
+        if (!minioUrl.startsWith(CommonConstant.STR_HTTP)) {
             minioUrl = "http://" + minioUrl;
         }
-        if(!minioUrl.endsWith(SymbolConstant.SINGLE_SLASH)){
+        if (!minioUrl.endsWith(SymbolConstant.SINGLE_SLASH)) {
             minioUrl = minioUrl.concat(SymbolConstant.SINGLE_SLASH);
         }
         MinioUtil.setMinioUrl(minioUrl);

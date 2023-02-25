@@ -1,10 +1,10 @@
 package org.jeecg.modules.system.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import org.jeecg.modules.system.entity.SysTenant;
-
 import java.util.Collection;
 import java.util.List;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import org.jeecg.modules.system.entity.SysTenant;
 
 /**
  * @Description: 租户service接口

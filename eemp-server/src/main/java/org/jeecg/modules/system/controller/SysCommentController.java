@@ -1,5 +1,10 @@
 package org.jeecg.modules.system.controller;
 
+import java.util.Arrays;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -22,11 +27,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @Description: 系统评论回复表
@@ -106,19 +106,19 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
     @DeleteMapping(value = "/deleteOne")
     public Result<String> deleteOne(@RequestParam(name = "id", required = true) String id) {
         SysComment comment = sysCommentService.getById(id);
-        if(comment==null){
+        if (comment == null) {
             return Result.error("该评论已被删除！");
         }
         LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
         String username = sysUser.getUsername();
         String admin = "admin";
         //除了admin外 其他人只能删除自己的评论
-        if((!admin.equals(username)) && !username.equals(comment.getCreateBy())){
+        if ((!admin.equals(username)) && !username.equals(comment.getCreateBy())) {
             return Result.error("只能删除自己的评论！");
         }
         sysCommentService.deleteOne(id);
         //删除评论添加日志
-        String logContent = "删除了评论， "+ comment.getCommentContent();
+        String logContent = "删除了评论， " + comment.getCommentContent();
         DataLogDTO dataLog = new DataLogDTO(comment.getTableName(), comment.getTableDataId(), logContent, CommonConstant.DATA_LOG_TYPE_COMMENT);
         sysBaseAPI.saveDataLog(dataLog);
         return Result.OK("删除成功!");
@@ -127,6 +127,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
 
     /**
      * 获取文件预览的地址
+     *
      * @return
      */
     @GetMapping(value = "/getFileViewDomain")

@@ -10,16 +10,6 @@ import org.springframework.beans.BeanUtils;
 @Data
 public class DynamicDataSourceModel {
 
-    public DynamicDataSourceModel() {
-
-    }
-
-    public DynamicDataSourceModel(Object dbSource) {
-        if (dbSource != null) {
-            BeanUtils.copyProperties(dbSource, this);
-        }
-    }
-
     /**
      * id
      */
@@ -40,12 +30,6 @@ public class DynamicDataSourceModel {
      * 数据源地址
      */
     private java.lang.String dbUrl;
-
-//    /**
-//     * 数据库名称
-//     */
-//    private java.lang.String dbName;
-
     /**
      * 用户名
      */
@@ -54,5 +38,19 @@ public class DynamicDataSourceModel {
      * 密码
      */
     private java.lang.String dbPassword;
+
+//    /**
+//     * 数据库名称
+//     */
+//    private java.lang.String dbName;
+
+    public DynamicDataSourceModel() {
+
+    }
+    public DynamicDataSourceModel(Object dbSource) {
+        if (dbSource != null) {
+            BeanUtils.copyProperties(dbSource, this);
+        }
+    }
 
 }

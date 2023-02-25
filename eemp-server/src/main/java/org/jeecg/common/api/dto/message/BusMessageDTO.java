@@ -1,15 +1,15 @@
 package org.jeecg.common.api.dto.message;
 
-import lombok.Data;
-
 import java.io.Serializable;
+
+import lombok.Data;
 
 /**
  * 带业务参数的消息
-* 
-* @author: taoyan
-* @date: 2022/8/17
-*/
+ *
+ * @author: taoyan
+ * @date: 2022/8/17
+ */
 @Data
 public class BusMessageDTO extends MessageDTO implements Serializable {
 
@@ -24,12 +24,13 @@ public class BusMessageDTO extends MessageDTO implements Serializable {
      */
     private String busId;
 
-    public BusMessageDTO(){
+    public BusMessageDTO() {
 
     }
 
     /**
      * 构造 带业务参数的消息
+     *
      * @param fromUser
      * @param toUser
      * @param title
@@ -38,7 +39,7 @@ public class BusMessageDTO extends MessageDTO implements Serializable {
      * @param busType
      * @param busId
      */
-    public BusMessageDTO(String fromUser, String toUser, String title, String msgContent, String msgCategory, String busType, String busId){
+    public BusMessageDTO(String fromUser, String toUser, String title, String msgContent, String msgCategory, String busType, String busId) {
         super(fromUser, toUser, title, msgContent, msgCategory);
         this.busId = busId;
         this.busType = busType;

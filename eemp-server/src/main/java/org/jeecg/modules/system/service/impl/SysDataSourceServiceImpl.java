@@ -1,5 +1,7 @@
 package org.jeecg.modules.system.service.impl;
 
+import javax.sql.DataSource;
+
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.creator.DruidDataSourceCreator;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
@@ -14,8 +16,6 @@ import org.jeecg.modules.system.service.ISysDataSourceService;
 import org.jeecg.modules.system.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.sql.DataSource;
 
 /**
  * @Description: 多数据源管理
@@ -65,10 +65,10 @@ public class SysDataSourceServiceImpl extends ServiceImpl<SysDataSourceMapper, S
                 String encrypt = SecurityUtil.jiami(dbPassword);
                 sysDataSource.setDbPassword(encrypt);
             }
-            Boolean result=updateById(sysDataSource);
-            if(result){
+            Boolean result = updateById(sysDataSource);
+            if (result) {
                 //先删除老的数据源
-               // removeDynamicDataSource(d.getCode());
+                // removeDynamicDataSource(d.getCode());
                 //添加新的数据源
                 //addDynamicDataSource(sysDataSource,dbPassword);
             }
@@ -109,6 +109,7 @@ public class SysDataSourceServiceImpl extends ServiceImpl<SysDataSourceMapper, S
 
     /**
      * 删除数据源
+     *
      * @param code
      */
     private void removeDynamicDataSource(String code) {
