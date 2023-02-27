@@ -148,7 +148,7 @@ spring:
     password: ''
 #mybatis plus 设置
 mybatis-plus:
-  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  mapper-locations: classpath*:org/eemp/modules/**/xml/*Mapper.xml
   global-config:
     # 关闭MP3.0自带的banner
     banner: false
@@ -164,8 +164,8 @@ mybatis-plus:
     call-setters-on-nulls: true
 #jeecg专用配置
 minidao:
-  base-package: org.jeecg.modules.jmreport.*
-jeecg:
+  base-package: org.eemp.modules.jmreport.*
+eemp:
   # 是否启用安全模式
   safeMode: false
   # 签名密钥串(前后端要一致，正式发布请自行修改)
@@ -234,7 +234,7 @@ jeecg:
 #Mybatis输出sql日志
 logging:
   level:
-    org.jeecg.modules.system.mapper: info
+    org.eemp.modules.system.mapper: info
 #cas单点登录
 cas:
   prefixUrl: http://cas.example.org:8443/cas

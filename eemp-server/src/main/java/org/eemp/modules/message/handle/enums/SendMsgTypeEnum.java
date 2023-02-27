@@ -12,19 +12,19 @@ public enum SendMsgTypeEnum {
     /**
      * 短信
      */
-    SMS("1", "org.jeecg.modules.message.handle.impl.SmsSendMsgHandle"),
+    SMS("1", "org.eemp.modules.message.handle.impl.SmsSendMsgHandle"),
     /**
      * 邮件
      */
-    EMAIL("2", "org.jeecg.modules.message.handle.impl.EmailSendMsgHandle"),
+    EMAIL("2", "org.eemp.modules.message.handle.impl.EmailSendMsgHandle"),
     /**
      * 微信
      */
-    WX("3", "org.jeecg.modules.message.handle.impl.WxSendMsgHandle"),
+    WX("3", "org.eemp.modules.message.handle.impl.WxSendMsgHandle"),
     /**
      * 系统消息
      */
-    SYSTEM_MESSAGE("4", "org.jeecg.modules.message.handle.impl.SystemSendMsgHandle");
+    SYSTEM_MESSAGE("4", "org.eemp.modules.message.handle.impl.SystemSendMsgHandle");
 
     private String type;
 

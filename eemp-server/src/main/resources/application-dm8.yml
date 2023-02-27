@@ -180,7 +180,7 @@ cas:
 #Mybatis输出sql日志
 logging:
   level:
-    org.jeecg.modules.system.mapper: info
+    org.eemp.modules.system.mapper: info
 #enable swagger
 swagger:
   enable: true

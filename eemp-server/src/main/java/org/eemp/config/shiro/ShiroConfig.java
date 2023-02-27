@@ -131,14 +131,14 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/sys/annountCement/show/**", "anon");
 
         //积木报表排除
-        filterChainDefinitionMap.put("/jmreport/**", "anon");
-        filterChainDefinitionMap.put("/**/*.js.map", "anon");
-        filterChainDefinitionMap.put("/**/*.css.map", "anon");
+//        filterChainDefinitionMap.put("/jmreport/**", "anon");
+//        filterChainDefinitionMap.put("/**/*.js.map", "anon");
+//        filterChainDefinitionMap.put("/**/*.css.map", "anon");
 
         //大屏模板例子
-        filterChainDefinitionMap.put("/test/bigScreen/**", "anon");
-        filterChainDefinitionMap.put("/bigscreen/template1/**", "anon");
-        filterChainDefinitionMap.put("/bigscreen/template1/**", "anon");
+//        filterChainDefinitionMap.put("/test/bigScreen/**", "anon");
+//        filterChainDefinitionMap.put("/bigscreen/template1/**", "anon");
+//        filterChainDefinitionMap.put("/bigscreen/template1/**", "anon");
         //filterChainDefinitionMap.put("/test/jeecgDemo/rabbitMqClientTest/**", "anon"); //MQ测试
         //filterChainDefinitionMap.put("/test/jeecgDemo/html", "anon"); //模板页面
         //filterChainDefinitionMap.put("/test/jeecgDemo/redis/**", "anon"); //redis测试
