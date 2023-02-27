@@ -1,6 +1,3 @@
-${AnsiColor.BRIGHT_BLUE}
-EEMP
-${AnsiColor.BRIGHT_GREEN}
 Educational equipment management platform Version: 1.0.0
 Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}
 ${AnsiColor.BLACK}
