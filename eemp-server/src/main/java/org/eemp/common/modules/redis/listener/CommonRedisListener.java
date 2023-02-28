@@ -7,7 +7,7 @@ import org.eemp.common.base.BaseMap;
  * @author: scott
  * @date: 2020/01/01 16:02
  */
-public interface JeecgRedisListener {
+public interface CommonRedisListener {
     /**
      * 接受消息
      *

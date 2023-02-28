@@ -2,9 +2,9 @@ package org.eemp.modules.message.websocket;
 
 import cn.hutool.core.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.eemp.common.constant.CommonSendStatus;
 import org.eemp.common.base.BaseMap;
-import org.eemp.common.modules.redis.listener.JeecgRedisListener;
+import org.eemp.common.constant.CommonSendStatus;
+import org.eemp.common.modules.redis.listener.CommonRedisListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component(WebSocket.REDIS_TOPIC_NAME)
-public class SocketHandler implements JeecgRedisListener {
+public class SocketHandler implements CommonRedisListener {
 
     @Autowired
     private WebSocket webSocket;

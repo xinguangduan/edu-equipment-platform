@@ -8,7 +8,6 @@ import org.eemp.common.exception.JeecgBootException;
 import org.eemp.common.util.CommonUtils;
 import org.eemp.common.util.MinioUtil;
 import org.eemp.common.util.oConvertUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

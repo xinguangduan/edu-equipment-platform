@@ -5,7 +5,7 @@ import cn.hutool.core.util.ObjectUtil;
 import lombok.Data;
 import org.eemp.common.base.BaseMap;
 import org.eemp.common.constant.GlobalConstants;
-import org.eemp.common.modules.redis.listener.JeecgRedisListener;
+import org.eemp.common.modules.redis.listener.CommonRedisListener;
 import org.eemp.common.util.SpringContextHolder;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +24,7 @@ public class RedisReceiver {
      */
     public void onMessage(BaseMap params) {
         Object handlerName = params.get(GlobalConstants.HANDLER_NAME);
-        JeecgRedisListener messageListener = SpringContextHolder.getHandler(handlerName.toString(), JeecgRedisListener.class);
+        CommonRedisListener messageListener = SpringContextHolder.getHandler(handlerName.toString(), CommonRedisListener.class);
         if (ObjectUtil.isNotEmpty(messageListener)) {
             messageListener.onMessage(params);
         }
