@@ -10,3 +10,37 @@ Educational equipment management platform
 项目介绍
 -----------------------------------
 
+
+本地开发环境准备（推荐）
+-----------------------------------
+0. 安装 git、idea、docker-desktop             // 参见【[Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)】
+1. clone git 本仓库
+2. cd edu-equipment-platform/docker
+3. mkdir -p {mysql,redis}/{data,logs}       // 确保目录被创建
+4. docker compose up -d
+5. 验证数据库：打开浏览器访问 localhost:3006，随后键入用户名：root，密码：123456，登录
+6. 验证缓存：命令行 docker exec -it redis_6.2 bash，随后键入 redis-cli，再 info 查看
+7. 持续查看日志：docker compose logs -f
+8. docker compose down
+
+
+启动运行基础环境（推荐）
+-----------------------------------
+1. cd edu-equipment-platform/docker
+2. docker compose up -d
+
+关闭基础环境（推荐）
+-----------------------------------
+1. cd edu-equipment-platform/docker
+2. docker compose down
+
+
+参考资料
+-----------------------------------
+1. [Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)
+2. [docker-compose安装和使用redis和mysql](https://blog.csdn.net/jiangjun_dao519/article/details/125072623)
+3. [docker-compose快速启动mysql和redis(提供外部客户端可连接）](https://blog.csdn.net/weixin_42547724/article/details/128053759)
+4. [Docker-compose封装mysql并初始化数据以及redis](http://www.manongjc.com/detail/56-ytybcufiprnvbkz.html)
+5. [Docker 安装 MySQL和Adminer](https://blog.csdn.net/chinaxsw/article/details/103573495)
+6. [史上最详细Docker安装Redis （含每一步的图解）实战](https://blog.csdn.net/weixin_45821811/article/details/116211724)
+
