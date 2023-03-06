@@ -42,4 +42,5 @@ Educational equipment management platform
 4. [Docker-compose封装mysql并初始化数据以及redis](http://www.manongjc.com/detail/56-ytybcufiprnvbkz.html)
 5. [Docker 安装 MySQL和Adminer](https://blog.csdn.net/chinaxsw/article/details/103573495)
 6. [史上最详细Docker安装Redis （含每一步的图解）实战](https://blog.csdn.net/weixin_45821811/article/details/116211724)
+7. [使用docker部署mysql - 支持普通用户访问](http://www.coolpython.net/informal_essay/20-07/docker-deploy-mysql.html)
 
