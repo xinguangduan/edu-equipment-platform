@@ -3,3 +3,4 @@ docker/mysql/data/
 docker/mysql/logs/
 docker/redis/data/
 docker/redis/logs/
+eemp-server/target/

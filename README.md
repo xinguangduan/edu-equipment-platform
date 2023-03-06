@@ -16,12 +16,11 @@ Educational equipment management platform
 0. 安装 git、idea、docker-desktop             // 参见【[Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)】
 1. clone git 本仓库
 2. cd edu-equipment-platform/docker
-3. mkdir -p {mysql,redis}/{data,logs}       // 确保目录被创建
-4. docker compose up -d
-5. 验证数据库：打开浏览器访问 localhost:3006，随后键入用户名：root，密码：123456，登录
-6. 验证缓存：命令行 docker exec -it redis_6.2 bash，随后键入 redis-cli，再 info 查看
-7. 持续查看日志：docker compose logs -f
-8. docker compose down
+3. docker compose up -d
+4. 验证数据库：打开浏览器访问 localhost:3006，随后键入用户名：root，密码：123456，登录
+5. 验证缓存：命令行 docker exec -it redis_6.2 bash，随后键入 redis-cli，再 info 查看
+6. 持续查看日志：docker compose logs -f
+7. docker compose down
 
 
 启动运行基础环境（推荐）
