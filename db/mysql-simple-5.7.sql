@@ -6278,33 +6278,33 @@ CREATE TABLE `data_initialization`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 
-// menu data
+-- // menu data
 
 -- 注意：该页面对应的前台目录为views/initialization文件夹下
 -- 如果你想更改到其他目录，请修改sql中component字段对应的值
 
 
-INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
 VALUES ('2023022803382120030', NULL, '数据初始化', '/initialization/dataInitializationList', 'initialization/DataInitializationList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 1, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-02-28 15:38:03', NULL, NULL, 0);
 
 -- 权限控制sql
 -- 新增
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022803382120031', '2023022803382120030', '添加数据初始化', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:data_initialization:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-28 15:38:03', NULL, NULL, 0, 0, '1', 0);
 -- 编辑
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022803382120032', '2023022803382120030', '编辑数据初始化', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:data_initialization:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-28 15:38:03', NULL, NULL, 0, 0, '1', 0);
 -- 删除
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022803382120033', '2023022803382120030', '删除数据初始化', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:data_initialization:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-28 15:38:03', NULL, NULL, 0, 0, '1', 0);
 -- 批量删除
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022803382120034', '2023022803382120030', '批量删除数据初始化', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:data_initialization:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-28 15:38:03', NULL, NULL, 0, 0, '1', 0);
 -- 导出excel
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022803382120035', '2023022803382120030', '导出excel_数据初始化', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:data_initialization:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-28 15:38:03', NULL, NULL, 0, 0, '1', 0);
 -- 导入excel
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022803382120036', '2023022803382120030', '导入excel_数据初始化', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:data_initialization:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-28 15:38:03', NULL, NULL, 0, 0, '1', 0);
 
 
@@ -6312,27 +6312,27 @@ VALUES ('2023022803382120036', '2023022803382120030', '导入excel_数据初始�
 -- 如果你想更改到其他目录，请修改sql中component字段对应的值
 
 
-INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
 VALUES ('2023022402082210230', NULL, '功能室信息', '/functional/functionalClassroomInfoList', 'functional/FunctionalClassroomInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 1, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-02-24 14:08:23', NULL, NULL, 0);
 
 -- 权限控制sql
 -- 新增
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402082210231', '2023022402082210230', '添加功能室信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:functional_classroom_info:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:08:23', NULL, NULL, 0, 0, '1', 0);
 -- 编辑
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402082210232', '2023022402082210230', '编辑功能室信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:functional_classroom_info:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:08:23', NULL, NULL, 0, 0, '1', 0);
 -- 删除
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402082210233', '2023022402082210230', '删除功能室信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:functional_classroom_info:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:08:23', NULL, NULL, 0, 0, '1', 0);
 -- 批量删除
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402082210234', '2023022402082210230', '批量删除功能室信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:functional_classroom_info:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:08:23', NULL, NULL, 0, 0, '1', 0);
 -- 导出excel
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402082210235', '2023022402082210230', '导出excel_功能室信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:functional_classroom_info:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:08:23', NULL, NULL, 0, 0, '1', 0);
 -- 导入excel
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402082210236', '2023022402082210230', '导入excel_功能室信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:functional_classroom_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:08:23', NULL, NULL, 0, 0, '1', 0);
 
 
@@ -6341,55 +6341,63 @@ VALUES ('2023022402082210236', '2023022402082210230', '导入excel_功能室信�
 -- 如果你想更改到其他目录，请修改sql中component字段对应的值
 
 
-INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
 VALUES ('2023022402072640320', NULL, '学校基本信息', '/school/schoolBasicInfoList', 'school/SchoolBasicInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 1, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-02-24 14:07:32', NULL, NULL, 0);
 
 -- 权限控制sql
 -- 新增
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402072640321', '2023022402072640320', '添加学校基本信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:school_basic_info:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:07:32', NULL, NULL, 0, 0, '1', 0);
 -- 编辑
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402072640322', '2023022402072640320', '编辑学校基本信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:school_basic_info:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:07:32', NULL, NULL, 0, 0, '1', 0);
 -- 删除
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402072640323', '2023022402072640320', '删除学校基本信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:school_basic_info:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:07:32', NULL, NULL, 0, 0, '1', 0);
 -- 批量删除
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402072640324', '2023022402072640320', '批量删除学校基本信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:school_basic_info:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:07:32', NULL, NULL, 0, 0, '1', 0);
 -- 导出excel
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402072640325', '2023022402072640320', '导出excel_学校基本信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:school_basic_info:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:07:32', NULL, NULL, 0, 0, '1', 0);
 -- 导入excel
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402072640326', '2023022402072640320', '导入excel_学校基本信息', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:school_basic_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:07:32', NULL, NULL, 0, 0, '1', 0);
 
 
 -- 注意：该页面对应的前台目录为views/organization文件夹下
 -- 如果你想更改到其他目录，请修改sql中component字段对应的值
 
-INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
 VALUES ('2023022402029780160', NULL, '机构组织', '/organization/organizationDefinitionList', 'organization/OrganizationDefinitionList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 1, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-02-24 14:02:16', NULL, NULL, 0);
 
 -- 权限控制sql
 -- 新增
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402029780161', '2023022402029780160', '添加机构组织', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:02:16', NULL, NULL, 0, 0, '1', 0);
 -- 编辑
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402029780162', '2023022402029780160', '编辑机构组织', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:organization_definition:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:02:16', NULL, NULL, 0, 0, '1', 0);
 -- 删除
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402029780163', '2023022402029780160', '删除机构组织', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:organization_definition:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:02:16', NULL, NULL, 0, 0, '1', 0);
 -- 批量删除
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402029780164', '2023022402029780160', '批量删除机构组织', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:organization_definition:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:02:16', NULL, NULL, 0, 0, '1', 0);
 -- 导出excel
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402029780165', '2023022402029780160', '导出excel_机构组织', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:organization_definition:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:02:16', NULL, NULL, 0, 0, '1', 0);
 -- 导入excel
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+INSERT INTO sys_permission_v3(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023022402029780166', '2023022402029780160', '导入excel_机构组织', NULL, NULL, 0, NULL, NULL, 2, 'org.jeecg.modules.demo:organization_definition:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-02-24 14:02:16', NULL, NULL, 0, 0, '1', 0);
+
+
+-- 暂时授权 admin 能够访问新增的功能
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+('1633302792535973890',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023022402072640320',	NULL,	'2023-03-08 11:05:06',	'127.0.0.1'),
+('1633302792544362498',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023022402082210230',	NULL,	'2023-03-08 11:05:06',	'127.0.0.1'),
+('1633302792544362499',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023022803382120030',	NULL,	'2023-03-08 11:05:06',	'127.0.0.1'),
+('1633302792544362500',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023022402029780160',	NULL,	'2023-03-08 11:05:06',	'127.0.0.1');
 
 
 SET FOREIGN_KEY_CHECKS = 1;
