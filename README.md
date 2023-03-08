@@ -11,22 +11,34 @@ Educational equipment management platform
 -----------------------------------
 
 
-本地开发环境准备（推荐）
+本地后端基础环境准备（推荐）
 -----------------------------------
 0. 安装 git、idea、docker-desktop             // 参见【[Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)】
 1. clone git 本仓库
 2. cd edu-equipment-platform/docker
 3. docker compose up -d
-4. 验证数据库：打开浏览器访问 localhost:3006，随后键入用户名：root，密码：123456，登录
-5. 验证缓存：命令行 docker exec -it redis_6.2 bash，随后键入 redis-cli，再 info 查看
+4. 验证数据库：打开浏览器访问 localhost:3006，键入用户名：root，密码：root，登录
+5. 验证缓存：命令行 docker exec -it redis_6.2 redis-cli，输入 info 查看
 6. 持续查看日志：docker compose logs -f
 7. docker compose down
 
 
-启动运行基础环境（推荐）
+启动运行后端（推荐）
 -----------------------------------
+0. 在 idea 中进行 maven package 操作，生成 SpringBoot 方式的可执行 jar 文件
 1. cd edu-equipment-platform/docker
 2. docker compose up -d
+3. 打开浏览器访问 localhost:3006，键入用户：root，密码：root，之后执行 db/mysql-simple-5.7.sql 导入数据
+4. cd ../eemp-server/
+5. java -jar target/eemp-server-1.0.0.jar
+
+启动运行前端（推荐）
+-----------------------------------
+0. 安装 node、npm、pnpm
+1. edu-equipment-platform/eemp-web
+2. pnpm install --ignore-scripts
+3. pnpm dev
+4. 打开浏览器访问 localhost:3100，首次登录会多达4次提示“切换到Vu3版菜单”，确认即可
 
 关闭基础环境（推荐）
 -----------------------------------
