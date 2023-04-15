@@ -1,8 +1,5 @@
 package org.eemp;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.util.oConvertUtils;
 import org.springframework.boot.SpringApplication;
@@ -12,17 +9,25 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
- * 单体启动类
- * 报错提醒: 未集成mongo报错，可以打开启动类上面的注释 exclude={MongoAutoConfiguration.class}
- */
+* 单体启动类
+* 报错提醒: 未集成mongo报错，可以打开启动类上面的注释 exclude={MongoAutoConfiguration.class}
+*/
 @Slf4j
 @SpringBootApplication
 //@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
-public class Application extends SpringBootServletInitializer {
+public class EEMPApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(EEMPApplication.class);
+    }
 
     public static void main(String[] args) throws UnknownHostException {
-        ConfigurableApplicationContext application = SpringApplication.run(Application.class, args);
+        ConfigurableApplicationContext application = SpringApplication.run(EEMPApplication.class, args);
         Environment env = application.getEnvironment();
         String ip = InetAddress.getLocalHost().getHostAddress();
         String port = env.getProperty("server.port");
@@ -34,11 +39,6 @@ public class Application extends SpringBootServletInitializer {
                 "Swagger文档: \thttp://" + ip + ":" + port + path + "/doc.html\n" +
                 "----------------------------------------------------------");
 
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
     }
 
 }
