@@ -1,12 +1,5 @@
 package org.eemp.modules.message.util;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import com.alibaba.fastjson.JSONObject;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -18,9 +11,16 @@ import org.eemp.modules.message.service.ISysMessageTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.alibaba.fastjson.JSONObject;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 消息生成工具
- *
  * @author: jeecg-boot
  */
 
@@ -35,12 +35,11 @@ public class PushMsgUtil {
 
     @Autowired
     private Configuration freemarkerConfig;
-
     /**
-     * @param msgType      消息类型 1短信 2邮件 3微信
-     * @param templateCode 消息模板码
-     * @param map          消息参数
-     * @param sentTo       接收消息方
+     * @param msgType 消息类型 1短信 2邮件 3微信
+     * @param templateCode    消息模板码
+     * @param map     消息参数
+     * @param sentTo  接收消息方
      */
     public boolean sendMessage(String msgType, String templateCode, Map<String, String> map, String sentTo) {
         List<SysMessageTemplate> sysSmsTemplates = sysMessageTemplateService.selectByCode(templateCode);
@@ -72,9 +71,9 @@ public class PushMsgUtil {
             sysMessage.setEsSendTime(new Date());
             sysMessage.setEsSendStatus(SendMsgStatusEnum.WAIT.getCode());
             sysMessage.setEsSendNum(0);
-            if (sysMessageService.save(sysMessage)) {
-                return true;
-            }
+            if(sysMessageService.save(sysMessage)) {
+				return true;
+			}
         }
         return false;
     }

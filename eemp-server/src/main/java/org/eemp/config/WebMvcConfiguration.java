@@ -1,13 +1,5 @@
 package org.eemp.config;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import javax.annotation.Resource;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,10 +29,19 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
 /**
  * Spring Boot 2.0 解决跨域问题
  *
  * @Author qinfeng
+ *
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
@@ -91,7 +92,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }
-
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter(objectMapper());
@@ -131,7 +131,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      * https://blog.csdn.net/u013810234/article/details/110097201
      */
     @Bean
-    public InMemoryHttpTraceRepository getInMemoryHttpTrace() {
+    public InMemoryHttpTraceRepository getInMemoryHttpTrace(){
         return new InMemoryHttpTraceRepository();
     }
 

@@ -6,20 +6,13 @@ import org.springframework.stereotype.Component;
 
 /**
  * 设置静态参数初始化
- *
  * @author: jeecg-boot
  */
 @Component
 @Data
 public class StaticConfig {
 
-//    @Value("${jeecg.oss.accessKey}")
-    private String accessKeyId;
-
-//    @Value("${jeecg.oss.secretKey}")
-    private String accessKeySecret;
-
-//    @Value(value = "${spring.mail.username}")
+    @Value(value = "${spring.mail.username}")
     private String emailFrom;
 
 //    /**

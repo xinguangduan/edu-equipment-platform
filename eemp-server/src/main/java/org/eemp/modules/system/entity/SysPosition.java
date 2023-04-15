@@ -47,7 +47,7 @@ public class SysPosition {
     /**
      * 职级
      */
-    @Excel(name = "职级", width = 15, dicCode = "position_rank")
+    @Excel(name = "职级", width = 15,dicCode ="position_rank")
     @ApiModelProperty(value = "职级")
     @Dict(dicCode = "position_rank")
     private String postRank;
@@ -85,4 +85,8 @@ public class SysPosition {
      */
     @ApiModelProperty(value = "组织机构编码")
     private String sysOrgCode;
+
+    /**租户ID*/
+    @ApiModelProperty(value = "租户ID")
+    private Integer tenantId;
 }

@@ -2,17 +2,16 @@ package org.eemp.modules.message.websocket;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import javax.annotation.Resource;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import com.alibaba.fastjson.JSONObject;
-import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.base.BaseMap;
 import org.eemp.common.constant.WebsocketConst;
 import org.eemp.common.modules.redis.client.JeecgRedisClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Author scott
@@ -23,16 +22,15 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @ServerEndpoint("/websocket/{userId}")
 public class WebSocket {
+    
+    /**线程安全Map*/
+    private static ConcurrentHashMap<String, Session> sessionPool = new ConcurrentHashMap<>();
 
     /**
      * Redis触发监听名字
      */
     public static final String REDIS_TOPIC_NAME = "socketHandler";
-    /**
-     * 线程安全Map
-     */
-    private static ConcurrentHashMap<String, Session> sessionPool = new ConcurrentHashMap<>();
-    @Resource
+    @Autowired
     private JeecgRedisClient jeecgRedisClient;
 
 
@@ -70,13 +68,13 @@ public class WebSocket {
                 Session session = item.getValue();
                 try {
                     //update-begin-author:taoyan date:20211012 for: websocket报错 https://gitee.com/jeecg/jeecg-boot/issues/I4C0MU
-                    synchronized (session) {
+                    synchronized (session){
                         log.info("【系统 WebSocket】推送单人消息:" + message);
                         session.getBasicRemote().sendText(message);
                     }
                     //update-end-author:taoyan date:20211012 for: websocket报错 https://gitee.com/jeecg/jeecg-boot/issues/I4C0MU
                 } catch (Exception e) {
-                    log.error(e.getMessage(), e);
+                    log.error(e.getMessage(),e);
                 }
             }
         }
@@ -106,20 +104,20 @@ public class WebSocket {
      */
     @OnMessage
     public void onMessage(String message, @PathParam(value = "userId") String userId) {
-        if (!"ping".equals(message) && !WebsocketConst.CMD_CHECK.equals(message)) {
+        if(!"ping".equals(message) && !WebsocketConst.CMD_CHECK.equals(message)){
             log.info("【系统 WebSocket】收到客户端消息:" + message);
-        } else {
+        }else{
             log.debug("【系统 WebSocket】收到客户端消息:" + message);
         }
-
-        //------------------------------------------------------------------------------
-        JSONObject obj = new JSONObject();
-        //业务类型
-        obj.put(WebsocketConst.MSG_CMD, WebsocketConst.CMD_CHECK);
-        //消息内容
-        obj.put(WebsocketConst.MSG_TXT, "心跳响应");
-        this.pushMessage(userId, obj.toJSONString());
-        //------------------------------------------------------------------------------
+        
+//        //------------------------------------------------------------------------------
+//        JSONObject obj = new JSONObject();
+//        //业务类型
+//        obj.put(WebsocketConst.MSG_CMD, WebsocketConst.CMD_CHECK);
+//        //消息内容
+//        obj.put(WebsocketConst.MSG_TXT, "心跳响应");
+//        this.pushMessage(userId, obj.toJSONString());
+//        //------------------------------------------------------------------------------
     }
 
     /**
@@ -131,13 +129,12 @@ public class WebSocket {
     @OnError
     public void onError(Session session, Throwable t) {
         log.warn("【系统 WebSocket】消息出现错误");
-        //t.printStackTrace();
+        t.printStackTrace();
     }
     //==========【系统 WebSocket接受、推送消息等方法 —— 具体服务节点推送ws消息】========================================================================================
-
+    
 
     //==========【采用redis发布订阅模式——推送消息】========================================================================================
-
     /**
      * 后台发送消息到redis
      *
@@ -176,5 +173,5 @@ public class WebSocket {
         }
     }
     //=======【采用redis发布订阅模式——推送消息】==========================================================================================
-
+    
 }

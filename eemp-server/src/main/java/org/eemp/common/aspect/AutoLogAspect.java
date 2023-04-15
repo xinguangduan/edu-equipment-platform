@@ -1,12 +1,5 @@
 package org.eemp.common.aspect;
 
-import java.lang.reflect.Method;
-import java.util.Date;
-import javax.annotation.Resource;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.PropertyFilter;
 import org.apache.shiro.SecurityUtils;
@@ -22,15 +15,21 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.constant.enums.ModuleType;
 import org.eemp.common.constant.enums.OperateTypeEnum;
+import org.eemp.modules.base.service.BaseCommonService;
 import org.eemp.common.system.vo.LoginUser;
 import org.eemp.common.util.IpUtils;
 import org.eemp.common.util.SpringContextUtils;
 import org.eemp.common.util.oConvertUtils;
-import org.eemp.modules.base.service.BaseCommonService;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
+import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
+import java.util.Date;
 
 
 /**
@@ -72,10 +71,10 @@ public class AutoLogAspect {
 
         LogDTO dto = new LogDTO();
         AutoLog syslog = method.getAnnotation(AutoLog.class);
-        if (syslog != null) {
+        if(syslog != null){
             //update-begin-author:taoyan date:
             String content = syslog.value();
-            if (syslog.module() == ModuleType.ONLINE) {
+            if(syslog.module()== ModuleType.ONLINE){
                 content = getOnlineLogContent(obj, content);
             }
             //注解上的描述,操作日志内容
@@ -97,12 +96,12 @@ public class AutoLogAspect {
         //获取request
         HttpServletRequest request = SpringContextUtils.getHttpServletRequest();
         //请求的参数
-        dto.setRequestParam(getReqestParams(request, joinPoint));
+        dto.setRequestParam(getReqestParams(request,joinPoint));
         //设置IP地址
         dto.setIp(IpUtils.getIpAddr(request));
         //获取登录用户信息
         LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
-        if (sysUser != null) {
+        if(sysUser!=null){
             dto.setUserid(sysUser.getUsername());
             dto.setUsername(sysUser.getRealname());
 
@@ -118,7 +117,7 @@ public class AutoLogAspect {
     /**
      * 获取操作类型
      */
-    private int getOperateType(String methodName, int operateType) {
+    private int getOperateType(String methodName,int operateType) {
         if (operateType > 0) {
             return operateType;
         }
@@ -128,11 +127,11 @@ public class AutoLogAspect {
     }
 
     /**
-     * @param request:   request
-     * @param joinPoint: joinPoint
      * @Description: 获取请求参数
      * @author: scott
      * @date: 2020/4/16 0:10
+     * @param request:  request
+     * @param joinPoint:  joinPoint
      * @Return: java.lang.String
      */
     private String getReqestParams(HttpServletRequest request, JoinPoint joinPoint) {
@@ -142,7 +141,7 @@ public class AutoLogAspect {
             Object[] paramsArray = joinPoint.getArgs();
             // java.lang.IllegalStateException: It is illegal to call this method if the current request is not in asynchronous mode (i.e. isAsyncStarted() returns false)
             //  https://my.oschina.net/mengzhang6/blog/2395893
-            Object[] arguments = new Object[paramsArray.length];
+            Object[] arguments  = new Object[paramsArray.length];
             for (int i = 0; i < paramsArray.length; i++) {
                 if (paramsArray[i] instanceof BindingResult || paramsArray[i] instanceof ServletRequest || paramsArray[i] instanceof ServletResponse || paramsArray[i] instanceof MultipartFile) {
                     //ServletRequest不能序列化，从入参里排除，否则报异常：java.lang.IllegalStateException: It is illegal to call this method if the current request is not in asynchronous mode (i.e. isAsyncStarted() returns false)
@@ -156,7 +155,7 @@ public class AutoLogAspect {
                 @Override
                 public boolean apply(Object o, String name, Object value) {
                     int length = 500;
-                    if (value != null && value.toString().length() > length) {
+                    if(value!=null && value.toString().length()>length){
                         return false;
                     }
                     return true;
@@ -183,23 +182,22 @@ public class AutoLogAspect {
 
     /**
      * online日志内容拼接
-     *
      * @param obj
      * @param content
      * @return
      */
-    private String getOnlineLogContent(Object obj, String content) {
-        if (Result.class.isInstance(obj)) {
-            Result res = (Result) obj;
+    private String getOnlineLogContent(Object obj, String content){
+        if (Result.class.isInstance(obj)){
+            Result res = (Result)obj;
             String msg = res.getMessage();
             String tableName = res.getOnlTable();
-            if (oConvertUtils.isNotEmpty(tableName)) {
-                content += ",表名:" + tableName;
+            if(oConvertUtils.isNotEmpty(tableName)){
+                content+=",表名:"+tableName;
             }
-            if (res.isSuccess()) {
-                content += "," + (oConvertUtils.isEmpty(msg) ? "操作成功" : msg);
-            } else {
-                content += "," + (oConvertUtils.isEmpty(msg) ? "操作失败" : msg);
+            if(res.isSuccess()){
+                content+= ","+(oConvertUtils.isEmpty(msg)?"操作成功":msg);
+            }else{
+                content+= ","+(oConvertUtils.isEmpty(msg)?"操作失败":msg);
             }
         }
         return content;

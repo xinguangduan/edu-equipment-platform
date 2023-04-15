@@ -13,7 +13,6 @@ public interface ISysPositionService extends IService<SysPosition> {
 
     /**
      * 通过code查询
-     *
      * @param code 职务编码
      * @return SysPosition
      */

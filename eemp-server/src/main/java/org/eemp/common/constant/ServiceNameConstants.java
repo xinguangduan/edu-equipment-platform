@@ -25,18 +25,30 @@ package org.eemp.common.constant;
  */
 public interface ServiceNameConstants {
 
-    /**
-     * 微服务名：系统管理模块
-     */
-    String SERVICE_SYSTEM = "jeecg-system";
-    /**
-     * 微服务名： demo模块
-     */
-    String SERVICE_DEMO = "jeecg-demo";
+	/**
+	 * 微服务名：系统管理模块
+	 */
+	String SERVICE_SYSTEM = "jeecg-system";
+	/**
+	 * 微服务名： demo模块
+	 */
+	String SERVICE_DEMO = "jeecg-demo";
+	/**
+	 * 微服务名：online在线模块
+	 */
+	String SERVICE_ONLINE = "jeecg-online";
+	/**
+	 * 微服务名：OA模块
+	 */
+	String SERVICE_EOA = "jeecg-eoa";
+	/**
+	 * 微服务名：表单设计模块
+	 */
+	String SERVICE_FORM = "jeecg-desform";
 
-    /**
-     * gateway通过header传递根路径 basePath
-     */
-    String X_GATEWAY_BASE_PATH = "X_GATEWAY_BASE_PATH";
+	/**
+	 * gateway通过header传递根路径 basePath
+	 */
+	String X_GATEWAY_BASE_PATH = "X_GATEWAY_BASE_PATH";
 
 }

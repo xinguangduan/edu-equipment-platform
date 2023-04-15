@@ -5,21 +5,18 @@ import org.eemp.common.system.vo.LoginUser;
 
 /**
  * common接口
- *
  * @author: jeecg-boot
  */
 public interface BaseCommonService {
 
     /**
      * 保存日志
-     *
      * @param logDTO
      */
     void addLog(LogDTO logDTO);
 
     /**
      * 保存日志
-     *
      * @param logContent
      * @param logType
      * @param operateType
@@ -29,7 +26,6 @@ public interface BaseCommonService {
 
     /**
      * 保存日志
-     *
      * @param logContent
      * @param logType
      * @param operateType

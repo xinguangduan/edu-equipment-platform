@@ -50,32 +50,6 @@ public enum OperateTypeEnum {
     String code;
 
 
-    /**
-     * 构造器
-     *
-     * @param type 类型
-     * @param code 编码(请求方式)
-     */
-    OperateTypeEnum(int type, String code) {
-        this.type = type;
-        this.code = code;
-    }
-
-    /**
-     * 根据请求名称匹配
-     *
-     * @param methodName 请求名称
-     * @return Integer 类型
-     */
-    public static Integer getTypeByMethodName(String methodName) {
-        for (OperateTypeEnum e : OperateTypeEnum.values()) {
-            if (methodName.startsWith(e.getCode())) {
-                return e.getType();
-            }
-        }
-        return CommonConstant.OPERATE_TYPE_1;
-    }
-
     public int getType() {
         return type;
     }
@@ -90,5 +64,32 @@ public enum OperateTypeEnum {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    /**
+     * 构造器
+     *
+     * @param type 类型
+     * @param code 编码(请求方式)
+     */
+    OperateTypeEnum(int type, String code) {
+        this.type = type;
+        this.code = code;
+    }
+
+
+    /**
+     * 根据请求名称匹配
+     *
+     * @param methodName 请求名称
+     * @return Integer 类型
+     */
+    public static Integer getTypeByMethodName(String methodName) {
+        for (OperateTypeEnum e : OperateTypeEnum.values()) {
+            if (methodName.startsWith(e.getCode())) {
+                return e.getType();
+            }
+        }
+        return CommonConstant.OPERATE_TYPE_1;
     }
 }

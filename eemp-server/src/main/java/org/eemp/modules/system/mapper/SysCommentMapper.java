@@ -1,15 +1,15 @@
 package org.eemp.modules.system.mapper;
 
 
-import java.util.List;
-import java.util.Set;
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.eemp.modules.system.entity.SysComment;
 import org.eemp.modules.system.vo.SysCommentFileVo;
 import org.eemp.modules.system.vo.SysCommentVO;
 import org.eemp.modules.system.vo.UserAvatar;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * @Description: 系统评论回复表
@@ -32,7 +32,6 @@ public interface SysCommentMapper extends BaseMapper<SysComment> {
 
     /**
      * 根据用户名获取用户信息
-     *
      * @param idSet
      * @return
      */

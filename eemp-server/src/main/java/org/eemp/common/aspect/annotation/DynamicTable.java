@@ -14,7 +14,6 @@ import java.lang.annotation.*;
 public @interface DynamicTable {
     /**
      * 需要动态解析的表名
-     *
      * @return
      */
     String value();

@@ -2,7 +2,6 @@ package org.eemp.common.util;
 
 /**
  * 系统公告自定义跳转方式
- *
  * @author: jeecg-boot
  */
 public enum SysAnnmentTypeEnum {
@@ -34,18 +33,6 @@ public enum SysAnnmentTypeEnum {
         this.openPage = openPage;
     }
 
-    public static SysAnnmentTypeEnum getByType(String type) {
-        if (oConvertUtils.isEmpty(type)) {
-            return null;
-        }
-        for (SysAnnmentTypeEnum val : values()) {
-            if (val.getType().equals(type)) {
-                return val;
-            }
-        }
-        return null;
-    }
-
     public String getType() {
         return type;
     }
@@ -68,5 +55,17 @@ public enum SysAnnmentTypeEnum {
 
     public void setOpenPage(String openPage) {
         this.openPage = openPage;
+    }
+
+    public static SysAnnmentTypeEnum getByType(String type) {
+        if (oConvertUtils.isEmpty(type)) {
+            return null;
+        }
+        for (SysAnnmentTypeEnum val : values()) {
+            if (val.getType().equals(type)) {
+                return val;
+            }
+        }
+        return null;
     }
 }

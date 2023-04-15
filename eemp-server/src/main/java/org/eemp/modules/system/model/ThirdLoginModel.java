@@ -1,12 +1,11 @@
 package org.eemp.modules.system.model;
 
-import java.io.Serializable;
-
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 第三方登录 信息存储
- *
  * @author: jeecg-boot
  */
 @Data
@@ -43,19 +42,18 @@ public class ThirdLoginModel implements Serializable {
      */
     private String operateCode;
 
-    public ThirdLoginModel() {
+    public ThirdLoginModel(){
 
     }
 
     /**
      * 构造器
-     *
      * @param source
      * @param uuid
      * @param username
      * @param avatar
      */
-    public ThirdLoginModel(String source, String uuid, String username, String avatar) {
+    public ThirdLoginModel(String source,String uuid,String username,String avatar){
         this.source = source;
         this.uuid = uuid;
         this.username = username;
@@ -64,11 +62,10 @@ public class ThirdLoginModel implements Serializable {
 
     /**
      * 获取登录账号名
-     *
      * @return
      */
-    public String getUserLoginAccount() {
-        if (suffix == null) {
+    public String getUserLoginAccount(){
+        if(suffix==null){
             return this.uuid;
         }
         return this.uuid + this.suffix;

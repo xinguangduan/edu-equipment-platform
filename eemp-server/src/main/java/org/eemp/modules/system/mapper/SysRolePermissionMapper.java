@@ -1,7 +1,7 @@
 package org.eemp.modules.system.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.eemp.modules.system.entity.SysRolePermission;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>

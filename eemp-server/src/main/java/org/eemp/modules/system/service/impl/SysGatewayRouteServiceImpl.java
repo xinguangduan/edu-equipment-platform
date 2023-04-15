@@ -1,7 +1,5 @@
 package org.eemp.modules.system.service.impl;
 
-import java.util.List;
-
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -20,6 +18,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Description: gateway路由管理
  * @Author: jeecg-boot
@@ -30,9 +30,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMapper, SysGatewayRoute> implements ISysGatewayRouteService {
 
-    private static final String STRING_STATUS = "status";
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+
+    private static final String STRING_STATUS = "status";
 
     @Override
     public void addRoute2Redis(String key) {
@@ -55,9 +56,9 @@ public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMappe
             String id = json.getString("id");
             //update-begin-author:taoyan date:20211025 for: oracle路由网关新增小bug /issues/I4EV2J
             SysGatewayRoute route;
-            if (oConvertUtils.isEmpty(id)) {
+            if(oConvertUtils.isEmpty(id)){
                 route = new SysGatewayRoute();
-            } else {
+            }else{
                 route = getById(id);
             }
             //update-end-author:taoyan date:20211025 for: oracle路由网关新增小bug /issues/I4EV2J

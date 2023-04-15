@@ -1,17 +1,16 @@
 package org.eemp.common.util;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.Map;
-
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.eemp.config.JeecgBaseConfig;
 import org.springframework.http.*;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * 调用 Restful 接口 Util
@@ -21,12 +20,40 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class RestUtil {
 
+    private static String domain = null;
+    private static String path = null;
+    
+    private static String getDomain() {
+        if (domain == null) {
+            domain = SpringContextUtils.getDomain();
+            // issues/2959
+            // 微服务版集成企业微信单点登录
+            // 因为微服务版没有端口号，导致 SpringContextUtils.getDomain() 方法获取的域名的端口号变成了:-1所以出问题了，只需要把这个-1给去掉就可以了。
+            String port=":-1";
+            if (domain.endsWith(port)) {
+                domain = domain.substring(0, domain.length() - 3);
+            }
+        }
+        return domain;
+    }
+
+    private static String getPath() {
+        if (path == null) {
+            path = SpringContextUtils.getApplicationContext().getEnvironment().getProperty("server.servlet.context-path");
+        }
+        return oConvertUtils.getString(path);
+    }
+
+    public static String getBaseUrl() {
+        String basepath = getDomain() + getPath();
+        log.info(" RestUtil.getBaseUrl: " + basepath);
+        return basepath;
+    }
+
     /**
      * RestAPI 调用器
      */
     private final static RestTemplate RT;
-    public static String path = null;
-    private static String domain = null;
 
     static {
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
@@ -35,44 +62,6 @@ public class RestUtil {
         RT = new RestTemplate(requestFactory);
         // 解决乱码问题
         RT.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
-    }
-
-    public static String getDomain() {
-        if (domain == null) {
-            domain = SpringContextUtils.getDomain();
-            // issues/2959
-            // 微服务版集成企业微信单点登录
-            // 因为微服务版没有端口号，导致 SpringContextUtils.getDomain() 方法获取的域名的端口号变成了:-1所以出问题了，只需要把这个-1给去掉就可以了。
-            String port = ":-1";
-            if (domain.endsWith(port)) {
-                domain = domain.substring(0, domain.length() - 3);
-            }
-        }
-        return domain;
-    }
-
-    public static String getPath() {
-        if (path == null) {
-            path = SpringContextUtils.getApplicationContext().getEnvironment().getProperty("server.servlet.context-path");
-        }
-        return oConvertUtils.getString(path);
-    }
-
-    public static String getBaseUrl() {
-        String basepath = null;
-        try {
-            basepath = getDomain() + getPath();
-        } catch (Exception e) {
-            log.warn(e.getMessage(), e);
-        }
-
-        //定时任务情况下，通过request是获取不到domain的，这种情况下通过配置获取pc后台域名
-        if (oConvertUtils.isEmpty(basepath)) {
-            JeecgBaseConfig jeecgBaseConfig = SpringContextUtils.getBean(JeecgBaseConfig.class);
-            basepath = jeecgBaseConfig.getDomainUrl().getPc();
-        }
-        log.info(" RestUtil.getBaseUrl: " + basepath);
-        return basepath;
     }
 
     public static RestTemplate getRestTemplate() {
@@ -203,7 +192,7 @@ public class RestUtil {
      * @return ResponseEntity<responseType>
      */
     public static <T> ResponseEntity<T> request(String url, HttpMethod method, HttpHeaders headers, JSONObject variables, Object params, Class<T> responseType) {
-        log.info(" RestUtil  --- request ---  url = " + url);
+        log.info(" RestUtil  --- request ---  url = "+ url);
         if (StringUtils.isEmpty(url)) {
             throw new RuntimeException("url 不能为空");
         }

@@ -3,22 +3,25 @@ package org.eemp.config.sign.interceptor;
 
 import java.io.PrintWriter;
 import java.util.SortedMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSON;
-import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.util.DateUtils;
+import org.eemp.common.util.oConvertUtils;
 import org.eemp.config.sign.util.BodyReaderHttpServletRequestWrapper;
 import org.eemp.config.sign.util.HttpUtils;
 import org.eemp.config.sign.util.SignUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import com.alibaba.fastjson.JSON;
+
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 签名拦截器
- *
  * @author qinfeng
  */
 @Slf4j
@@ -37,6 +40,18 @@ public class SignAuthInterceptor implements HandlerInterceptor {
         //对参数进行签名验证
         String headerSign = request.getHeader(CommonConstant.X_SIGN);
         String xTimestamp = request.getHeader(CommonConstant.X_TIMESTAMP);
+        
+        if(oConvertUtils.isEmpty(xTimestamp)){
+            Result<?> result = Result.error("Sign签名校验失败！");
+            log.error("Sign 签名校验失败！Header xTimestamp 为空");
+            //校验失败返回前端
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json; charset=utf-8");
+            PrintWriter out = response.getWriter();
+            out.print(JSON.toJSON(result));
+            return false;
+        }
+
         //客户端时间
         Long clientTimestamp = Long.parseLong(xTimestamp);
 
@@ -58,14 +73,14 @@ public class SignAuthInterceptor implements HandlerInterceptor {
         }
 
         //2.校验签名
-        boolean isSigned = SignUtil.verifySign(allParams, headerSign);
+        boolean isSigned = SignUtil.verifySign(allParams,headerSign);
 
         if (isSigned) {
-            log.debug("Sign 签名通过！Header Sign : {}", headerSign);
+            log.debug("Sign 签名通过！Header Sign : {}",headerSign);
             return true;
         } else {
             log.error("request URI = " + request.getRequestURI());
-            log.error("Sign 签名校验失败！Header Sign : {}", headerSign);
+            log.error("Sign 签名校验失败！Header Sign : {}",headerSign);
             //校验失败返回前端
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");

@@ -1,15 +1,6 @@
 package org.eemp.modules.system.controller;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -20,13 +11,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.config.mybatis.TenantContext;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.system.vo.LoginUser;
 import org.eemp.common.util.ImportExcelUtil;
 import org.eemp.common.util.oConvertUtils;
+import org.eemp.config.mybatis.MybatisPlusSaasConfig;
 import org.eemp.modules.system.entity.SysPosition;
 import org.eemp.modules.system.service.ISysPositionService;
+import org.eemp.modules.system.service.ISysUserService;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
@@ -37,6 +31,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: 职务表
@@ -52,6 +56,9 @@ public class SysPositionController {
 
     @Autowired
     private ISysPositionService sysPositionService;
+
+    @Autowired
+    private ISysUserService userService;
 
     /**
      * 分页列表查询
@@ -70,6 +77,12 @@ public class SysPositionController {
                                                     @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
                                                     HttpServletRequest req) {
         Result<IPage<SysPosition>> result = new Result<IPage<SysPosition>>();
+        //------------------------------------------------------------------------------------------------
+        //是否开启系统管理模块的多租户数据隔离【SAAS多租户模式】
+        if(MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL){
+            sysPosition.setTenantId(oConvertUtils.getInt(TenantContext.getTenant(),0));
+        }
+        //------------------------------------------------------------------------------------------------
         QueryWrapper<SysPosition> queryWrapper = QueryGenerator.initQueryWrapper(sysPosition, req.getParameterMap());
         Page<SysPosition> page = new Page<SysPosition>(pageNo, pageSize);
         IPage<SysPosition> pageList = sysPositionService.page(page, queryWrapper);
@@ -90,6 +103,13 @@ public class SysPositionController {
     public Result<SysPosition> add(@RequestBody SysPosition sysPosition) {
         Result<SysPosition> result = new Result<SysPosition>();
         try {
+            //update-begin---author:wangshuai ---date:20230313  for：【QQYUN-4558】vue3职位功能调整，去掉编码和级别，可以先隐藏------------
+            //编号是空的，不需要判断多租户隔离了
+            if(oConvertUtils.isEmpty(sysPosition.getCode())){
+                //生成职位编码10位
+                sysPosition.setCode(RandomUtil.randomString(10));
+            }
+            //update-end---author:wangshuai ---date:20230313  for：【QQYUN-4558】vue3职位功能调整，去掉编码和级别，可以先隐藏-------------
             sysPositionService.save(sysPosition);
             result.success("添加成功！");
         } catch (Exception e) {
@@ -107,7 +127,7 @@ public class SysPositionController {
      */
     @AutoLog(value = "职务表-编辑")
     @ApiOperation(value = "职务表-编辑", notes = "职务表-编辑")
-    @RequestMapping(value = "/edit", method = {RequestMethod.PUT, RequestMethod.POST})
+    @RequestMapping(value = "/edit", method ={RequestMethod.PUT, RequestMethod.POST})
     public Result<SysPosition> edit(@RequestBody SysPosition sysPosition) {
         Result<SysPosition> result = new Result<SysPosition>();
         SysPosition sysPositionEntity = sysPositionService.getById(sysPosition.getId());
@@ -199,6 +219,12 @@ public class SysPositionController {
             if (oConvertUtils.isNotEmpty(paramsStr)) {
                 String deString = URLDecoder.decode(paramsStr, "UTF-8");
                 SysPosition sysPosition = JSON.parseObject(deString, SysPosition.class);
+                //------------------------------------------------------------------------------------------------
+                //是否开启系统管理模块的多租户数据隔离【SAAS多租户模式】
+                if(MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL){
+                    sysPosition.setTenantId(oConvertUtils.getInt(TenantContext.getTenant(),0));
+                }
+                //------------------------------------------------------------------------------------------------
                 queryWrapper = QueryGenerator.initQueryWrapper(sysPosition, request.getParameterMap());
             }
         } catch (UnsupportedEncodingException e) {
@@ -212,7 +238,7 @@ public class SysPositionController {
         //导出文件名称
         mv.addObject(NormalExcelConstants.FILE_NAME, "职务表列表");
         mv.addObject(NormalExcelConstants.CLASS, SysPosition.class);
-        mv.addObject(NormalExcelConstants.PARAMS, new ExportParams("职务表列表数据", "导出人:" + user.getRealname(), "导出信息"));
+        mv.addObject(NormalExcelConstants.PARAMS, new ExportParams("职务表列表数据", "导出人:"+user.getRealname(),"导出信息"));
         mv.addObject(NormalExcelConstants.DATA_LIST, pageList);
         return mv;
     }
@@ -225,7 +251,7 @@ public class SysPositionController {
      * @return
      */
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
-    public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response)throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
         // 错误信息
@@ -239,10 +265,10 @@ public class SysPositionController {
             params.setHeadRows(1);
             params.setNeedSave(true);
             try {
-                List<Object> listSysPositions = ExcelImportUtil.importExcel(file.getInputStream(), SysPosition.class, params);
-                List<String> list = ImportExcelUtil.importDateSave(listSysPositions, ISysPositionService.class, errorMessage, CommonConstant.SQL_INDEX_UNIQ_CODE);
-                errorLines += list.size();
-                successLines += (listSysPositions.size() - errorLines);
+                List<Object>  listSysPositions = ExcelImportUtil.importExcel(file.getInputStream(), SysPosition.class, params);
+                List<String> list = ImportExcelUtil.importDateSave(listSysPositions, ISysPositionService.class, errorMessage,CommonConstant.SQL_INDEX_UNIQ_CODE);
+                errorLines+=list.size();
+                successLines+=(listSysPositions.size()-errorLines);
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
                 return Result.error("文件导入失败:" + e.getMessage());
@@ -254,7 +280,7 @@ public class SysPositionController {
                 }
             }
         }
-        return ImportExcelUtil.imporReturnRes(errorLines, successLines, errorMessage);
+        return ImportExcelUtil.imporReturnRes(errorLines,successLines,errorMessage);
     }
 
     /**
@@ -269,7 +295,7 @@ public class SysPositionController {
     public Result<SysPosition> queryByCode(@RequestParam(name = "code", required = true) String code) {
         Result<SysPosition> result = new Result<SysPosition>();
         QueryWrapper<SysPosition> queryWrapper = new QueryWrapper<SysPosition>();
-        queryWrapper.eq("code", code);
+        queryWrapper.eq("code",code);
         SysPosition sysPosition = sysPositionService.getOne(queryWrapper);
         if (sysPosition == null) {
             result.error500("未找到对应实体");

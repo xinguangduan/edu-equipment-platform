@@ -2,15 +2,17 @@ package org.eemp.common.system.base.entity;
 
 import java.io.Serializable;
 
+import org.jeecgframework.poi.excel.annotation.Excel;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.jeecgframework.poi.excel.annotation.Excel;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @Description: Entity基类
@@ -29,14 +31,14 @@ public class JeecgEntity implements Serializable {
      */
     @TableId(type = IdType.ASSIGN_ID)
     @ApiModelProperty(value = "ID")
-    private java.lang.String id;
+    private String id;
 
     /**
      * 创建人
      */
     @ApiModelProperty(value = "创建人")
     @Excel(name = "创建人", width = 15)
-    private java.lang.String createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -52,7 +54,7 @@ public class JeecgEntity implements Serializable {
      */
     @ApiModelProperty(value = "更新人")
     @Excel(name = "更新人", width = 15)
-    private java.lang.String updateBy;
+    private String updateBy;
 
     /**
      * 更新时间

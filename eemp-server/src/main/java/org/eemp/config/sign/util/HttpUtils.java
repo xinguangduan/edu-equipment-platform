@@ -9,13 +9,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
+
 import javax.servlet.http.HttpServletRequest;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.constant.SymbolConstant;
 import org.eemp.common.util.oConvertUtils;
 import org.springframework.http.HttpMethod;
+
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * http 工具类 获取请求中的参数
@@ -29,9 +31,9 @@ public class HttpUtils {
     /**
      * 将URL的参数和body参数合并
      *
-     * @param request
      * @author jeecg
      * @date 20210621
+     * @param request
      */
     public static SortedMap<String, String> getAllParams(HttpServletRequest request) throws IOException {
 
@@ -39,15 +41,15 @@ public class HttpUtils {
         // 获取URL上最后带逗号的参数变量 sys/dict/getDictItems/sys_user,realname,username
         String pathVariable = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/") + 1);
         if (pathVariable.contains(SymbolConstant.COMMA)) {
-            log.info(" pathVariable: {}", pathVariable);
+            log.info(" pathVariable: {}",pathVariable);
             String deString = URLDecoder.decode(pathVariable, "UTF-8");
-            log.info(" pathVariable decode: {}", deString);
+            log.info(" pathVariable decode: {}",deString);
             result.put(SignUtil.X_PATH_VARIABLE, deString);
         }
         // 获取URL上的参数
         Map<String, String> urlParams = getUrlParams(request);
         for (Map.Entry entry : urlParams.entrySet()) {
-            result.put((String) entry.getKey(), (String) entry.getValue());
+            result.put((String)entry.getKey(), (String)entry.getValue());
         }
         Map<String, String> allRequestParam = new HashMap<>(16);
         // get请求不需要拿body参数
@@ -57,7 +59,7 @@ public class HttpUtils {
         // 将URL的参数和body参数进行合并
         if (allRequestParam != null) {
             for (Map.Entry entry : allRequestParam.entrySet()) {
-                result.put((String) entry.getKey(), (String) entry.getValue());
+                result.put((String)entry.getKey(), (String)entry.getValue());
             }
         }
         return result;
@@ -66,26 +68,26 @@ public class HttpUtils {
     /**
      * 将URL的参数和body参数合并
      *
-     * @param queryString
      * @author jeecg
      * @date 20210621
+     * @param queryString
      */
     public static SortedMap<String, String> getAllParams(String url, String queryString, byte[] body, String method)
-            throws IOException {
+        throws IOException {
 
         SortedMap<String, String> result = new TreeMap<>();
         // 获取URL上最后带逗号的参数变量 sys/dict/getDictItems/sys_user,realname,username
         String pathVariable = url.substring(url.lastIndexOf("/") + 1);
         if (pathVariable.contains(SymbolConstant.COMMA)) {
-            log.info(" pathVariable: {}", pathVariable);
+            log.info(" pathVariable: {}",pathVariable);
             String deString = URLDecoder.decode(pathVariable, "UTF-8");
-            log.info(" pathVariable decode: {}", deString);
+            log.info(" pathVariable decode: {}",deString);
             result.put(SignUtil.X_PATH_VARIABLE, deString);
         }
         // 获取URL上的参数
         Map<String, String> urlParams = getUrlParams(queryString);
         for (Map.Entry entry : urlParams.entrySet()) {
-            result.put((String) entry.getKey(), (String) entry.getValue());
+            result.put((String)entry.getKey(), (String)entry.getValue());
         }
         Map<String, String> allRequestParam = new HashMap<>(16);
         // get请求不需要拿body参数
@@ -95,7 +97,7 @@ public class HttpUtils {
         // 将URL的参数和body参数进行合并
         if (allRequestParam != null) {
             for (Map.Entry entry : allRequestParam.entrySet()) {
-                result.put((String) entry.getKey(), (String) entry.getValue());
+                result.put((String)entry.getKey(), (String)entry.getValue());
             }
         }
         return result;
@@ -104,8 +106,8 @@ public class HttpUtils {
     /**
      * 获取 Body 参数
      *
-     * @param request
      * @date 15:04 20210621
+     * @param request
      */
     public static Map<String, String> getAllRequestParam(final HttpServletRequest request) throws IOException {
 
@@ -123,11 +125,11 @@ public class HttpUtils {
     /**
      * 获取 Body 参数
      *
-     * @param body
      * @date 15:04 20210621
+     * @param body
      */
     public static Map<String, String> getAllRequestParam(final byte[] body) throws IOException {
-        if (body == null) {
+        if(body==null){
             return null;
         }
         String wholeStr = new String(body);
@@ -161,7 +163,7 @@ public class HttpUtils {
 
     /**
      * 将URL请求参数转换成Map
-     *
+     * 
      * @param queryString
      */
     public static Map<String, String> getUrlParams(String queryString) {

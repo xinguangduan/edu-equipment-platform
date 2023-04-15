@@ -2,7 +2,6 @@ package org.eemp.common.constant;
 
 /**
  * VXESocket 常量
- *
  * @author: jeecg-boot
  */
 public class VxeSocketConst {

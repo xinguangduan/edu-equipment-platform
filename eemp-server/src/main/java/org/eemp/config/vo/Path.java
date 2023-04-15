@@ -1,6 +1,7 @@
 package org.eemp.config.vo;
 
 /**
+ *
  * @author: scott
  * @date: 2022年04月18日 20:35
  */

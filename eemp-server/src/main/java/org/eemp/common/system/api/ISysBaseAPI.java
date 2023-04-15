@@ -10,181 +10,130 @@ import org.eemp.common.api.dto.DataLogDTO;
 import org.eemp.common.api.dto.OnlineAuthDTO;
 import org.eemp.common.api.dto.message.*;
 import org.eemp.common.system.vo.*;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.*;
+
 
 /**
- * 1、cloud接口数量43  local：35 common：9  额外一个特殊queryAllRole一个当两个用
- * - 相比较local版
- * - 去掉了一些方法：addLog、getDatabaseType、queryAllDepart、queryAllUser(Wrapper wrapper)、queryAllUser(String[] userIds, int pageNo, int pageSize)
- * - 修改了一些方法：createLog、sendSysAnnouncement（只保留了一个，其余全部干掉）
- * 2、@ConditionalOnMissingClass("org.jeecg.modules.system.service.impl.SysBaseApiImpl")=> 有实现类的时候，不实例化Feign接口
- *
- * @author: jeecg-boot
+ * @Description  底层共通业务API，提供其他独立模块调用
+ * @Author  scott
+ * @Date 2019-4-20
+ * @Version V1.0
  */
-@Component
-//@FeignClient(contextId = "sysBaseRemoteApi", value = ServiceNameConstants.SERVICE_SYSTEM, fallbackFactory = SysBaseAPIFallbackFactory.class)
-@ConditionalOnMissingClass("org.jeecg.modules.system.service.impl.SysBaseApiImpl")
 public interface ISysBaseAPI extends CommonAPI {
+
 
     /**
      * 1发送系统消息
-     *
      * @param message 使用构造器赋值参数 如果不设置category(消息类型)则默认为2 发送系统消息
      */
-    @PostMapping("/sys/api/sendSysAnnouncement")
-    void sendSysAnnouncement(@RequestBody MessageDTO message);
+    void sendSysAnnouncement(MessageDTO message);
 
     /**
      * 2发送消息 附带业务参数
-     *
      * @param message 使用构造器赋值参数
      */
-    @PostMapping("/sys/api/sendBusAnnouncement")
-    void sendBusAnnouncement(@RequestBody BusMessageDTO message);
+    void sendBusAnnouncement(BusMessageDTO message);
 
     /**
      * 3通过模板发送消息
-     *
      * @param message 使用构造器赋值参数
      */
-    @PostMapping("/sys/api/sendTemplateAnnouncement")
-    void sendTemplateAnnouncement(@RequestBody TemplateMessageDTO message);
+    void sendTemplateAnnouncement(TemplateMessageDTO message);
 
     /**
      * 4通过模板发送消息 附带业务参数
-     *
      * @param message 使用构造器赋值参数
      */
-    @PostMapping("/sys/api/sendBusTemplateAnnouncement")
-    void sendBusTemplateAnnouncement(@RequestBody BusTemplateMessageDTO message);
+    void sendBusTemplateAnnouncement(BusTemplateMessageDTO message);
 
     /**
      * 5通过消息中心模板，生成推送内容
-     *
      * @param templateDTO 使用构造器赋值参数
      * @return
      */
-    @PostMapping("/sys/api/parseTemplateByCode")
-    String parseTemplateByCode(@RequestBody TemplateDTO templateDTO);
+    String parseTemplateByCode(TemplateDTO templateDTO);
+
+    //update-begin---author:taoyan ---date:20220705  for：支持自定义推送类型，邮件、钉钉、企业微信、系统消息-----------
+    /**
+     * 发送模板消息【新，支持自定义推送类型】
+     * @param message
+     */
+    void sendTemplateMessage(MessageDTO message);
 
     /**
+     * 根据模板编码获取模板内容【新，支持自定义推送类型】
+     * @param templateCode
+     * @return
+     */
+    String getTemplateContent(String templateCode);
+    //update-begin---author:taoyan ---date:20220705  for：支持自定义推送类型，邮件、钉钉、企业微信、系统消息-----------
+    
+    /**
      * 6根据用户id查询用户信息
-     *
      * @param id
      * @return
      */
-    @GetMapping("/sys/api/getUserById")
-    LoginUser getUserById(@RequestParam("id") String id);
+    LoginUser getUserById(String id);
 
     /**
      * 7通过用户账号查询角色集合
-     *
      * @param username
      * @return
      */
-    @GetMapping("/sys/api/getRolesByUsername")
-    List<String> getRolesByUsername(@RequestParam("username") String username);
+    List<String> getRolesByUsername(String username);
 
     /**
      * 8通过用户账号查询部门集合
-     *
      * @param username
      * @return 部门 id
      */
-    @GetMapping("/sys/api/getDepartIdsByUsername")
-    List<String> getDepartIdsByUsername(@RequestParam("username") String username);
+    List<String> getDepartIdsByUsername(String username);
 
     /**
      * 9通过用户账号查询部门 name
-     *
      * @param username
      * @return 部门 name
      */
-    @GetMapping("/sys/api/getDepartNamesByUsername")
-    List<String> getDepartNamesByUsername(@RequestParam("username") String username);
+    List<String> getDepartNamesByUsername(String username);
 
-    /**
-     * 10获取数据字典
-     *
-     * @param code
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/queryDictItemsByCode")
-    List<DictModel> queryDictItemsByCode(@RequestParam("code") String code);
 
-    /**
-     * 获取有效的数据字典项
-     *
-     * @param code
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/queryEnableDictItemsByCode")
-    public List<DictModel> queryEnableDictItemsByCode(@RequestParam("code") String code);
 
-    /**
-     * 11查询所有的父级字典，按照create_time排序
-     *
-     * @return List<DictModel> 字典值集合
+    /** 11查询所有的父级字典，按照create_time排序
+     * @return List<DictModel> 字典集合
      */
-    @GetMapping("/sys/api/queryAllDict")
-    List<DictModel> queryAllDict();
+    public List<DictModel> queryAllDict();
 
     /**
      * 12查询所有分类字典
-     *
      * @return
      */
-    @GetMapping("/sys/api/queryAllSysCategory")
-    List<SysCategoryModel> queryAllSysCategory();
+    public List<SysCategoryModel> queryAllSysCategory();
 
-    /**
-     * 13获取表数据字典
-     *
-     * @param table
-     * @param text
-     * @param code
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/queryTableDictItemsByCode")
-    List<DictModel> queryTableDictItemsByCode(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code);
 
     /**
      * 14查询所有部门 作为字典信息 id -->value,departName -->text
-     *
      * @return
      */
-    @GetMapping("/sys/api/queryAllDepartBackDictModel")
-    List<DictModel> queryAllDepartBackDictModel();
+    public List<DictModel> queryAllDepartBackDictModel();
 
     /**
-     * 15根据业务类型 busType 及业务 busId 修改消息已读
-     *
-     * @param busType 业务类型
-     * @param busId   业务id
+     * 15根据业务类型及业务id修改消息已读
+     * @param busType
+     * @param busId
      */
-    @GetMapping("/sys/api/updateSysAnnounReadFlag")
-    public void updateSysAnnounReadFlag(@RequestParam("busType") String busType, @RequestParam("busId") String busId);
+    public void updateSysAnnounReadFlag(String busType, String busId);
 
     /**
      * 16查询表字典 支持过滤数据
-     *
      * @param table
      * @param text
      * @param code
      * @param filterSql
      * @return
      */
-    @GetMapping("/sys/api/queryFilterTableDictInfo")
-    List<DictModel> queryFilterTableDictInfo(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("filterSql") String filterSql);
+    public List<DictModel> queryFilterTableDictInfo(String table, String text, String code, String filterSql);
 
     /**
      * 17查询指定table的 text code 获取字典，包含text和value
-     *
      * @param table
      * @param text
      * @param code
@@ -192,454 +141,247 @@ public interface ISysBaseAPI extends CommonAPI {
      * @return
      */
     @Deprecated
-    @GetMapping("/sys/api/queryTableDictByKeys")
-    public List<String> queryTableDictByKeys(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("keyArray") String[] keyArray);
+    public List<String> queryTableDictByKeys(String table, String text, String code, String[] keyArray);
 
     /**
      * 18查询所有用户 返回ComboModel
-     *
      * @return
      */
-    @GetMapping("/sys/api/queryAllUserBackCombo")
     public List<ComboModel> queryAllUserBackCombo();
 
     /**
      * 19分页查询用户 返回JSONObject
-     *
-     * @param userIds  多个用户id
-     * @param pageNo   当前页数
-     * @param pageSize 每页条数
+     * @param userIds 多个用户id
+     * @param pageNo 当前页数
+     * @param pageSize 每页显示条数
      * @return
      */
-    @GetMapping("/sys/api/queryAllUser")
-    public JSONObject queryAllUser(@RequestParam(name = "userIds", required = false) String userIds, @RequestParam(name = "pageNo", required = false) Integer pageNo, @RequestParam(name = "pageSize", required = false) int pageSize);
-
-
-    JSONObject queryAllUser(String userIds, Integer pageNo, Integer pageSize);
-
-    List<ComboModel> queryAllRole();
+    public JSONObject queryAllUser(String userIds, Integer pageNo, Integer pageSize);
 
     /**
-     * 20获取所有角色 带参
-     *
+     * 20获取所有角色
+     * @return
+     */
+    public List<ComboModel> queryAllRole();
+
+    /**
+     * 21获取所有角色 带参
      * @param roleIds 默认选中角色
      * @return
      */
-    @GetMapping("/sys/api/queryAllRole")
-    public List<ComboModel> queryAllRole(@RequestParam(name = "roleIds", required = false) String[] roleIds);
+    public List<ComboModel> queryAllRole(String[] roleIds );
 
     /**
-     * 21通过用户账号查询角色Id集合
-     *
+     * 22通过用户账号查询角色Id集合
      * @param username
      * @return
      */
-    @GetMapping("/sys/api/getRoleIdsByUsername")
-    public List<String> getRoleIdsByUsername(@RequestParam("username") String username);
+    public List<String> getRoleIdsByUsername(String username);
 
     /**
-     * 22通过部门编号查询部门id
-     *
+     * 23通过部门编号查询部门id
      * @param orgCode
      * @return
      */
-    @GetMapping("/sys/api/getDepartIdsByOrgCode")
-    public String getDepartIdsByOrgCode(@RequestParam("orgCode") String orgCode);
+    public String getDepartIdsByOrgCode(String orgCode);
 
     /**
-     * 23查询所有部门
-     *
+     * 24查询所有部门
      * @return
      */
-    @GetMapping("/sys/api/getAllSysDepart")
     public List<SysDepartModel> getAllSysDepart();
 
     /**
-     * 24查找父级部门
-     *
+     * 25查找父级部门
      * @param departId
      * @return
      */
-    @GetMapping("/sys/api/getParentDepartId")
-    DictModel getParentDepartId(@RequestParam("departId") String departId);
+    DictModel getParentDepartId(String departId);
 
     /**
-     * 25根据部门Id获取部门负责人
-     *
+     * 26根据部门Id获取部门负责人
      * @param deptId
      * @return
      */
-    @GetMapping("/sys/api/getDeptHeadByDepId")
-    public List<String> getDeptHeadByDepId(@RequestParam("deptId") String deptId);
+    public List<String> getDeptHeadByDepId(String deptId);
 
     /**
-     * 26给指定用户发消息
-     *
+     * 27给指定用户发消息
      * @param userIds
      * @param cmd
      */
-    @GetMapping("/sys/api/sendWebSocketMsg")
-    public void sendWebSocketMsg(@RequestParam("userIds") String[] userIds, @RequestParam("cmd") String cmd);
+    public void sendWebSocketMsg(String[] userIds, String cmd);
 
     /**
-     * 27根据id获取所有参与用户
-     *
+     * 28根据id获取所有参与用户
      * @param userIds 多个用户id
      * @return
      */
-    @GetMapping("/sys/api/queryAllUserByIds")
-    public List<LoginUser> queryAllUserByIds(@RequestParam("userIds") String[] userIds);
+    public List<LoginUser> queryAllUserByIds(String[] userIds);
 
     /**
-     * 28将会议签到信息推动到预览
+     * 29将会议签到信息推动到预览
      * userIds
-     *
+     * @return
      * @param userId
-     * @return
      */
-    @GetMapping("/sys/api/meetingSignWebsocket")
-    void meetingSignWebsocket(@RequestParam("userId") String userId);
+    void meetingSignWebsocket(String userId);
 
     /**
-     * 29根据name获取所有参与用户
-     *
-     * @param userNames 多个用户账号
+     * 30根据name获取所有参与用户
+     * @param userNames 多个用户账户
      * @return
      */
-    @GetMapping("/sys/api/queryUserByNames")
-    List<LoginUser> queryUserByNames(@RequestParam("userNames") String[] userNames);
+    List<LoginUser> queryUserByNames(String[] userNames);
 
 
     /**
-     * 30获取用户的角色集合
-     *
+     * 31获取用户的角色集合
      * @param username
      * @return
      */
-    @GetMapping("/sys/api/getUserRoleSet")
-    Set<String> getUserRoleSet(@RequestParam("username") String username);
+    Set<String> getUserRoleSet(String username);
 
     /**
-     * 31获取用户的权限集合
-     *
+     * 32获取用户的权限集合
      * @param username
      * @return
      */
-    @GetMapping("/sys/api/getUserPermissionSet")
-    Set<String> getUserPermissionSet(@RequestParam("username") String username);
+    Set<String> getUserPermissionSet(String username);
 
     /**
-     * 32判断是否有online访问的权限
-     *
+     * 33判断是否有online访问的权限
      * @param onlineAuthDTO
      * @return
      */
-    @PostMapping("/sys/api/hasOnlineAuth")
-    boolean hasOnlineAuth(@RequestBody OnlineAuthDTO onlineAuthDTO);
+    boolean hasOnlineAuth(OnlineAuthDTO onlineAuthDTO);
 
     /**
-     * 33通过部门id获取部门全部信息
-     *
+     * 34通过部门id获取部门全部信息
      * @param id 部门id
-     * @return SysDepartModel 部门信息
+     * @return SysDepartModel对象
      */
-    @GetMapping("/sys/api/selectAllById")
-    SysDepartModel selectAllById(@RequestParam("id") String id);
+    SysDepartModel selectAllById(String id);
 
     /**
-     * 34根据用户id查询用户所属公司下所有用户ids
-     *
+     * 35根据用户id查询用户所属公司下所有用户ids
      * @param userId
      * @return
      */
-    @GetMapping("/sys/api/queryDeptUsersByUserId")
-    List<String> queryDeptUsersByUserId(@RequestParam("userId") String userId);
-
-
-    //---
-
-    /**
-     * 35查询用户角色信息
-     *
-     * @param username
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/queryUserRoles")
-    Set<String> queryUserRoles(@RequestParam("username") String username);
-
-    /**
-     * 36查询用户权限信息
-     *
-     * @param username
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/queryUserAuths")
-    Set<String> queryUserAuths(@RequestParam("username") String username);
-
-    /**
-     * 37根据 id 查询数据库中存储的 DynamicDataSourceModel
-     *
-     * @param dbSourceId
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/getDynamicDbSourceById")
-    DynamicDataSourceModel getDynamicDbSourceById(@RequestParam("dbSourceId") String dbSourceId);
-
-    /**
-     * 38根据 code 查询数据库中存储的 DynamicDataSourceModel
-     *
-     * @param dbSourceCode
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/getDynamicDbSourceByCode")
-    DynamicDataSourceModel getDynamicDbSourceByCode(@RequestParam("dbSourceCode") String dbSourceCode);
-
-    /**
-     * 39根据用户账号查询用户信息 CommonAPI中定义
-     *
-     * @param username
-     * @return LoginUser 用户信息
-     */
-    @Override
-    @GetMapping("/sys/api/getUserByName")
-    LoginUser getUserByName(@RequestParam("username") String username);
-
-    /**
-     * 40字典表的 翻译
-     *
-     * @param table
-     * @param text
-     * @param code
-     * @param key
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/translateDictFromTable")
-    String translateDictFromTable(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("key") String key);
-
-    /**
-     * 41普通字典的翻译
-     *
-     * @param code
-     * @param key
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/translateDict")
-    String translateDict(@RequestParam("code") String code, @RequestParam("key") String key);
-
-    /**
-     * 42查询数据权限
-     *
-     * @param component
-     * @param requestPath
-     * @param username    用户姓名
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/queryPermissionDataRule")
-    List<SysPermissionDataRuleModel> queryPermissionDataRule(@RequestParam("component") String component, @RequestParam("requestPath") String requestPath, @RequestParam("username") String username);
-
-    /**
-     * 43查询用户信息
-     *
-     * @param username
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/getCacheUser")
-    SysUserCacheInfo getCacheUser(@RequestParam("username") String username);
+    List<String> queryDeptUsersByUserId(String userId);
 
     /**
      * 36根据多个用户账号(逗号分隔)，查询返回多个用户信息
-     *
      * @param usernames
      * @return
      */
-    @GetMapping("/sys/api/queryUsersByUsernames")
-    List<JSONObject> queryUsersByUsernames(@RequestParam("usernames") String usernames);
+    List<JSONObject> queryUsersByUsernames(String usernames);
 
     /**
      * 37根据多个用户ID(逗号分隔)，查询返回多个用户信息
-     *
      * @param ids
      * @return
      */
-    @RequestMapping("/sys/api/queryUsersByIds")
-    List<JSONObject> queryUsersByIds(@RequestParam("ids") String ids);
+    List<JSONObject> queryUsersByIds(String ids);
 
     /**
      * 38根据多个部门编码(逗号分隔)，查询返回多个部门信息
-     *
      * @param orgCodes
      * @return
      */
-    @RequestMapping("/sys/api/queryDepartsByOrgcodes")
-    List<JSONObject> queryDepartsByOrgcodes(@RequestParam("orgCodes") String orgCodes);
+    List<JSONObject> queryDepartsByOrgcodes(String orgCodes);
 
     /**
-     * 39根据多个部门编码(逗号分隔)，查询返回多个部门信息
-     *
+     * 39根据多个部门id(逗号分隔)，查询返回多个部门信息
      * @param ids
      * @return
      */
-    @GetMapping("/sys/api/queryDepartsByOrgIds")
-    List<JSONObject> queryDepartsByOrgIds(@RequestParam("ids") String ids);
+    List<JSONObject> queryDepartsByIds(String ids);
 
     /**
      * 40发送邮件消息
-     *
      * @param email
      * @param title
      * @param content
      */
-    @GetMapping("/sys/api/sendEmailMsg")
-    void sendEmailMsg(@RequestParam("email") String email, @RequestParam("title") String title, @RequestParam("content") String content);
-
+    void sendEmailMsg(String email,String title,String content);
     /**
-     * 41 获取公司下级部门和公司下所有用户id
-     *
-     * @param orgCode 部门编号
+     * 41 获取公司下级部门和公司下所有用户信息
+     * @param orgCode
      * @return List<Map>
      */
-    @GetMapping("/sys/api/getDeptUserByOrgCode")
-    List<Map> getDeptUserByOrgCode(@RequestParam("orgCode") String orgCode);
+    List<Map> getDeptUserByOrgCode(String orgCode);
 
     /**
-     * 42 查询分类字典翻译
-     *
+     * 查询分类字典翻译
      * @param ids 多个分类字典id
      * @return List<String>
      */
-    @GetMapping("/sys/api/loadCategoryDictItem")
-    List<String> loadCategoryDictItem(@RequestParam("ids") String ids);
+    List<String> loadCategoryDictItem(String ids);
 
     /**
-     * 43 根据字典code加载字典text
+     * 根据字典code加载字典text
      *
      * @param dictCode 顺序：tableName,text,code
      * @param keys     要查询的key
      * @return
      */
-    @GetMapping("/sys/api/loadDictItem")
-    List<String> loadDictItem(@RequestParam("dictCode") String dictCode, @RequestParam("keys") String keys);
+    List<String> loadDictItem(String dictCode, String keys);
 
     /**
-     * 44 根据字典code查询字典项
+     * 根据字典code查询字典项
      *
      * @param dictCode 顺序：tableName,text,code
      * @param dictCode 要查询的key
      * @return
      */
-    @GetMapping("/sys/api/getDictItems")
-    List<DictModel> getDictItems(@RequestParam("dictCode") String dictCode);
+    List<DictModel> getDictItems(String dictCode);
 
     /**
-     * 45 根据多个字典code查询多个字典项
-     *
+     *  根据多个字典code查询多个字典项
      * @param dictCodeList
      * @return key = dictCode ； value=对应的字典项
      */
-    @RequestMapping("/sys/api/getManyDictItems")
-    Map<String, List<DictModel>> getManyDictItems(@RequestParam("dictCodeList") List<String> dictCodeList);
+    Map<String, List<DictModel>> getManyDictItems(List<String> dictCodeList);
 
     /**
-     * 46 【JSearchSelectTag下拉搜索组件专用接口】
+     * 【JSearchSelectTag下拉搜索组件专用接口】
      * 大数据量的字典表 走异步加载  即前端输入内容过滤数据
      *
      * @param dictCode 字典code格式：table,text,code
-     * @param keyword  过滤关键字
-     * @param pageSize 每页条数
+     * @param keyword 过滤关键字
+     * @param pageSize 分页条数
      * @return
      */
-    @GetMapping("/sys/api/loadDictItemByKeyword")
-    List<DictModel> loadDictItemByKeyword(@RequestParam("dictCode") String dictCode, @RequestParam("keyword") String keyword, @RequestParam(value = "pageSize", required = false) Integer pageSize);
-
-    /**
-     * 47 根据多个部门id(逗号分隔)，查询返回多个部门信息
-     *
-     * @param ids
-     * @return
-     */
-    @GetMapping("/sys/api/queryDepartsByIds")
-    List<JSONObject> queryDepartsByIds(@RequestParam("ids") String ids);
-
-    /**
-     * 48 普通字典的翻译，根据多个dictCode和多条数据，多个以逗号分割
-     *
-     * @param dictCodes
-     * @param keys
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/translateManyDict")
-    Map<String, List<DictModel>> translateManyDict(@RequestParam("dictCodes") String dictCodes, @RequestParam("keys") String keys);
-
-    /**
-     * 49 字典表的 翻译，可批量
-     *
-     * @param table
-     * @param text
-     * @param code
-     * @param keys  多个用逗号分割
-     * @return
-     */
-    @Override
-    @GetMapping("/sys/api/translateDictFromTableByKeys")
-    List<DictModel> translateDictFromTableByKeys(@RequestParam("table") String table, @RequestParam("text") String text, @RequestParam("code") String code, @RequestParam("keys") String keys);
-
-    /**
-     * 发送模板消息
-     */
-    @PostMapping("/sys/api/sendTemplateMessage")
-    void sendTemplateMessage(@RequestBody MessageDTO message);
-
-    /**
-     * 获取模板内容
-     *
-     * @param code
-     * @return
-     */
-    @GetMapping("/sys/api/getTemplateContent")
-    String getTemplateContent(@RequestParam("code") String code);
+    List<DictModel> loadDictItemByKeyword(String dictCode, String keyword, Integer pageSize);
 
     /**
      * 新增数据日志
-     *
      * @param dataLogDto
      */
-    @PostMapping("/sys/api/saveDataLog")
     void saveDataLog(DataLogDTO dataLogDto);
 
     /**
      * 添加文件到知识库
-     *
      * @param sysFilesModel
      */
-    @PostMapping("/sys/api/addSysFiles")
     void addSysFiles(SysFilesModel sysFilesModel);
 
     /**
      * 通过文件路径获取文件id
-     *
      * @param fileId
      */
-    @GetMapping("/sys/api/getFileUrl")
-    String getFileUrl(@RequestParam(name = "fileId") String fileId);
+    String getFileUrl(String fileId);
 
     /**
      * 更新头像
-     *
      * @param loginUser
-     * @return
      */
-    @PutMapping("/updateAvatar")
-    void updateAvatar(@RequestBody LoginUser loginUser);
+    void updateAvatar(LoginUser loginUser);
 
-    @GetMapping("/sendAppChatSocket")
-    void sendAppChatSocket(@RequestParam(name = "userId") String userId);
+    /**
+     * 向app端 websocket推送聊天刷新消息
+     * @param userId
+     */
+    void sendAppChatSocket(String userId);
 }

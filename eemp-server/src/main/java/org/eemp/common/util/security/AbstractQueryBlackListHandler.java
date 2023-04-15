@@ -1,12 +1,11 @@
 package org.eemp.common.util.security;
 
-import java.util.*;
-
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.*;
 
 /**
  * 查询表/字段 黑名单处理
- *
  * @Author taoYan
  * @Date 2022/3/17 11:21
  **/
@@ -30,7 +29,6 @@ public abstract class AbstractQueryBlackListHandler {
     /**
      * 根据 sql语句 获取表和字段信息，需要到具体的实现类重写此方法-
      * 不同的场景 处理可能不太一样 需要自定义，但是返回值确定
-     *
      * @param sql
      * @return
      */
@@ -39,7 +37,6 @@ public abstract class AbstractQueryBlackListHandler {
 
     /**
      * 校验sql语句 成功返回true
-     *
      * @param sql
      * @return
      */
@@ -49,10 +46,10 @@ public abstract class AbstractQueryBlackListHandler {
         try {
             list = this.getQueryTableInfo(sql.toLowerCase());
         } catch (Exception e) {
-            log.warn("校验sql语句，解析报错：{}", e.getMessage());
+            log.warn("校验sql语句，解析报错：{}",e.getMessage());
         }
-
-        if (list == null) {
+        
+        if(list==null){
             return true;
         }
         log.info("--获取sql信息--", list.toString());
@@ -64,7 +61,7 @@ public abstract class AbstractQueryBlackListHandler {
             if (fieldString != null) {
                 if ("*".equals(fieldString) || table.isAll()) {
                     flag = false;
-                    log.warn("sql黑名单校验，表【" + name + "】禁止查询");
+                    log.warn("sql黑名单校验，表【"+name+"】禁止查询");
                     break;
                 } else if (table.existSameField(fieldString)) {
                     flag = false;
@@ -74,11 +71,6 @@ public abstract class AbstractQueryBlackListHandler {
             }
         }
         return flag;
-    }
-
-    public String getError() {
-        // TODO
-        return "系统设置了安全规则，敏感表和敏感字段禁止查询，联系管理员授权!";
     }
 
     /**
@@ -112,12 +104,12 @@ public abstract class AbstractQueryBlackListHandler {
             return name;
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
         public Set<String> getFields() {
             return new HashSet<>(fields);
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
 
         public void setFields(Set<String> fields) {
@@ -152,7 +144,7 @@ public abstract class AbstractQueryBlackListHandler {
                 for (String config : arr) {
                     if (exp.equals(config)) {
                         // 非常明确的列直接比较
-                        log.warn("sql黑名单校验，表【" + name + "】中字段【" + config + "】禁止查询");
+                        log.warn("sql黑名单校验，表【"+name+"】中字段【"+config+"】禁止查询");
                         return true;
                     } else {
                         // 使用表达式的列 只能判读字符串包含了
@@ -161,7 +153,7 @@ public abstract class AbstractQueryBlackListHandler {
                             aliasColumn = alias + "." + config;
                         }
                         if (exp.indexOf(aliasColumn) > 0) {
-                            log.warn("sql黑名单校验，表【" + name + "】中字段【" + config + "】禁止查询");
+                            log.warn("sql黑名单校验，表【"+name+"】中字段【"+config+"】禁止查询");
                             return true;
                         }
                     }
@@ -179,6 +171,11 @@ public abstract class AbstractQueryBlackListHandler {
                     ", all=" + all +
                     '}';
         }
+    }
+
+    public String getError(){
+        // TODO
+        return "系统设置了安全规则，敏感表和敏感字段禁止查询，联系管理员授权!";
     }
 
 }

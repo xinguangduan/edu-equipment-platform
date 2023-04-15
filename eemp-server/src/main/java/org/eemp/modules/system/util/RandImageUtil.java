@@ -1,19 +1,16 @@
 package org.eemp.modules.system.util;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.Random;
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * 登录验证码工具类
- *
  * @author: jeecg-boot
  */
 public class RandImageUtil {
@@ -51,7 +48,6 @@ public class RandImageUtil {
 
     /**
      * 直接通过response 返回图片
-     *
      * @param response
      * @param resultCode
      * @throws IOException
@@ -64,7 +60,6 @@ public class RandImageUtil {
 
     /**
      * 生成base64字符串
-     *
      * @param resultCode
      * @return
      * @throws IOException
@@ -85,10 +80,10 @@ public class RandImageUtil {
         //写到指定位置
         //ImageIO.write(bufferedImage, "png", new File(""));
 
-        return BASE64_PRE + base64;
+        return BASE64_PRE+base64;
     }
 
-    private static BufferedImage getImageBuffer(String resultCode) {
+    private static BufferedImage getImageBuffer(String resultCode){
         // 在内存中创建图象
         final BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         // 获取图形上下文

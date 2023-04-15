@@ -1,5 +1,5 @@
 spring:
   application:
-    name: edu-equipment-management-platform
+    name: eemp
   profiles:
     active: '@profile.name@'

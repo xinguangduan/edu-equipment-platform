@@ -4,7 +4,6 @@ import lombok.Data;
 
 /**
  * 字典查询参数实体
- *
  * @author: jeecg-boot
  */
 @Data

@@ -1,27 +1,26 @@
 package org.eemp.common.util.filter;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Description: 校验上传文件敏感后缀
  * @author: lsq
  * @date: 2021年08月09日 15:29
  */
+@Slf4j
 public class FileTypeFilter {
 
-    /**
-     * 初始化文件头类型，不够的自行补充
-     */
+    /**文件后缀*/
+    private static String[] forbidType = {"jsp","php"};
+
+    /**初始化文件头类型，不够的自行补充*/
     final static HashMap<String, String> FILE_TYPE_MAP = new HashMap<>();
-    /**
-     * 文件后缀
-     */
-    private static String[] forbidType = {"jsp", "php"};
 
     static {
         FILE_TYPE_MAP.put("3c25402070616765206c", "jsp");
@@ -113,8 +112,9 @@ public class FileTypeFilter {
      */
 
     private static String getFileType(MultipartFile file) throws Exception {
+        //update-begin-author:liusq date:20230404 for: [issue/4672]方法造成的文件被占用，注释掉此方法tomcat就能自动清理掉临时文件
         String fileExtendName = null;
-        InputStream is;
+        InputStream is = null;
         try {
             //is = new FileInputStream(file);
             is = file.getInputStream();
@@ -131,16 +131,29 @@ public class FileTypeFilter {
                     break;
                 }
             }
+            log.info("-----获取到的指定文件类型------"+fileExtendName);
             // 如果不是上述类型，则判断扩展名
             if (StringUtils.isBlank(fileExtendName)) {
                 String fileName = file.getOriginalFilename();
+                // 如果无扩展名，则直接返回空串
+                if (-1 == fileName.indexOf(".")) {
+                    return "";
+                }
+                // 如果有扩展名，则返回扩展名
                 return getFileTypeBySuffix(fileName);
             }
+            log.info("-----最終的文件类型------"+fileExtendName);
             is.close();
             return fileExtendName;
-        } catch (Exception exception) {
-            throw new Exception(exception.getMessage(), exception);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return "";
+        }finally {
+            if (is != null) {
+                is.close();
+            }
         }
+        //update-end-author:liusq date:20230404 for: [issue/4672]方法造成的文件被占用，注释掉此方法tomcat就能自动清理掉临时文件
     }
 
     /**

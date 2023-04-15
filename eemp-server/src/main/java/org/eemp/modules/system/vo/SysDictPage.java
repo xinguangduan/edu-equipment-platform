@@ -1,11 +1,11 @@
 package org.eemp.modules.system.vo;
 
-import java.util.List;
-
 import lombok.Data;
 import org.eemp.modules.system.entity.SysDictItem;
 import org.jeecgframework.poi.excel.annotation.Excel;
 import org.jeecgframework.poi.excel.annotation.ExcelCollection;
+
+import java.util.List;
 
 /**
  * @Description: 系统字典分页

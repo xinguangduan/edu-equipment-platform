@@ -1,13 +1,12 @@
 package org.eemp.common.api.dto.message;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Map;
 
-import lombok.Data;
-
 /**
  * 带业务参数的模板消息
- *
  * @author: jeecg-boot
  */
 @Data
@@ -25,13 +24,12 @@ public class BusTemplateMessageDTO extends TemplateMessageDTO implements Seriali
      */
     private String busId;
 
-    public BusTemplateMessageDTO() {
+    public BusTemplateMessageDTO(){
 
     }
 
     /**
      * 构造 带业务参数的模板消息
-     *
      * @param fromUser
      * @param toUser
      * @param title
@@ -40,7 +38,7 @@ public class BusTemplateMessageDTO extends TemplateMessageDTO implements Seriali
      * @param busType
      * @param busId
      */
-    public BusTemplateMessageDTO(String fromUser, String toUser, String title, Map<String, String> templateParam, String templateCode, String busType, String busId) {
+    public BusTemplateMessageDTO(String fromUser, String toUser, String title, Map<String, String> templateParam, String templateCode, String busType, String busId){
         super(fromUser, toUser, title, templateParam, templateCode);
         this.busId = busId;
         this.busType = busType;

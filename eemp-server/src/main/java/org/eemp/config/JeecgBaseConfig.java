@@ -9,16 +9,14 @@ import org.springframework.stereotype.Component;
 
 /**
  * 加载项目配置
- *
  * @author: jeecg-boot
  */
-@Component("eempBaseConfig")
-@ConfigurationProperties(prefix = "eemp")
+@Component("jeecgBaseConfig")
+@ConfigurationProperties(prefix = "jeecg")
 public class JeecgBaseConfig {
     /**
      * 签名密钥串(字典等敏感接口)
-     *
-     * @TODO 降低使用成本加的默认值, 实际以 yml配置 为准
+     * @TODO 降低使用成本加的默认值,实际以 yml配置 为准
      */
     private String signatureSecret = "dd05f1c54d63749eda95f9fa6d49v442a";
     /**
@@ -26,7 +24,7 @@ public class JeecgBaseConfig {
      */
     private String signUrls;
     /**
-     * 上传模式
+     * 上传模式  
      * 本地：local\Minio：minio\阿里云：alioss
      */
     private String uploadType;
@@ -94,7 +92,6 @@ public class JeecgBaseConfig {
     public void setDomainUrl(DomainUrl domainUrl) {
         this.domainUrl = domainUrl;
     }
-
     public String getSignUrls() {
         return signUrls;
     }
@@ -110,5 +107,13 @@ public class JeecgBaseConfig {
 
     public void setFileViewDomain(String fileViewDomain) {
         this.fileViewDomain = fileViewDomain;
+    }
+
+    public String getUploadType() {
+        return uploadType;
+    }
+
+    public void setUploadType(String uploadType) {
+        this.uploadType = uploadType;
     }
 }

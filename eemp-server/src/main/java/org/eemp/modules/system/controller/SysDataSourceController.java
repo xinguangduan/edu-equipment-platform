@@ -1,11 +1,6 @@
 package org.eemp.modules.system.controller;
 
 
-import java.util.Arrays;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -17,17 +12,25 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.config.mybatis.TenantContext;
 import org.eemp.common.exception.JeecgBootException;
 import org.eemp.common.system.base.controller.JeecgController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.dynamic.db.DataSourceCachePool;
+import org.eemp.common.util.oConvertUtils;
 import org.eemp.common.util.security.JdbcSecurityUtil;
+import org.eemp.config.mybatis.MybatisPlusSaasConfig;
 import org.eemp.modules.system.entity.SysDataSource;
 import org.eemp.modules.system.service.ISysDataSourceService;
 import org.eemp.modules.system.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Description: 多数据源管理
@@ -56,14 +59,19 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
      */
     @AutoLog(value = "多数据源管理-分页列表查询")
     @ApiOperation(value = "多数据源管理-分页列表查询", notes = "多数据源管理-分页列表查询")
-    //@RequiresRoles("admin")
+    //@RequiresPermissions("system:datasource:list")
     @GetMapping(value = "/list")
     public Result<?> queryPageList(
             SysDataSource sysDataSource,
             @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
             @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
-            HttpServletRequest req
-    ) {
+            HttpServletRequest req) {
+        //------------------------------------------------------------------------------------------------
+        //是否开启系统管理模块的多租户数据隔离【SAAS多租户模式】
+        if(MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL){
+            sysDataSource.setTenantId(oConvertUtils.getInt(TenantContext.getTenant(), 0));
+        }
+        //------------------------------------------------------------------------------------------------
         QueryWrapper<SysDataSource> queryWrapper = QueryGenerator.initQueryWrapper(sysDataSource, req.getParameterMap());
         Page<SysDataSource> page = new Page<>(pageNo, pageSize);
         IPage<SysDataSource> pageList = sysDataSourceService.page(page, queryWrapper);
@@ -72,6 +80,13 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
 
     @GetMapping(value = "/options")
     public Result<?> queryOptions(SysDataSource sysDataSource, HttpServletRequest req) {
+        //------------------------------------------------------------------------------------------------
+        //是否开启系统管理模块的多租户数据隔离【SAAS多租户模式】
+        if(MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL){
+            sysDataSource.setTenantId(oConvertUtils.getInt(TenantContext.getTenant(), 0));
+        }
+        //------------------------------------------------------------------------------------------------
+        
         QueryWrapper<SysDataSource> queryWrapper = QueryGenerator.initQueryWrapper(sysDataSource, req.getParameterMap());
         List<SysDataSource> pageList = sysDataSourceService.list(queryWrapper);
         JSONArray array = new JSONArray(pageList.size());
@@ -98,7 +113,7 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
         //update-begin-author:taoyan date:2022-8-10 for: jdbc连接地址漏洞问题
         try {
             JdbcSecurityUtil.validate(sysDataSource.getDbUrl());
-        } catch (org.eemp.common.exception.JeecgBootException e) {
+        }catch (JeecgBootException e){
             log.error(e.toString());
             return Result.error("操作失败：" + e.getMessage());
         }
@@ -114,7 +129,7 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
      */
     @AutoLog(value = "多数据源管理-编辑")
     @ApiOperation(value = "多数据源管理-编辑", notes = "多数据源管理-编辑")
-    @RequestMapping(value = "/edit", method = {RequestMethod.PUT, RequestMethod.POST})
+    @RequestMapping(value = "/edit", method ={RequestMethod.PUT, RequestMethod.POST})
     public Result<?> edit(@RequestBody SysDataSource sysDataSource) {
         //update-begin-author:taoyan date:2022-8-10 for: jdbc连接地址漏洞问题
         try {
@@ -151,7 +166,7 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
     @DeleteMapping(value = "/deleteBatch")
     public Result<?> deleteBatch(@RequestParam(name = "ids") String ids) {
         List<String> idList = Arrays.asList(ids.split(","));
-        idList.forEach(item -> {
+        idList.forEach(item->{
             SysDataSource sysDataSource = sysDataSourceService.getById(item);
             DataSourceCachePool.removeCache(sysDataSource.getCode());
         });
@@ -172,7 +187,7 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
         SysDataSource sysDataSource = sysDataSourceService.getById(id);
         //密码解密
         String dbPassword = sysDataSource.getDbPassword();
-        if (StringUtils.isNotBlank(dbPassword)) {
+        if(StringUtils.isNotBlank(dbPassword)){
             String decodedStr = SecurityUtil.jiemi(dbPassword);
             sysDataSource.setDbPassword(decodedStr);
         }
@@ -187,6 +202,12 @@ public class SysDataSourceController extends JeecgController<SysDataSource, ISys
      */
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, SysDataSource sysDataSource) {
+        //------------------------------------------------------------------------------------------------
+        //是否开启系统管理模块的多租户数据隔离【SAAS多租户模式】
+        if(MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL){
+            sysDataSource.setTenantId(oConvertUtils.getInt(TenantContext.getTenant(), 0));
+        }
+        //------------------------------------------------------------------------------------------------
         return super.exportXls(request, sysDataSource, SysDataSource.class, "多数据源管理");
     }
 

@@ -2,12 +2,15 @@ package org.eemp.modules.system.vo;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 import org.eemp.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.Data;
+
 /**
+ *
  * @Author: chenli
  * @Date: 2020-06-07
  * @Version: V1.0

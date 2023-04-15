@@ -1,9 +1,5 @@
 package org.eemp.config.shiro;
 
-import java.util.Set;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -14,16 +10,21 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.eemp.common.api.CommonAPI;
+import org.eemp.common.constant.CacheConstant;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.system.util.JwtUtil;
 import org.eemp.common.system.vo.LoginUser;
+import org.eemp.common.util.RedisUtil;
 import org.eemp.common.util.SpringContextUtils;
 import org.eemp.common.util.TokenUtils;
 import org.eemp.common.util.oConvertUtils;
-import org.eemp.common.config.TenantContext;
-import org.eemp.common.util.RedisUtil;
+import org.eemp.config.mybatis.TenantContext;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Set;
 
 /**
  * @Description: 用户登录鉴权和获取用户授权
@@ -34,7 +35,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class ShiroRealm extends AuthorizingRealm {
-    @Lazy
+	@Lazy
     @Resource
     private CommonAPI commonApi;
 
@@ -94,7 +95,7 @@ public class ShiroRealm extends AuthorizingRealm {
         String token = (String) auth.getCredentials();
         if (token == null) {
             HttpServletRequest req = SpringContextUtils.getHttpServletRequest();
-            log.info("————————身份认证失败——————————IP地址:  " + oConvertUtils.getIpAddrByRequest(req) + "，URL:" + req.getRequestURI());
+            log.info("————————身份认证失败——————————IP地址:  "+ oConvertUtils.getIpAddrByRequest(req) +"，URL:"+req.getRequestURI());
             throw new AuthenticationException("token为空!");
         }
         // 校验token有效性
@@ -102,7 +103,7 @@ public class ShiroRealm extends AuthorizingRealm {
         try {
             loginUser = this.checkUserTokenIsEffect(token);
         } catch (AuthenticationException e) {
-            JwtUtil.responseError(SpringContextUtils.getHttpServletResponse(), 401, e.getMessage());
+            JwtUtil.responseError(SpringContextUtils.getHttpServletResponse(),401,e.getMessage());
             e.printStackTrace();
             return null;
         }
@@ -122,7 +123,7 @@ public class ShiroRealm extends AuthorizingRealm {
         }
 
         // 查询用户信息
-        log.debug("———校验token是否有效————checkUserTokenIsEffect——————— " + token);
+        log.debug("———校验token是否有效————checkUserTokenIsEffect——————— "+ token);
         LoginUser loginUser = TokenUtils.getLoginUser(username, commonApi, redisUtil);
         //LoginUser loginUser = commonApi.getUserByName(username);
         if (loginUser == null) {
@@ -138,14 +139,37 @@ public class ShiroRealm extends AuthorizingRealm {
         }
         //update-begin-author:taoyan date:20210609 for:校验用户的tenant_id和前端传过来的是否一致
         String userTenantIds = loginUser.getRelTenantIds();
-        if (oConvertUtils.isNotEmpty(userTenantIds)) {
+        if(oConvertUtils.isNotEmpty(userTenantIds)){
             String contextTenantId = TenantContext.getTenant();
-            String str = "0";
-            if (oConvertUtils.isNotEmpty(contextTenantId) && !str.equals(contextTenantId)) {
+            log.debug("登录租户：" + contextTenantId);
+            log.debug("用户拥有那些租户：" + userTenantIds);
+             //登录用户无租户，前端header中租户ID值为 0
+            String str ="0";
+            if(oConvertUtils.isNotEmpty(contextTenantId) && !str.equals(contextTenantId)){
                 //update-begin-author:taoyan date:20211227 for: /issues/I4O14W 用户租户信息变更判断漏洞
                 String[] arr = userTenantIds.split(",");
-                if (!oConvertUtils.isIn(contextTenantId, arr)) {
-                    throw new AuthenticationException("用户租户信息变更,请重新登陆!");
+                if(!oConvertUtils.isIn(contextTenantId, arr)){
+                    boolean isAuthorization = false;
+                    //========================================================================
+                    // 查询用户信息（如果租户不匹配从数据库中重新查询一次用户信息）
+                    String loginUserKey = CacheConstant.SYS_USERS_CACHE + "::" + username;
+                    redisUtil.del(loginUserKey);
+                    LoginUser loginUserFromDb = commonApi.getUserByName(username);
+                    if (oConvertUtils.isNotEmpty(loginUserFromDb.getRelTenantIds())) {
+                        String[] newArray = loginUserFromDb.getRelTenantIds().split(",");
+                        if (oConvertUtils.isIn(contextTenantId, newArray)) { 
+                            isAuthorization = true;
+                        }
+                    }
+                    //========================================================================
+
+                    //*********************************************
+                    if(!isAuthorization){
+                        log.info("租户异常——登录租户：" + contextTenantId);
+                        log.info("租户异常——用户拥有租户组：" + userTenantIds);
+                        throw new AuthenticationException("登录租户授权变更，请重新登陆!");
+                    }
+                    //*********************************************
                 }
                 //update-end-author:taoyan date:20211227 for: /issues/I4O14W 用户租户信息变更判断漏洞
             }
@@ -161,7 +185,7 @@ public class ShiroRealm extends AuthorizingRealm {
      * 3、当该用户这次请求jwt生成的token值已经超时，但该token对应cache中的k还是存在，则表示该用户一直在操作只是JWT的token失效了，程序会给token对应的k映射的v值重新生成JWTToken并覆盖v值，该缓存生命周期重新计算
      * 4、当该用户这次请求jwt在生成的token值已经超时，并在cache中不存在对应的k，则表示该用户账户空闲超时，返回用户信息已失效，请重新登录。
      * 注意： 前端请求Header中设置Authorization保持不变，校验有效性以缓存中的token为准。
-     * 用户过期时间 = Jwt有效时间 * 2。
+     *       用户过期时间 = Jwt有效时间 * 2。
      *
      * @param userName
      * @param passWord
@@ -175,8 +199,8 @@ public class ShiroRealm extends AuthorizingRealm {
                 String newAuthorization = JwtUtil.sign(userName, passWord);
                 // 设置超时时间
                 redisUtil.set(CommonConstant.PREFIX_USER_TOKEN + token, newAuthorization);
-                redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME * 2 / 1000);
-                log.debug("——————————用户在线操作，更新token保证不掉线—————————jwtTokenRefresh——————— " + token);
+                redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME *2 / 1000);
+                log.debug("——————————用户在线操作，更新token保证不掉线—————————jwtTokenRefresh——————— "+ token);
             }
             //update-begin--Author:scott  Date:20191005  for：解决每次请求，都重写redis中 token缓存问题
 //			else {

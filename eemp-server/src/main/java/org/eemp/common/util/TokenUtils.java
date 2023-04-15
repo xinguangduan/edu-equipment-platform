@@ -1,17 +1,17 @@
 package org.eemp.common.util;
 
-import javax.servlet.http.HttpServletRequest;
-
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.eemp.common.api.CommonAPI;
+import org.eemp.common.constant.CacheConstant;
 import org.eemp.common.constant.CommonConstant;
+import org.eemp.common.constant.TenantConstant;
 import org.eemp.common.desensitization.util.SensitiveInfoUtil;
 import org.eemp.common.exception.JeecgBoot401Exception;
 import org.eemp.common.system.util.JwtUtil;
 import org.eemp.common.system.vo.LoginUser;
-import org.eemp.common.constant.CacheConstant;
-import org.eemp.common.util.RedisUtil;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author scott
@@ -33,6 +33,34 @@ public class TokenUtils {
             token = request.getHeader("X-Access-Token");
         }
         return token;
+    }
+
+    /**
+     * 获取 request 里传递的 tenantId (租户ID)
+     *
+     * @param request
+     * @return
+     */
+    public static String getTenantIdByRequest(HttpServletRequest request) {
+        String tenantId = request.getParameter(TenantConstant.TENANT_ID);
+        if (tenantId == null) {
+            tenantId = oConvertUtils.getString(request.getHeader(CommonConstant.TENANT_ID));
+        }
+        return tenantId;
+    }
+
+    /**
+     * 获取 request 里传递的 lowAppId (低代码应用ID)
+     *
+     * @param request
+     * @return
+     */
+    public static String getLowAppIdByRequest(HttpServletRequest request) {
+        String lowAppId = request.getParameter(TenantConstant.FIELD_LOW_APP_ID);
+        if (lowAppId == null) {
+            lowAppId = oConvertUtils.getString(request.getHeader(TenantConstant.X_LOW_APP_ID));
+        }
+        return lowAppId;
     }
 
     /**
@@ -77,7 +105,6 @@ public class TokenUtils {
 
     /**
      * 刷新token（保证用户在线操作不掉线）
-     *
      * @param token
      * @param userName
      * @param passWord

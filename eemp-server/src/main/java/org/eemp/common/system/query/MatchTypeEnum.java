@@ -9,19 +9,19 @@ import org.eemp.common.util.oConvertUtils;
  */
 public enum MatchTypeEnum {
 
-    /**
-     * 查询链接规则 AND
-     */
+    /**查询链接规则 AND*/
     AND("AND"),
-    /**
-     * 查询链接规则 OR
-     */
+    /**查询链接规则 OR*/
     OR("OR");
 
     private String value;
 
     MatchTypeEnum(String value) {
         this.value = value;
+    }
+
+    public String getValue() {
+        return value;
     }
 
     public static MatchTypeEnum getByValue(Object value) {
@@ -41,9 +41,5 @@ public enum MatchTypeEnum {
             }
         }
         return null;
-    }
-
-    public String getValue() {
-        return value;
     }
 }

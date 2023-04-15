@@ -1,10 +1,5 @@
 package org.eemp.modules.system.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -28,6 +23,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @Description: 系统评论回复表
  * @Author: jeecg-boot
@@ -50,7 +50,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
     /**
      * 在线预览文件地址
      */
-    @Value("${eemp.file-view-domain}/onlinePreview")
+    @Value("${jeecg.file-view-domain}/onlinePreview")
     private String onlinePreviewDomain;
 
     /**
@@ -97,7 +97,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
             sysCommentService.saveOneFileComment(request);
             return Result.OK("success");
         } catch (Exception e) {
-            log.error("评论文件上传失败", e.getMessage());
+            log.error("评论文件上传失败：{}", e.getMessage());
             return Result.error("操作失败," + e.getMessage());
         }
     }
@@ -106,19 +106,19 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
     @DeleteMapping(value = "/deleteOne")
     public Result<String> deleteOne(@RequestParam(name = "id", required = true) String id) {
         SysComment comment = sysCommentService.getById(id);
-        if (comment == null) {
+        if(comment==null){
             return Result.error("该评论已被删除！");
         }
         LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
         String username = sysUser.getUsername();
         String admin = "admin";
         //除了admin外 其他人只能删除自己的评论
-        if ((!admin.equals(username)) && !username.equals(comment.getCreateBy())) {
+        if((!admin.equals(username)) && !username.equals(comment.getCreateBy())){
             return Result.error("只能删除自己的评论！");
         }
         sysCommentService.deleteOne(id);
         //删除评论添加日志
-        String logContent = "删除了评论， " + comment.getCommentContent();
+        String logContent = "删除了评论， "+ comment.getCommentContent();
         DataLogDTO dataLog = new DataLogDTO(comment.getTableName(), comment.getTableDataId(), logContent, CommonConstant.DATA_LOG_TYPE_COMMENT);
         sysBaseAPI.saveDataLog(dataLog);
         return Result.OK("删除成功!");
@@ -127,7 +127,6 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
 
     /**
      * 获取文件预览的地址
-     *
      * @return
      */
     @GetMapping(value = "/getFileViewDomain")
@@ -145,7 +144,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
      * @param req
      * @return
      */
-    ////@AutoLog(value = "系统评论回复表-分页列表查询")
+    //@AutoLog(value = "系统评论回复表-分页列表查询")
     @ApiOperation(value = "系统评论回复表-分页列表查询", notes = "系统评论回复表-分页列表查询")
     @GetMapping(value = "/list")
     public Result<IPage<SysComment>> queryPageList(SysComment sysComment,
@@ -166,7 +165,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
      * @return
      */
     @ApiOperation(value = "系统评论回复表-添加", notes = "系统评论回复表-添加")
-    //@RequiresPermissions("org.eemp.modules:sys_comment:add")
+    //@RequiresPermissions("org.jeecg.modules.demo:sys_comment:add")
     @PostMapping(value = "/add")
     public Result<String> add(@RequestBody SysComment sysComment) {
         sysCommentService.save(sysComment);
@@ -181,7 +180,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
      */
     //@AutoLog(value = "系统评论回复表-编辑")
     @ApiOperation(value = "系统评论回复表-编辑", notes = "系统评论回复表-编辑")
-    //@RequiresPermissions("org.eemp.modules:sys_comment:edit")
+    //@RequiresPermissions("org.jeecg.modules.demo:sys_comment:edit")
     @RequestMapping(value = "/edit", method = {RequestMethod.PUT, RequestMethod.POST})
     public Result<String> edit(@RequestBody SysComment sysComment) {
         sysCommentService.updateById(sysComment);
@@ -196,7 +195,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
      */
     //@AutoLog(value = "系统评论回复表-通过id删除")
     @ApiOperation(value = "系统评论回复表-通过id删除", notes = "系统评论回复表-通过id删除")
-    //@RequiresPermissions("org.eemp.modules:sys_comment:delete")
+    //@RequiresPermissions("org.jeecg.modules.demo:sys_comment:delete")
     @DeleteMapping(value = "/delete")
     public Result<String> delete(@RequestParam(name = "id", required = true) String id) {
         sysCommentService.removeById(id);
@@ -211,7 +210,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
      */
     //@AutoLog(value = "系统评论回复表-批量删除")
     @ApiOperation(value = "系统评论回复表-批量删除", notes = "系统评论回复表-批量删除")
-    //@RequiresPermissions("org.eemp.modules:sys_comment:deleteBatch")
+    //@RequiresPermissions("org.jeecg.modules.demo:sys_comment:deleteBatch")
     @DeleteMapping(value = "/deleteBatch")
     public Result<String> deleteBatch(@RequestParam(name = "ids", required = true) String ids) {
         this.sysCommentService.removeByIds(Arrays.asList(ids.split(",")));
@@ -224,7 +223,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
      * @param id
      * @return
      */
-    ////@AutoLog(value = "系统评论回复表-通过id查询")
+    //@AutoLog(value = "系统评论回复表-通过id查询")
     @ApiOperation(value = "系统评论回复表-通过id查询", notes = "系统评论回复表-通过id查询")
     @GetMapping(value = "/queryById")
     public Result<SysComment> queryById(@RequestParam(name = "id", required = true) String id) {
@@ -241,7 +240,7 @@ public class SysCommentController extends JeecgController<SysComment, ISysCommen
      * @param request
      * @param sysComment
      */
-    //@RequiresPermissions("org.eemp.modules:sys_comment:exportXls")
+    //@RequiresPermissions("org.jeecg.modules.demo:sys_comment:exportXls")
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, SysComment sysComment) {
         return super.exportXls(request, sysComment, SysComment.class, "系统评论回复表");

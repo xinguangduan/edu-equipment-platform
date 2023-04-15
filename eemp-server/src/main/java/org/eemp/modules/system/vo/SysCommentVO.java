@@ -1,14 +1,14 @@
 package org.eemp.modules.system.vo;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.eemp.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @Description: VO 评论信息+文件信息
@@ -58,7 +58,7 @@ public class SysCommentVO implements Serializable {
      */
     @Dict(dictTable = "sys_user", dicCode = "id", dicText = "realname")
     private String toUserId;
-
+    
     /**
      * 评论id(允许为空，不为空时，则为回复)
      */
@@ -83,7 +83,7 @@ public class SysCommentVO implements Serializable {
      * 被回复消息人的头像
      */
     private String toUserAvatar;
-
+    
     public SysCommentVO() {
 
     }

@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 查询多个字典时用到
- *
  * @author: jeecg-boot
  */
 @Data

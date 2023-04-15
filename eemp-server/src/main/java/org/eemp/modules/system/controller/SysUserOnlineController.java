@@ -1,11 +1,5 @@
 package org.eemp.modules.system.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Resource;
-
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -26,6 +20,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @Description: 在线用户
  * @Author: chenli
@@ -38,11 +38,11 @@ import org.springframework.web.bind.annotation.*;
 public class SysUserOnlineController {
 
     @Autowired
+    private RedisUtil redisUtil;
+    @Autowired
     public RedisTemplate redisTemplate;
     @Autowired
     public ISysUserService userService;
-    @Autowired
-    private RedisUtil redisUtil;
     @Autowired
     private SysBaseApiImpl sysBaseApi;
 
@@ -50,12 +50,12 @@ public class SysUserOnlineController {
     private BaseCommonService baseCommonService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Result<Page<SysUserOnlineVO>> list(@RequestParam(name = "username", required = false) String username,
-                                              @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
+    public Result<Page<SysUserOnlineVO>> list(@RequestParam(name="username", required=false) String username,
+                                              @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,@RequestParam(name="pageSize", defaultValue="10") Integer pageSize) {
         Collection<String> keys = redisTemplate.keys(CommonConstant.PREFIX_USER_TOKEN + "*");
         List<SysUserOnlineVO> onlineList = new ArrayList<SysUserOnlineVO>();
         for (String key : keys) {
-            String token = (String) redisUtil.get(key);
+            String token = (String)redisUtil.get(key);
             if (StringUtils.isNotEmpty(token)) {
                 SysUserOnlineVO online = new SysUserOnlineVO();
                 online.setToken(token);
@@ -64,12 +64,12 @@ public class SysUserOnlineController {
                 if (loginUser != null) {
                     //update-begin---author:wangshuai ---date:20220104  for：[JTC-382]在线用户查询无效------------
                     //验证用户名是否与传过来的用户名相同
-                    boolean isMatchUsername = true;
+                    boolean isMatchUsername=true;
                     //判断用户名是否为空，并且当前循环的用户不包含传过来的用户名，那么就设成false
-                    if (oConvertUtils.isNotEmpty(username) && !loginUser.getUsername().contains(username)) {
+                    if(oConvertUtils.isNotEmpty(username) && !loginUser.getUsername().contains(username)){
                         isMatchUsername = false;
                     }
-                    if (isMatchUsername) {
+                    if(isMatchUsername){
                         BeanUtils.copyProperties(loginUser, online);
                         onlineList.add(online);
                     }
@@ -103,17 +103,17 @@ public class SysUserOnlineController {
     /**
      * 强退用户
      */
-    @RequestMapping(value = "/forceLogout", method = RequestMethod.POST)
+    @RequestMapping(value = "/forceLogout",method = RequestMethod.POST)
     public Result<Object> forceLogout(@RequestBody SysUserOnlineVO online) {
         //用户退出逻辑
-        if (oConvertUtils.isEmpty(online.getToken())) {
+        if(oConvertUtils.isEmpty(online.getToken())) {
             return Result.error("退出登录失败！");
         }
         String username = JwtUtil.getUsername(online.getToken());
         LoginUser sysUser = sysBaseApi.getUserByName(username);
-        if (sysUser != null) {
-            baseCommonService.addLog("强制: " + sysUser.getRealname() + "退出成功！", CommonConstant.LOG_TYPE_1, null, sysUser);
-            log.info(" 强制  " + sysUser.getRealname() + "退出成功！ ");
+        if(sysUser!=null) {
+            baseCommonService.addLog("强制: "+sysUser.getRealname()+"退出成功！", CommonConstant.LOG_TYPE_1, null,sysUser);
+            log.info(" 强制  "+sysUser.getRealname()+"退出成功！ ");
             //清空用户登录Token缓存
             redisUtil.del(CommonConstant.PREFIX_USER_TOKEN + online.getToken());
             //清空用户登录Shiro权限缓存
@@ -123,7 +123,7 @@ public class SysUserOnlineController {
             //调用shiro的logout
             SecurityUtils.getSubject().logout();
             return Result.ok("退出登录成功！");
-        } else {
+        }else {
             return Result.error("Token无效!");
         }
     }

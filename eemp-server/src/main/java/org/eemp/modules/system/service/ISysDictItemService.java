@@ -1,13 +1,13 @@
 package org.eemp.modules.system.service;
 
-import java.util.List;
-
-import com.baomidou.mybatisplus.extension.service.IService;
 import org.eemp.modules.system.entity.SysDictItem;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
- * 服务类
+ *  服务类
  * </p>
  *
  * @Author zhangweijian
@@ -17,7 +17,6 @@ public interface ISysDictItemService extends IService<SysDictItem> {
 
     /**
      * 通过字典id查询字典项
-     *
      * @param mainId 字典id
      * @return
      */

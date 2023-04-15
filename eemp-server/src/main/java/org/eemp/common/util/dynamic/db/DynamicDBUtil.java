@@ -1,10 +1,5 @@
 package org.eemp.common.util.dynamic.db;
 
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
@@ -14,6 +9,11 @@ import org.eemp.common.util.ReflectHelper;
 import org.eemp.common.util.oConvertUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Spring JDBC 实时数据库访问
@@ -52,7 +52,7 @@ public class DynamicDBUtil {
 
         log.info("******************************************");
         log.info("*                                        *");
-        log.info("*====【" + dbSource.getCode() + "】=====Druid连接池已启用 ====*");
+        log.info("*====【"+dbSource.getCode()+"】=====Druid连接池已启用 ====*");
         log.info("*                                        *");
         log.info("******************************************");
         return dataSource;
@@ -74,10 +74,10 @@ public class DynamicDBUtil {
             return cacheDbSource;
         } else {
             DruidDataSource dataSource = getJdbcDataSource(dbSource);
-            if (dataSource != null && dataSource.isEnable()) {
+            if(dataSource!=null && dataSource.isEnable()){
                 DataSourceCachePool.putCacheBasicDataSource(dbKey, dataSource);
-            } else {
-                throw new JeecgBootException("动态数据源连接失败，dbKey：" + dbKey);
+            }else{
+                throw new JeecgBootException("动态数据源连接失败，dbKey："+dbKey);
             }
             log.info("--------getDbSourceBydbKey------------------创建DB数据库连接-------------------");
             return dataSource;
@@ -111,7 +111,6 @@ public class DynamicDBUtil {
 
     /**
      * 根据数据源获取NamedParameterJdbcTemplate
-     *
      * @param dbKey
      * @return
      */
@@ -232,20 +231,18 @@ public class DynamicDBUtil {
 
     /**
      * 查询数量
-     *
      * @param dbKey
      * @param sql
      * @param param
      * @return
      */
-    public static Map<String, Object> queryCount(String dbKey, String sql, Map<String, Object> param) {
+    public static Map<String, Object> queryCount(String dbKey, String sql, Map<String, Object> param){
         NamedParameterJdbcTemplate npJdbcTemplate = getNamedParameterJdbcTemplate(dbKey);
         return npJdbcTemplate.queryForMap(sql, param);
     }
 
     /**
      * 查询列表数据
-     *
      * @param dbKey
      * @param sql
      * @param param
@@ -277,9 +274,8 @@ public class DynamicDBUtil {
 
     /**
      * 此方法只能返回单列，不能返回实体类
-     *
      * @param dbKey 数据源的key
-     * @param sql   sal
+     * @param sql sal
      * @param clazz 类
      * @param param 参数
      * @param <T>

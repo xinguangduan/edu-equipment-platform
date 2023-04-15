@@ -6,6 +6,7 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -30,7 +31,7 @@ public class SysDict implements Serializable {
      */
     @TableId(type = IdType.ASSIGN_ID)
     private String id;
-
+    
     /**
      * [预留字段，暂时无用]
      * 字典类型,0 string,1 number类型,2 boolean
@@ -38,7 +39,7 @@ public class SysDict implements Serializable {
      * 默认为string类型
      */
     private Integer type;
-
+    
     /**
      * 字典名称
      */
@@ -80,5 +81,10 @@ public class SysDict implements Serializable {
      */
     private Date updateTime;
 
+    /**租户ID*/
+    private Integer tenantId;
+    
+    /** 关联的低代码应用ID */
+    private String lowAppId;
 
 }

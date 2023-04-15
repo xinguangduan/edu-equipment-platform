@@ -14,7 +14,6 @@ public interface ISysDataSourceService extends IService<SysDataSource> {
 
     /**
      * 添加数据源
-     *
      * @param sysDataSource
      * @return
      */
@@ -22,7 +21,6 @@ public interface ISysDataSourceService extends IService<SysDataSource> {
 
     /**
      * 修改数据源
-     *
      * @param sysDataSource
      * @return
      */
@@ -31,7 +29,6 @@ public interface ISysDataSourceService extends IService<SysDataSource> {
 
     /**
      * 删除数据源
-     *
      * @param id
      * @return
      */

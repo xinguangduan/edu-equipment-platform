@@ -2,7 +2,6 @@ package org.eemp.modules.monitor.exception;
 
 /**
  * Redis 连接异常
- *
  * @author: jeecg-boot
  */
 public class RedisConnectException extends Exception {

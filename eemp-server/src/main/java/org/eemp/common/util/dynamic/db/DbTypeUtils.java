@@ -1,22 +1,20 @@
 package org.eemp.common.util.dynamic.db;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.annotation.DbType;
 import org.eemp.common.constant.DataBaseConstant;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 数据库类型判断
  * 【有些数据库引擎是一样的，以达到复用目的】
- *
  * @author: jeecg-boot
  */
 public class DbTypeUtils {
 
     public static Map<String, String> dialectMap = new HashMap<String, String>();
-
-    static {
+    static{
         dialectMap.put("mysql", "org.hibernate.dialect.MySQL5InnoDBDialect");
         // mariadb数据库 1  --
         dialectMap.put("mariadb", "org.hibernate.dialect.MariaDBDialect");
@@ -31,7 +29,7 @@ public class DbTypeUtils {
         // HSQL数据库  1
         dialectMap.put("hsql", "org.hibernate.dialect.HSQLDialect");
         //SQLite数据库 应用平台mobile
-        dialectMap.put("sqlite", "org.jeecg.modules.online.config.dialect.SQLiteDialect");
+        dialectMap.put("sqlite", "org.eemp.modules.online.config.dialect.SQLiteDialect");
         //PostgreSQL数据库1  --
         dialectMap.put("postgresql", "org.hibernate.dialect.PostgreSQLDialect");
         dialectMap.put("sqlserver2005", "org.hibernate.dialect.SQLServer2005Dialect");
@@ -79,34 +77,33 @@ public class DbTypeUtils {
     }
 
 
+
     /**
-     * 根据枚举类 获取数据库类型的字符串
-     *
+     *  根据枚举类 获取数据库类型的字符串
      * @param dbType
      * @return
      */
-    public static String getDbTypeString(DbType dbType) {
-        if (DbType.DB2.equals(dbType)) {
+    public static String getDbTypeString(DbType dbType){
+        if(DbType.DB2.equals(dbType)){
             return DataBaseConstant.DB_TYPE_DB2;
-        } else if (DbType.HSQL.equals(dbType)) {
+        }else if(DbType.HSQL.equals(dbType)){
             return DataBaseConstant.DB_TYPE_HSQL;
-        } else if (dbTypeIsOracle(dbType)) {
+        }else if(dbTypeIsOracle(dbType)){
             return DataBaseConstant.DB_TYPE_ORACLE;
-        } else if (dbTypeIsSqlServer(dbType)) {
+        }else if(dbTypeIsSqlServer(dbType)){
             return DataBaseConstant.DB_TYPE_SQLSERVER;
-        } else if (dbTypeIsPostgre(dbType)) {
+        }else if(dbTypeIsPostgre(dbType)){
             return DataBaseConstant.DB_TYPE_POSTGRESQL;
         }
         return DataBaseConstant.DB_TYPE_MYSQL;
     }
 
     /**
-     * 根据枚举类 获取数据库方言字符串
-     *
+     *  根据枚举类 获取数据库方言字符串
      * @param dbType
      * @return
      */
-    public static String getDbDialect(DbType dbType) {
+    public static String getDbDialect(DbType dbType){
         return dialectMap.get(dbType.getDb());
     }
 

@@ -9,63 +9,63 @@ import org.eemp.common.util.DateUtils;
  * @author: jeecg-boot
  */
 public class SysUserCacheInfo {
+	
+	private String sysUserCode;
+	
+	private String sysUserName;
+	
+	private String sysOrgCode;
+	
+	private List<String> sysMultiOrgCode;
+	
+	private boolean oneDepart;
+	
+	public boolean isOneDepart() {
+		return oneDepart;
+	}
 
-    private String sysUserCode;
+	public void setOneDepart(boolean oneDepart) {
+		this.oneDepart = oneDepart;
+	}
 
-    private String sysUserName;
+	public String getSysDate() {
+		return DateUtils.formatDate();
+	}
 
-    private String sysOrgCode;
+	public String getSysTime() {
+		return DateUtils.now();
+	}
 
-    private List<String> sysMultiOrgCode;
+	public String getSysUserCode() {
+		return sysUserCode;
+	}
 
-    private boolean oneDepart;
+	public void setSysUserCode(String sysUserCode) {
+		this.sysUserCode = sysUserCode;
+	}
 
-    public boolean isOneDepart() {
-        return oneDepart;
-    }
+	public String getSysUserName() {
+		return sysUserName;
+	}
 
-    public void setOneDepart(boolean oneDepart) {
-        this.oneDepart = oneDepart;
-    }
+	public void setSysUserName(String sysUserName) {
+		this.sysUserName = sysUserName;
+	}
 
-    public String getSysDate() {
-        return DateUtils.formatDate();
-    }
+	public String getSysOrgCode() {
+		return sysOrgCode;
+	}
 
-    public String getSysTime() {
-        return DateUtils.now();
-    }
+	public void setSysOrgCode(String sysOrgCode) {
+		this.sysOrgCode = sysOrgCode;
+	}
 
-    public String getSysUserCode() {
-        return sysUserCode;
-    }
+	public List<String> getSysMultiOrgCode() {
+		return sysMultiOrgCode;
+	}
 
-    public void setSysUserCode(String sysUserCode) {
-        this.sysUserCode = sysUserCode;
-    }
-
-    public String getSysUserName() {
-        return sysUserName;
-    }
-
-    public void setSysUserName(String sysUserName) {
-        this.sysUserName = sysUserName;
-    }
-
-    public String getSysOrgCode() {
-        return sysOrgCode;
-    }
-
-    public void setSysOrgCode(String sysOrgCode) {
-        this.sysOrgCode = sysOrgCode;
-    }
-
-    public List<String> getSysMultiOrgCode() {
-        return sysMultiOrgCode;
-    }
-
-    public void setSysMultiOrgCode(List<String> sysMultiOrgCode) {
-        this.sysMultiOrgCode = sysMultiOrgCode;
-    }
+	public void setSysMultiOrgCode(List<String> sysMultiOrgCode) {
+		this.sysMultiOrgCode = sysMultiOrgCode;
+	}
 
 }

@@ -1,12 +1,5 @@
 package org.eemp.modules.system.service.impl;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.servlet.http.HttpServletRequest;
-
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -38,6 +31,13 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @Description: 系统评论回复表
  * @Author: jeecg-boot
@@ -47,22 +47,28 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Service
 public class SysCommentServiceImpl extends ServiceImpl<SysCommentMapper, SysComment> implements ISysCommentService {
 
+    @Autowired
+    private ISysBaseAPI sysBaseApi;
+
+    @Autowired
+    private SysFormFileMapper sysFormFileMapper;
+
+    @Autowired
+    private SysFilesMapper sysFilesMapper;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
+    @Value(value = "${jeecg.path.upload}")
+    private String uploadpath;
+
+    @Value(value = "${jeecg.uploadType}")
+    private String uploadType;
+
     /**
      * sysFormFile中的表名
      */
     private static final String SYS_FORM_FILE_TABLE_NAME = "sys_comment";
-    @Autowired
-    private ISysBaseAPI sysBaseApi;
-    @Autowired
-    private SysFormFileMapper sysFormFileMapper;
-    @Autowired
-    private SysFilesMapper sysFilesMapper;
-    @Autowired
-    private RedisUtil redisUtil;
-    @Value(value = "${eemp.path.upload}")
-    private String uploadpath;
-    @Value(value = "${eemp.uploadType}")
-    private String uploadType;
 
     @Override
     public List<SysCommentVO> queryFormCommentInfo(SysComment sysComment) {
@@ -72,33 +78,33 @@ public class SysCommentServiceImpl extends ServiceImpl<SysCommentMapper, SysComm
         List<SysCommentVO> list = this.baseMapper.queryCommentList(tableName, dataId);
         // 获取评论相关人员
         Set<String> personSet = new HashSet<>();
-        if (list != null && list.size() > 0) {
-            for (SysCommentVO vo : list) {
-                if (oConvertUtils.isNotEmpty(vo.getFromUserId())) {
-                    personSet.add(vo.getFromUserId());
+        if(list!=null && list.size()>0){
+            for(SysCommentVO vo: list){
+                if(oConvertUtils.isNotEmpty(vo.getFromUserId())){
+                    personSet.add(vo.getFromUserId());    
                 }
-                if (oConvertUtils.isNotEmpty(vo.getToUserId())) {
+                if(oConvertUtils.isNotEmpty(vo.getToUserId())){
                     personSet.add(vo.getToUserId());
                 }
             }
         }
-        if (personSet.size() > 0) {
+        if(personSet.size()>0){
             //获取用户信息
             Map<String, UserAvatar> userAvatarMap = queryUserAvatar(personSet);
-            for (SysCommentVO vo : list) {
+            for(SysCommentVO vo: list){
                 String formId = vo.getFromUserId();
                 String toId = vo.getToUserId();
                 // 设置头像、用户名
-                if (oConvertUtils.isNotEmpty(formId)) {
+                if(oConvertUtils.isNotEmpty(formId)){
                     UserAvatar fromUser = userAvatarMap.get(formId);
-                    if (fromUser != null) {
+                    if(fromUser!=null){
                         vo.setFromUserId_dictText(fromUser.getRealname());
                         vo.setFromUserAvatar(fromUser.getAvatar());
                     }
                 }
-                if (oConvertUtils.isNotEmpty(toId)) {
+                if(oConvertUtils.isNotEmpty(toId)){
                     UserAvatar toUser = userAvatarMap.get(toId);
-                    if (toUser != null) {
+                    if(toUser!=null){
                         vo.setToUserId_dictText(toUser.getRealname());
                         vo.setToUserAvatar(toUser.getAvatar());
                     }
@@ -116,7 +122,7 @@ public class SysCommentServiceImpl extends ServiceImpl<SysCommentMapper, SysComm
         //LOWCOD-2580 sys/common/upload接口存在任意文件上传漏洞
         if (oConvertUtils.isNotEmpty(bizPath)) {
             if (bizPath.contains(SymbolConstant.SPOT_SINGLE_SLASH) || bizPath.contains(SymbolConstant.SPOT_DOUBLE_BACKSLASH)) {
-                throw new org.eemp.common.exception.JeecgBootException("上传目录bizPath，格式非法！");
+                throw new JeecgBootException("上传目录bizPath，格式非法！");
             }
         }
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -280,19 +286,18 @@ public class SysCommentServiceImpl extends ServiceImpl<SysCommentMapper, SysComm
 
     /**
      * 查询用户信息
-     *
      * @param idSet
      * @return
      */
-    private Map<String, UserAvatar> queryUserAvatar(Set<String> idSet) {
+    private Map<String, UserAvatar> queryUserAvatar(Set<String> idSet){
         List<UserAvatar> list = this.baseMapper.queryUserAvatarList(idSet);
         Map<String, UserAvatar> map = new HashMap<>();
-        if (list != null && list.size() > 0) {
-            for (UserAvatar user : list) {
+        if(list!=null && list.size()>0){
+            for(UserAvatar user: list){
                 map.put(user.getId(), user);
             }
         }
         return map;
     }
-
+    
 }

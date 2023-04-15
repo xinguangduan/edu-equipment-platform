@@ -3,12 +3,14 @@ package org.eemp.modules.system.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.eemp.modules.system.entity.SysDict;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.eemp.modules.system.entity.SysDict;
 
 /**
  * <p>
@@ -26,9 +28,9 @@ public class SysDictTree implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String key;
-
-    private String title;
-
+	
+	private String title;
+	
     /**
      * id
      */
@@ -40,7 +42,7 @@ public class SysDictTree implements Serializable {
      * 默认为string类型
      */
     private Integer type;
-
+    
     /**
      * 字典名称
      */
@@ -80,15 +82,15 @@ public class SysDictTree implements Serializable {
      * 更新时间
      */
     private Date updateTime;
-
+    
     public SysDictTree(SysDict node) {
-        this.id = node.getId();
-        this.key = node.getId();
-        this.title = node.getDictName();
-        this.dictCode = node.getDictCode();
-        this.description = node.getDescription();
-        this.delFlag = node.getDelFlag();
-        this.type = node.getType();
-    }
-
+    	this.id = node.getId();
+		this.key = node.getId();
+		this.title = node.getDictName();
+		this.dictCode = node.getDictCode();
+		this.description = node.getDescription();
+		this.delFlag = node.getDelFlag();
+		this.type = node.getType();
+	}
+    
 }

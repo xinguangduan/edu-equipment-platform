@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -58,7 +59,7 @@ public class SysDictItem implements Serializable {
     /**
      * 排序
      */
-    @Excel(name = "排序", width = 15, type = 4)
+    @Excel(name = "排序", width = 15,type=4)
     private Integer sortOrder;
 
 

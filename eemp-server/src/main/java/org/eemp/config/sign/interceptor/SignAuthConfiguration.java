@@ -1,20 +1,19 @@
 package org.eemp.config.sign.interceptor;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.lang3.StringUtils;
+import org.eemp.common.util.PathMatcherUtil;
 import org.eemp.config.JeecgBaseConfig;
 import org.eemp.config.filter.RequestBodyReserveFilter;
-import org.eemp.common.util.PathMatcherUtil;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.annotation.Resource;
+
 /**
  * 签名 拦截器配置
- *
  * @author: jeecg-boot
  */
 @Configuration
@@ -44,12 +43,12 @@ public class SignAuthConfiguration implements WebMvcConfigurer {
 
     //update-begin-author:taoyan date:20220427 for: issues/I53J5E post请求X_SIGN签名拦截校验后报错, request body 为空
     @Bean
-    public RequestBodyReserveFilter requestBodyReserveFilter() {
+    public RequestBodyReserveFilter requestBodyReserveFilter(){
         return new RequestBodyReserveFilter();
     }
 
     @Bean
-    public FilterRegistrationBean reqBodyFilterRegistrationBean() {
+    public FilterRegistrationBean reqBodyFilterRegistrationBean(){
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(requestBodyReserveFilter());
         registration.setName("requestBodyReserveFilter");

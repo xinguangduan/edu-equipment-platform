@@ -13,36 +13,34 @@ import org.eemp.modules.monitor.exception.RedisConnectException;
  */
 public interface RedisService {
 
-    /**
-     * 获取 redis 的详细信息
-     *
-     * @return List
+	/**
+	 * 获取 redis 的详细信息
+	 *
+	 * @return List
      * @throws RedisConnectException
-     */
-    List<RedisInfo> getRedisInfo() throws RedisConnectException;
+	 */
+	List<RedisInfo> getRedisInfo() throws RedisConnectException;
 
-    /**
-     * 获取 redis key 数量
-     *
-     * @return Map
+	/**
+	 * 获取 redis key 数量
+	 *
+	 * @return Map
      * @throws RedisConnectException
-     */
-    Map<String, Object> getKeysSize() throws RedisConnectException;
+	 */
+	Map<String, Object> getKeysSize() throws RedisConnectException;
 
-    /**
-     * 获取 redis 内存信息
-     *
-     * @return Map
+	/**
+	 * 获取 redis 内存信息
+	 *
+	 * @return Map
      * @throws RedisConnectException
-     */
-    Map<String, Object> getMemoryInfo() throws RedisConnectException;
-
-    /**
-     * 获取 报表需要个redis信息
-     *
-     * @param type
-     * @return Map
+	 */
+	Map<String, Object> getMemoryInfo() throws RedisConnectException;
+	/**
+	 * 获取 报表需要个redis信息
+	 * @param type
+	 * @return Map
      * @throws RedisConnectException
-     */
-    Map<String, JSONArray> getMapForReport(String type) throws RedisConnectException;
+	 */
+	Map<String, JSONArray> getMapForReport(String type) throws RedisConnectException ;
 }
