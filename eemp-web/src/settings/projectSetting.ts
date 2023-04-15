@@ -102,7 +102,7 @@ const setting: ProjectConfig = {
     // Whether to show dom
     hidden: false,
     // 菜单宽度
-    menuWidth: 210,
+    menuWidth: 220,
     // 菜单模式
     mode: MenuModeEnum.INLINE,
     // 菜单类型
@@ -140,7 +140,7 @@ const setting: ProjectConfig = {
     // 是否显示折叠按钮
     showFold: true,
     // 标签页样式
-    theme: TabsThemeEnum.CARD,
+    theme: TabsThemeEnum.SMOOTH,
   },
 
   // 动画配置
@@ -167,7 +167,7 @@ const setting: ProjectConfig = {
   lockTime: 0,
 
   // 显示面包屑
-  showBreadCrumb: false,
+  showBreadCrumb: true,
 
   // 显示面包屑图标
   showBreadCrumbIcon: true,

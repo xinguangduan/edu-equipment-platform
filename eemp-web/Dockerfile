@@ -1,11 +1,11 @@
 FROM nginx
-MAINTAINER jeecgos@www.com
+MAINTAINER jeecgos@163.com
 VOLUME /tmp
 ENV LANG en_US.UTF-8
 RUN echo "server {  \
                       listen       80; \
-                      location   /eemp/ { \
-                      proxy_pass              http://jeecg-boot-system:8000/eemp/; \
+                      location   /jeecgboot/ { \
+                      proxy_pass              http://jeecg-boot-system:8080/jeecg-boot/; \
                       proxy_redirect          off; \
                       proxy_set_header        Host jeecg-boot-system; \
                       proxy_set_header        X-Real-IP \$remote_addr; \

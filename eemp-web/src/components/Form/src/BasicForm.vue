@@ -53,6 +53,7 @@
   import { basicProps } from './props';
   import { useDesign } from '/@/hooks/web/useDesign';
   import dayjs from 'dayjs';
+  import { useDebounceFn } from '@vueuse/core';
 
   export default defineComponent({
     name: 'BasicForm',
@@ -116,7 +117,15 @@
           const { defaultValue, component, componentProps } = schema;
           // handle date type
           if (defaultValue && dateItemType.includes(component)) {
-            const { valueFormat } = componentProps
+            //update-begin---author:wangshuai ---date:20230410  for：【issues/435】代码生成的日期控件赋默认值报错------------
+            let valueFormat:string = "";
+            if(componentProps){
+              valueFormat = componentProps?.valueFormat;
+            }
+            if(!valueFormat){
+              console.warn("未配置valueFormat,可能导致格式化错误！");
+            }
+            //update-end---author:wangshuai ---date:20230410  for：【issues/435】代码生成的日期控件赋默认值报错------------
             if (!Array.isArray(defaultValue)) {
               //update-begin---author:wangshuai ---date:20221124  for：[issues/215]列表页查询框（日期选择框）设置初始时间，一进入页面时，后台报日期转换类型错误的------------
               if(valueFormat){
@@ -239,13 +248,19 @@
         propsRef.value = deepMerge(unref(propsRef) || {}, formProps);
       }
 
+      //update-begin-author:taoyan date:2022-11-28 for: QQYUN-3121 【优化】表单视图问题#scott测试 8、此功能未实现
+      const onFormSubmitWhenChange = useDebounceFn(handleSubmit, 300);
       function setFormModel(key: string, value: any) {
         formModel[key] = value;
         const { validateTrigger } = unref(getBindValue);
         if (!validateTrigger || validateTrigger === 'change') {
           validateFields([key]).catch((_) => {});
         }
+        if(props.autoSearch === true){
+          onFormSubmitWhenChange();
+        }
       }
+      //update-end-author:taoyan date:2022-11-28 for: QQYUN-3121 【优化】表单视图问题#scott测试 8、此功能未实现
 
       function handleEnterPress(e: KeyboardEvent) {
         const { autoSubmitOnEnter } = unref(getProps);

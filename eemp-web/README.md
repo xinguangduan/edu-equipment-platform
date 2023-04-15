@@ -1,11 +1,11 @@
 JEECG BOOT 低代码开发平台（Vue3前端）
 ===============
-当前最新版本： 3.4.4（发布时间：2022-11-21）
+当前最新版本： 3.5.0（发布时间：2023-03-08）
 
 [![AUR](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/zhangdaiscott/jeecg-boot/blob/master/LICENSE)
 [![](https://img.shields.io/badge/Author-北京敲敲云科技-orange.svg)](http://www.jeecg.com)
 [![](https://img.shields.io/badge/Blog-官方博客-blue.svg)](https://jeecg.blog.csdn.net)
-[![](https://img.shields.io/badge/version-3.4.4-brightgreen.svg)](https://github.com/zhangdaiscott/jeecg-boot)
+[![](https://img.shields.io/badge/version-3.5.0-brightgreen.svg)](https://github.com/zhangdaiscott/jeecg-boot)
 [![GitHub stars](https://img.shields.io/github/stars/zhangdaiscott/jeecg-boot.svg?style=social&label=Stars)](https://github.com/zhangdaiscott/jeecg-boot)
 [![GitHub forks](https://img.shields.io/github/forks/zhangdaiscott/jeecg-boot.svg?style=social&label=Fork)](https://github.com/zhangdaiscott/jeecg-boot)
 
@@ -39,10 +39,10 @@ JeecgBoot-Vue3采用 Vue3.0、Vite、 Ant-Design-Vue3、TypeScript 等新技术�
 
 ## 技术文档
 
--   官方文档：[http://vue3.jeecg.com](http://vue3.jeecg.com)
+-   官方文档：[http://help.jeecg.com](http://help.jeecg.com)
 -   官方网站： [http://www.jeecg.com](http://www.jeecg.com)
 -   在线演示：[低代码演示](http://boot3.jeecg.com) | [敲敲云零代码](https://www.qiaoqiaoyun.com)
--   快速入门：[常见问题](http://vue3.jeecg.com/2426559) | [入门视频](https://www.bilibili.com/video/BV1V34y187Y9 "入门视频") |  [ 代码生成](http://vue3.jeecg.com/2677352)
+-   快速入门：[常见问题](http://help.jeecg.com/qa.html) | [入门视频](https://www.bilibili.com/video/BV1V34y187Y9 "入门视频") |  [ 代码生成](http://help.jeecg.com/vue3/codegen/online.html)
 -   QQ交流群：683903138
 
 ## 安装与使用
@@ -116,7 +116,7 @@ cd jeecgboot-vue3
 VITE_GLOB_API_URL=/jeecgboot
 VITE_GLOB_DOMAIN_URL=http://jeecg-boot-system:8080/jeecg-boot
 ```
-后台单体启动 [见此文档](http://doc.jeecg.com/2043889)
+后台单体启动 [见此文档](https://help.jeecg.com/java/setup/docker/up.html)
 
 - 编译项目
 
@@ -147,7 +147,7 @@ VITE_GLOB_API_URL=/jeecgboot
 VITE_GLOB_DOMAIN_URL=http://jeecg-boot-gateway:9999
 ```
 
-后台微服务启动 [见此文档](http://doc.jeecg.com/2656147)
+后台微服务启动 [见此文档](https://help.jeecg.com/java/springcloud/docker.html)
 
 - 区别2. 修改Dockerfile文件
 
@@ -172,7 +172,7 @@ VITE_GLOB_DOMAIN_URL=http://jeecg-boot-gateway:9999
 
 本项目需要一定前端基础知识，请确保掌握 Vue 的基础知识，以便能处理一些常见的问题。 建议在开发前先学一下以下内容，提前了解和学习这些知识，会对项目理解非常有帮助:
 
-*   [JeecgBoot-Vue3文档](http://vue3.jeecg.com)
+*   [JeecgBoot-Vue3文档](http://help.jeecg.com)
 *   [Vue3 文档](https://cn.vuejs.org/)
 *   [Vben文档](https://doc.vvbin.cn)
 *   [Ant-Design-Vue](https://www.antdv.com/docs/vue/introduce-cn/)
