@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @author: jeecg-boot
  */
 @Component("jeecgBaseConfig")
-@ConfigurationProperties(prefix = "jeecg")
+@ConfigurationProperties(prefix = "eemp")
 public class JeecgBaseConfig {
     /**
      * 签名密钥串(字典等敏感接口)

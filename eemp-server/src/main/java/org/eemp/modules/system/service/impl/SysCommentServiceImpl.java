@@ -59,10 +59,10 @@ public class SysCommentServiceImpl extends ServiceImpl<SysCommentMapper, SysComm
     @Autowired
     private RedisUtil redisUtil;
 
-    @Value(value = "${jeecg.path.upload}")
+    @Value(value = "${eemp.path.upload}")
     private String uploadpath;
 
-    @Value(value = "${jeecg.uploadType}")
+    @Value(value = "${eemp.uploadType}")
     private String uploadType;
 
     /**

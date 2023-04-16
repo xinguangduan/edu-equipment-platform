@@ -54,7 +54,7 @@ public class SysUserAgentController {
 	@Autowired
 	private ISysUserAgentService sysUserAgentService;
 
-	 @Value("${jeecg.path.upload}")
+	 @Value("${eemp.path.upload}")
 	 private String upLoadPath;
 	
 	/**

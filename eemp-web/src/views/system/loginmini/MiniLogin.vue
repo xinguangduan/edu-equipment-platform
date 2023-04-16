@@ -5,20 +5,20 @@
     <div class="aui-logo" v-if="!getIsMobile">
       <div>
         <h3>
-          <img :src="logoImg" alt="jeecg" />
+          <!--img :src="logoImg" alt="jeecg" /-->
         </h3>
       </div>
     </div>
-    <div v-else class="aui-phone-logo">
+    <!-- <div v-else class="aui-phone-logo">
       <img :src="logoImg" alt="jeecg" />
-    </div>
+    </div> -->
     <div v-show="type === 'login'">
       <div class="aui-content">
         <div class="aui-container">
           <div class="aui-form">
             <div class="aui-image">
               <div class="aui-image-text">
-                <img :src="adTextImg" />
+                <!--img :src="adTextImg" /-->
               </div>
             </div>
             <div class="aui-formBox">
@@ -27,11 +27,11 @@
                   <div class="aui-flex-box" :class="activeIndex === 'accountLogin' ? 'activeNav on' : ''" @click="loginClick('accountLogin')"
                     >{{ t('sys.login.signInFormTitle') }}
                   </div>
-                  <div class="aui-flex-box" :class="activeIndex === 'phoneLogin' ? 'activeNav on' : ''" @click="loginClick('phoneLogin')"
+                  <!-- <div class="aui-flex-box" :class="activeIndex === 'phoneLogin' ? 'activeNav on' : ''" @click="loginClick('phoneLogin')"
                     >{{ t('sys.login.mobileSignInFormTitle') }}
-                  </div>
+                  </div> -->
                 </div>
-                <div class="aui-form-box" style="height: 180px">
+                <div class="aui-form-box" style="height: 220px">
                   <a-form ref="loginRef" :model="formData" v-if="activeIndex === 'accountLogin'" @keyup.enter.native="loginHandleClick">
                     <div class="aui-account">
                       <div class="aui-inputClear">
@@ -69,7 +69,7 @@
                       </div>
                     </div>
                   </a-form>
-                  <a-form v-else ref="phoneFormRef" :model="phoneFormData" @keyup.enter.native="loginHandleClick">
+                  <!-- <a-form v-else ref="phoneFormRef" :model="phoneFormData" @keyup.enter.native="loginHandleClick">
                     <div class="aui-account phone">
                       <div class="aui-inputClear phoneClear">
                         <a-input class="fix-auto-fill" :placeholder="t('sys.login.mobile')" v-model:value="phoneFormData.mobile" />
@@ -84,28 +84,28 @@
                         </div>
                       </div>
                     </div>
-                  </a-form>
+                  </a-form> -->
                 </div>
                 <div class="aui-formButton">
                   <div class="aui-flex">
                     <a-button :loading="loginLoading" class="aui-link-login aui-flex-box" type="primary" @click="loginHandleClick">
                       {{ t('sys.login.loginButton') }}</a-button>
                   </div>
-                  <div class="aui-flex">
+                  <!--div class="aui-flex">
                     <a class="aui-linek-code aui-flex-box" @click="codeHandleClick">{{ t('sys.login.qrSignInFormTitle') }}</a>
-                  </div>
-                  <div class="aui-flex">
+                  </div-->
+                  <!--div class="aui-flex">
                     <a class="aui-linek-code aui-flex-box" @click="registerHandleClick">{{ t('sys.login.registerButton') }}</a>
-                  </div>
+                  </div-->
                 </div>
               </div>
               <a-form @keyup.enter.native="loginHandleClick">
-                <div class="aui-flex aui-third-text">
+                <!--div class="aui-flex aui-third-text">
                   <div class="aui-flex-box aui-third-border">
                     <span>{{ t('sys.login.otherSignIn') }}</span>
                   </div>
-                </div>
-                <div class="aui-flex" :class="`${prefixCls}-sign-in-way`">
+                </div-->
+                <!--div class="aui-flex" :class="`${prefixCls}-sign-in-way`">
                   <div class="aui-flex-box">
                     <div class="aui-third-login">
                       <a title="github" @click="onThirdLogin('github')"><GithubFilled /></a>
@@ -126,7 +126,7 @@
                       <a title="微信" @click="onThirdLogin('wechat_open')"><WechatFilled /></a>
                     </div>
                   </div>
-                </div>
+                </div-->
               </a-form>
             </div>
           </div>

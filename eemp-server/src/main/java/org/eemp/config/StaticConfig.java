@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class StaticConfig {
 
-    @Value(value = "${spring.mail.username}")
+//    @Value(value = "${spring.mail.username}")
     private String emailFrom;
 
 //    /**

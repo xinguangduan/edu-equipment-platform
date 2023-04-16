@@ -40,7 +40,7 @@ public class JeecgController<T, S extends IService<T>> {
     @Autowired
     protected S service;
 
-    @Value("${jeecg.path.upload}")
+    @Value("${eemp.path.upload}")
     private String upLoadPath;
     /**
      * 导出excel

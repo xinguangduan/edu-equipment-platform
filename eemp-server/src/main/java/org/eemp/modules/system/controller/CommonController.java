@@ -34,13 +34,13 @@ import java.io.*;
 @RequestMapping("/sys/common")
 public class CommonController {
 
-    @Value(value = "${jeecg.path.upload}")
+    @Value(value = "${eemp.path.upload}")
     private String uploadpath;
 
     /**
      * 本地：local minio：minio 阿里：alioss
      */
-    @Value(value="${jeecg.uploadType}")
+    @Value(value="${eemp.uploadType}")
     private String uploadType;
 
     /**

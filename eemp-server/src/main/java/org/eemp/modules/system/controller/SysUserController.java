@@ -85,7 +85,7 @@ public class SysUserController {
 	@Autowired
 	private RedisUtil redisUtil;
 
-    @Value("${jeecg.path.upload}")
+    @Value("${eemp.path.upload}")
     private String upLoadPath;
 
     @Autowired

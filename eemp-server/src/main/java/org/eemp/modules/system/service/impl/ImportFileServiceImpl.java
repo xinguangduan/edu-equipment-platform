@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImportFileServiceImpl implements ImportFileServiceI {
 
-    @Value("${jeecg.path.upload}")
+    @Value("${eemp.path.upload}")
     private String upLoadPath;
 
-    @Value(value="${jeecg.uploadType}")
+    @Value(value="${eemp.uploadType}")
     private String uploadType;
 
     @Override
