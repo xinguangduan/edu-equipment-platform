@@ -1,7 +1,7 @@
 package org.eemp.modules.edu.edulabbasic.mapper;
 
-import org.eemp.modules.edu.edulabbasic.entity.EduLabBasicInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.eemp.modules.edu.edulabbasic.entity.EduLabBasicInfo;
 
 /**
  * @Description: 中小学实验室基本情况统计表

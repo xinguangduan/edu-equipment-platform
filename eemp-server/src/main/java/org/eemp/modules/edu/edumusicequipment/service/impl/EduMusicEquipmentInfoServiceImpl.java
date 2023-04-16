@@ -1,11 +1,10 @@
 package org.eemp.modules.edu.edumusicequipment.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.eemp.modules.edu.edumusicequipment.entity.EduMusicEquipmentInfo;
 import org.eemp.modules.edu.edumusicequipment.mapper.EduMusicEquipmentInfoMapper;
 import org.eemp.modules.edu.edumusicequipment.service.IEduMusicEquipmentInfoService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
  * @Description: 小学音乐教学装备配置登记表

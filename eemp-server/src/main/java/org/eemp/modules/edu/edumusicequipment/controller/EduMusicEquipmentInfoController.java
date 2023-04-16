@@ -3,27 +3,23 @@ package org.eemp.modules.edu.edumusicequipment.controller;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.eemp.common.api.vo.Result;
-import org.eemp.common.system.query.QueryGenerator;
-import org.eemp.common.util.oConvertUtils;
-import org.eemp.modules.edu.edumusicequipment.entity.EduMusicEquipmentInfo;
-import org.eemp.modules.edu.edumusicequipment.service.IEduMusicEquipmentInfoService;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import lombok.extern.slf4j.Slf4j;
-
-import org.eemp.common.system.base.controller.JeecgController;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import org.springframework.web.servlet.ModelAndView;
-import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.eemp.common.aspect.annotation.AutoLog;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.eemp.common.api.vo.Result;
+import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.edu.edumusicequipment.entity.EduMusicEquipmentInfo;
+import org.eemp.modules.edu.edumusicequipment.service.IEduMusicEquipmentInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
  /**
  * @Description: 小学音乐教学装备配置登记表

@@ -1,7 +1,7 @@
 package org.eemp.modules.edu.edulabbasic.service;
 
-import org.eemp.modules.edu.edulabbasic.entity.EduLabBasicInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.edu.edulabbasic.entity.EduLabBasicInfo;
 
 /**
  * @Description: 中小学实验室基本情况统计表

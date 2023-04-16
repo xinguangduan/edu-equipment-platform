@@ -1,10 +1,7 @@
 package org.eemp.modules.edu.eduequipmentregister.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-import org.eemp.modules.edu.eduequipmentregister.entity.EduEquipmentRegisterInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.eemp.modules.edu.eduequipmentregister.entity.EduEquipmentRegisterInfo;
 
 /**
  * @Description: 小学教学仪器设备登记册

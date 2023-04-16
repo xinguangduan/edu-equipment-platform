@@ -1,7 +1,7 @@
 package org.eemp.modules.edu.edumusicequipment.service;
 
-import org.eemp.modules.edu.edumusicequipment.entity.EduMusicEquipmentInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.edu.edumusicequipment.entity.EduMusicEquipmentInfo;
 
 /**
  * @Description: 小学音乐教学装备配置登记表

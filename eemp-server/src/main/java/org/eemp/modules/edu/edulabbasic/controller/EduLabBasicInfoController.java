@@ -3,24 +3,23 @@ package org.eemp.modules.edu.edulabbasic.controller;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.eemp.common.api.vo.Result;
-import org.eemp.common.system.query.QueryGenerator;
-import org.eemp.modules.edu.edulabbasic.entity.EduLabBasicInfo;
-import org.eemp.modules.edu.edulabbasic.service.IEduLabBasicInfoService;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.eemp.common.api.vo.Result;
+import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.edu.edulabbasic.entity.EduLabBasicInfo;
+import org.eemp.modules.edu.edulabbasic.service.IEduLabBasicInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.eemp.common.aspect.annotation.AutoLog;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 
  /**
  * @Description: 中小学实验室基本情况统计表
