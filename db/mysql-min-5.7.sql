@@ -3034,231 +3034,6 @@ CREATE TABLE `qrtz_triggers`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of qrtz_triggers
--- ----------------------------
-
--- ----------------------------
--- Table structure for rep_demo_dxtj
--- ----------------------------
-DROP TABLE IF EXISTS `rep_demo_dxtj`;
-CREATE TABLE `rep_demo_dxtj`  (
-  `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '姓名',
-  `gtime` datetime NULL DEFAULT NULL COMMENT '雇佣日期',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '职务',
-  `jphone` varchar(125) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '家庭电话',
-  `birth` datetime NULL DEFAULT NULL COMMENT '出生日期',
-  `hukou` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '户口所在地',
-  `laddress` varchar(125) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '联系地址',
-  `jperson` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '紧急联系人',
-  `sex` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'xingbie',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of rep_demo_dxtj
--- ----------------------------
-INSERT INTO `rep_demo_dxtj` VALUES ('1338808084247613441', '张三', '2019-11-06 00:00:00', '1', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809169074982920', '张小哲', '2019-11-06 00:00:00', '2', '18034596971', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809448658898952', '闫妮', '2019-11-06 00:00:00', '2', '18034596972', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809620973490184', '陌生', '2019-11-06 00:00:00', '2', '18034596973', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809652606930952', '贺江', '2019-11-06 00:00:00', '2', '18034596974', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '2');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809685200867336', '村子明', '2019-11-06 00:00:00', '3', '18034596975', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '2');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809710203113481', '尚德', '2019-11-06 00:00:00', '4', '18034596977', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809749470187528', '郑恺', '2019-11-06 00:00:00', '4', '18034596978', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809774971555849', '未名园', '2019-11-06 00:00:00', '4', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809805199904777', '韩寒', '2019-11-06 00:00:00', '5', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809830017601544', '迪丽热拉', '2019-11-06 00:00:00', '6', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1338809864356368393', '张一山', '2019-11-06 00:00:00', '6', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157602480137', '张三', '2019-11-06 00:00:00', '1', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157602480146', '张大大', '2019-11-06 00:00:00', '2', '18034596971', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674439', '郭美美', '2019-11-06 00:00:00', '2', '18034596972', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674448', '莫愁', '2019-11-06 00:00:00', '2', '18034596973', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674457', '鲁与', '2019-11-06 00:00:00', '2', '18034596974', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '2');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674466', '高尚', '2019-11-06 00:00:00', '3', '18034596975', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '2');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674475', '尚北京', '2019-11-06 00:00:00', '4', '18034596977', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674484', '杨颖花', '2019-11-06 00:00:00', '4', '18034596978', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674493', '李丽', '2019-11-06 00:00:00', '4', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674502', '韩露露', '2019-11-06 00:00:00', '5', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674511', '李凯泽', '2019-11-06 00:00:00', '6', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-INSERT INTO `rep_demo_dxtj` VALUES ('1339160157606674520', '王明阳', '2019-11-06 00:00:00', '6', '18034596970', '1988-12-15 00:00:00', '北京市朝阳区奥运村街道亚运村小区', '18034596972', '王亮', '1');
-
--- ----------------------------
--- Table structure for rep_demo_employee
--- ----------------------------
-DROP TABLE IF EXISTS `rep_demo_employee`;
-CREATE TABLE `rep_demo_employee`  (
-  `id` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键',
-  `num` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '编号',
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '姓名',
-  `sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
-  `birthday` datetime NULL DEFAULT NULL COMMENT '出生日期',
-  `nation` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '民族',
-  `political` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '政治面貌',
-  `native_place` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '籍贯',
-  `height` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身高',
-  `weight` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '体重',
-  `health` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '健康状况',
-  `id_card` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证号',
-  `education` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学历',
-  `school` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '毕业学校',
-  `major` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '专业',
-  `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系地址',
-  `zip_code` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮编',
-  `email` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Email',
-  `phone` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号',
-  `foreign_language` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '外语语种',
-  `foreign_language_level` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '外语水平',
-  `computer_level` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '计算机水平',
-  `graduation_time` datetime NULL DEFAULT NULL COMMENT '毕业时间',
-  `arrival_time` datetime NULL DEFAULT NULL COMMENT '到职时间',
-  `positional_titles` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '职称',
-  `education_experience` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '教育经历',
-  `work_experience` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '工作经历',
-  `create_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改人',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
-  `del_flag` tinyint(1) NULL DEFAULT NULL COMMENT '删除标识0-正常,1-已删除',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of rep_demo_employee
--- ----------------------------
-INSERT INTO `rep_demo_employee` VALUES ('1', '001', '张三', '男', '2000-02-04 13:36:19', '汉族', '团员', '北京', '170', '65', '良好', '110101200002044853', '大专', '北京科技', '计算机', '北京朝阳区', '1001', 'zhang@163.com', '18011111111', '英语', '三级', '三级', '2019-02-04 13:41:17', '2020-02-04 13:41:31', '项目经理', '2018年9月—2019年7月：北京语言文化大学比较文学研究所攻读博士学位，获得比较文学博士学位', '2019年5月---至今 XX公司     网络系统工程师  \n2019年5月---至今 XX公司     网络系统工程师', NULL, '2020-02-04 15:18:03', NULL, NULL, NULL);
-INSERT INTO `rep_demo_employee` VALUES ('2', '002', '王红', '女', '2000-02-04 13:36:19', '汉族', '团员', '北京', '170', '65', '良好', '110101200002044853', '大专', '北京科技', '计算机', '北京朝阳区', '1001', 'zhang@163.com', '18011111111', '英语', '三级', '三级', '2019-02-04 13:41:17', '2020-02-04 13:41:31', '项目经理', '2018年9月—2019年7月：北京语言文化大学比较文学研究所攻读博士学位，获得比较文学博士学位', '2019年5月---至今 XX公司     网络系统工程师  \n2019年5月---至今 XX公司     网络系统工程师', NULL, '2020-02-04 18:39:27', NULL, NULL, NULL);
-
--- ----------------------------
--- Table structure for rep_demo_gongsi
--- ----------------------------
-DROP TABLE IF EXISTS `rep_demo_gongsi`;
-CREATE TABLE `rep_demo_gongsi`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gname` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '货品名称',
-  `gdata` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '返利',
-  `tdata` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '备注',
-  `didian` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `zhaiyao` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `num` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of rep_demo_gongsi
--- ----------------------------
-INSERT INTO `rep_demo_gongsi` VALUES (1, '北京天山海世界', '2020-02-30 11:12:25', '2020-02-25', '天山大厦', '1', '2399845661');
-INSERT INTO `rep_demo_gongsi` VALUES (2, 'dd天山海世界', '2020-02-30 11:12:25', '2020-02-25', '天山大厦', '1', '2399845661');
-
--- ----------------------------
--- Table structure for rep_demo_jianpiao
--- ----------------------------
-DROP TABLE IF EXISTS `rep_demo_jianpiao`;
-CREATE TABLE `rep_demo_jianpiao`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `bnum` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `ftime` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `sfkong` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `kaishi` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `jieshu` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `hezairen` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `jpnum` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `shihelv` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `s_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 87 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of rep_demo_jianpiao
--- ----------------------------
-INSERT INTO `rep_demo_jianpiao` VALUES (1, 'K7725', '21:13', '否', '秦皇岛', '邯郸', '300', '258', '86', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (2, 'k99', '16:55', '否', '包头', '广州', '800', '700', '88', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (3, 'G6737', '05:34', '否', '北京西', '邯郸东', '500', '256', '51', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (4, 'K7705', '07:03', '否', '北京', '邯郸', '400', '200', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (5, 'G437', '06:27', '否', '北京西', '兰州西', '800', '586', '73', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (6, 'G673', '06:32', '否', '北京西', '邯郸东', '300', '289', '87', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (7, 'G507', '06:43', '否', '北京西', '邯郸东', '300', '200', '67', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (8, 'G89', '06:53', '否', '北京西', '成都东', '800', '500', '62', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (9, 'K7712', '09:43', '否', '北京西', '西安北', '400', '200', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (10, 'G405', '10:05', '否', '北京西', '昆明南', '300', '200', '67', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (11, 'G6701', '10:38', '否', '北京西', '石家庄', '300', '200', '67', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (12, 'G487', '10:52', '否', '北京西', '南昌西', '800', '700', '88', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (13, 'G607', '11:14', '否', '北京西', '太原南', '400', '200', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (14, 'G667', '11:19', '否', '北京西', '西安北', '400', '200', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (15, 'Z49', '11:28', '否', '北京西', '成都', '400', '200', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (16, 'Z49', '11:28', '否', '北京西', '上海', '300', '200', '80', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (17, 'Z49', '11:56', '否', '北京西', '上海', '200', '180', '95', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (18, 'Z49', '11:36', '否', '北京南', '大晒', '200', '180', '96', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (19, 'Z123', '12:00', '否', '北京南', '重庆', '1000', '1000', '100', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (20, 'G78', '13:56', '否', '北京东', '厦门北', '800', '700', '90', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (21, 'G56', '18:36', '否', '上海西', '深圳', '800', '700', '90', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (22, 'H78', '12:00', '否', '上海', '北京西', '800', '700', '90', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (23, 'H78', '12:00', '否', '上海', '北京西', '800', '700', '90', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (24, 'H78', '12:00', '否', '上海', '北京西', '800', '700', '90', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (25, 'H78', '12:00', '否', '北京西', '南昌', '800', '700', '90', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (26, 'G70', '7:23', '是', '北京西', '厦门', '500', '450', '95', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (27, 'G14', '9:50', '是', '北京西', '上海', '800', '700', '95', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (28, 'G90', '8:30', '是', '北京南', '武昌', '1000', '1000', '100', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (29, 'G25', '7:56', '是', '厦门北', '福州', '500', '100', '20', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (30, 'G50', '14:23', '否', '北京西', '深圳', '500', '100', '20', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (31, 'G10', '13:00', '否', '北京西', '深圳', '500', '100', '20', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (32, 'G10', '13:00', '否', '北京西', '深圳', '500', '100', '20', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (33, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (34, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (35, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (36, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (37, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (38, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (39, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (40, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (41, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (42, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (43, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (44, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (45, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (46, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (47, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (48, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (49, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (50, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (51, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (52, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (53, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (54, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (55, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (56, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (57, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (58, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (59, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (60, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (61, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (62, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (63, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (64, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (65, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (66, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (67, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (68, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (69, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (70, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (71, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (72, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (73, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (74, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (75, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (76, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (77, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (78, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (79, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (80, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (81, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (82, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (83, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (84, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (85, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-INSERT INTO `rep_demo_jianpiao` VALUES (86, 'G10', '13:00', '否', '北京西', '深圳', '200', '100', '50', 1);
-
--- ----------------------------
 -- Table structure for sys_announcement
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_announcement`;
@@ -3460,193 +3235,6 @@ CREATE TABLE `sys_data_log`  (
 -- Records of sys_data_log
 -- ----------------------------
 INSERT INTO `sys_data_log` VALUES ('1523903071766949890', NULL, '2022-05-10 13:49:40', NULL, NULL, 'jeecg_demo', '4028ef81550c1a7901550c1cd6e70001', '{\r\n	\"mobilePhone\":\"1872222222\",\r\n	\"officePhone\":\"1222222\",\r\n	\"email\":\"\",\r\n	\"createDate\":\"Jun 23, 2016 12:00:00 PM\",\r\n	\"sex\":\"1\",\r\n	\"depId\":\"402880e447e99cf10147e9a03b320003\",\r\n	\"userName\":\"9001\",\r\n	\"status\":\"1\",\r\n	\"content\":\"111\",\r\n	\"id\":\"4028ef81550c1a7901550c1cd6e70001\"\r\n}', 4, 'json');
-INSERT INTO `sys_data_log` VALUES ('1580525580339335170', 'admin', '2022-10-13 19:47:18', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【名字】的字段内容 易强 修改为 易强1；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580529675481600001', 'admin', '2022-10-13 20:03:34', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【性别】的字段内容 2 修改为 1；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580529718888452098', 'admin', '2022-10-13 20:03:44', NULL, NULL, 'v3_hello', '1580529718871674882', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580534551057936386', 'admin', '2022-10-13 20:22:57', NULL, NULL, 'v3_hello', '1580529718871674882', '  将名称为【他表字段】的字段内容 空 修改为 500；    将名称为【关联记录】的字段内容 空 修改为 1258783909887422466；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580534592426356738', 'admin', '2022-10-13 20:23:06', NULL, NULL, 'ces_shop_goods', '1258783909887422466', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580534607228055553', 'admin', '2022-10-13 20:23:10', NULL, NULL, 'v3_hello', '1580529718871674882', '  将名称为【他表字段】的字段内容 空 修改为 500；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580537951120142338', 'admin', '2022-10-13 20:36:27', NULL, NULL, 'v3_hello', '1580510370266238978', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580538174827540481', 'admin', '2022-10-13 20:37:21', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【他表字段】的字段内容 空 修改为 5000；    将名称为【关联记录】的字段内容 空 修改为 1258408897326149634；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580541919602814978', 'admin', '2022-10-13 20:52:13', NULL, NULL, 'ces_shop_type', '1258408044439597058', '  将名称为【图片】的字段内容 jeewxshop测试号_1588862831749.jpg 修改为 temp/4afbfbedab64034f9015f1bca8c379310b551dab_1665665531949.jpg；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580542958913597442', 'admin', '2022-10-13 20:56:21', NULL, NULL, 'v3_demo1', '1532265688470265858', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580543047069478914', 'admin', '2022-10-13 20:56:42', NULL, NULL, 'test_note', '1580543046964621313', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580543149787983873', 'admin', '2022-10-13 20:57:07', NULL, NULL, 'test_enhance_select', '402880e570801ffe017080538b24002f', '  将名称为【省份】的字段内容 1230769290609725441 修改为 1230769253267836929；    将名称为【区】的字段内容 1230769620021972993 修改为 1230769855347593217；    将名称为【市】的字段内容 1230769470889299970 修改为 1230769769930592257；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580543461865172994', 'admin', '2022-10-13 20:58:21', NULL, NULL, 'demo_field_def_val_main', '1580543461659652098', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580543527321481217', 'admin', '2022-10-13 20:58:37', NULL, NULL, 'demo_field_def_val_main', '1580543461659652098', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580544512626405378', 'admin', '2022-10-13 21:02:32', NULL, NULL, 'ai_control_single', '1580544512563490817', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580544763290595329', 'admin', '2022-10-13 21:03:31', NULL, NULL, 'ai_control_single', '1580544512563490817', '  将名称为【自定义树】的字段内容 空 修改为 1185039122143719425；    将名称为【部门选择】的字段内容 空 修改为 c6d7cb4deeac411cb3384b1b31278596；    将名称为【用户选择】的字段内容 空 修改为 zhangsan；    将名称为【省市区】的字段内容 空 修改为 140303；    将名称为【分类字典树】的字段内容 空 修改为 1183693534173069314；    将名称为【年月日时分秒】的字段内容 空 修改为 2022-10-13 03:00:05；    将名称为【时间】的字段内容 空 修改为 00:00:02；    将名称为【字典表带条件下拉搜索】的字段内容 空 修改为 admin；    将名称为【图片】的字段内容 空 修改为 temp/appdev_1665666175437.png；    将名称为【字典表带条件单选】的字段内容 空 修改为 zhagnxiao；    将名称为【字典表下拉多选】的字段内容 空 修改为 57197590443c44f083d42ae24ef26a2c；    将名称为【popback】的字段内容 空 修改为 张三；    将名称为【字典多选】的字段内容 空 修改为 2；    将名称为【字典表多选】的字段内容 空 修改为 63775228b7b041a99825f79760590b7d；    将名称为【字典表单选】的字段内容 空 修改为 63775228b7b041a99825f79760590b7d；    将名称为【字典单选】的字段内容 空 修改为 2；    将名称为【字典表带条件多选】的字段内容 空 修改为 zhagnxiao；    将名称为【字典表带条件下拉多选】的字段内容 空 修改为 admin；    将名称为【日期】的字段内容 空 修改为 2022-10-06；    将名称为【开关】的字段内容 2 修改为 1；    将名称为【popup弹窗】的字段内容 空 修改为 zhangsan；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580545002412060674', 'admin', '2022-10-13 21:04:28', NULL, NULL, 'ai_control_single', '1580544512563490817', '  将名称为【密码】的字段内容 空 修改为 33333；    将名称为【文本】的字段内容 22 修改为 22333；    将名称为【多行文本框】的字段内容 商品名称：22,单价：22 修改为 商品名称：22333,单价：22；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580562545419890690', 'admin', '2022-10-13 22:14:11', NULL, NULL, 'ai_control_single', '1580562545285672961', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580563072203501569', 'admin', '2022-10-13 22:16:17', NULL, NULL, 'ai_control_single', '1580563072002174977', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580733477480443906', 'admin', '2022-10-14 09:33:24', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【备注】的字段内容 2333 修改为 233322；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580749419480494081', 'admin', '2022-10-14 10:36:45', NULL, NULL, 'test_enhance_select', '402880e570801ffe017080538b24002f', '  将名称为【省份】的字段内容 1230769253267836929 修改为 1230769290609725441；    将名称为【区】的字段内容 1230769855347593217 修改为 1230769620021972993；    将名称为【市】的字段内容 1230769769930592257 修改为 1230769470889299970；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580761292670119938', 'admin', '2022-10-14 11:23:56', NULL, NULL, 'test_enhance_select', '402880e570801ffe017080538b24002f', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580772922195849218', 'admin', '2022-10-14 12:10:09', NULL, NULL, 'ces_shop_goods', '1258408897326149634', '  将名称为【商品分类】的字段内容 1258408044439597058 修改为 1258408003595464706；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580814471130656770', 'admin', '2022-10-14 14:55:15', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【备注】的字段内容 233322 修改为 23332290；    将名称为【生日】的字段内容 2022-09-29 修改为 2022-09-03；    将名称为【名字】的字段内容 易强1 修改为 易强10；    将名称为【性别】的字段内容 1 修改为 2；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580814505297457154', 'admin', '2022-10-14 14:55:23', NULL, NULL, 'v3_hello', '1580529718871674882', '  将名称为【名字】的字段内容 11 修改为 刘艳；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580814578701971457', 'admin', '2022-10-14 14:55:40', NULL, NULL, 'v3_hello', '1580529718871674882', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580816176350113793', 'admin', '2022-10-14 15:02:01', NULL, NULL, 'ceshi_001', '1580816176220090369', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580816198277935106', 'admin', '2022-10-14 15:02:06', NULL, NULL, 'ceshi_001', '1580816176220090369', '  将名称为【备注】的字段内容 <p>2222</p> 修改为 <p><img src=\"http://localhost:8080/jeecg-boot/sys/common/static/jeditor/11_1665730924934.jpg\" />2222</p>；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580816241374408705', 'admin', '2022-10-14 15:02:17', NULL, NULL, 'ceshi_001', '1580816176220090369', '  将名称为【所属部门】的字段内容 空 修改为 57197590443c44f083d42ae24ef26a2c,67fc001af12a4f9b8458005d3f19934a；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580816274597490690', 'admin', '2022-10-14 15:02:25', NULL, NULL, 'ceshi_001', '1580816176220090369', '  将名称为【所属部门】的字段内容 空 修改为 57197590443c44f083d42ae24ef26a2c；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580816614608744450', 'admin', '2022-10-14 15:03:46', NULL, NULL, 'ceshi_001', '1580816176220090369', '  将名称为【备注】的字段内容 <p>2222</p> 修改为 <p>222290</p>；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580816727792037890', 'admin', '2022-10-14 15:04:13', NULL, NULL, 'ceshi_001', '1580816176220090369', '  将名称为【备注】的字段内容 <p>222290</p> 修改为 <p><img src=\"http://localhost:8080/jeecg-boot/sys/common/static/jeditor/20180607175028Fn1Lq7zw_1665731051414.png\" />222290</p>；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580824196471730178', 'admin', '2022-10-14 15:33:53', NULL, NULL, 'ceshi_001', '1580816176220090369', '  将名称为【弹窗】的字段内容 空 修改为 小红帽4——prod；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580824545664315394', 'admin', '2022-10-14 15:35:17', NULL, NULL, 'ceshi_001', '1580824545521709058', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580824562823213058', 'admin', '2022-10-14 15:35:21', NULL, NULL, 'ceshi_001', '1580824562693189634', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580824645950124033', 'admin', '2022-10-14 15:35:41', NULL, NULL, 'ceshi_001', '1580824562693189634', '  将名称为【弹窗】的字段内容 空 修改为 aaa；    将名称为【打卡时间】的字段内容 空 修改为 2022-10-07 15:35:25；    将名称为【薪资】的字段内容 空 修改为 33.00；    将名称为【备注】的字段内容 空 修改为 <p>333</p>；    将名称为【生日】的字段内容 空 修改为 2022-10-06；    将名称为【性别】的字段内容 空 修改为 1；    将名称为【所属部门】的字段内容 空 修改为 6d35e179cd814e3299bd588ea7daed3f；    将名称为【年龄】的字段内容 空 修改为 22；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580825874562428930', 'admin', '2022-10-14 15:40:33', NULL, NULL, 'ceshi_main001', '1580825874361102338', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580825931193921538', 'admin', '2022-10-14 15:40:47', NULL, NULL, 'ceshi_main001', '1580825874361102338', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580825997833023490', 'admin', '2022-10-14 15:41:03', NULL, NULL, 'ceshi_main001', '1580825874361102338', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580826120168288258', 'admin', '2022-10-14 15:41:32', NULL, NULL, 'ceshi_main001', '1580825874361102338', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580826171309436929', 'admin', '2022-10-14 15:41:44', NULL, NULL, 'ceshi_main001', '1580825874361102338', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580826404688900097', 'admin', '2022-10-14 15:42:40', NULL, NULL, 'ceshi_main001', '1580825874361102338', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580827034358788098', 'admin', '2022-10-14 15:45:10', NULL, NULL, 'ceshi_001', '1580824545521709058', '  将名称为【打卡时间】的字段内容 空 修改为 2022-10-07 15:45:05；    将名称为【生日】的字段内容 空 修改为 2022-10-13；    将名称为【性别】的字段内容 空 修改为 1；    将名称为【年龄】的字段内容 空 修改为 78；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580836377393258497', 'admin', '2022-10-14 16:22:18', NULL, NULL, 'test_demo', '4028810c6b02cba2016b02cba21f0000', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1580842495075049473', 'admin', '2022-10-14 16:46:36', NULL, NULL, 'ceshi_001', '1580824545521709058', '  将名称为【备注】的字段内容 空 修改为 <p>222</p>；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1581934124192116738', 'admin', '2022-10-17 17:04:21', NULL, NULL, 'ceshi_main001', '1580825874361102338', '  将名称为【描述】的字段内容 111 修改为 111111；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584467456679436289', 'admin', '2022-10-24 16:50:54', NULL, NULL, 'ai_control_single', '1580563072002174977', '  将名称为【用户名】的字段内容 测试js增强设置默认值222 修改为 测试js增强修改表单值；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584479680101834753', 'admin', '2022-10-24 17:39:29', NULL, NULL, 'ai_control_single', '1580562545285672961', '  将名称为【用户名】的字段内容 测试js增强设置默认值 修改为 测试js增强修改表单值；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584479719889002497', 'admin', '2022-10-24 17:39:38', NULL, NULL, 'ai_control_single', '1580562545285672961', '  将名称为【用户名】的字段内容 测试js增强设置默认值 修改为 测试js增强修改表单值；    将名称为【字典下拉】的字段内容 空 修改为 1；    将名称为【字典多选】的字段内容 空 修改为 2；    将名称为【字典单选】的字段内容 空 修改为 2；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584479762062729218', 'admin', '2022-10-24 17:39:48', NULL, NULL, 'ai_control_single', '1584479761945288706', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584479801854091266', 'admin', '2022-10-24 17:39:58', NULL, NULL, 'ai_control_single', '1584479761945288706', '  将名称为【用户名】的字段内容 测试js增强设置默认值 修改为 测试js增强修改表单值；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584479862642139138', 'admin', '2022-10-24 17:40:12', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【备注】的字段内容 23332290 修改为 23332290787；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584480385399218178', 'admin', '2022-10-24 17:42:17', NULL, NULL, 'ai_control_single', '1580563072002174977', '  将名称为【用户名】的字段内容 测试js增强设置默认值222 修改为 测试js增强修改表单值；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584490663641833474', 'admin', '2022-10-24 18:23:07', NULL, NULL, 'ceshi_001', '1580824545521709058', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584493996632924161', 'admin', '2022-10-24 18:36:22', NULL, NULL, 'v3_hello', '1580510370266238978', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584499621706293250', 'admin', '2022-10-24 18:58:43', NULL, NULL, 'ces_shop_goods', '1258783909887422466', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584503949301080066', 'admin', '2022-10-24 19:15:55', NULL, NULL, 'ces_shop_goods', '1258783909887422466', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584503965872775170', 'admin', '2022-10-24 19:15:59', NULL, NULL, 'v3_hello', '1580529718871674882', '  将名称为【他表字段】的字段内容 空 修改为 500；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584526394305241090', 'admin', '2022-10-24 20:45:06', NULL, NULL, 'test_enhance_select', '402880e570801ffe01708053743c002e', '  将名称为【省份】的字段内容 1230769253267836929 修改为 1230769290609725441；    将名称为【区】的字段内容 1230769855347593217 修改为 1230769620021972993；    将名称为【市】的字段内容 1230769769930592257 修改为 1230769470889299970；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584558944432103426', 'admin', '2022-10-24 22:54:27', NULL, NULL, 'test_enhance_select', '402880e570801ffe01708053743c002e', '  将名称为【省份】的字段内容 1230769290609725441 修改为 1230769253267836929；    将名称为【区】的字段内容 1230769620021972993 修改为 1230769407907631106；    将名称为【市】的字段内容 1230769470889299970 修改为 1230769347157331969；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584562117972533250', 'admin', '2022-10-24 23:07:03', NULL, NULL, 'ces_shop_goods', '1258408897326149634', '  将名称为【商品名字】的字段内容 华为手机note 修改为 华为手机note11；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584562140730826754', 'admin', '2022-10-24 23:07:09', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【他表字段】的字段内容 空 修改为 5000；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584565536531619842', 'admin', '2022-10-24 23:20:38', NULL, NULL, 'test_enhance_select', '402880e570801ffe01708053b2b10030', '  将名称为【省份】的字段内容 1230769253267836929 修改为 1230769290609725441；    将名称为【区】的字段内容 1230769407907631106 修改为 空；    将名称为【市】的字段内容 1230769347157331969 修改为 空；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584565549508796417', 'admin', '2022-10-24 23:20:41', NULL, NULL, 'test_enhance_select', '402880e570801ffe017080538b24002f', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584723571270971394', 'admin', '2022-10-25 09:48:37', NULL, NULL, 'ai_control_single', '1584479761945288706', '  将名称为【用户名】的字段内容 测试js增强设置默认值 修改为 测试js增强修改表单值；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584743370139070465', 'admin', '2022-10-25 11:07:17', NULL, NULL, 'test_enhance_select', '402880e570801ffe017080538b24002f', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584743880762028034', 'admin', '2022-10-25 11:09:19', NULL, NULL, 'ai_control_single', '1584479761945288706', '  将名称为【用户名】的字段内容 测试js增强设置默认值 修改为 测试js增强修改表单值；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584744029085200385', 'admin', '2022-10-25 11:09:54', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【他表字段】的字段内容 空 修改为 500；    将名称为【关联记录】的字段内容 1258408897326149634 修改为 1258783909887422466；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584744360393273346', 'admin', '2022-10-25 11:11:13', NULL, NULL, 'v3_hello', '1580529718871674882', '  将名称为【他表字段】的字段内容 空 修改为 500；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584751054817030145', 'admin', '2022-10-25 11:37:49', NULL, NULL, 'test_enhance_select', '402880e570801ffe017080538b24002f', '  将名称为【省份】的字段内容 1230769290609725441 修改为 1230769253267836929；    将名称为【区】的字段内容 1230769620021972993 修改为 1230769855347593217；    将名称为【市】的字段内容 1230769470889299970 修改为 1230769769930592257；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584751163625664514', 'admin', '2022-10-25 11:38:15', NULL, NULL, 'ces_shop_goods', '1584751163470475266', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584751171917803522', 'admin', '2022-10-25 11:38:17', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【他表字段】的字段内容 空 修改为 222；    将名称为【关联记录】的字段内容 1258783909887422466 修改为 1584751163470475266；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584755047844769793', 'admin', '2022-10-25 11:53:41', NULL, NULL, 'ces_shop_goods', '1584751163470475266', '  将名称为【价格】的字段内容 222.00000 修改为 222.00110；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584755064240304130', 'admin', '2022-10-25 11:53:45', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【他表字段】的字段内容 空 修改为 222.0011；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584755181374631938', 'admin', '2022-10-25 11:54:13', NULL, NULL, 'test_enhance_select', '402880e570801ffe017080538b24002f', '  将名称为【省份】的字段内容 1230769253267836929 修改为 1230769290609725441；    将名称为【区】的字段内容 1230769855347593217 修改为 1230769620021972993；    将名称为【市】的字段内容 1230769769930592257 修改为 1230769470889299970；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584837368534937602', 'admin', '2022-10-25 17:20:48', NULL, NULL, 'ceshi_001', '1584837368463634433', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584837462831280129', 'admin', '2022-10-25 17:21:11', NULL, NULL, 'ces_shop_goods', '1584751163470475266', '  将名称为【出厂时间】的字段内容 空 修改为 2022-09-30；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584837476886392834', 'admin', '2022-10-25 17:21:14', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【他表字段】的字段内容 空 修改为 222.0011；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584837625570275330', 'admin', '2022-10-25 17:21:49', NULL, NULL, 'v3_demo1', '1532265688470265858', '  将名称为【备注】的字段内容 空 修改为 所发生的；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584837705593401345', 'admin', '2022-10-25 17:22:09', NULL, NULL, 'test_enhance_select', '402880e570801ffe01708053743c002e', '  将名称为【区】的字段内容 1230769407907631106 修改为 1230769855347593217；    将名称为【市】的字段内容 1230769347157331969 修改为 1230769769930592257；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1584837730956357633', 'admin', '2022-10-25 17:22:15', NULL, NULL, 'test_enhance_select', '402880e570801ffe01708053b2b10030', '  将名称为【区】的字段内容 空 修改为 1230769620021972993；    将名称为【市】的字段内容 空 修改为 1230769470889299970；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585122474969415682', 'admin', '2022-10-26 12:13:43', NULL, NULL, 'test_enhance_select', '402880e570801ffe01708053b2b10030', '  将名称为【省份】的字段内容 1230769290609725441 修改为 1230769253267836929；    将名称为【区】的字段内容 1230769620021972993 修改为 1230769855347593217；    将名称为【市】的字段内容 1230769470889299970 修改为 1230769769930592257；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585122523522678785', 'admin', '2022-10-26 12:13:54', NULL, NULL, 'ces_shop_goods', '1584751163470475266', '  将名称为【商品名字】的字段内容 单表示例 修改为 单表示例222；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585122531546382337', 'admin', '2022-10-26 12:13:56', NULL, NULL, 'v3_hello', '1580510370266238978', '  将名称为【他表字段】的字段内容 空 修改为 222.0011；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585129142025338881', 'admin', '2022-10-26 12:40:12', NULL, NULL, 'v3_hello', '1585129141824012290', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585129199265005569', 'admin', '2022-10-26 12:40:26', NULL, NULL, 'test_enhance_select', '402880e570801ffe017080538b24002f', '  将名称为【省份】的字段内容 1230769290609725441 修改为 1230769253267836929；    将名称为【区】的字段内容 1230769620021972993 修改为 1230769855347593217；    将名称为【市】的字段内容 1230769470889299970 修改为 1230769769930592257；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585143398665961473', 'admin', '2022-10-26 13:36:51', NULL, NULL, 'v3_hello', '1585129141824012290', '  将名称为【他表字段】的字段内容 空 修改为 5000；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585143431406698498', 'admin', '2022-10-26 13:36:59', NULL, NULL, 'test_demo', '4028810c6b02cba2016b02cba21f0000', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585591474300100610', 'admin', '2022-10-27 19:17:21', NULL, NULL, 'v3_hello', '1585129141824012290', '  将名称为【他表字段】的字段内容 空 修改为 5000；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585593970338799618', 'admin', '2022-10-27 19:27:16', NULL, NULL, 'v3_hello', '1580529718871674882', '  将名称为【他表字段】的字段内容 空 修改为 500；    将名称为【名字】的字段内容 刘艳 修改为 刘艳1；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585594003176005633', 'admin', '2022-10-27 19:27:24', NULL, NULL, 'v3_hello', '1585129141824012290', '  将名称为【他表字段】的字段内容 空 修改为 5000；    将名称为【名字】的字段内容 1212 修改为 龚洋；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585594018841731073', 'admin', '2022-10-27 19:27:28', NULL, NULL, 'v3_hello', '1585129141824012290', '  将名称为【他表字段】的字段内容 空 修改为 5000；    将名称为【名字】的字段内容 龚洋 修改为 龚洋1；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585639584833339394', 'admin', '2022-10-27 22:28:31', NULL, NULL, 'v3_hello', '1585639584506183681', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585817690676379650', 'admin', '2022-10-28 10:16:15', NULL, NULL, 'ceshi_main001', '1580825874361102338', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585817807542272001', 'admin', '2022-10-28 10:16:43', NULL, NULL, 'ceshi_main001', '1580825874361102338', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585820119476191234', 'admin', '2022-10-28 10:25:54', NULL, NULL, 'test_note', '1580543046964621313', '  将名称为【请假原因】的字段内容 空 修改为 1212；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585822484832960513', 'admin', '2022-10-28 10:35:18', NULL, NULL, 'test_shoptype_tree', '1585822484715520001', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585822513492639745', 'admin', '2022-10-28 10:35:25', NULL, NULL, 'test_shoptype_tree', '1256629188993069058', '  将名称为【分类图片】的字段内容 jeewxshop测试号_1588438719823.jpg 修改为 空；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585822532543168514', 'admin', '2022-10-28 10:35:30', NULL, NULL, 'test_shoptype_tree', '1256629139206680578', '  将名称为【分类图片】的字段内容 e1fe9925bc315c60addea1b98eb1cb1349547719_1588438707727.jpg 修改为 空；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585822566852575233', 'admin', '2022-10-28 10:35:38', NULL, NULL, 'test_shoptype_tree', '1256628820489908225', '  将名称为【分类图片】的字段内容 空 修改为 temp/11_1666924536435.jpg；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585826259140329474', 'admin', '2022-10-28 10:50:18', NULL, NULL, 'v3_hello', '1585826258943197186', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585826315784404993', 'admin', '2022-10-28 10:50:32', NULL, NULL, 'v3_hello', '1585826258943197186', '  将名称为【他表字段】的字段内容 空 修改为 22233；    将名称为【年龄】的字段内容 20 修改为 201；    将名称为【名字】的字段内容 黄明远 修改为 黄明远1；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1585826988332662785', 'admin', '2022-10-28 10:53:12', NULL, NULL, 'test_enhance_select', '402880e570801ffe01708053b2b10030', '  将名称为【省份】的字段内容 1230769253267836929 修改为 1230769290609725441；    将名称为【区】的字段内容 1230769855347593217 修改为 1230769620021972993；    将名称为【市】的字段内容 1230769769930592257 修改为 1230769470889299970；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586278361180377089', 'admin', '2022-10-29 16:46:48', NULL, NULL, 'ceshi_note', '1586278360710615042', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586281651213381633', 'admin', '2022-10-29 16:59:52', NULL, NULL, 'test_order_main', '4028810c6b40244b016b4068ef890006', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586285042735984642', 'admin', '2022-10-29 17:13:21', NULL, NULL, 'test_order_main', '4028810c6b40244b016b4068ef890006', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586285348303613953', 'admin', '2022-10-29 17:14:33', NULL, NULL, 'test_order_main', '4028810c6b40244b016b4068ef890006', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586285527417171969', 'admin', '2022-10-29 17:15:16', NULL, NULL, 'test_order_main', '4028810c6b40244b016b4068ef890006', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586285822952026114', 'admin', '2022-10-29 17:16:27', NULL, NULL, 'test_order_main', '1551943088862896130', '  将名称为【订单编码】的字段内容 CN2022072622503177 修改为 CN2022；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586554347608305665', 'admin', '2022-10-30 11:03:28', NULL, NULL, 'test_v3_hello', '1585826258943197186', '  将名称为【他表字段】的字段内容 空 修改为 22233；    将名称为【备注】的字段内容 空 修改为 问题的关键究竟为何? 而这些并不是完全重要, 更加重要的问题是, 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 我们都知道, 只要有意义, 那么就必须慎重考虑.那么, 经过上述讨论, 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. \n就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 既然如此, 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.对我；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586554454575640577', 'admin', '2022-10-30 11:03:53', NULL, NULL, 'test_note', '1586554454185570306', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586554463777943555', 'admin', '2022-10-30 11:03:56', NULL, NULL, 'test_v3_hello', '1586554463777943554', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586557969775685633', 'admin', '2022-10-30 11:17:51', NULL, NULL, 'test_order_main', '1586557968995545089', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586558444143079425', 'admin', '2022-10-30 11:19:45', NULL, NULL, 'test_order_main', '1586557968995545089', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586558640096768001', 'admin', '2022-10-30 11:20:31', NULL, NULL, 'test_order_main', '1586557968995545089', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1586651979173326850', 'admin', '2022-10-30 17:31:25', NULL, NULL, 'ceshi_note', '1586650800414519297', '  将名称为【弹出报表】的字段内容 空 修改为 孙亦菲；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587064092114944001', 'admin', '2022-10-31 20:49:00', NULL, NULL, 'ceshi_note', '1586650800414519297', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587064750704558081', 'admin', '2022-10-31 20:51:37', NULL, NULL, 'ceshi_note', '1586650800414519297', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587064838038355970', 'admin', '2022-10-31 20:51:58', NULL, NULL, 'ceshi_note', '1586650800414519297', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587361366309310466', 'admin', '2022-11-01 16:30:16', NULL, NULL, 'ceshi_note', '1586650800414519297', '  将名称为【部门】的字段内容 c6d7cb4deeac411cb3384b1b31278596 修改为 57197590443c44f083d42ae24ef26a2c；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587362273243664385', 'admin', '2022-11-01 16:33:52', NULL, NULL, 'ceshi_note', '1586650800414519297', '  将名称为【部门】的字段内容 57197590443c44f083d42ae24ef26a2c 修改为 A01；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587367019220275201', 'admin', '2022-11-01 16:52:44', NULL, NULL, 'ceshi_note', '1587365083679002625', '  将名称为【物料分类】的字段内容 空 修改为 1230769769930592257；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587373788424278017', 'admin', '2022-11-01 17:19:38', NULL, NULL, 'ceshi_note', '1586650800414519297', '  将名称为【物料分类】的字段内容 1185039122143719425 修改为 1183693534173069314；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587386514257186818', 'admin', '2022-11-01 18:10:12', NULL, NULL, 'ceshi_note', '1587365083679002625', '  将名称为【物料分类】的字段内容 1230769769930592257 修改为 1230769290609725441；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587386731111092225', 'admin', '2022-11-01 18:11:04', NULL, NULL, 'ceshi_note', '1587365083679002625', '  将名称为【物料分类】的字段内容 1230769290609725441 修改为 1183693424827564034；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587387636954927105', 'admin', '2022-11-01 18:14:40', NULL, NULL, 'ceshi_note', '1587365083679002625', '  将名称为【省市区】的字段内容 空 修改为 210504；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587387673680252929', 'admin', '2022-11-01 18:14:48', NULL, NULL, 'ceshi_note', '1587365083679002625', '  将名称为【省市区】的字段内容 210504 修改为 130608；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587388008209551361', 'admin', '2022-11-01 18:16:08', NULL, NULL, 'ceshi_note', '1587365083679002625', '  将名称为【省市区】的字段内容 130608 修改为 140212；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587388429615468546', 'admin', '2022-11-01 18:17:49', NULL, NULL, 'ceshi_note', '1587365083679002625', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587388793223876609', 'admin', '2022-11-01 18:19:15', NULL, NULL, 'ceshi_note', '1587365083679002625', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587389350982422529', 'admin', '2022-11-01 18:21:28', NULL, NULL, 'ceshi_note', '1587365083679002625', '  将名称为【物料分类】的字段内容 1183693424827564034 修改为 1185039122143719425；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587389379570798594', 'admin', '2022-11-01 18:21:35', NULL, NULL, 'ceshi_note', '1587389379436580866', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587389814314602498', 'admin', '2022-11-01 18:23:19', NULL, NULL, 'ceshi_note', '1587389379436580866', '  将名称为【物料分类】的字段内容 1183693424827564034 修改为 1230769196661510146；    将名称为【省市区】的字段内容 空 修改为 220403；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587389853166440449', 'admin', '2022-11-01 18:23:28', NULL, NULL, 'ceshi_note', '1587389379436580866', '  将名称为【物料分类】的字段内容 1230769196661510146 修改为 5c8f68845e57f68ab93a2c8d82d26ae1；    将名称为【省市区】的字段内容 220403 修改为 110105；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587389894396448770', 'admin', '2022-11-01 18:23:38', NULL, NULL, 'ceshi_note', '1587389894266425345', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587389918257844226', 'admin', '2022-11-01 18:23:43', NULL, NULL, 'ceshi_note', '1587389894266425345', '  将名称为【物料分类】的字段内容 空 修改为 1185039122143719425；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587390962102669313', 'admin', '2022-11-01 18:27:52', NULL, NULL, 'ceshi_note', '1587365083679002625', '  将名称为【物料分类】的字段内容 1185039122143719425 修改为 5c8f68845e57f68ab93a2c8d82d26ae1；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587391433768931330', 'admin', '2022-11-01 18:29:45', NULL, NULL, 'ceshi_note', '1587391433634713601', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587396600325181442', 'admin', '2022-11-01 18:50:17', NULL, NULL, 'ceshi_note', '1587391433634713601', '  将名称为【文件】的字段内容 空 修改为 temp/jeecg33_1667299809336.jpg；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587396657636151298', 'admin', '2022-11-01 18:50:30', NULL, NULL, 'ceshi_note', '1587391433634713601', '  将名称为【图片】的字段内容 空 修改为 temp/20211101103911_1667299828205.png；    将名称为【文件】的字段内容 temp/jeecg33_1667299809336.jpg 修改为 temp/jeecg222_1667299825630.png；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587396709444194305', 'admin', '2022-11-01 18:50:43', NULL, NULL, 'ceshi_note', '1587391433634713601', '  将名称为【图片】的字段内容 temp/20211101103911_1667299828205.png 修改为 temp/20211101103911_1667299828205.png,temp/版本升级_1667299837808.jpg；    将名称为【文件】的字段内容 temp/jeecg222_1667299825630.png 修改为 temp/jeecg222_1667299825630.png,temp/版本升级_1667299840515.jpg；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587399296021139457', 'admin', '2022-11-01 19:00:59', NULL, NULL, 'ceshi_note', '1587391433634713601', '  将名称为【物料分类】的字段内容 1183693424827564034 修改为 5c8f68845e57f68ab93a2c8d82d26ae1；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587399326702473218', 'admin', '2022-11-01 19:01:07', NULL, NULL, 'ceshi_note', '1587399326509535234', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587399357216034817', 'admin', '2022-11-01 19:01:14', NULL, NULL, 'ceshi_note', '1587399326509535234', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587399379198382081', 'admin', '2022-11-01 19:01:19', NULL, NULL, 'ceshi_note', '1587399378997055489', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587400302238863361', 'admin', '2022-11-01 19:04:59', NULL, NULL, 'ceshi_note', '1587399378997055489', '  将名称为【性别】的字段内容 空 修改为 1；    将名称为【单选框】的字段内容 空 修改为 2；    将名称为【物料分类】的字段内容 5c8f68845e57f68ab93a2c8d82d26ae1 修改为 1183693424827564034；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587400411320127490', 'admin', '2022-11-01 19:05:25', NULL, NULL, 'ceshi_note', '1587399378997055489', '  将名称为【图片】的字段内容 空 修改为 temp/QQ图片20211101112222_1667300717072.png；    将名称为【部门】的字段内容 空 修改为 A01；    将名称为【开关】的字段内容 N 修改为 Y；    将名称为【文件】的字段内容 空 修改为 temp/QQ图片20211101112222-副本_1667300715161.png；    将名称为【省市区】的字段内容 空 修改为 120103；    将名称为【弹出报表】的字段内容 空 修改为 aaa；    将名称为【用户】的字段内容 空 修改为 jeecg；    将名称为【富文本】的字段内容 空 修改为 <p>1111</p>；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587401260700241921', 'admin', '2022-11-01 19:08:48', NULL, NULL, 'ceshi_note', '1587399378997055489', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587401793527844866', 'admin', '2022-11-01 19:10:55', NULL, NULL, 'ceshi_note', '1587399378997055489', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587401815547940866', 'admin', '2022-11-01 19:11:00', NULL, NULL, 'ceshi_note', '1587401815417917441', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587402380621352962', 'admin', '2022-11-01 19:13:15', NULL, NULL, 'ceshi_note', '1587401815417917441', '  将名称为【单选框】的字段内容 空 修改为 1；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587402470664671234', 'admin', '2022-11-01 19:13:36', NULL, NULL, 'ceshi_note', '1587401815417917441', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587402491011239937', 'admin', '2022-11-01 19:13:41', NULL, NULL, 'ceshi_note', '1587401815417917441', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587402587140493313', 'admin', '2022-11-01 19:14:04', NULL, NULL, 'ceshi_note', '1587401815417917441', '  将名称为【物料分类】的字段内容 空 修改为 1183693424827564034；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587402623035346945', 'admin', '2022-11-01 19:14:13', NULL, NULL, 'ceshi_note', '1587401815417917441', '  将名称为【物料分类】的字段内容 1183693424827564034 修改为 1183693534173069314；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587404334768558081', 'admin', '2022-11-01 19:21:01', NULL, NULL, 'ceshi_note', '1587401815417917441', '  将名称为【物料分类】的字段内容 1183693534173069314 修改为 1183693424827564034；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587406987665838082', 'admin', '2022-11-01 19:31:33', NULL, NULL, 'ceshi_note', '1587406987472900097', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1587407014165450754', 'admin', '2022-11-01 19:31:39', NULL, NULL, 'ceshi_note', '1587406987472900097', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1589463238847455233', 'admin', '2022-11-07 11:42:22', NULL, NULL, 'ceshi_note', '1587406987472900097', '  将名称为【性别】的字段内容 空 修改为 1；    将名称为【下单时间】的字段内容 空 修改为 2022-11-06 11:41:49；    将名称为【图片】的字段内容 空 修改为 temp/11_1667792532793.jpg；    将名称为【年龄】的字段内容 空 修改为 22；    将名称为【单选框】的字段内容 1 修改为 2；    将名称为【生日】的字段内容 空 修改为 2022-11-02；    将名称为【薪资】的字段内容 空 修改为 222.000；    将名称为【部门】的字段内容 空 修改为 A01；    将名称为【备注】的字段内容 空 修改为 22；    将名称为【物料分类】的字段内容 1185039122143719425 修改为 1230769196661510146；    将名称为【开关】的字段内容 N 修改为 Y；    将名称为【文件】的字段内容 空 修改为 temp/11_1667792530776.jpg；    将名称为【省市区】的字段内容 110105 修改为 130203；    将名称为【弹出报表】的字段内容 空 修改为 zhang daihao；    将名称为【用户】的字段内容 空 修改为 admin；    将名称为【富文本】的字段内容 空 修改为 <p>333</p>；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1589575791242080258', 'admin', '2022-11-07 19:09:36', NULL, NULL, 'ceshi_note', '1589469175033335809', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1589575924025356290', 'admin', '2022-11-07 19:10:08', NULL, NULL, 'ceshi_note', '1589465733170696194', '  将名称为【aa】的字段内容 空 修改为 asd；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1589621133987786753', 'admin', '2022-11-07 22:09:47', NULL, NULL, 'test_demo', '4028810c6b02cba2016b02cba21f0000', '  将名称为【checkbox】的字段内容 空 修改为 2；    将名称为【城市】的字段内容 空 修改为 120101；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1590362009517109250', 'admin', '2022-11-09 23:13:45', NULL, NULL, 'ceshi_note', '1589469175033335809', '  将名称为【用户名】的字段内容 555 修改为 55599；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1595346653387911170', 'admin', '2022-11-23 17:20:57', NULL, NULL, 'test_order_main', '1589516804530339842', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1595601291844468738', 'admin', '2022-11-24 10:12:47', NULL, NULL, 'ceshi_note', '1589465733170696194', '  将名称为【部门】的字段内容 c6d7cb4deeac411cb3384b1b31278596 修改为 A02；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1595601360412950529', 'admin', '2022-11-24 10:13:04', NULL, NULL, 'ceshi_note', '1589469175033335809', '  将名称为【部门】的字段内容 空 修改为 A01；    将名称为【弹出报表】的字段内容 空 修改为 名字；    将名称为【用户】的字段内容 空 修改为 jeecg；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1597149069037002754', 'admin', '2022-11-28 16:43:06', NULL, NULL, 'demo_field_def_val_main', '1580543461659652098', '', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1597149156505018370', 'admin', '2022-11-28 16:43:27', NULL, NULL, 'test_order_main', '1597149156089782273', ' 创建了记录', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('1631938221120933890', 'admin', '2023-03-04 16:42:47', NULL, NULL, 'ceshi_note', '1589469175033335809', '  将名称为【用户名】的字段内容 55599 修改为 55599121；  ', 1, 'comment');
-INSERT INTO `sys_data_log` VALUES ('402880f05ab0d198015ab12274bf0006', 'admin', '2017-03-09 11:35:09', NULL, NULL, 'jeecg_demo', '4028ef81550c1a7901550c1cd6e70001', '{\"mobilePhone\":\"\",\"officePhone\":\"\",\"email\":\"\",\"createDate\":\"Jun 23, 2016 12:00:00 PM\",\"sex\":\"1\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"9001\",\"status\":\"1\",\"content\":\"111\",\"id\":\"4028ef81550c1a7901550c1cd6e70001\"}', 3, 'json');
-INSERT INTO `sys_data_log` VALUES ('402880f05ab6d12b015ab700bead0009', 'admin', '2017-03-10 14:56:03', NULL, NULL, 'jeecg_demo', '402880f05ab6d12b015ab700be8d0008', '{\"mobilePhone\":\"\",\"officePhone\":\"\",\"email\":\"\",\"createDate\":\"Mar 10, 2017 2:56:03 PM\",\"sex\":\"0\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"111\",\"status\":\"0\",\"id\":\"402880f05ab6d12b015ab700be8d0008\"}', 1, 'json');
-INSERT INTO `sys_data_log` VALUES ('402880f05ab6d12b015ab705a23f000d', 'admin', '2017-03-10 15:01:24', NULL, NULL, 'jeecg_demo', '402880f05ab6d12b015ab705a233000c', '{\"mobilePhone\":\"\",\"officePhone\":\"11\",\"email\":\"\",\"createDate\":\"Mar 10, 2017 3:01:24 PM\",\"sex\":\"0\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"11\",\"status\":\"0\",\"id\":\"402880f05ab6d12b015ab705a233000c\"}', 1, 'json');
-INSERT INTO `sys_data_log` VALUES ('402880f05ab6d12b015ab712a6420013', 'admin', '2017-03-10 15:15:37', NULL, NULL, 'jeecg_demo', '402880f05ab6d12b015ab712a6360012', '{\"mobilePhone\":\"\",\"officePhone\":\"\",\"email\":\"\",\"createDate\":\"Mar 10, 2017 3:15:37 PM\",\"sex\":\"0\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"小王\",\"status\":\"0\",\"id\":\"402880f05ab6d12b015ab712a6360012\"}', 1, 'json');
-INSERT INTO `sys_data_log` VALUES ('402880f05ab6d12b015ab712d0510015', 'admin', '2017-03-10 15:15:47', NULL, NULL, 'jeecg_demo', '402880f05ab6d12b015ab712a6360012', '{\"mobilePhone\":\"18611788525\",\"officePhone\":\"\",\"email\":\"\",\"createDate\":\"Mar 10, 2017 3:15:37 AM\",\"sex\":\"0\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"小王\",\"status\":\"0\",\"id\":\"402880f05ab6d12b015ab712a6360012\"}', 2, 'json');
-INSERT INTO `sys_data_log` VALUES ('402880f05ab6d12b015ab71308240018', 'admin', '2017-03-10 15:16:02', NULL, NULL, 'jeecg_demo', '8a8ab0b246dc81120146dc81860f016f', '{\"mobilePhone\":\"13111111111\",\"officePhone\":\"66666666\",\"email\":\"demo@jeecg.com\",\"age\":12,\"salary\":10.00,\"birthday\":\"Feb 14, 2014 12:00:00 AM\",\"sex\":\"1\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"小明\",\"status\":\"\",\"content\":\"\",\"id\":\"8a8ab0b246dc81120146dc81860f016f\"}', 1, 'json');
-INSERT INTO `sys_data_log` VALUES ('402880f05ab6d12b015ab72806c3001b', 'admin', '2017-03-10 15:38:58', NULL, NULL, 'jeecg_demo', '8a8ab0b246dc81120146dc81860f016f', '{\"mobilePhone\":\"18611788888\",\"officePhone\":\"66666666\",\"email\":\"demo@jeecg.com\",\"age\":12,\"salary\":10.00,\"birthday\":\"Feb 14, 2014 12:00:00 AM\",\"sex\":\"1\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"小明\",\"status\":\"\",\"content\":\"\",\"id\":\"8a8ab0b246dc81120146dc81860f016f\"}', 2, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef815318148a0153181567690001', 'admin', '2016-02-25 18:59:29', NULL, NULL, 'jeecg_demo', '4028ef815318148a0153181566270000', '{\"mobilePhone\":\"13423423423\",\"officePhone\":\"1\",\"email\":\"\",\"age\":1,\"salary\":1,\"birthday\":\"Feb 25, 2016 12:00:00 AM\",\"createDate\":\"Feb 25, 2016 6:59:24 PM\",\"depId\":\"402880e447e9a9570147e9b6a3be0005\",\"userName\":\"1\",\"status\":\"0\",\"id\":\"4028ef815318148a0153181566270000\"}', 1, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef815318148a01531815ec5c0003', 'admin', '2016-02-25 19:00:03', NULL, NULL, 'jeecg_demo', '4028ef815318148a0153181566270000', '{\"mobilePhone\":\"13426498659\",\"officePhone\":\"1\",\"email\":\"\",\"age\":1,\"salary\":1.00,\"birthday\":\"Feb 25, 2016 12:00:00 AM\",\"createDate\":\"Feb 25, 2016 6:59:24 AM\",\"depId\":\"402880e447e9a9570147e9b6a3be0005\",\"userName\":\"1\",\"status\":\"0\",\"id\":\"4028ef815318148a0153181566270000\"}', 2, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef8153c028db0153c0502e6b0003', 'admin', '2016-03-29 10:59:53', NULL, NULL, 'jeecg_demo', '4028ef8153c028db0153c0502d420002', '{\"mobilePhone\":\"18455477548\",\"officePhone\":\"123\",\"email\":\"\",\"createDate\":\"Mar 29, 2016 10:59:53 AM\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"123\",\"status\":\"0\",\"id\":\"4028ef8153c028db0153c0502d420002\"}', 1, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef8153c028db0153c0509aa40006', 'admin', '2016-03-29 11:00:21', NULL, NULL, 'jeecg_demo', '4028ef8153c028db0153c0509a3e0005', '{\"mobilePhone\":\"13565486458\",\"officePhone\":\"\",\"email\":\"\",\"createDate\":\"Mar 29, 2016 11:00:21 AM\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"22\",\"status\":\"0\",\"id\":\"4028ef8153c028db0153c0509a3e0005\"}', 1, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef8153c028db0153c051c4a70008', 'admin', '2016-03-29 11:01:37', NULL, NULL, 'jeecg_demo', '4028ef8153c028db0153c0509a3e0005', '{\"mobilePhone\":\"13565486458\",\"officePhone\":\"\",\"email\":\"\",\"createDate\":\"Mar 29, 2016 11:00:21 AM\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"22\",\"status\":\"0\",\"id\":\"4028ef8153c028db0153c0509a3e0005\"}', 2, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef8153c028db0153c051d4b5000a', 'admin', '2016-03-29 11:01:41', NULL, NULL, 'jeecg_demo', '4028ef8153c028db0153c0502d420002', '{\"mobilePhone\":\"13565486458\",\"officePhone\":\"123\",\"email\":\"\",\"createDate\":\"Mar 29, 2016 10:59:53 AM\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"123\",\"status\":\"0\",\"id\":\"4028ef8153c028db0153c0502d420002\"}', 2, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef8153c028db0153c07033d8000d', 'admin', '2016-03-29 11:34:52', NULL, NULL, 'jeecg_demo', '4028ef8153c028db0153c0502d420002', '{\"mobilePhone\":\"13565486458\",\"officePhone\":\"123\",\"email\":\"\",\"age\":23,\"createDate\":\"Mar 29, 2016 10:59:53 AM\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"123\",\"status\":\"0\",\"id\":\"4028ef8153c028db0153c0502d420002\"}', 3, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef8153c028db0153c070492e000f', 'admin', '2016-03-29 11:34:57', NULL, NULL, 'jeecg_demo', '4028ef8153c028db0153c0509a3e0005', '{\"mobilePhone\":\"13565486458\",\"officePhone\":\"\",\"email\":\"\",\"age\":22,\"createDate\":\"Mar 29, 2016 11:00:21 AM\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"22\",\"status\":\"0\",\"id\":\"4028ef8153c028db0153c0509a3e0005\"}', 3, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef81550c1a7901550c1cd7850002', 'admin', '2016-06-01 21:17:44', NULL, NULL, 'jeecg_demo', '4028ef81550c1a7901550c1cd6e70001', '{\"mobilePhone\":\"\",\"officePhone\":\"\",\"email\":\"\",\"createDate\":\"Jun 1, 2016 9:17:44 PM\",\"sex\":\"1\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"121221\",\"status\":\"0\",\"id\":\"4028ef81550c1a7901550c1cd6e70001\"}', 1, 'json');
-INSERT INTO `sys_data_log` VALUES ('4028ef81568c31ec01568c3307080004', 'admin', '2016-08-15 11:16:09', NULL, NULL, 'jeecg_demo', '4028ef81550c1a7901550c1cd6e70001', '{\"mobilePhone\":\"\",\"officePhone\":\"\",\"email\":\"\",\"createDate\":\"Jun 23, 2016 12:00:00 PM\",\"sex\":\"1\",\"depId\":\"402880e447e99cf10147e9a03b320003\",\"userName\":\"9001\",\"status\":\"1\",\"content\":\"111\",\"id\":\"4028ef81550c1a7901550c1cd6e70001\"}', 2, 'json');
-
 -- ----------------------------
 -- Table structure for sys_data_source
 -- ----------------------------
@@ -4231,25 +3819,6 @@ CREATE TABLE `sys_log`  (
 -- Records of sys_log
 -- ----------------------------
 INSERT INTO `sys_log` VALUES ('1632743293639704578', 1, '用户名: admin,登录成功！', NULL, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-06 22:01:51', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633795132552331266', 1, '用户名: admin,登录成功！', NULL, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 19:41:29', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633795234301952002', 3, '将 jeecg 添加到角色 232', 2, 'admin', '管理员', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 19:41:53', NULL, NULL, 1);
-INSERT INTO `sys_log` VALUES ('1633795819784847361', 2, '编辑用户，username： zhagnxiao', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 19:44:13', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633797138973147137', 2, '添加用户，username： sdfas', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 19:49:27', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633799025831133186', 2, '添加用户，username： 123', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 19:56:57', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633799090641518594', 2, '编辑用户，username： 123', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 19:57:12', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633799500294995970', 2, '添加用户，username： sdfasdf', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 19:58:50', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633799606465413122', 2, '编辑用户，username： sdfasdf', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 19:59:15', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633802472806670338', 1, '用户名: 管理员,退出成功！', NULL, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 20:10:39', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633802491123195906', 1, '用户名: admin,登录成功！', NULL, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 20:10:43', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633802551785414658', 2, '职务表-分页列表查询', 1, 'admin', '管理员', '127.0.0.1', 'org.jeecg.modules.system.controller.SysPositionController.queryPageList()', NULL, '  sysPosition: SysPosition(id=null, code=, name=null, postRank=null, companyId=null, createBy=null, createTime=null, updateBy=null, updateTime=null, sysOrgCode=null, tenantId=0)  pageNo: 1  pageSize: 10  req: org.apache.shiro.web.servlet.ShiroHttpServletRequest@400bd6e8', NULL, 44, NULL, '2023-03-09 20:10:58', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633802611273228290', 2, '添加用户，username： asdfasdf', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 20:11:12', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633802653614727170', 2, '批量删除用户， ids： 1633802611139010562,1633799500227887106,1633799025764024321,1633797138843123714', 3, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 20:11:22', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633802992560627713', 2, '职务表-分页列表查询', 1, 'admin', '管理员', '127.0.0.1', 'org.jeecg.modules.system.controller.SysPositionController.queryPageList()', NULL, '  sysPosition: SysPosition(id=null, code=, name=null, postRank=null, companyId=null, createBy=null, createTime=null, updateBy=null, updateTime=null, sysOrgCode=null, tenantId=0)  pageNo: 1  pageSize: 10  req: org.apache.shiro.web.servlet.ShiroHttpServletRequest@767bb69d', NULL, 18, NULL, '2023-03-09 20:12:43', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633802993412071426', 2, '职务表-分页列表查询', 1, 'admin', '管理员', '127.0.0.1', 'org.jeecg.modules.system.controller.SysPositionController.queryPageList()', NULL, '  sysPosition: SysPosition(id=null, code=总经理, name=null, postRank=null, companyId=null, createBy=null, createTime=null, updateBy=null, updateTime=null, sysOrgCode=null, tenantId=0)  pageNo: 1  pageSize: 10  req: org.apache.shiro.web.servlet.ShiroHttpServletRequest@f9470cd', NULL, 24, NULL, '2023-03-09 20:12:43', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633803007035170818', 2, '编辑用户，username： admin', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 20:12:46', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633804165707456513', 2, '职务表-分页列表查询', 1, 'admin', '管理员', '127.0.0.1', 'org.jeecg.modules.system.controller.SysPositionController.queryPageList()', NULL, '  sysPosition: SysPosition(id=null, code=null, name=null, postRank=null, companyId=null, createBy=null, createTime=null, updateBy=null, updateTime=null, sysOrgCode=null, tenantId=1000)  pageNo: 1  pageSize: 10  req: org.apache.shiro.web.servlet.ShiroHttpServletRequest@7460e74a', NULL, 15, NULL, '2023-03-09 20:17:22', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633804994137026562', 2, '修改角色ID: 1501570619841810433 的权限配置，操作人： admin', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 20:20:40', NULL, NULL, NULL);
-INSERT INTO `sys_log` VALUES ('1633807285640491010', 2, '编辑用户，username： admin', 2, 'admin', '管理员', '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-09 20:29:46', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_permission
@@ -6172,313 +5741,14 @@ CREATE TABLE `sys_user_tenant`  (
 -- Records of sys_user_tenant
 -- ----------------------------
 
--- ----------------------------
--- Table structure for test_demo
--- ----------------------------
-DROP TABLE IF EXISTS `test_demo`;
-CREATE TABLE `test_demo`  (
-  `id` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键',
-  `create_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人登录名称',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
-  `update_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人登录名称',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '更新日期',
-  `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
-  `sex` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
-  `age` int(32) NULL DEFAULT NULL COMMENT '年龄',
-  `descc` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
-  `birthday` datetime NULL DEFAULT NULL COMMENT '生日',
-  `user_code` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户编码',
-  `file_kk` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '附件',
-  `top_pic` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像',
-  `chegnshi` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '城市',
-  `ceck` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'checkbox',
-  `xiamuti` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '下拉多选',
-  `search_sel` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '搜索下拉',
-  `pop` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '弹窗',
-  `sel_table` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '下拉字典表',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of test_demo
--- ----------------------------
-INSERT INTO `test_demo` VALUES ('1331884149004910593', 'admin', '2020-11-26 16:55:01', NULL, NULL, '张三', '1', NULL, NULL, NULL, NULL, '', '', '130304', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `test_demo` VALUES ('1331901553776869377', 'admin', '2020-11-26 18:04:10', 'admin', '2020-11-26 18:04:24', '张三', '2', NULL, '', NULL, '', '', '', '', '1', '1,2', 'hr', '', NULL);
-INSERT INTO `test_demo` VALUES ('1533107308342210561', 'admin', '2022-06-04 23:24:00', NULL, NULL, '11', '1', 111, '<p>111</p>', '2022-06-24 00:00:00', NULL, 'temp/11_1654356225072.jpg', 'temp/11_1654356229294.jpg', '210603', '2', '2,1', 'hr', NULL, 'admin');
-INSERT INTO `test_demo` VALUES ('4028810c6aed99e1016aed9b31b40002', NULL, NULL, 'admin', '2019-10-19 15:37:27', 'jeecg', '2', 55, '5', '2019-05-15 00:00:00', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `test_demo` VALUES ('4028810c6b02cba2016b02cba21f0000', 'admin', '2019-05-29 16:53:48', 'admin', '2022-11-07 22:09:46', '张小红', '1', 8222, '8', '2019-04-01 00:00:00', '', '', '', '120101', '2', '', '', '', '');
-
--- ----------------------------
--- Table structure for test_enhance_select
--- ----------------------------
-DROP TABLE IF EXISTS `test_enhance_select`;
-CREATE TABLE `test_enhance_select`  (
-  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `province` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '省份',
-  `city` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '市',
-  `area` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '区',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of test_enhance_select
--- ----------------------------
-INSERT INTO `test_enhance_select` VALUES ('1256614575282958338', '1230769290609725441', '1230769470889299970', '1230769620021972993', '2020-05-03 00:00:36', 'admin');
-INSERT INTO `test_enhance_select` VALUES ('1427183594647195649', '1230769253267836929', '1230769769930592257', '1230769855347593217', '2021-08-16 16:20:59', 'admin');
-INSERT INTO `test_enhance_select` VALUES ('1427184250225299457', '1230769290609725441', '1230769470889299970', '1230769620021972993', '2021-08-16 16:23:35', 'admin');
-INSERT INTO `test_enhance_select` VALUES ('1427900912506630146', '1230769253267836929', '1230769769930592257', '1230769855347593217', '2021-08-18 15:51:21', 'admin');
-INSERT INTO `test_enhance_select` VALUES ('402880e570801ffe01708053743c002e', '1230769253267836929', '1230769769930592257', '1230769855347593217', '2020-02-26 15:08:37', 'admin');
-INSERT INTO `test_enhance_select` VALUES ('402880e570801ffe017080538b24002f', '1230769253267836929', '1230769769930592257', '1230769855347593217', '2020-02-26 15:08:43', 'admin');
-INSERT INTO `test_enhance_select` VALUES ('402880e570801ffe01708053b2b10030', '1230769290609725441', '1230769470889299970', '1230769620021972993', '2020-02-26 15:08:53', 'admin');
-
--- ----------------------------
--- Table structure for test_note
--- ----------------------------
-DROP TABLE IF EXISTS `test_note`;
-CREATE TABLE `test_note`  (
-  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '更新日期',
-  `sys_org_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属部门',
-  `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户名',
-  `age` int(11) NULL DEFAULT NULL COMMENT '年龄',
-  `sex` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '性别',
-  `birthday` datetime NULL DEFAULT NULL COMMENT '生日',
-  `contents` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请假原因',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of test_note
--- ----------------------------
-INSERT INTO `test_note` VALUES ('1257876639515222017', 'admin', '2020-05-06 11:35:35', NULL, NULL, 'A01', '不同意', 20, '1', '2020-05-06 00:00:00', '999');
-INSERT INTO `test_note` VALUES ('1260208702503366657', 'admin', '2020-05-12 22:02:23', 'admin', '2020-07-11 11:40:24', 'A01', 'jeecg', 22233, '2', '2020-05-12 00:00:00', 'sss');
-INSERT INTO `test_note` VALUES ('1304309860578455553', 'admin', '2020-09-11 14:44:38', NULL, NULL, 'A01', 'zhangsan', 222, '1', '2020-09-11 00:00:00', '222');
-INSERT INTO `test_note` VALUES ('1427901092375162881', 'admin', '2021-08-18 15:52:04', 'admin', '2022-06-02 13:00:26', 'A01', 'zhangsan', 222, '1', NULL, '');
-INSERT INTO `test_note` VALUES ('1580543046964621313', 'admin', '2022-10-13 20:56:42', 'admin', '2022-10-28 10:25:54', 'A01', 'zhangsan', 22, '1', '2022-10-05 00:00:00', '1212');
-INSERT INTO `test_note` VALUES ('1586554454185570306', 'admin', '2022-10-30 11:03:53', NULL, NULL, 'A01', 'zhagnxiao', 44, NULL, NULL, NULL);
-
--- ----------------------------
--- Table structure for test_order_customer
--- ----------------------------
-DROP TABLE IF EXISTS `test_order_customer`;
-CREATE TABLE `test_order_customer`  (
-  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '更新日期',
-  `sys_org_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属部门',
-  `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '客户名字',
-  `sex` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '性别',
-  `age` int(11) NULL DEFAULT NULL COMMENT '年龄',
-  `birthday` date NULL DEFAULT NULL COMMENT '生日',
-  `order_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单id',
-  `address` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '地址',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of test_order_customer
--- ----------------------------
-INSERT INTO `test_order_customer` VALUES ('1586285823409205250', 'admin', '2022-10-29 17:16:26', NULL, NULL, 'A01', '90', '1', 90, '2022-09-28', '1551943088862896130', NULL);
-INSERT INTO `test_order_customer` VALUES ('1586557969578553345', 'admin', '2022-10-30 11:20:31', NULL, NULL, 'A01', '小王', '1', 33, '2022-09-29', '1586557968995545089', NULL);
-INSERT INTO `test_order_customer` VALUES ('1586557969578553346', 'admin', '2022-10-30 11:17:51', NULL, NULL, 'A01', '效力', '2', 333, '2022-10-16', '1586557968995545089', NULL);
-INSERT INTO `test_order_customer` VALUES ('1589514956528386050', 'admin', '2022-11-07 15:07:52', NULL, NULL, 'A01', '1111', '1', 22, '2022-11-02', '1589514956490637313', NULL);
-INSERT INTO `test_order_customer` VALUES ('1589516804559699969', 'admin', '2022-11-23 17:20:56', NULL, NULL, 'A01', '444', NULL, NULL, NULL, '1589516804530339842', '110101');
-INSERT INTO `test_order_customer` VALUES ('1589516804559699970', 'admin', '2022-11-07 15:15:13', NULL, NULL, 'A01', '33', NULL, NULL, NULL, '1589516804530339842', '120101');
-INSERT INTO `test_order_customer` VALUES ('1589516832699285506', 'admin', '2022-11-07 15:15:19', NULL, NULL, 'A01', '4434', NULL, NULL, NULL, '1589516804530339842', NULL);
-INSERT INTO `test_order_customer` VALUES ('1597149156416937985', 'admin', '2022-11-28 16:43:27', NULL, NULL, 'A01', '33', '1', 33, '2022-11-03', '1597149156089782273', NULL);
-
--- ----------------------------
--- Table structure for test_order_main
--- ----------------------------
-DROP TABLE IF EXISTS `test_order_main`;
-CREATE TABLE `test_order_main`  (
-  `id` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键',
-  `create_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
-  `update_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '更新日期',
-  `order_code` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单编码',
-  `order_date` datetime NULL DEFAULT NULL COMMENT '下单时间',
-  `descc` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
-  `xiala` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '下拉多选',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of test_order_main
--- ----------------------------
-INSERT INTO `test_order_main` VALUES ('1256629667445714946', 'admin', '2020-05-03 01:00:34', 'admin', '2020-11-26 15:22:35', '鼠标', '2020-05-03 00:00:00', '15', NULL);
-INSERT INTO `test_order_main` VALUES ('1551943088862896130', 'admin', '2022-07-26 22:50:40', 'admin', '2022-10-29 17:16:26', 'CN2022', NULL, '', '');
-INSERT INTO `test_order_main` VALUES ('1586557968995545089', 'admin', '2022-10-30 11:17:51', 'admin', '2022-11-07 15:07:24', 'CN2022103011170844', NULL, '111', '');
-INSERT INTO `test_order_main` VALUES ('1589514956490637313', 'admin', '2022-11-07 15:07:52', 'admin', '2022-11-07 15:14:50', '顾平', '2022-11-07 00:00:00', NULL, '1,2');
-INSERT INTO `test_order_main` VALUES ('1589516804530339842', 'admin', '2022-11-07 15:15:13', 'admin', '2022-11-23 17:20:56', '顾平2', '2022-11-07 00:00:00', '222', '1,2');
-INSERT INTO `test_order_main` VALUES ('1597149156089782273', 'admin', '2022-11-28 16:43:27', NULL, NULL, 'CN2022112816431596', NULL, NULL, NULL);
-
--- ----------------------------
--- Table structure for test_order_product
--- ----------------------------
-DROP TABLE IF EXISTS `test_order_product`;
-CREATE TABLE `test_order_product`  (
-  `id` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键',
-  `create_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
-  `update_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '更新日期',
-  `product_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品名字',
-  `price` double(32, 0) NULL DEFAULT NULL COMMENT '价格',
-  `num` int(32) NULL DEFAULT NULL COMMENT '数量',
-  `descc` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
-  `order_fk_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单外键ID',
-  `pro_type` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品类型',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of test_order_product
--- ----------------------------
-INSERT INTO `test_order_product` VALUES ('1331860890813284353', 'admin', '2020-11-26 15:22:35', NULL, NULL, '44', 44, 44, '', '1256629667445714946', '1');
-INSERT INTO `test_order_product` VALUES ('1551943088930004994', 'admin', '2022-10-29 17:16:26', NULL, NULL, '11', 11, 11, '11', '1551943088862896130', '1');
-INSERT INTO `test_order_product` VALUES ('1551943088930004995', 'admin', '2022-07-26 22:50:40', NULL, NULL, '2', 2, 2, '2', '1551943088862896130', '2');
-INSERT INTO `test_order_product` VALUES ('15665749948861', 'admin', '2020-02-24 02:05:38', NULL, NULL, '333', 33, NULL, '', '402831816a38e7fd016a38e825c90003', '');
-INSERT INTO `test_order_product` VALUES ('1586557969318506498', 'admin', '2022-10-30 11:20:31', NULL, NULL, '小米手机3', 20003, 33, '3', '1586557968995545089', '2');
-INSERT INTO `test_order_product` VALUES ('1586557969381421058', 'admin', '2022-10-30 11:17:51', NULL, NULL, '华为手机1', 80001, 31, '11', '1586557968995545089', '2');
-INSERT INTO `test_order_product` VALUES ('15884388229280883233', 'admin', '2020-11-26 15:22:35', NULL, NULL, '华为手机', 25, 35, '345', '1256629667445714946', '1');
-INSERT INTO `test_order_product` VALUES ('15884388231401967996', 'admin', '2020-07-11 11:36:36', NULL, NULL, '低代码平台', 25, 35, '445', '1256629667445714946', '1');
-INSERT INTO `test_order_product` VALUES ('15884388463052345317', 'admin', '2020-07-11 11:36:36', NULL, NULL, '表单设计器', 55, 55, '55', '1256629667445714946', '2');
-INSERT INTO `test_order_product` VALUES ('1589514837779251202', 'admin', '2022-11-07 15:07:24', NULL, NULL, '2323', 2323, 2323, '', '1586557968995545089', '1');
-INSERT INTO `test_order_product` VALUES ('1589514956499025921', 'admin', '2022-11-07 15:07:52', NULL, NULL, '111', 222, 222, '222', '1589514956490637313', '1');
-INSERT INTO `test_order_product` VALUES ('1589514956515803137', 'admin', '2022-11-07 15:07:52', NULL, NULL, '333', NULL, NULL, '', '1589514956490637313', '');
-INSERT INTO `test_order_product` VALUES ('1589516804542922753', 'admin', '2022-11-23 17:20:56', NULL, NULL, '1133', NULL, NULL, NULL, '1589516804530339842', NULL);
-INSERT INTO `test_order_product` VALUES ('1589516804551311361', 'admin', '2022-11-07 15:15:13', NULL, NULL, '222', NULL, NULL, NULL, '1589516804530339842', NULL);
-INSERT INTO `test_order_product` VALUES ('1597149156278525953', 'admin', '2022-11-28 16:43:27', NULL, NULL, '22', 2, 2, '22', '1597149156089782273', '1');
-INSERT INTO `test_order_product` VALUES ('402831816a38e7fd016a38e7fdeb0001', 'admin', '2019-04-20 12:01:29', NULL, NULL, '笔记本', 100, 10, NULL, '402831816a38e7fd016a38e7fddf0000', NULL);
-INSERT INTO `test_order_product` VALUES ('402831816a38e7fd016a38e7fdf10002', 'admin', '2019-04-20 12:01:29', NULL, NULL, '显示器', 300, 1, NULL, '402831816a38e7fd016a38e7fddf0000', NULL);
-INSERT INTO `test_order_product` VALUES ('4028810c6b40244b016b406884080005', 'admin', '2020-02-24 02:05:38', NULL, NULL, '333', NULL, 33, '', '402831816a38e7fd016a38e825c90003', '');
-
--- ----------------------------
--- Table structure for test_shoptype_tree
--- ----------------------------
-DROP TABLE IF EXISTS `test_shoptype_tree`;
-CREATE TABLE `test_shoptype_tree`  (
-  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '更新日期',
-  `sys_org_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属部门',
-  `type_name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品分类',
-  `pic` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分类图片',
-  `pid` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '父级节点',
-  `has_child` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否有子节点',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of test_shoptype_tree
--- ----------------------------
-INSERT INTO `test_shoptype_tree` VALUES ('1256628820489908225', 'admin', '2020-05-03 00:57:12', 'admin', '2022-10-30 17:33:00', 'A01', '衣服', 'temp/11_1666924536435.jpg', '0', '1');
-INSERT INTO `test_shoptype_tree` VALUES ('1256628843097206786', 'admin', '2020-05-03 00:57:17', NULL, NULL, 'A01', '电子产品', NULL, '0', '0');
-INSERT INTO `test_shoptype_tree` VALUES ('1256629035921944577', 'admin', '2020-05-03 00:58:03', NULL, NULL, 'A01', '三星显示器', 'gh_f28e66390fc9_344 (shop)_1588438682583.jpg', '1256628864848867329', '0');
-INSERT INTO `test_shoptype_tree` VALUES ('1256629093740425218', 'admin', '2020-05-03 00:58:17', 'admin', '2020-05-03 22:32:37', 'A01', '手机', '', '0', '1');
-INSERT INTO `test_shoptype_tree` VALUES ('1256629139206680578', 'admin', '2020-05-03 00:58:28', 'admin', '2022-10-28 10:35:29', 'A01', 'iPhone', '', '1256629093740425218', '0');
-INSERT INTO `test_shoptype_tree` VALUES ('1256629188993069058', 'admin', '2020-05-03 00:58:40', 'admin', '2022-10-28 10:35:25', 'A01', '华为手机', '', '1256629093740425218', '0');
-INSERT INTO `test_shoptype_tree` VALUES ('1585822484715520001', 'admin', '2022-10-28 10:35:18', NULL, NULL, 'A01', '微博', 'temp/4afbfbedab64034f9015f1bca8c379310b551dab_1666924512468.jpg', '1256629093740425218', '0');
-INSERT INTO `test_shoptype_tree` VALUES ('1586652276604006401', 'admin', '2022-10-30 17:32:36', 'admin', '2022-10-30 17:32:42', 'A01', '机械设备', 'temp/11_1667122355087.jpg', '0', '1');
-INSERT INTO `test_shoptype_tree` VALUES ('1586652301673361409', 'admin', '2022-10-30 17:32:42', 'admin', '2022-10-30 17:32:50', 'A01', '塔基1', NULL, '1586652276604006401', '0');
-INSERT INTO `test_shoptype_tree` VALUES ('1586652322430971906', 'admin', '2022-10-30 17:32:47', 'admin', '2022-10-30 17:32:53', 'A01', '小机器2', NULL, '1586652276604006401', '0');
-INSERT INTO `test_shoptype_tree` VALUES ('1586652378194243586', 'admin', '2022-10-30 17:33:00', NULL, NULL, 'A01', '牛仔裤', NULL, '1256628820489908225', '0');
-
--- ----------------------------
--- Table structure for test_v3_hello
--- ----------------------------
-DROP TABLE IF EXISTS `test_v3_hello`;
-CREATE TABLE `test_v3_hello`  (
-  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '更新日期',
-  `sys_org_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属部门',
-  `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '名字',
-  `age` int(11) NULL DEFAULT NULL COMMENT '年龄',
-  `sex` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '性别',
-  `birthday` date NULL DEFAULT NULL COMMENT '生日',
-  `cc` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `rel_user` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关联记录',
-  `rel_filed` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '他表字段',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of test_v3_hello
--- ----------------------------
-INSERT INTO `test_v3_hello` VALUES ('1585826258943197186', 'admin', '2022-10-28 10:50:18', 'admin', '2022-10-30 11:03:27', 'A01', '黄明远1', 201, '1', '2022-10-28', '问题的关键究竟为何? 而这些并不是完全重要, 更加重要的问题是, 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 我们都知道, 只要有意义, 那么就必须慎重考虑.那么, 经过上述讨论, 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. \n就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 既然如此, 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.对我', '1260208702503366657', NULL);
-INSERT INTO `test_v3_hello` VALUES ('1586554463777943554', 'admin', '2022-10-30 11:03:55', NULL, NULL, 'A01', '袁清妍', 30, '1', '2022-10-30', NULL, '1586554454185570306', NULL);
-
--- ----------------------------
--- Table structure for tmp_report_data_1
--- ----------------------------
-DROP TABLE IF EXISTS `tmp_report_data_1`;
-CREATE TABLE `tmp_report_data_1`  (
-  `monty` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '月份',
-  `main_income` decimal(10, 2) NULL DEFAULT NULL,
-  `total` decimal(10, 2) NULL DEFAULT NULL,
-  `his_lowest` decimal(10, 2) NULL DEFAULT NULL,
-  `his_average` decimal(10, 2) NULL DEFAULT NULL,
-  `his_highest` decimal(10, 2) NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of tmp_report_data_1
--- ----------------------------
-INSERT INTO `tmp_report_data_1` VALUES ('1月', 483834.66, 483834.66, 57569.77, 216797.62, 483834.66);
-INSERT INTO `tmp_report_data_1` VALUES ('2月', 11666578.65, 12150413.31, 22140.00, 4985361.57, 11666578.65);
-INSERT INTO `tmp_report_data_1` VALUES ('3月', 27080982.08, 39231395.39, 73106.29, 16192642.30, 27080982.08);
-INSERT INTO `tmp_report_data_1` VALUES ('4月', 0.00, 39231395.39, 73106.29, 8513415.34, 17428381.40);
-INSERT INTO `tmp_report_data_1` VALUES ('5月', 0.00, 39231395.39, NULL, NULL, NULL);
-INSERT INTO `tmp_report_data_1` VALUES ('6月', 0.00, 39231395.39, NULL, NULL, NULL);
-INSERT INTO `tmp_report_data_1` VALUES ('7月', 0.00, 39231395.39, NULL, NULL, NULL);
-INSERT INTO `tmp_report_data_1` VALUES ('8月', 0.00, 39231395.39, NULL, NULL, NULL);
-INSERT INTO `tmp_report_data_1` VALUES ('9月', 0.00, 39231395.39, NULL, NULL, NULL);
-INSERT INTO `tmp_report_data_1` VALUES ('10月', 0.00, 39231395.39, NULL, NULL, NULL);
-INSERT INTO `tmp_report_data_1` VALUES ('11月', 0.00, 39231395.39, NULL, NULL, NULL);
-INSERT INTO `tmp_report_data_1` VALUES ('12月', 0.00, 39231395.39, NULL, NULL, NULL);
-
--- ----------------------------
--- Table structure for tmp_report_data_income
--- ----------------------------
-DROP TABLE IF EXISTS `tmp_report_data_income`;
-CREATE TABLE `tmp_report_data_income`  (
-  `biz_income` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `bx_jj_yongjin` decimal(10, 2) NULL DEFAULT NULL,
-  `bx_zx_money` decimal(10, 2) NULL DEFAULT NULL,
-  `chengbao_gz_money` decimal(10, 2) NULL DEFAULT NULL,
-  `bx_gg_moeny` decimal(10, 2) NULL DEFAULT NULL,
-  `tb_zx_money` decimal(10, 2) NULL DEFAULT NULL,
-  `neikong_zx_money` decimal(10, 2) NULL DEFAULT NULL,
-  `total` decimal(10, 2) NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of tmp_report_data_income
--- ----------------------------
-INSERT INTO `tmp_report_data_income` VALUES ('中国石油全资（集团所属）', 37134.58, 1099273.32, 0.00, 0.00, 0.00, 226415.09, 38460270.57);
-INSERT INTO `tmp_report_data_income` VALUES ('中国石油全资（股份所属）', 227595.77, 0.00, 0.00, 0.00, 0.00, 0.00, 227595.77);
-INSERT INTO `tmp_report_data_income` VALUES ('中石油控股或有控股权', 310628.11, 369298.64, 0.00, 0.00, 0.00, 0.00, 679926.75);
-INSERT INTO `tmp_report_data_income` VALUES ('中石油参股', 72062.45, 0.00, 0.00, 0.00, 0.00, 0.00, 72062.75);
-INSERT INTO `tmp_report_data_income` VALUES ('非中石油', 1486526.90, 212070.72, 0.00, 0.00, 0.00, 226415.09, 1698597.62);
-
+-- ------------------------------------------------------------------------------------
 -- Education Tables
-
--- `eemp`.edu_lab_basic_info definition
-
+-- ------------------------------------------------------------------------------------
+--
+-- ----------------------------
+-- Table structure for edu_lab_basic_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_lab_basic_info`;
 CREATE TABLE `edu_lab_basic_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6498,19 +5768,12 @@ CREATE TABLE `edu_lab_basic_info` (
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
--- 注意：该页面对应的前台目录为views/edu.edulabbasic文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
-
-
-INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
-VALUES ('2023041610053670010', NULL, '中小学实验室基本情况统计表', '/edu.edulabbasic/eduLabBasicInfoList', 'edu.edulabbasic/EduLabBasicInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-04-16 10:05:01', NULL, NULL, 0);
-
+INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)VALUES ('2023041610053670010', NULL, '中小学实验室基本情况统计表', '/edu.edulabbasic/eduLabBasicInfoList', 'edu.edulabbasic/EduLabBasicInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-04-16 10:05:01', NULL, NULL, 0);
 -- 权限控制sql
 -- 新增
-INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
-VALUES ('2023041610053680011', '2023041610053670010', '添加中小学实验室基本情况统计表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edulabbasic:edu_lab_basic_info:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 10:05:01', NULL, NULL, 0, 0, '1', 0);
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)VALUES ('2023041610053680011', '2023041610053670010', '添加中小学实验室基本情况统计表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edulabbasic:edu_lab_basic_info:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 10:05:01', NULL, NULL, 0, 0, '1', 0);
 -- 编辑
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023041610053680012', '2023041610053670010', '编辑中小学实验室基本情况统计表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edulabbasic:edu_lab_basic_info:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 10:05:01', NULL, NULL, 0, 0, '1', 0);
@@ -6527,10 +5790,10 @@ VALUES ('2023041610053680015', '2023041610053670010', '导出excel_中小学实�
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023041610053680016', '2023041610053670010', '导入excel_中小学实验室基本情况统计表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edulabbasic:edu_lab_basic_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 10:05:01', NULL, NULL, 0, 0, '1', 0);
 
-
-
--- `eemp`.edu_music_equipment_info definition
-
+-- ----------------------------
+-- Table structure for edu_music_equipment_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_music_equipment_info`;
 CREATE TABLE `edu_music_equipment_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6552,10 +5815,7 @@ CREATE TABLE `edu_music_equipment_info` (
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 注意：该页面对应的前台目录为views/edu.edumusicequipment文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
@@ -6582,8 +5842,10 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
 VALUES ('2023041610121570276', '2023041610121570270', '导入excel_小学音乐教学装备配置登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edumusicequipment:edu_music_equipment_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 10:12:27', NULL, NULL, 0, 0, '1', 0);
 
 
--- `eemu`.edu_equipment_register_info definition
-
+-- ----------------------------
+-- Table structure for edu_equipment_register_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_equipment_register_info`;
 CREATE TABLE `edu_equipment_register_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6599,11 +5861,7 @@ CREATE TABLE `edu_equipment_register_info` (
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- 注意：该页面对应的前台目录为views/edu/eduequipmentregister文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
@@ -6630,8 +5888,10 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
 VALUES ('2023041611346310026', '2023041611346300020', '导入excel_小学教学仪器设备登记册', NULL, NULL, 0, NULL, NULL, 2, 'edu.eduequipmentregister:edu_equipment_register_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 11:34:02', NULL, NULL, 0, 0, '1', 0);
 
 
--- `eemp`.edu_art_equipment_info definition
-
+-- ----------------------------
+-- Table structure for edu_art_equipment_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_art_equipment_info`;
 CREATE TABLE `edu_art_equipment_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6653,11 +5913,7 @@ CREATE TABLE `edu_art_equipment_info` (
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 注意：该页面对应的前台目录为views/edu/eduartequipment文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
-
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
 VALUES ('2023041607073870410', NULL, '小学美术教学装备配置登记表', '/edu/eduartequipment/eduArtEquipmentInfoList', 'edu/eduartequipment/EduArtEquipmentInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-04-16 19:07:41', NULL, NULL, 0);
@@ -6683,8 +5939,10 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
 VALUES ('2023041607073870416', '2023041607073870410', '导入excel_小学美术教学装备配置登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.eduartequipment:edu_art_equipment_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 19:07:41', NULL, NULL, 0, 0, '1', 0);
 
 
--- `eemp`.edu_mathematics_equipment_info definition
-
+-- ----------------------------
+-- Table structure for edu_mathematics_equipment_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_mathematics_equipment_info`;
 CREATE TABLE `edu_mathematics_equipment_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6706,11 +5964,7 @@ CREATE TABLE `edu_mathematics_equipment_info` (
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 注意：该页面对应的前台目录为views/edu.edumathematicsequipment文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
-
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
 VALUES ('2023041607082460450', NULL, '小学数学教学装备配置登记表', '/edu/edumathematicsequipment/eduMathematicsEquipmentInfoList', 'edu/edumathematicsequipment/EduMathematicsEquipmentInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-04-16 19:08:45', NULL, NULL, 0);
@@ -6736,9 +5990,10 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
 VALUES ('2023041607082460456', '2023041607082460450', '导入excel_小学数学教学装备配置登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edumathematicsequipment:edu_mathematics_equipment_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 19:08:45', NULL, NULL, 0, 0, '1', 0);
 
 
-
--- `eemp`.edu_sport_equipment_info definition
-
+-- ----------------------------
+-- Table structure for edu_sport_equipment_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_sport_equipment_info`;
 CREATE TABLE `edu_sport_equipment_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6760,10 +6015,7 @@ CREATE TABLE `edu_sport_equipment_info` (
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 注意：该页面对应的前台目录为views/edu.edusportequipment文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
@@ -6789,10 +6041,10 @@ VALUES ('2023041607099920035', '2023041607099920030', '导出excel_小学体育�
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023041607099920036', '2023041607099920030', '导入excel_小学体育教学装备配置登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edusportequipment:edu_sport_equipment_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 19:09:03', NULL, NULL, 0, 0, '1', 0);
 
-
-
--- `eemp`.edu_library_basic_info definition
-
+-- ----------------------------
+-- Table structure for edu_library_basic_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_library_basic_info`;
 CREATE TABLE `edu_library_basic_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6814,11 +6066,7 @@ CREATE TABLE `edu_library_basic_info` (
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 注意：该页面对应的前台目录为views/edu.edulibrarybasic文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
-
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
 VALUES ('2023041607317220560', NULL, '中小学图书室基本情况统计表', '/edu/edulibrarybasic/eduLibraryBasicInfoList', 'edu/edulibrarybasic/EduLibraryBasicInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-04-16 19:31:56', NULL, NULL, 0);
@@ -6844,9 +6092,10 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
 VALUES ('2023041607317220566', '2023041607317220560', '导入excel_中小学图书室基本情况统计表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edulibrarybasic:edu_library_basic_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 19:31:56', NULL, NULL, 0, 0, '1', 0);
 
 
-
--- `eemp`.edu_sports_music_art_rooms definition
-
+-- ----------------------------
+-- Table structure for edu_sports_music_art_rooms
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_sports_music_art_rooms`;
 CREATE TABLE `edu_sports_music_art_rooms` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6876,12 +6125,7 @@ CREATE TABLE `edu_sports_music_art_rooms` (
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- 注意：该页面对应的前台目录为views/edu.edusportsmusicartrooms文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
-
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
 VALUES ('2023041607439020540', NULL, '中小学体育音乐美术教学用房统计表', '/edu/edusportsmusicartrooms/eduSportsMusicArtRoomsList', 'edu/edusportsmusicartrooms/EduSportsMusicArtRoomsList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-04-16 19:43:54', NULL, NULL, 0);
@@ -6906,10 +6150,10 @@ VALUES ('2023041607439020545', '2023041607439020540', '导出excel_中小学体�
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023041607439020546', '2023041607439020540', '导入excel_中小学体育音乐美术教学用房统计表', NULL, NULL, 0, NULL, NULL, 2, 'edu.edusportsmusicartrooms:edu_sports_music_art_rooms:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 19:43:54', NULL, NULL, 0, 0, '1', 0);
 
-
-
--- `eemp`.edu_informatization_basic_info definition
-
+-- ----------------------------
+-- Table structure for edu_informatization_basic_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_informatization_basic_info`;
 CREATE TABLE `edu_informatization_basic_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6941,11 +6185,7 @@ CREATE TABLE `edu_informatization_basic_info` (
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- 注意：该页面对应的前台目录为views/edu/eduinformatizationbasic文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
@@ -6971,9 +6211,10 @@ VALUES ('2023041608019580495', '2023041608019580490', '导出excel_教育信息�
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023041608019580496', '2023041608019580490', '导入excel_教育信息化基本情况统计表', NULL, NULL, 0, NULL, NULL, 2, 'edu.eduinformatizationbasic:edu_informatization_basic_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 20:01:49', NULL, NULL, 0, 0, '1', 0);
 
-
--- `eemp`.edu_scientific_equipment_info definition
-
+-- ----------------------------
+-- Table structure for edu_informatization_basic_info
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_scientific_equipment_info`;
 CREATE TABLE `edu_scientific_equipment_info` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
@@ -6991,15 +6232,12 @@ CREATE TABLE `edu_scientific_equipment_info` (
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
-
--- 注意：该页面对应的前台目录为views/edu/eduscientificequipment文件夹下
--- 如果你想更改到其他目录，请修改sql中component字段对应的值
-
-
-INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
-VALUES ('2023041608168730410', NULL, '小学科学教学装备配置登记表', '/edu/eduscientificequipment/eduScientificEquipmentInfoList', 'edu/eduscientificequipment/EduScientificEquipmentInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-04-16 20:16:41', NULL, NULL, 0);
+-- --------------------------------------------------------------
+-- Permissions of edu_scientific_equipment_info
+-- --------------------------------------------------------------
+INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)VALUES ('2023041608168730410', NULL, '小学科学教学装备配置登记表', '/edu/eduscientificequipment/eduScientificEquipmentInfoList', 'edu/eduscientificequipment/EduScientificEquipmentInfoList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-04-16 20:16:41', NULL, NULL, 0);
 
 -- 权限控制sql
 -- 新增
@@ -7021,7 +6259,9 @@ VALUES ('2023041608168730415', '2023041608168730410', '导出excel_小学科学�
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023041608168730416', '2023041608168730410', '导入excel_小学科学教学装备配置登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.eduscientificequipment:edu_scientific_equipment_info:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-04-16 20:16:41', NULL, NULL, 0, 0, '1', 0);
 
-
+-- --------------------------------------------------------------
+-- Dict
+-- --------------------------------------------------------------
 INSERT INTO `eemp`.sys_dict (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
 	 ('1646431698741403649','年份','year_code','EDU',0,'admin','2023-04-13 16:34:41','admin','2023-04-14 08:38:22',0,0,NULL),
 	 ('1646441850072756226','分类代码','category_code','EDU',0,'admin','2023-04-13 17:15:01','admin','2023-04-14 08:38:18',0,0,NULL),
@@ -7030,8 +6270,6 @@ INSERT INTO `eemp`.sys_dict (id,dict_name,dict_code,description,del_flag,create_
 	 ('1646675510470471682','执行标准代号','executive_standard_code','EDU',0,'admin','2023-04-14 08:43:30',NULL,NULL,0,0,NULL),
 	 ('1646679070507626498','教学装备名称','equipment_name_code','EDU',0,'admin','2023-04-14 08:57:39',NULL,NULL,0,0,NULL),
 	 ('1646746512516796417','课程','course_code','EDU',0,'admin','2023-04-14 13:25:38',NULL,NULL,0,0,NULL);
-
-
 
 INSERT INTO `eemp`.sys_dict_item (id,dict_id,item_text,item_value,description,sort_order,status,create_by,create_time,update_by,update_time) VALUES
 	 ('1646431812453179394','1646431698741403649','2022年','2022',NULL,1,1,'admin','2023-04-13 16:35:08',NULL,NULL),
