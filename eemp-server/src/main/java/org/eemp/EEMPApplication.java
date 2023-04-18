@@ -1,6 +1,7 @@
 package org.eemp;
 
 import lombok.extern.slf4j.Slf4j;
+import org.eemp.common.util.SpringContextHolder;
 import org.eemp.common.util.oConvertUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,6 +33,8 @@ public class EEMPApplication extends SpringBootServletInitializer {
         String ip = InetAddress.getLocalHost().getHostAddress();
         String port = env.getProperty("server.port");
         String path = oConvertUtils.getString(env.getProperty("server.servlet.context-path"));
+        SpringContextHolder springContextHolder = new SpringContextHolder();
+        springContextHolder.setApplicationContext(application.getParent());
         log.info("\n----------------------------------------------------------\n\t" +
                 "Application EEMP is running! Access URLs:\n\t" +
                 "Local: \t\thttp://localhost:" + port + path + "/\n\t" +

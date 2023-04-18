@@ -104,9 +104,9 @@ const setting: ProjectConfig = {
     // 菜单宽度
     menuWidth: 270,
     // 菜单模式
-    mode: MenuModeEnum.INLINE,
+    mode: MenuModeEnum.HORIZONTAL,
     // 菜单类型
-    type: MenuTypeEnum.SIDEBAR,
+    type: MenuTypeEnum.TOP_MENU,
     // 菜单主题
     theme: ThemeEnum.DARK,
     // 分割菜单
