@@ -1,5 +1,9 @@
 package org.eemp.config.shiro;
 
+import java.util.*;
+import javax.annotation.Resource;
+import javax.servlet.Filter;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
@@ -28,10 +32,6 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.util.StringUtils;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
-
-import javax.annotation.Resource;
-import javax.servlet.Filter;
-import java.util.*;
 
 /**
  * @author: Scott

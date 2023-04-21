@@ -1,5 +1,7 @@
 package org.eemp.config.sign.interceptor;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.lang3.StringUtils;
 import org.eemp.common.util.PathMatcherUtil;
 import org.eemp.config.JeecgBaseConfig;
@@ -9,8 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import javax.annotation.Resource;
 
 /**
  * 签名 拦截器配置

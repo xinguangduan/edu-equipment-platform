@@ -26,7 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @TableName("edu_art_equipment_info")
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="edu_art_equipment_info对象", description="小学美术教学装备配置登记表")
+@ApiModel(value="edu_art_equipment_info对象", description="小学美术教学装备EduArtEquipmentInfo配置登记表")
 public class EduArtEquipmentInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 

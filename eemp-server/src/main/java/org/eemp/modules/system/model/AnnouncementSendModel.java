@@ -1,12 +1,12 @@
 package org.eemp.modules.system.model;
 
+import java.io.Serializable;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import java.io.Serializable;
 
 /**
  * @Description: 用户通告阅读标记表

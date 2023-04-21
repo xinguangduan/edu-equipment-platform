@@ -2,11 +2,10 @@ package org.eemp.modules.system.service;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.eemp.common.exception.JeecgBootException;
 import org.eemp.modules.system.entity.SysPermission;
 import org.eemp.modules.system.model.TreeModel;
-
-import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>

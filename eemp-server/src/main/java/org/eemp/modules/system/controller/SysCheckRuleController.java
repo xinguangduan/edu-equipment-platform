@@ -1,27 +1,27 @@
 package org.eemp.modules.system.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Arrays;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.modules.system.entity.SysCheckRule;
 import org.eemp.modules.system.service.ISysCheckRuleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Arrays;
 
 /**
  * @Description: 编码校验规则
@@ -33,10 +33,10 @@ import java.util.Arrays;
 @Api(tags = "编码校验规则")
 @RestController
 @RequestMapping("/sys/checkRule")
-public class SysCheckRuleController extends JeecgController<SysCheckRule, ISysCheckRuleService> {
+@RequiredArgsConstructor
+public class SysCheckRuleController extends BaseController<SysCheckRule, ISysCheckRuleService> {
 
-    @Autowired
-    private ISysCheckRuleService sysCheckRuleService;
+    private final ISysCheckRuleService sysCheckRuleService;
 
     /**
      * 分页列表查询

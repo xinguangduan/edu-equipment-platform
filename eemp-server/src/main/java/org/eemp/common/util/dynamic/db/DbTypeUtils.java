@@ -1,10 +1,10 @@
 package org.eemp.common.util.dynamic.db;
 
-import com.baomidou.mybatisplus.annotation.DbType;
-import org.eemp.common.constant.DataBaseConstant;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import com.baomidou.mybatisplus.annotation.DbType;
+import org.eemp.common.constant.DataBaseConstant;
 
 /**
  * 数据库类型判断

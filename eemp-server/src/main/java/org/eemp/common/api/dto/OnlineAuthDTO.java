@@ -1,9 +1,9 @@
 package org.eemp.common.api.dto;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * online 拦截器权限判断

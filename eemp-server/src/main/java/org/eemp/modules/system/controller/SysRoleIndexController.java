@@ -5,23 +5,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import org.eemp.common.api.vo.Result;
-import org.eemp.common.system.query.QueryGenerator;
-import org.eemp.common.aspect.annotation.AutoLog;
-import org.eemp.modules.system.entity.SysRoleIndex;
-import org.eemp.modules.system.service.ISysRoleIndexService;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import lombok.extern.slf4j.Slf4j;
-import org.eemp.common.system.base.controller.JeecgController;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.eemp.common.api.vo.Result;
+import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.common.system.base.controller.BaseController;
+import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.system.entity.SysRoleIndex;
+import org.eemp.modules.system.service.ISysRoleIndexService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Description: 角色首页配置
@@ -33,9 +31,10 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "角色首页配置")
 @RestController
 @RequestMapping("/sys/sysRoleIndex")
-public class SysRoleIndexController extends JeecgController<SysRoleIndex, ISysRoleIndexService> {
-    @Autowired
-    private ISysRoleIndexService sysRoleIndexService;
+@RequiredArgsConstructor
+public class SysRoleIndexController extends BaseController<SysRoleIndex, ISysRoleIndexService> {
+
+    private final ISysRoleIndexService sysRoleIndexService;
 
     /**
      * 分页列表查询

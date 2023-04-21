@@ -1,13 +1,14 @@
 package org.eemp.common.util;
 
-import cn.hutool.crypto.SecureUtil;
-import lombok.extern.slf4j.Slf4j;
-import org.eemp.common.exception.JeecgBootException;
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.http.HttpServletRequest;
+
+import cn.hutool.crypto.SecureUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.eemp.common.exception.JeecgBootException;
 
 /**
  * sql注入处理工具类

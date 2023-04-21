@@ -1,5 +1,9 @@
 package org.eemp.modules.system.service.impl;
 
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -11,7 +15,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.netty.util.internal.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
-import org.eemp.config.mybatis.TenantContext;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.constant.FillRuleConstant;
 import org.eemp.common.constant.SymbolConstant;
@@ -20,6 +23,7 @@ import org.eemp.common.util.FillRuleUtil;
 import org.eemp.common.util.YouBianCodeUtil;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.config.mybatis.MybatisPlusSaasConfig;
+import org.eemp.config.mybatis.TenantContext;
 import org.eemp.modules.system.entity.*;
 import org.eemp.modules.system.mapper.*;
 import org.eemp.modules.system.model.DepartIdModel;
@@ -29,10 +33,6 @@ import org.eemp.modules.system.util.FindsDepartsChildrenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.*;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 /**
  * <p>

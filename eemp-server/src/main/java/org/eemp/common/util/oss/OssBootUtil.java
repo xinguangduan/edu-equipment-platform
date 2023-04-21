@@ -1,5 +1,12 @@
 package org.eemp.common.util.oss;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Date;
+import java.util.UUID;
+
 import com.aliyun.oss.ClientConfiguration;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.common.auth.DefaultCredentialProvider;
@@ -15,13 +22,6 @@ import org.eemp.common.util.filter.FileTypeFilter;
 import org.eemp.common.util.filter.StrAttackFilter;
 import org.eemp.common.util.oConvertUtils;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.Date;
-import java.util.UUID;
 
 /**
  * @Description: 阿里云 oss 上传工具类(高依赖版)

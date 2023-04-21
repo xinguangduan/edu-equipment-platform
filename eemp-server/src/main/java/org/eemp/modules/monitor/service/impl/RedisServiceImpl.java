@@ -1,17 +1,13 @@
 package org.eemp.modules.monitor.service.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
+import java.util.*;
 import javax.annotation.Resource;
 
 import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Maps;
+import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.monitor.domain.RedisInfo;
 import org.eemp.modules.monitor.exception.RedisConnectException;
@@ -19,8 +15,6 @@ import org.eemp.modules.monitor.service.RedisService;
 import org.springframework.cglib.beans.BeanMap;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.stereotype.Service;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Redis 监控信息获取

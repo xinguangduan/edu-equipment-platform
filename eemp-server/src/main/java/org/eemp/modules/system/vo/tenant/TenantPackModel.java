@@ -1,8 +1,8 @@
 package org.eemp.modules.system.vo.tenant;
 
-import lombok.Data;
-
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * 租户产品包信息

@@ -1,13 +1,5 @@
 package org.eemp.common.util;
 
-import com.alibaba.fastjson.JSONArray;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
-import org.eemp.common.constant.CommonConstant;
-import org.eemp.common.constant.SymbolConstant;
-import org.springframework.beans.BeanUtils;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -22,6 +14,14 @@ import java.sql.Date;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.http.HttpServletRequest;
+
+import com.alibaba.fastjson.JSONArray;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.eemp.common.constant.CommonConstant;
+import org.eemp.common.constant.SymbolConstant;
+import org.springframework.beans.BeanUtils;
 
 /**
  * 

@@ -1,10 +1,10 @@
 package org.eemp.modules.system.vo.lowapp;
 
-import lombok.Data;
-import org.eemp.modules.system.vo.UserAvatar;
-
 import java.io.Serializable;
 import java.util.List;
+
+import lombok.Data;
+import org.eemp.modules.system.vo.UserAvatar;
 
 /**
  * 用户或者部门的信息

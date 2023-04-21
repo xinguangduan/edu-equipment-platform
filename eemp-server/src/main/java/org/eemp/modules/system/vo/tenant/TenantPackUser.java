@@ -1,9 +1,9 @@
 package org.eemp.modules.system.vo.tenant;
 
-import lombok.Data;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import lombok.Data;
 
 /**
  * 用户产品包 关联的用户信息

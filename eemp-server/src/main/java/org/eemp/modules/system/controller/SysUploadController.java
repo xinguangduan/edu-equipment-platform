@@ -1,19 +1,18 @@
 package org.eemp.modules.system.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.exception.JeecgBootException;
 import org.eemp.common.util.CommonUtils;
 import org.eemp.common.util.MinioUtil;
 import org.eemp.common.util.oConvertUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * minio文件上传示例

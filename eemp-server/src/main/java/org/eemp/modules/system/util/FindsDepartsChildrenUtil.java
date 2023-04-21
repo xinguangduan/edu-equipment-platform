@@ -1,13 +1,12 @@
 package org.eemp.modules.system.util;
 
-import org.eemp.common.util.RedisUtil;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.system.entity.SysDepart;
 import org.eemp.modules.system.model.DepartIdModel;
 import org.eemp.modules.system.model.SysDepartTreeModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * <P>

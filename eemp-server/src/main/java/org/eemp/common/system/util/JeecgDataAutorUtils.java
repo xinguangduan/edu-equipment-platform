@@ -1,13 +1,13 @@
 package org.eemp.common.system.util;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+
 import org.eemp.common.system.vo.SysPermissionDataRuleModel;
 import org.eemp.common.system.vo.SysUserCacheInfo;
 import org.eemp.common.util.SpringContextUtils;
 import org.springframework.util.StringUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @ClassName: JeecgDataAutorUtils

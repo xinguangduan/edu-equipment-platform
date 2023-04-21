@@ -1,5 +1,7 @@
 package org.eemp.modules.system.mapper;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -7,8 +9,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.eemp.modules.system.entity.SysDepart;
 import org.springframework.data.repository.query.Param;
-
-import java.util.List;
 
 /**
  * <p>

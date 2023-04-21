@@ -1,13 +1,13 @@
 package org.eemp.modules.system.service;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.eemp.modules.system.entity.SysUser;
 import org.eemp.modules.system.entity.SysUserTenant;
-import com.baomidou.mybatisplus.extension.service.IService;
 import org.eemp.modules.system.vo.SysUserTenantVo;
-
-import java.util.List;
 
 /**
  * @Description: sys_user_tenant_relation

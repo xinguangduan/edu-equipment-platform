@@ -1,16 +1,16 @@
 package org.eemp.config.filter;
 
+import java.io.IOException;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.CommonAPI;
 import org.eemp.common.util.RedisUtil;
 import org.eemp.common.util.SpringContextUtils;
 import org.eemp.common.util.TokenUtils;
 import org.eemp.common.util.oConvertUtils;
-
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * websocket 前端将token放到子协议里传入 与后端建立连接时需要用到http协议，此处用于校验token的有效性

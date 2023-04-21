@@ -1,5 +1,8 @@
 package org.eemp.modules.system.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.eemp.common.system.vo.DictModel;
 import org.eemp.common.system.vo.DictQuery;
@@ -7,9 +10,6 @@ import org.eemp.modules.system.entity.SysDict;
 import org.eemp.modules.system.entity.SysDictItem;
 import org.eemp.modules.system.model.TreeSelectModel;
 import org.eemp.modules.system.vo.lowapp.SysDictVo;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * <p>

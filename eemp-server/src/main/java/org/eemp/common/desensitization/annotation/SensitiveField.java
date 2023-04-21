@@ -1,9 +1,9 @@
 package org.eemp.common.desensitization.annotation;
 
 
-import org.eemp.common.desensitization.enums.SensitiveEnum;
-
 import java.lang.annotation.*;
+
+import org.eemp.common.desensitization.enums.SensitiveEnum;
 
 /**
  * 在字段上定义 标识字段存储的信息是敏感的

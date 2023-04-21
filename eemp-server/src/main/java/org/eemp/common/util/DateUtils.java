@@ -1,8 +1,5 @@
 package org.eemp.common.util;
 
-import org.eemp.common.constant.SymbolConstant;
-import org.springframework.util.StringUtils;
-
 import java.beans.PropertyEditorSupport;
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -11,6 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import org.eemp.common.constant.SymbolConstant;
+import org.springframework.util.StringUtils;
 
 /**
  * 类描述：时间操作定义类

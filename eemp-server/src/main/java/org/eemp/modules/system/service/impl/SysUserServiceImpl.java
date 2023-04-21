@@ -1,5 +1,10 @@
 package org.eemp.modules.system.service.impl;
 
+import java.util.*;
+import java.util.stream.Collectors;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -23,7 +28,10 @@ import org.eemp.common.desensitization.annotation.SensitiveEncode;
 import org.eemp.common.exception.JeecgBootException;
 import org.eemp.common.system.vo.LoginUser;
 import org.eemp.common.system.vo.SysUserCacheInfo;
-import org.eemp.common.util.*;
+import org.eemp.common.util.FillRuleUtil;
+import org.eemp.common.util.PasswordUtil;
+import org.eemp.common.util.UUIDGenerator;
+import org.eemp.common.util.oConvertUtils;
 import org.eemp.config.mybatis.MybatisPlusSaasConfig;
 import org.eemp.config.mybatis.TenantContext;
 import org.eemp.modules.base.service.BaseCommonService;
@@ -42,11 +50,6 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * <p>

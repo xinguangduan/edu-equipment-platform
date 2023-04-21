@@ -1,13 +1,13 @@
 package org.eemp.common.constant;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import com.alibaba.fastjson.JSONObject;
 import org.eemp.common.util.oConvertUtils;
 import org.springframework.stereotype.Component;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.List;
 
 /**
  * @Description: 省市区

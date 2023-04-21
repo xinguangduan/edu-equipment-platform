@@ -1,5 +1,9 @@
 package org.eemp.modules.message.handle.impl;
 
+import java.util.Date;
+import java.util.Map;
+import javax.annotation.Resource;
+
 import com.alibaba.fastjson.JSONObject;
 import org.eemp.common.api.dto.message.MessageDTO;
 import org.eemp.common.constant.CommonConstant;
@@ -18,10 +22,6 @@ import org.eemp.modules.system.mapper.SysAnnouncementMapper;
 import org.eemp.modules.system.mapper.SysAnnouncementSendMapper;
 import org.eemp.modules.system.mapper.SysUserMapper;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
-import java.util.Date;
-import java.util.Map;
 
 /**
 * @Description: 发送系统消息

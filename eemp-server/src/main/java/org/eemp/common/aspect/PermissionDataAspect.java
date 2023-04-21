@@ -1,5 +1,9 @@
 package org.eemp.common.aspect;
 
+import java.lang.reflect.Method;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -20,10 +24,6 @@ import org.eemp.common.util.oConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
-
-import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Method;
-import java.util.List;
 
 /**
  * 数据权限切面处理类

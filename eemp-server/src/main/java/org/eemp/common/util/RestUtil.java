@@ -1,5 +1,9 @@
 package org.eemp.common.util;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -7,10 +11,6 @@ import org.springframework.http.*;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * 调用 Restful 接口 Util

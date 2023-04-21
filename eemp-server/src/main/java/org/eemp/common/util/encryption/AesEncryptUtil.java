@@ -1,10 +1,10 @@
 package org.eemp.common.util.encryption;
 
-import org.apache.shiro.codec.Base64;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.shiro.codec.Base64;
 
 /**
  * @Description: AES 加密

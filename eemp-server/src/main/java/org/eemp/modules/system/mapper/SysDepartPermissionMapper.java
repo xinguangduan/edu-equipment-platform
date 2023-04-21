@@ -1,7 +1,7 @@
 package org.eemp.modules.system.mapper;
 
-import org.eemp.modules.system.entity.SysDepartPermission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.eemp.modules.system.entity.SysDepartPermission;
 
 /**
  * @Description: 部门权限表

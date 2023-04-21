@@ -2,14 +2,12 @@ package org.eemp.common.system.vo;
 
 import java.util.Date;
 
-import org.eemp.common.desensitization.annotation.SensitiveField;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.eemp.common.desensitization.annotation.SensitiveField;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>

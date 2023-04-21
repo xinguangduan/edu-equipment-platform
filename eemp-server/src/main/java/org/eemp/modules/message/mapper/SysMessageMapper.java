@@ -1,7 +1,7 @@
 package org.eemp.modules.message.mapper;
 
-import org.eemp.modules.message.entity.SysMessage;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.eemp.modules.message.entity.SysMessage;
 
 /**
  * @Description: 消息

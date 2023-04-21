@@ -1,6 +1,10 @@
 package org.eemp.modules.system.service.impl;
 
+import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.eemp.common.util.IpUtils;
 import org.eemp.common.util.SpringContextUtils;
 import org.eemp.common.util.oConvertUtils;
@@ -8,11 +12,6 @@ import org.eemp.modules.system.entity.SysDepartRolePermission;
 import org.eemp.modules.system.mapper.SysDepartRolePermissionMapper;
 import org.eemp.modules.system.service.ISysDepartRolePermissionService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.*;
 
 /**
  * @Description: 部门角色权限

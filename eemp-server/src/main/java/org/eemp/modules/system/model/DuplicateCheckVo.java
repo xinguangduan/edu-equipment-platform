@@ -1,6 +1,7 @@
 package org.eemp.modules.system.model;
 
 import java.io.Serializable;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

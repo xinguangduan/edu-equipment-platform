@@ -1,5 +1,11 @@
 package org.eemp.modules.system.service;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.servlet.http.HttpServletRequest;
+
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -15,12 +21,6 @@ import org.eemp.modules.system.model.SysUserSysDepartModel;
 import org.eemp.modules.system.vo.lowapp.DepartAndUserInfo;
 import org.eemp.modules.system.vo.lowapp.UpdateDepartInfo;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * <p>

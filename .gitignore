@@ -6,3 +6,4 @@ docker/redis/logs/
 eemp-server/target/
 eemp-server/logs/
 logs/
+.DS_Store

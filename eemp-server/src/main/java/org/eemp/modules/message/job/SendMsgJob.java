@@ -1,5 +1,7 @@
 package org.eemp.modules.message.job;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.dto.message.MessageDTO;
@@ -12,8 +14,6 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 /**
  * 发送消息任务

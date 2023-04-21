@@ -2,9 +2,8 @@ package org.eemp.modules.system.service;
 
 import java.util.List;
 
-import org.eemp.modules.system.entity.SysPermissionDataRule;
-
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.system.entity.SysPermissionDataRule;
 
 /**
  * <p>

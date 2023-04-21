@@ -7,9 +7,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.constant.CommonConstant;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.system.vo.LoginUser;
 import org.eemp.common.util.oConvertUtils;
@@ -20,20 +28,11 @@ import org.eemp.modules.system.entity.SysPermission;
 import org.eemp.modules.system.entity.SysPermissionDataRule;
 import org.eemp.modules.system.model.TreeModel;
 import org.eemp.modules.system.service.ISysDepartPermissionService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import lombok.extern.slf4j.Slf4j;
-import org.eemp.common.system.base.controller.JeecgController;
 import org.eemp.modules.system.service.ISysDepartRolePermissionService;
 import org.eemp.modules.system.service.ISysPermissionDataRuleService;
 import org.eemp.modules.system.service.ISysPermissionService;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
  /**
  * @Description: 部门权限表
@@ -45,21 +44,14 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags="部门权限表")
 @RestController
 @RequestMapping("/sys/sysDepartPermission")
-public class SysDepartPermissionController extends JeecgController<SysDepartPermission, ISysDepartPermissionService> {
-	@Autowired
-	private ISysDepartPermissionService sysDepartPermissionService;
+@RequiredArgsConstructor
+public class SysDepartPermissionController extends BaseController<SysDepartPermission, ISysDepartPermissionService> {
 
-	 @Autowired
-	 private ISysPermissionDataRuleService sysPermissionDataRuleService;
-
-	 @Autowired
-	 private ISysPermissionService sysPermissionService;
-
-	 @Autowired
-	 private ISysDepartRolePermissionService sysDepartRolePermissionService;
-
-	 @Autowired
-     private BaseCommonService baseCommonService;
+	 private final ISysDepartPermissionService sysDepartPermissionService;
+	 private final ISysPermissionDataRuleService sysPermissionDataRuleService;
+	 private final ISysPermissionService sysPermissionService;
+	 private final ISysDepartRolePermissionService sysDepartRolePermissionService;
+     private final BaseCommonService baseCommonService;
 	 
 	/**
 	 * 分页列表查询

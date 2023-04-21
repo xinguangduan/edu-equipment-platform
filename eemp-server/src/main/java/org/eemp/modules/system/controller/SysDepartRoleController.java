@@ -1,33 +1,38 @@
 package org.eemp.modules.system.controller;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import org.apache.shiro.SecurityUtils;
-import org.eemp.common.api.vo.Result;
-import org.eemp.common.constant.CommonConstant;
-import org.eemp.common.system.query.QueryGenerator;
-import org.eemp.common.aspect.annotation.AutoLog;
-import org.eemp.common.system.vo.LoginUser;
-import org.eemp.common.util.oConvertUtils;
-import org.eemp.modules.base.service.BaseCommonService;
-import org.eemp.modules.system.entity.*;
-import org.eemp.modules.system.service.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import lombok.extern.slf4j.Slf4j;
-import org.eemp.common.system.base.controller.JeecgController;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.eemp.common.api.vo.Result;
+import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.common.constant.CommonConstant;
+import org.eemp.common.system.base.controller.BaseController;
+import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.common.system.vo.LoginUser;
+import org.eemp.common.util.oConvertUtils;
+import org.eemp.modules.base.service.BaseCommonService;
+import org.eemp.modules.system.entity.SysDepartRole;
+import org.eemp.modules.system.entity.SysDepartRolePermission;
+import org.eemp.modules.system.entity.SysDepartRoleUser;
+import org.eemp.modules.system.entity.SysPermissionDataRule;
+import org.eemp.modules.system.service.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
  /**
  * @Description: 部门角色
@@ -39,24 +44,20 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags="部门角色")
 @RestController
 @RequestMapping("/sys/sysDepartRole")
-public class SysDepartRoleController extends JeecgController<SysDepartRole, ISysDepartRoleService> {
-	@Autowired
-	private ISysDepartRoleService sysDepartRoleService;
+@RequiredArgsConstructor
+public class SysDepartRoleController extends BaseController<SysDepartRole, ISysDepartRoleService> {
 
-	@Autowired
-	private ISysDepartRoleUserService departRoleUserService;
+	private final ISysDepartRoleService sysDepartRoleService;
 
-	@Autowired
-	private ISysDepartPermissionService sysDepartPermissionService;
+	private final ISysDepartRoleUserService departRoleUserService;
 
-	 @Autowired
-	 private ISysDepartRolePermissionService sysDepartRolePermissionService;
+	private final ISysDepartPermissionService sysDepartPermissionService;
 
-	 @Autowired
-	 private ISysDepartService sysDepartService;
+	 private final ISysDepartRolePermissionService sysDepartRolePermissionService;
 
-	 @Autowired
-     private BaseCommonService baseCommonService;
+	 private final ISysDepartService sysDepartService;
+
+     private final BaseCommonService baseCommonService;
      
 	/**
 	 * 分页列表查询

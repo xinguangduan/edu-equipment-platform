@@ -1,5 +1,8 @@
 package org.eemp.modules.system.rule;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -10,9 +13,6 @@ import org.eemp.common.util.SpringContextUtils;
 import org.eemp.common.util.YouBianCodeUtil;
 import org.eemp.modules.system.entity.SysDepart;
 import org.eemp.modules.system.service.ISysDepartService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author scott

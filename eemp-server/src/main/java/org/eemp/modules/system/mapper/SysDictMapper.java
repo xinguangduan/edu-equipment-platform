@@ -1,5 +1,8 @@
 package org.eemp.modules.system.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -13,9 +16,6 @@ import org.eemp.common.system.vo.DictQuery;
 import org.eemp.modules.system.entity.SysDict;
 import org.eemp.modules.system.model.DuplicateCheckVo;
 import org.eemp.modules.system.model.TreeSelectModel;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * <p>

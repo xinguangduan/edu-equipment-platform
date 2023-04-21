@@ -1,7 +1,12 @@
 package org.eemp.modules.system.service.impl;
 
+import java.util.*;
+import java.util.stream.Collectors;
+import javax.annotation.Resource;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.system.entity.SysDepartPermission;
 import org.eemp.modules.system.entity.SysDepartRole;
@@ -13,13 +18,7 @@ import org.eemp.modules.system.mapper.SysDepartRolePermissionMapper;
 import org.eemp.modules.system.mapper.SysPermissionDataRuleMapper;
 import org.eemp.modules.system.service.ISysDepartPermissionService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @Description: 部门权限表

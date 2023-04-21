@@ -9,15 +9,15 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.modules.edu.eduartequipment.entity.EduArtEquipmentInfo;
 import org.eemp.modules.edu.eduartequipment.service.IEduArtEquipmentInfoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,9 +31,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/edu/eduartequipment/eduArtEquipmentInfo")
 @Slf4j
-public class EduArtEquipmentInfoController extends JeecgController<EduArtEquipmentInfo, IEduArtEquipmentInfoService> {
-	@Autowired
-	private IEduArtEquipmentInfoService eduArtEquipmentInfoService;
+@RequiredArgsConstructor
+public class EduArtEquipmentInfoController extends BaseController<EduArtEquipmentInfo, IEduArtEquipmentInfoService> {
+	private final IEduArtEquipmentInfoService eduArtEquipmentInfoService;
 	
 	/**
 	 * 分页列表查询

@@ -1,8 +1,10 @@
 package org.eemp.common.api.dto;
-import lombok.Data;
-import org.eemp.common.system.vo.LoginUser;
+
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.Data;
+import org.eemp.common.system.vo.LoginUser;
 
 /**
  * 日志对象

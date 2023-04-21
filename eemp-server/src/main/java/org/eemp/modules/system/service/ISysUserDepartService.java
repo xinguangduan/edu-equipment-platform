@@ -4,12 +4,10 @@ package org.eemp.modules.system.service;
 import java.util.List;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.eemp.modules.system.entity.SysUser;
 import org.eemp.modules.system.entity.SysUserDepart;
 import org.eemp.modules.system.model.DepartIdModel;
-
-
-import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>

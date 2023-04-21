@@ -2,37 +2,27 @@ package org.eemp.modules.message.controller;
 
 import java.util.Arrays;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.dto.message.MessageDTO;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.system.api.ISysBaseAPI;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.message.entity.MsgParams;
 import org.eemp.modules.message.entity.SysMessageTemplate;
 import org.eemp.modules.message.service.ISysMessageTemplateService;
 import org.eemp.modules.message.util.PushMsgUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Description: 消息模板
@@ -43,14 +33,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping("/sys/message/sysMessageTemplate")
-public class SysMessageTemplateController extends JeecgController<SysMessageTemplate, ISysMessageTemplateService> {
-	@Autowired
-	private ISysMessageTemplateService sysMessageTemplateService;
-	@Autowired
-	private PushMsgUtil pushMsgUtil;
+@RequiredArgsConstructor
+public class SysMessageTemplateController extends BaseController<SysMessageTemplate, ISysMessageTemplateService> {
 
-	@Autowired
-	private ISysBaseAPI sysBaseApi;
+	private final ISysMessageTemplateService sysMessageTemplateService;
+	private final PushMsgUtil pushMsgUtil;
+	private final ISysBaseAPI sysBaseApi;
 
 	/**
 	 * 分页列表查询

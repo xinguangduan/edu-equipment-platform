@@ -1,12 +1,12 @@
 package org.eemp.modules.message.enums;
 
-import org.eemp.common.system.annotation.EnumDict;
-import org.eemp.common.system.vo.DictModel;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import org.eemp.common.system.annotation.EnumDict;
+import org.eemp.common.system.vo.DictModel;
 
 /**
  * 用于消息数据查询【vue3】

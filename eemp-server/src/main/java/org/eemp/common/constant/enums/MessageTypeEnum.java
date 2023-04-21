@@ -1,10 +1,10 @@
 package org.eemp.common.constant.enums;
 
-import org.eemp.common.system.annotation.EnumDict;
-import org.eemp.common.system.vo.DictModel;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.eemp.common.system.annotation.EnumDict;
+import org.eemp.common.system.vo.DictModel;
 
 /**
  * 消息类型

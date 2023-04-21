@@ -1,9 +1,9 @@
 package org.eemp.common.api.dto;
 
-import lombok.Data;
-
-import javax.servlet.http.HttpServletResponse;
 import java.io.Serializable;
+import javax.servlet.http.HttpServletResponse;
+
+import lombok.Data;
 
 /**
  * 文件下载

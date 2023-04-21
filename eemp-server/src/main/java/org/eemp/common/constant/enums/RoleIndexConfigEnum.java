@@ -1,8 +1,8 @@
 package org.eemp.common.constant.enums;
 
-import org.eemp.common.util.oConvertUtils;
-
 import java.util.List;
+
+import org.eemp.common.util.oConvertUtils;
 
 /**
  * 首页自定义

@@ -1,5 +1,7 @@
 package org.eemp.modules.system.service.impl;
 
+import javax.sql.DataSource;
+
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.creator.DruidDataSourceCreator;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
@@ -14,8 +16,6 @@ import org.eemp.modules.system.service.ISysDataSourceService;
 import org.eemp.modules.system.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.sql.DataSource;
 
 /**
  * @Description: 多数据源管理

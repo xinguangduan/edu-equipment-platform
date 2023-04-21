@@ -1,5 +1,7 @@
 package org.eemp.modules.system.mapper;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
@@ -9,8 +11,6 @@ import org.eemp.modules.system.vo.tenant.TenantPackUser;
 import org.eemp.modules.system.vo.tenant.TenantPackUserCount;
 import org.eemp.modules.system.vo.tenant.UserDepart;
 import org.eemp.modules.system.vo.tenant.UserPosition;
-
-import java.util.List;
 
 /**
  * @Description: 租户mapper接口

@@ -1,10 +1,10 @@
 package org.eemp.modules.system.mapper;
 
+import java.util.List;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Select;
 import org.eemp.modules.system.entity.SysDictItem;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import java.util.List;
 
 /**
  * <p>

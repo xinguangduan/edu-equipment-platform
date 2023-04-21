@@ -1,5 +1,10 @@
 package org.eemp.common.system.base.controller;
 
+import java.io.IOException;
+import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -23,11 +28,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.*;
-
 /**
  * @Description: Controller基类
  * @Author: dangzhenghui@163.com
@@ -35,7 +35,7 @@ import java.util.*;
  * @Version: 1.0
  */
 @Slf4j
-public class JeecgController<T, S extends IService<T>> {
+public class BaseController<T, S extends IService<T>> {
     /**issues/2933 JeecgController注入service时改用protected修饰，能避免重复引用service*/
     @Autowired
     protected S service;

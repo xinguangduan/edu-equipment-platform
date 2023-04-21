@@ -1,7 +1,7 @@
 package org.eemp.modules.system.service;
 
-import org.eemp.modules.system.entity.SysDepartRolePermission;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.system.entity.SysDepartRolePermission;
 
 /**
  * @Description: 部门角色权限

@@ -3,12 +3,11 @@ package org.eemp.modules.system.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.eemp.modules.system.entity.SysCategory;
 import org.eemp.modules.system.model.TreeSelectModel;
-
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * @Description: 分类字典

@@ -1,5 +1,7 @@
 package org.eemp.modules.system.service.impl;
 
+import java.util.regex.Pattern;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -10,8 +12,6 @@ import org.eemp.modules.system.entity.SysCheckRule;
 import org.eemp.modules.system.mapper.SysCheckRuleMapper;
 import org.eemp.modules.system.service.ISysCheckRuleService;
 import org.springframework.stereotype.Service;
-
-import java.util.regex.Pattern;
 
 /**
  * @Description: 编码校验规则

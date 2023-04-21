@@ -1,5 +1,7 @@
 package org.eemp.common.util;
 
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.eemp.common.api.CommonAPI;
@@ -10,8 +12,6 @@ import org.eemp.common.desensitization.util.SensitiveInfoUtil;
 import org.eemp.common.exception.JeecgBoot401Exception;
 import org.eemp.common.system.util.JwtUtil;
 import org.eemp.common.system.vo.LoginUser;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author scott

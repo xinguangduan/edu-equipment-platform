@@ -1,11 +1,11 @@
 package org.eemp.common.modules.redis.client;
 
+import javax.annotation.Resource;
+
 import org.eemp.common.base.BaseMap;
 import org.eemp.common.constant.GlobalConstants;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
-
-import javax.annotation.Resource;
 
 /**
 * @Description: redis客户端

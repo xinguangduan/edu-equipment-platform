@@ -1,6 +1,10 @@
 package org.eemp.modules.system.service.impl;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.system.entity.SysDepartRole;
 import org.eemp.modules.system.entity.SysDepartRoleUser;
@@ -9,12 +13,7 @@ import org.eemp.modules.system.mapper.SysDepartRoleUserMapper;
 import org.eemp.modules.system.service.ISysDepartRoleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @Description: 部门角色人员信息

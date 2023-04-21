@@ -1,10 +1,10 @@
 package org.eemp.common.api.dto.message;
 
-import lombok.Data;
-import org.eemp.common.constant.CommonConstant;
-
 import java.io.Serializable;
 import java.util.Map;
+
+import lombok.Data;
+import org.eemp.common.constant.CommonConstant;
 
 /**
  * 普通消息

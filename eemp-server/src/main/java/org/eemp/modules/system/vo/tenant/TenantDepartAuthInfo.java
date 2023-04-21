@@ -1,9 +1,9 @@
 package org.eemp.modules.system.vo.tenant;
 
+import java.util.List;
+
 import lombok.Data;
 import org.eemp.modules.system.entity.SysTenant;
-
-import java.util.List;
 
 /**
  * 进入租户组织页面 查询租户信息及操作权限

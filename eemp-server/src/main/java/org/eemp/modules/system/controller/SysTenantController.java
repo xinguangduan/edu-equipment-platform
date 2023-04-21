@@ -1,6 +1,9 @@
 package org.eemp.modules.system.controller;
 
 
+import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -10,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.PermissionData;
-import org.eemp.config.mybatis.TenantContext;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.constant.SymbolConstant;
 import org.eemp.common.system.query.QueryGenerator;
@@ -19,6 +21,7 @@ import org.eemp.common.util.PasswordUtil;
 import org.eemp.common.util.TokenUtils;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.config.mybatis.MybatisPlusSaasConfig;
+import org.eemp.config.mybatis.TenantContext;
 import org.eemp.modules.base.service.BaseCommonService;
 import org.eemp.modules.system.entity.*;
 import org.eemp.modules.system.service.ISysTenantPackService;
@@ -32,9 +35,6 @@ import org.eemp.modules.system.vo.tenant.TenantPackUser;
 import org.eemp.modules.system.vo.tenant.TenantPackUserCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.*;
 
 /**
  * 租户配置信息

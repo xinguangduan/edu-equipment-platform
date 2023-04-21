@@ -1,8 +1,8 @@
 package org.eemp.modules.system.model;
 
-import lombok.Data;
-
 import java.io.Serializable;
+
+import lombok.Data;
 
 /**
  * 第三方登录 信息存储

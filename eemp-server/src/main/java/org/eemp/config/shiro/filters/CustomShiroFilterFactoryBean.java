@@ -1,6 +1,10 @@
 package org.eemp.config.shiro.filters;
 
+import java.util.Map;
+import javax.servlet.Filter;
+
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.InvalidRequestFilter;
 import org.apache.shiro.web.filter.mgt.DefaultFilter;
@@ -9,11 +13,7 @@ import org.apache.shiro.web.filter.mgt.FilterChainResolver;
 import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
-import org.apache.shiro.mgt.SecurityManager;
 import org.springframework.beans.factory.BeanInitializationException;
-
-import javax.servlet.Filter;
-import java.util.Map;
 
 /**
  * 自定义ShiroFilterFactoryBean解决资源中文路径问题

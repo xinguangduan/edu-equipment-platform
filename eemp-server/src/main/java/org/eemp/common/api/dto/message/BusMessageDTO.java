@@ -1,8 +1,8 @@
 package org.eemp.common.api.dto.message;
 
-import lombok.Data;
-
 import java.io.Serializable;
+
+import lombok.Data;
 
 /**
  * 带业务参数的消息

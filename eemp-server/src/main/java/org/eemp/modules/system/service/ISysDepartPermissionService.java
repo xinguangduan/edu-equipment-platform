@@ -1,10 +1,10 @@
 package org.eemp.modules.system.service;
 
-import org.eemp.modules.system.entity.SysDepartPermission;
-import com.baomidou.mybatisplus.extension.service.IService;
-import org.eemp.modules.system.entity.SysPermissionDataRule;
-
 import java.util.List;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.system.entity.SysDepartPermission;
+import org.eemp.modules.system.entity.SysPermissionDataRule;
 
 /**
  * @Description: 部门权限表

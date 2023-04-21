@@ -1,6 +1,11 @@
 package org.eemp.modules.system.controller;
 
 
+import java.util.Arrays;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -8,29 +13,24 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
-import org.eemp.config.mybatis.TenantContext;
 import org.eemp.common.exception.JeecgBootException;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.dynamic.db.DataSourceCachePool;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.common.util.security.JdbcSecurityUtil;
 import org.eemp.config.mybatis.MybatisPlusSaasConfig;
+import org.eemp.config.mybatis.TenantContext;
 import org.eemp.modules.system.entity.SysDataSource;
 import org.eemp.modules.system.service.ISysDataSourceService;
 import org.eemp.modules.system.util.SecurityUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @Description: 多数据源管理
@@ -42,10 +42,10 @@ import java.util.List;
 @Api(tags = "多数据源管理")
 @RestController
 @RequestMapping("/sys/dataSource")
-public class SysDataSourceController extends JeecgController<SysDataSource, ISysDataSourceService> {
+@RequiredArgsConstructor
+public class SysDataSourceController extends BaseController<SysDataSource, ISysDataSourceService> {
 
-    @Autowired
-    private ISysDataSourceService sysDataSourceService;
+    private final ISysDataSourceService sysDataSourceService;
 
 
     /**

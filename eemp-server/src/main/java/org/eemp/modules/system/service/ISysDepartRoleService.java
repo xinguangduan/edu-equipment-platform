@@ -1,9 +1,9 @@
 package org.eemp.modules.system.service;
 
-import org.eemp.modules.system.entity.SysDepartRole;
-import com.baomidou.mybatisplus.extension.service.IService;
-
 import java.util.List;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.system.entity.SysDepartRole;
 
 /**
  * @Description: 部门角色

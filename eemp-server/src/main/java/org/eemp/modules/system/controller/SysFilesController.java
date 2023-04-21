@@ -1,24 +1,24 @@
 package org.eemp.modules.system.controller;
 
+import java.util.Arrays;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.modules.system.entity.SysFiles;
 import org.eemp.modules.system.service.ISysFilesService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
 
 /**
  * @Description: 知识库-文档管理
@@ -30,9 +30,10 @@ import java.util.Arrays;
 @Api(tags = "知识库-文档管理")
 @RestController
 @RequestMapping("/sys/files")
-public class SysFilesController extends JeecgController<SysFiles, ISysFilesService> {
-    @Autowired
-    private ISysFilesService sysFilesService;
+@RequiredArgsConstructor
+public class SysFilesController extends BaseController<SysFiles, ISysFilesService> {
+
+    private final ISysFilesService sysFilesService;
 
     /**
      * 分页列表查询

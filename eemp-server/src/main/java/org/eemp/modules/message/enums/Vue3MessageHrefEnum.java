@@ -1,10 +1,10 @@
 package org.eemp.modules.message.enums;
 
-import org.eemp.common.system.annotation.EnumDict;
-import org.eemp.common.system.vo.DictModel;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.eemp.common.system.annotation.EnumDict;
+import org.eemp.common.system.vo.DictModel;
 
 /**
  * 消息跳转【vue3】

@@ -6,12 +6,12 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.base.BaseMap;
 import org.eemp.common.constant.WebsocketConst;
 import org.eemp.common.modules.redis.client.JeecgRedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Author scott

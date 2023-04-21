@@ -9,15 +9,15 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.modules.edu.eduinformatizationbasic.entity.EduInformatizationBasicInfo;
 import org.eemp.modules.edu.eduinformatizationbasic.service.IEduInformatizationBasicInfoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,9 +31,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/edu/eduinformatizationbasic/eduInformatizationBasicInfo")
 @Slf4j
-public class EduInformatizationBasicInfoController extends JeecgController<EduInformatizationBasicInfo, IEduInformatizationBasicInfoService> {
-	@Autowired
-	private IEduInformatizationBasicInfoService eduInformatizationBasicInfoService;
+@RequiredArgsConstructor
+public class EduInformatizationBasicInfoController extends BaseController<EduInformatizationBasicInfo, IEduInformatizationBasicInfoService> {
+
+	private final IEduInformatizationBasicInfoService eduInformatizationBasicInfoService;
 	
 	/**
 	 * 分页列表查询

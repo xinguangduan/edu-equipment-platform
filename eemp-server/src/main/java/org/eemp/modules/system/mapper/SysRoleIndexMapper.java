@@ -1,7 +1,7 @@
 package org.eemp.modules.system.mapper;
 
-import org.eemp.modules.system.entity.SysRoleIndex;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.eemp.modules.system.entity.SysRoleIndex;
 
 /**
  * @Description: 角色首页配置

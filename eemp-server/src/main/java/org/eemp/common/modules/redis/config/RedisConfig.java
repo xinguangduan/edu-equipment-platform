@@ -1,14 +1,17 @@
 package org.eemp.common.modules.redis.config;
 
+import static java.util.Collections.singletonMap;
+
+import java.time.Duration;
+import javax.annotation.Resource;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectMapper.DefaultTyping;
 import lombok.extern.slf4j.Slf4j;
-
 import org.eemp.common.constant.CacheConstant;
 import org.eemp.common.constant.GlobalConstants;
-
 import org.eemp.common.modules.redis.receiver.RedisReceiver;
 import org.eemp.common.modules.redis.writer.JeecgRedisCacheWriter;
 import org.springframework.cache.CacheManager;
@@ -25,12 +28,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
-import org.springframework.data.redis.serializer.*;
-
-import javax.annotation.Resource;
-import java.time.Duration;
-
-import static java.util.Collections.singletonMap;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
 * 开启缓存支持

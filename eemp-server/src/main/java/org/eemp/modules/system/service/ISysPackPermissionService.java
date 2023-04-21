@@ -1,7 +1,7 @@
 package org.eemp.modules.system.service;
 
-import org.eemp.modules.system.entity.SysPackPermission;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.system.entity.SysPackPermission;
 
 /**
  * @Description: 产品包菜单关系表

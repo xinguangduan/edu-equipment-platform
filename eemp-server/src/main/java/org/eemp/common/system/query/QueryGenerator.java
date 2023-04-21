@@ -12,6 +12,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.constant.DataBaseConstant;
@@ -25,12 +29,6 @@ import org.eemp.common.util.DateUtils;
 import org.eemp.common.util.SqlInjectionUtil;
 import org.eemp.common.util.oConvertUtils;
 import org.springframework.util.NumberUtils;
-
-import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Description: 查询生成器

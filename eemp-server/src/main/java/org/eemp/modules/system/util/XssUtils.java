@@ -1,8 +1,8 @@
 package org.eemp.modules.system.util;
 
-import org.springframework.web.util.HtmlUtils;
-
 import java.util.regex.Pattern;
+
+import org.springframework.web.util.HtmlUtils;
 
 /**
  * @Description: 工具类XSSUtils，现在的做法是替换成空字符，CSDN的是进行转义，比如文字开头的"<"转成&lt;

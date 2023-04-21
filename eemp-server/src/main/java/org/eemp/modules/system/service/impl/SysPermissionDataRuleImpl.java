@@ -3,9 +3,11 @@ package org.eemp.modules.system.service.impl;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import javax.annotation.Resource;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.oConvertUtils;
@@ -16,10 +18,6 @@ import org.eemp.modules.system.mapper.SysPermissionMapper;
 import org.eemp.modules.system.service.ISysPermissionDataRuleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
  * <p>

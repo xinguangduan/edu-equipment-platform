@@ -1,5 +1,8 @@
 package org.eemp.modules.system.service;
 
+import java.util.Collection;
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -10,9 +13,6 @@ import org.eemp.modules.system.vo.tenant.TenantDepartAuthInfo;
 import org.eemp.modules.system.vo.tenant.TenantPackModel;
 import org.eemp.modules.system.vo.tenant.TenantPackUser;
 import org.eemp.modules.system.vo.tenant.TenantPackUserCount;
-
-import java.util.Collection;
-import java.util.List;
 
 /**
  * @Description: 租户service接口

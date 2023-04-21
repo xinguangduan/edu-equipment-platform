@@ -1,12 +1,12 @@
 package org.eemp.modules.system.model;
 
-import org.eemp.modules.system.entity.SysDepart;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import org.eemp.modules.system.entity.SysDepart;
 
 /**
  * <p>

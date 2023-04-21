@@ -1,9 +1,9 @@
 package org.eemp.modules.system.vo;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * @Description: 用户角色vo

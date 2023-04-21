@@ -1,8 +1,8 @@
 package org.eemp.modules.system.vo.lowapp;
 
-import lombok.Data;
-
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * @Author taoYan

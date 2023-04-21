@@ -1,5 +1,9 @@
 package org.eemp.modules.system.controller;
 
+import java.util.Arrays;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -7,21 +11,17 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.FillRuleUtil;
 import org.eemp.modules.system.entity.SysFillRule;
 import org.eemp.modules.system.service.ISysFillRuleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
 
 /**
  * @Description: 填值规则
@@ -33,9 +33,10 @@ import java.util.Arrays;
 @Api(tags = "填值规则")
 @RestController
 @RequestMapping("/sys/fillRule")
-public class SysFillRuleController extends JeecgController<SysFillRule, ISysFillRuleService> {
-    @Autowired
-    private ISysFillRuleService sysFillRuleService;
+@RequiredArgsConstructor
+public class SysFillRuleController extends BaseController<SysFillRule, ISysFillRuleService> {
+
+    private final ISysFillRuleService sysFillRuleService;
 
     /**
      * 分页列表查询

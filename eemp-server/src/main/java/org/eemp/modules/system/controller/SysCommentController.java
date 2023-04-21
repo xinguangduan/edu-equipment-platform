@@ -1,32 +1,32 @@
 package org.eemp.modules.system.controller;
 
+import java.util.Arrays;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.eemp.common.api.dto.DataLogDTO;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.system.api.ISysBaseAPI;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.system.vo.LoginUser;
 import org.eemp.modules.system.entity.SysComment;
 import org.eemp.modules.system.service.ISysCommentService;
 import org.eemp.modules.system.vo.SysCommentFileVo;
 import org.eemp.modules.system.vo.SysCommentVO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @Description: 系统评论回复表
@@ -38,13 +38,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/sys/comment")
 @Slf4j
-public class SysCommentController extends JeecgController<SysComment, ISysCommentService> {
+@RequiredArgsConstructor
+public class SysCommentController extends BaseController<SysComment, ISysCommentService> {
 
-    @Autowired
-    private ISysCommentService sysCommentService;
+    private final ISysCommentService sysCommentService;
 
-    @Autowired
-    private ISysBaseAPI sysBaseAPI;
+    private final ISysBaseAPI sysBaseAPI;
 
 
     /**

@@ -1,16 +1,22 @@
 package org.eemp.modules.system.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
-import org.eemp.config.mybatis.TenantContext;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.system.vo.LoginUser;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.config.mybatis.MybatisPlusSaasConfig;
+import org.eemp.config.mybatis.TenantContext;
 import org.eemp.modules.system.entity.SysDepart;
 import org.eemp.modules.system.entity.SysUser;
 import org.eemp.modules.system.entity.SysUserDepart;
@@ -25,12 +31,6 @@ import org.eemp.modules.system.vo.SysUserDepVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * <P>

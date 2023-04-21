@@ -3,10 +3,11 @@ package org.eemp.config.sign.interceptor;
 
 import java.io.PrintWriter;
 import java.util.SortedMap;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.util.DateUtils;
@@ -15,10 +16,6 @@ import org.eemp.config.sign.util.BodyReaderHttpServletRequestWrapper;
 import org.eemp.config.sign.util.HttpUtils;
 import org.eemp.config.sign.util.SignUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import com.alibaba.fastjson.JSON;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 签名拦截器

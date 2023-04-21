@@ -1,6 +1,12 @@
 package org.eemp.modules.system.controller;
 
 
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -16,15 +22,15 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.PermissionData;
-import org.eemp.config.mybatis.TenantContext;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.constant.SymbolConstant;
-import org.eemp.config.mybatis.MybatisPlusSaasConfig;
-import org.eemp.modules.base.service.BaseCommonService;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.system.util.JwtUtil;
 import org.eemp.common.system.vo.LoginUser;
 import org.eemp.common.util.*;
+import org.eemp.config.mybatis.MybatisPlusSaasConfig;
+import org.eemp.config.mybatis.TenantContext;
+import org.eemp.modules.base.service.BaseCommonService;
 import org.eemp.modules.system.entity.*;
 import org.eemp.modules.system.model.DepartIdModel;
 import org.eemp.modules.system.model.SysUserSysDepartModel;
@@ -44,12 +50,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * <p>

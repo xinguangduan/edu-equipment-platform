@@ -1,15 +1,15 @@
 package org.eemp.common.desensitization.util;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.util.Collections;
+import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.desensitization.annotation.SensitiveField;
 import org.eemp.common.desensitization.enums.SensitiveEnum;
 import org.eemp.common.util.encryption.AesEncryptUtil;
 import org.eemp.common.util.oConvertUtils;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * 敏感信息处理工具类

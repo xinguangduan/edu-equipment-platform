@@ -1,5 +1,7 @@
 package org.eemp.modules.system.service;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -7,8 +9,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import org.eemp.modules.system.entity.SysDepart;
 import org.eemp.modules.system.model.DepartIdModel;
 import org.eemp.modules.system.model.SysDepartTreeModel;
-
-import java.util.List;
 
 /**
  * <p>

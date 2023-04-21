@@ -1,5 +1,8 @@
 package org.eemp.common.desensitization.aspect;
 
+import java.lang.reflect.Method;
+import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -10,9 +13,6 @@ import org.eemp.common.desensitization.annotation.SensitiveDecode;
 import org.eemp.common.desensitization.annotation.SensitiveEncode;
 import org.eemp.common.desensitization.util.SensitiveInfoUtil;
 import org.springframework.stereotype.Component;
-
-import java.lang.reflect.Method;
-import java.util.List;
 
 /**
  * 敏感数据切面处理类

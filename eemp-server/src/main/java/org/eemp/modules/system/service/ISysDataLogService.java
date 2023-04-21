@@ -1,8 +1,7 @@
 package org.eemp.modules.system.service;
 
-import org.eemp.modules.system.entity.SysDataLog;
-
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.system.entity.SysDataLog;
 
 /**
  * @Description: 数据日志service接口

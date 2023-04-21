@@ -2,11 +2,11 @@ package org.eemp.modules.system.mapper;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 import org.eemp.modules.system.entity.SysUser;
 import org.eemp.modules.system.entity.SysUserTenant;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.eemp.modules.system.vo.SysUserTenantVo;
 
 /**

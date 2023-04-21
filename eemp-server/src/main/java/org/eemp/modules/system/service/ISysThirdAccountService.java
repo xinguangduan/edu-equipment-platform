@@ -1,11 +1,11 @@
 package org.eemp.modules.system.service;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.eemp.modules.system.entity.SysThirdAccount;
 import org.eemp.modules.system.entity.SysUser;
 import org.eemp.modules.system.model.ThirdLoginModel;
-
-import java.util.List;
 
 /**
  * @Description: 第三方登录账号表

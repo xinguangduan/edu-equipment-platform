@@ -1,5 +1,7 @@
 package org.eemp.modules.system.rule;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.extern.slf4j.Slf4j;
@@ -9,8 +11,6 @@ import org.eemp.common.util.YouBianCodeUtil;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.system.entity.SysCategory;
 import org.eemp.modules.system.mapper.SysCategoryMapper;
-
-import java.util.List;
 
 /**
  * @Author scott

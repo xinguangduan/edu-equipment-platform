@@ -1,9 +1,9 @@
 package org.eemp.common.api.dto;
 
+import java.io.Serializable;
+
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.Serializable;
 
 /**
  * 文件上传

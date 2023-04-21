@@ -1,12 +1,12 @@
 package org.eemp.config.sign.util;
 
+import java.io.*;
+import java.nio.charset.Charset;
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import java.io.*;
-import java.nio.charset.Charset;
 
 /**
  * 保存过滤器里面的流

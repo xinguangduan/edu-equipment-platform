@@ -1,5 +1,8 @@
 package org.eemp.config.sign.util;
 
+import java.io.UnsupportedEncodingException;
+import java.util.SortedMap;
+
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.constant.SymbolConstant;
@@ -9,9 +12,6 @@ import org.eemp.common.util.oConvertUtils;
 import org.eemp.config.JeecgBaseConfig;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
-
-import java.io.UnsupportedEncodingException;
-import java.util.SortedMap;
 
 /**
  * 签名工具类

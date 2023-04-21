@@ -1,11 +1,10 @@
 package org.eemp.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.eemp.modules.system.entity.SysUserRole;
 import org.eemp.modules.system.mapper.SysUserRoleMapper;
 import org.eemp.modules.system.service.ISysUserRoleService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
  * <p>

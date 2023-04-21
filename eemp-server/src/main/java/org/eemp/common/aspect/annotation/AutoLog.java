@@ -1,9 +1,9 @@
 package org.eemp.common.aspect.annotation;
 
+import java.lang.annotation.*;
+
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.constant.enums.ModuleType;
-
-import java.lang.annotation.*;
 
 /**
  * 系统日志注解

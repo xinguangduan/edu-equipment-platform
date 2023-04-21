@@ -1,9 +1,9 @@
 package org.eemp.modules.system.vo.lowapp;
 
+import java.util.List;
+
 import lombok.Data;
 import org.eemp.modules.system.entity.SysDepart;
-
-import java.util.List;
 
 /**
  * @Author taoYan

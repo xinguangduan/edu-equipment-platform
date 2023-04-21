@@ -1,19 +1,19 @@
 package org.eemp.modules.system.controller;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.annotations.Api;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.eemp.common.api.vo.Result;
-import org.eemp.common.system.base.controller.JeecgController;
+import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.system.entity.SysGatewayRoute;
 import org.eemp.modules.system.service.ISysGatewayRouteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @Description: gateway路由管理
@@ -25,10 +25,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/sys/gatewayRoute")
 @Slf4j
-public class SysGatewayRouteController extends JeecgController<SysGatewayRoute, ISysGatewayRouteService> {
+@RequiredArgsConstructor
+public class SysGatewayRouteController extends BaseController<SysGatewayRoute, ISysGatewayRouteService> {
 
-	@Autowired
-	private ISysGatewayRouteService sysGatewayRouteService;
+	private final ISysGatewayRouteService sysGatewayRouteService;
 
     @PostMapping(value = "/updateAll")
     public Result<?> updateAll(@RequestBody JSONObject json) {

@@ -1,5 +1,9 @@
 package org.eemp.common.util.dynamic.db;
 
+import java.io.StringWriter;
+import java.util.Map;
+import java.util.regex.Pattern;
+
 import freemarker.cache.StringTemplateLoader;
 import freemarker.core.ParseException;
 import freemarker.core.TemplateClassResolver;
@@ -10,10 +14,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.eemp.common.constant.DataBaseConstant;
 import org.eemp.common.constant.SymbolConstant;
 import org.jeecgframework.codegenerate.generate.util.SimpleFormat;
-
-import java.io.StringWriter;
-import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * @author 赵俊夫

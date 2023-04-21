@@ -1,14 +1,14 @@
 package org.eemp.modules.system.vo;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.eemp.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 /**
  * @Description: VO 评论信息+文件信息
