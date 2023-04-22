@@ -20,7 +20,7 @@ interface AppState {
   // When the window shrinks, remember some states, and restore these states when the window is restored
   beforeMiniInfo: BeforeMiniState;
   // 页面跳转临时参数存储
-  messageHrefParams: any
+  messageHrefParams: any;
 }
 let timeId: TimeoutHandle;
 export const useAppStore = defineStore({
@@ -30,7 +30,7 @@ export const useAppStore = defineStore({
     pageLoading: false,
     projectConfig: Persistent.getLocal(PROJ_CFG_KEY),
     beforeMiniInfo: {},
-    messageHrefParams: {}
+    messageHrefParams: {},
   }),
   getters: {
     getPageLoading(): boolean {
