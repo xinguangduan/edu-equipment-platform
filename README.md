@@ -13,7 +13,12 @@ Educational equipment management platform
 
 本地后端基础环境准备（推荐）
 -----------------------------------
-0. 安装 git、idea、docker-desktop             // 参见【[Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)】
+0. 安装 git、idea、docker-desktop、openJDK17
+// 基于 Ubuntu 22.04
+// sudo apt install git
+// sudo snap install intellij-idea-community --classic   // 参见【[下载 IntelliJ IDEA](https://www.jetbrains.com.cn/idea/download/#section=linux)】
+// 安装 docker-desktop                                    // 参见【[Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)】
+// sudo apt install openjdk-17-jdk
 1. clone git 本仓库
 2. cd edu-equipment-platform/docker
 3. docker compose up -d
@@ -28,17 +33,19 @@ Educational equipment management platform
 0. 在 idea 中进行 maven package 操作，生成 SpringBoot 方式的可执行 jar 文件
 1. cd edu-equipment-platform/docker
 2. docker compose up -d
-3. 打开浏览器访问 localhost:3006，键入用户：root，密码：root，之后执行 db/mysql-simple-5.7.sql 导入数据
+3. 打开浏览器访问 localhost:3006，键入用户：root，密码：root，之后执行 db/mysql-min-5.7.sql 导入数据
 4. cd ../eemp-server/
 5. java -jar target/eemp-server-1.0.0.jar
 
 启动运行前端（推荐）
 -----------------------------------
 0. 安装 node、npm、pnpm
+// sudo snap install node --classic --channel=18    //【[Node.js snap source and updater](https://github.com/nodejs/snap)】
+// sudo npm install pnpm -g
 1. edu-equipment-platform/eemp-web
-2. pnpm install --ignore-scripts
+2. pnpm install --ignore-scripts                    // 忽略报错信息
 3. pnpm dev
-4. 打开浏览器访问 localhost:3100，首次登录会多达4次提示“切换到Vu3版菜单”，确认即可
+4. 打开浏览器访问 localhost:3100
 
 关闭基础环境（推荐）
 -----------------------------------
