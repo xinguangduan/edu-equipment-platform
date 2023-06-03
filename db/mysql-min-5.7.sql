@@ -3030,6 +3030,27 @@ CREATE TABLE `edu_scientific_equipment_info` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for organization_definition
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `organization_definition`;
+CREATE TABLE `organization_definition` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `institution_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT '机构名称',
+  `institution_type` varchar(2) COLLATE utf8mb4_general_ci NOT NULL COMMENT '机构类型',
+  `admin_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '账户名称',
+  `initial_password` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '初始密码',
+  `admin_generation_success` varchar(1) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '账户生成是否成功',
+  `failure_reason` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '失败原因',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3078,6 +3099,29 @@ INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_or
 	 ('1646747607867674625','1646746512516796417','小学科学','primary_school_science',NULL,3,1,'admin','2023-04-14 13:29:59',NULL,NULL),
 	 ('1646747774863888385','1646746512516796417','化学','chemistry',NULL,1,1,'admin','2023-04-14 13:30:39',NULL,NULL),
 	 ('1646748025058316289','1646746512516796417','生化合一','biochemical_integration',NULL,4,1,'admin','2023-04-14 13:31:39',NULL,NULL);
+
+INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
+	 ('1664818329461768194','机构类型','institution_type','机构类型',0,'admin','2023-06-03 10:16:35','admin','2023-06-03 10:19:32',0,0,NULL);
+INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_order,status,create_by,create_time,update_by,update_time) VALUES
+	 ('1664818497951154178','1664818329461768194','装备中心','01',NULL,1,1,'admin','2023-06-03 10:17:15',NULL,NULL),
+	 ('1664818614024323074','1664818329461768194','幼儿园','11',NULL,1,1,'admin','2023-06-03 10:17:43',NULL,NULL),
+	 ('1664818711713857537','1664818329461768194','小学','12',NULL,1,1,'admin','2023-06-03 10:18:06',NULL,NULL),
+	 ('1664818781993615362','1664818329461768194','初中','13',NULL,1,1,'admin','2023-06-03 10:18:23',NULL,NULL),
+	 ('1664818888109506562','1664818329461768194','高中','14','普通/职教',1,1,'admin','2023-06-03 10:18:48',NULL,NULL);
+
+-- ----------------------------
+-- Records of sys_permission
+-- ----------------------------
+INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
+     ('2023060312357030190', '1647430912296435713', '机构组织定义', '/edu/foudation/organizationDefinitionList', 'edu/foudation/OrganizationDefinitionList', NULL, NULL, 1, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0);
+
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
+     ('2023060312357030191', '2023060312357030190', '添加机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030192', '2023060312357030190', '编辑机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030193', '2023060312357030190', '删除机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030194', '2023060312357030190', '批量删除机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030195', '2023060312357030190', '导出excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030196', '2023060312357030190', '导入excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0);
 
 
 SET FOREIGN_KEY_CHECKS = 1;
