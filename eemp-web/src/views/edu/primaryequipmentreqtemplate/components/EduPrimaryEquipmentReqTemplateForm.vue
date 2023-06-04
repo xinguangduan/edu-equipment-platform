@@ -12,11 +12,11 @@
   import { computed, defineComponent } from 'vue';
   import { defHttp } from '/@/utils/http/axios';
   import { propTypes } from '/@/utils/propTypes';
-  import { getBpmFormSchema } from '../EduPrimarySportEquipmentReq.data';
-  import { saveOrUpdate } from '../EduPrimarySportEquipmentReq.api';
+  import { getBpmFormSchema } from '../EduPrimaryEquipmentReqTemplate.data';
+  import { saveOrUpdate } from '../EduPrimaryEquipmentReqTemplate.api';
 
   export default defineComponent({
-    name: 'EduPrimarySportEquipmentReqForm',
+    name: 'EduPrimaryEquipmentReqTemplateForm',
     components: {
       BasicForm,
     },
@@ -40,7 +40,7 @@
       });
 
       let formData = {};
-      const queryByIdUrl = '/edu/primarysportequipmentreq/eduPrimarySportEquipmentReq/queryById';
+      const queryByIdUrl = '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate/queryById';
       async function initFormData() {
         let params = { id: props.formData.dataId };
         const data = await defHttp.get({ url: queryByIdUrl, params });

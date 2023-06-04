@@ -4,21 +4,21 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <!--插槽:table标题-->
       <template #tableTitle>
-        <!-- <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> 新增</a-button> -->
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls">导出数据</a-button>
-        <!-- <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button> -->
+        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> 新增</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入小学设备要求模板</j-upload-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
-                <Icon icon="ant-design:delete-outlined" />
+                <Icon icon="ant-design:delete-outlined"></Icon>
                 删除
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
             >批量操作
-            <Icon icon="mdi:chevron-down" />
+            <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
       </template>
@@ -40,18 +40,18 @@
       </template>
     </BasicTable>
     <!-- 表单区域 -->
-    <EduPrimarySportEquipmentReqModal @register="registerModal" @success="handleSuccess"/>
+    <EduPrimaryEquipmentReqTemplateModal @register="registerModal" @success="handleSuccess"></EduPrimaryEquipmentReqTemplateModal>
   </div>
 </template>
 
-<script lang="ts" name="primarysportequipmentreq-eduPrimarySportEquipmentReq" setup>
+<script lang="ts" name="primaryequipmentreqtemplate-eduPrimaryEquipmentReqTemplate" setup>
   import { ref, computed, unref } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { useModal } from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage';
-  import EduPrimarySportEquipmentReqModal from './components/EduPrimarySportEquipmentReqModal.vue';
-  import { columns, searchFormSchema } from './EduPrimarySportEquipmentReq.data';
-  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl } from './EduPrimarySportEquipmentReq.api';
+  import EduPrimaryEquipmentReqTemplateModal from './components/EduPrimaryEquipmentReqTemplateModal.vue';
+  import { columns, searchFormSchema } from './EduPrimaryEquipmentReqTemplate.data';
+  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl } from './EduPrimaryEquipmentReqTemplate.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   const checkedKeys = ref<Array<string | number>>([]);
   //注册model
@@ -59,7 +59,7 @@
   //注册table数据
   const { prefixCls, tableContext, onExportXls, onImportXls } = useListPage({
     tableProps: {
-      title: '小学体育器材设施配备要求表',
+      title: '小学器材设施配备要求模板表',
       api: list,
       columns,
       canResize: false,
@@ -77,7 +77,7 @@
       },
     },
     exportConfig: {
-      name: '小学体育器材设施配备要求表',
+      name: '小学器材设施配备要求模板表',
       url: getExportUrl,
     },
     importConfig: {

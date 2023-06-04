@@ -5,9 +5,9 @@ import { render } from '/@/utils/common/renderUtils';
 //列表数据
 export const columns: BasicColumn[] = [
   {
-    title: '标识代码',
+    title: '年级',
     align: 'center',
-    dataIndex: 'identificationCode',
+    dataIndex: 'grade',
   },
   {
     title: '时段代码',
@@ -15,14 +15,14 @@ export const columns: BasicColumn[] = [
     dataIndex: 'phaseCode',
   },
   {
-    title: '分类代码',
-    align: 'center',
-    dataIndex: 'categoryCode',
-  },
-  {
     title: '名称',
     align: 'center',
     dataIndex: 'name',
+  },
+  {
+    title: '分类代码',
+    align: 'center',
+    dataIndex: 'categoryCode',
   },
   {
     title: '规格型号功能',
@@ -79,14 +79,15 @@ export const columns: BasicColumn[] = [
     align: 'center',
     dataIndex: 'updateTime',
   },
-  {
-    title: '实际数量',
-    align: 'center',
-    dataIndex: 'actualNum',
-  },
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
+  {
+    label: '年级',
+    field: 'grade',
+    component: 'Input',
+    colProps: { span: 6 },
+  },
   {
     label: '时段代码',
     field: 'phaseCode',
@@ -103,11 +104,11 @@ export const searchFormSchema: FormSchema[] = [
 //表单数据
 export const formSchema: FormSchema[] = [
   {
-    label: '标识代码',
-    field: 'identificationCode',
+    label: '年级',
+    field: 'grade',
     component: 'Input',
     dynamicRules: ({ model, schema }) => {
-      return [{ required: true, message: '请输入标识代码!' }];
+      return [{ required: true, message: '请输入年级!' }];
     },
     dynamicDisabled: true,
   },
@@ -121,17 +122,14 @@ export const formSchema: FormSchema[] = [
     dynamicDisabled: true,
   },
   {
-    label: '分类代码',
-    field: 'categoryCode',
+    label: '名称',
+    field: 'name',
     component: 'Input',
-    dynamicRules: ({ model, schema }) => {
-      return [{ required: true, message: '请输入分类代码!' }];
-    },
     dynamicDisabled: true,
   },
   {
-    label: '名称',
-    field: 'name',
+    label: '分类代码',
+    field: 'categoryCode',
     component: 'Input',
     dynamicDisabled: true,
   },
@@ -170,14 +168,6 @@ export const formSchema: FormSchema[] = [
     field: 'remark',
     component: 'InputTextArea',
     dynamicDisabled: true,
-  },
-  {
-    label: '实际数量',
-    field: 'actualNum',
-    component: 'InputNumber',
-    dynamicRules: ({ model, schema }) => {
-      return [{ required: true, message: '请输入实际数量!' }];
-    },
   },
   // TODO 主键隐藏字段，目前写死为ID
   {

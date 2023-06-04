@@ -4,13 +4,13 @@ import { useMessage } from '/@/hooks/web/useMessage';
 const { createConfirm } = useMessage();
 
 enum Api {
-  list = '/edu/primarysportequipmentreq/eduPrimarySportEquipmentReq/list',
-  save = '/edu/primarysportequipmentreq/eduPrimarySportEquipmentReq/add',
-  edit = '/edu/primarysportequipmentreq/eduPrimarySportEquipmentReq/edit',
-  deleteOne = '/edu/primarysportequipmentreq/eduPrimarySportEquipmentReq/delete',
-  deleteBatch = '/edu/primarysportequipmentreq/eduPrimarySportEquipmentReq/deleteBatch',
-  importExcel = '/edu/primarysportequipmentreq/eduPrimarySportEquipmentReq/importExcel',
-  exportXls = '/edu/primarysportequipmentreq/eduPrimarySportEquipmentReq/exportXls',
+  list = '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate/list',
+  save = '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate/add',
+  edit = '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate/edit',
+  deleteOne = '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate/delete',
+  deleteBatch = '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate/deleteBatch',
+  importExcel = '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate/importExcel',
+  exportXls = '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate/exportXls',
 }
 /**
  * 导出api

@@ -3230,7 +3230,7 @@ CREATE TABLE `edu_primary_equipment_req_template` (
   `unit` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '单位',
   `quantity` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '数量',
   `equipment_requirement` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '配备要求',
-  `executive_standard_code` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '执行标准代号',
+  `executive_standard_code` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '执行标准代号',
   `remark` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
   `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
