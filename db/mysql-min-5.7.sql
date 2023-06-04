@@ -3051,6 +3051,24 @@ CREATE TABLE `organization_definition` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for info_phase_control
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `info_phase_control`;
+CREATE TABLE `info_phase_control` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `phase_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '时段代码',
+  `phase_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT '时段名称',
+  `archive_status` varchar(1) COLLATE utf8mb4_general_ci NOT NULL COMMENT '归档状态',
+  `archive_date` date DEFAULT NULL COMMENT '归档日期',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3113,7 +3131,8 @@ INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_or
 -- Records of sys_permission
 -- ----------------------------
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
-     ('2023060312357030190', '1647430912296435713', '机构组织定义', '/edu/foudation/organizationDefinitionList', 'edu/foudation/OrganizationDefinitionList', NULL, NULL, 1, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0);
+     ('2023060312357030190', '1647430912296435713', '机构组织定义', '/edu/foudation/organizationDefinitionList', 'edu/foudation/OrganizationDefinitionList', NULL, NULL, 1, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0),
+     ('2023060409543950360', '1647430912296435713', '信息时段控制表', '/edu/foudation/infoPhaseControlList', 'edu/foudation/InfoPhaseControlList', NULL, NULL, 1, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
      ('2023060312357030191', '2023060312357030190', '添加机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
@@ -3121,7 +3140,28 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023060312357030193', '2023060312357030190', '删除机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
      ('2023060312357030194', '2023060312357030190', '批量删除机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
      ('2023060312357030195', '2023060312357030190', '导出excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
-     ('2023060312357030196', '2023060312357030190', '导入excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0);
+     ('2023060312357030196', '2023060312357030190', '导入excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060409543950361', '2023060409543950360', '添加信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
+     ('2023060409543950362', '2023060409543950360', '编辑信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
+     ('2023060409543950363', '2023060409543950360', '删除信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
+     ('2023060409543950364', '2023060409543950360', '批量删除信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
+     ('2023060409543960365', '2023060409543950360', '导出excel_信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
+     ('2023060409543960366', '2023060409543950360', '导入excel_信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0);
 
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+     ('1664959650845630465',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030190',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
+     ('1664959650866601986',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030191',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
+     ('1664959650870796290',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030192',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
+     ('1664959650874990593',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030193',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
+     ('1664959650874990594',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030195',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
+     ('1664959650883379202',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030194',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
+     ('1664959650883379203',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030196',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
+     ('1665195409792020481',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950360',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
+     ('1665195409829769217',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950361',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
+     ('1665195409833963521',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950362',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
+     ('1665195409838157826',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950363',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
+     ('1665195409838157827',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950364',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
+     ('1665195409846546433',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543960365',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
+     ('1665195409850740738',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543960366',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1');
 
 SET FOREIGN_KEY_CHECKS = 1;
