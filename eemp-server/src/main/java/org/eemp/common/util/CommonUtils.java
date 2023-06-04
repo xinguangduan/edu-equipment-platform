@@ -23,9 +23,10 @@ import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.constant.DataBaseConstant;
 import org.eemp.common.constant.ServiceNameConstants;
 import org.eemp.common.constant.SymbolConstant;
+import org.eemp.common.poi.util.PoiPublicUtil;
 import org.eemp.common.util.filter.FileTypeFilter;
 import org.eemp.common.util.oss.OssBootUtil;
-import org.jeecgframework.poi.util.PoiPublicUtil;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -391,5 +392,10 @@ public class CommonUtils {
         }
         return target;
     }
-
+    @NotNull
+    public static String getFileSuffix(MultipartFile file) {
+        String fileName = getFileName(file.getOriginalFilename());
+        String suffix = fileName.substring(fileName.lastIndexOf("."));
+        return suffix;
+    }
 }

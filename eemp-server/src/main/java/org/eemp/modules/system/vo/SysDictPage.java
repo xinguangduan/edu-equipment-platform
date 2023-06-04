@@ -3,9 +3,9 @@ package org.eemp.modules.system.vo;
 import java.util.List;
 
 import lombok.Data;
+import org.eemp.common.poi.excel.annotation.Excel;
+import org.eemp.common.poi.excel.annotation.ExcelCollection;
 import org.eemp.modules.system.entity.SysDictItem;
-import org.jeecgframework.poi.excel.annotation.Excel;
-import org.jeecgframework.poi.excel.annotation.ExcelCollection;
 
 /**
  * @Description: 系统字典分页
