@@ -25,6 +25,11 @@ export const columns: BasicColumn[] = [
     dataIndex: 'adminCode'
    },
    {
+    title: '角色编码',
+    align:"center",
+    dataIndex: 'roleCode'
+   },
+   {
     title: '初始密码',
     align:"center",
     dataIndex: 'initialPassword'
@@ -66,6 +71,12 @@ export const searchFormSchema: FormSchema[] = [
 	{
       label: "账户名称",
       field: 'adminCode',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
+	{
+      label: "角色编码",
+      field: 'roleCode',
       component: 'Input',
       colProps: {span: 6},
  	},
@@ -120,6 +131,11 @@ export const formSchema: FormSchema[] = [
                  { required: true, message: '请输入账户名称!'},
           ];
      },
+  },
+  {
+    label: '角色编码',
+    field: 'roleCode',
+    component: 'Input',
   },
   {
     label: '初始密码',

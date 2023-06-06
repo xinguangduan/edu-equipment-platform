@@ -48,6 +48,10 @@ public class OrganizationDefinition implements Serializable {
 	@Excel(name = "账户名称", width = 15)
     @ApiModelProperty(value = "账户名称")
     private java.lang.String adminCode;
+	/**角色编码*/
+	@Excel(name = "角色编码", width = 15)
+    @ApiModelProperty(value = "角色编码")
+    private String roleCode;
 	/**初始密码*/
 	@Excel(name = "初始密码", width = 15)
     @ApiModelProperty(value = "初始密码")
