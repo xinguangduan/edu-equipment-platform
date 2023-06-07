@@ -3039,6 +3039,7 @@ CREATE TABLE `organization_definition` (
   `institution_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT '机构名称',
   `institution_type` varchar(2) COLLATE utf8mb4_general_ci NOT NULL COMMENT '机构类型',
   `admin_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '账户名称',
+  `role_code` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '角色编码',
   `initial_password` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '初始密码',
   `admin_generation_success` varchar(1) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '账户生成是否成功',
   `failure_reason` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '失败原因',
@@ -3202,10 +3203,10 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1665258381981757442',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380265',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
      ('1665258381981757443',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380266',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1');
 
-INSERT INTO `organization_definition` (`id`, `identification_code`, `institution_name`, `institution_type`, `admin_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
-     ('1664965333271867393',	'2142004708',	'八宝小学中洲校区',	'12',	'admin_zzxx',	NULL,	NULL,	NULL,	'admin',	'2023-06-03 20:00:44',	NULL,	NULL,	'A01'),
-     ('1664965333280256001',	'2142009669',	'八宝小学',	'12',	'admin_bbxx',	NULL,	NULL,	NULL,	'admin',	'2023-06-03 20:00:44',	NULL,	NULL,	'A01'),
-     ('1664965333280256002',	'3142007024',	'八宝初级中学',	'13',	'admin_bbzx',	NULL,	NULL,	NULL,	'admin',	'2023-06-03 20:00:44',	NULL,	NULL,	'A01');
+INSERT INTO `organization_definition` (`id`, `identification_code`, `institution_name`, `institution_type`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
+     ('1664965333271867393',	'2142004708',	'八宝小学中洲校区',	'12',	'admin_zzxx',	NULL,	NULL,	NULL,	NULL,	'admin',	'2023-06-03 20:00:44',	NULL,	NULL,	'A01'),
+     ('1664965333280256001',	'2142009669',	'八宝小学',	'12',	'admin_bbxx',	NULL,	NULL,	NULL,	NULL,	'admin',	'2023-06-03 20:00:44',	NULL,	NULL,	'A01'),
+     ('1664965333280256002',	'3142007024',	'八宝初级中学',	'13',	'admin_bbzx',	NULL,	NULL,	NULL,	NULL,	'admin',	'2023-06-03 20:00:44',	NULL,	NULL,	'A01');
 
 INSERT INTO `info_phase_control` (`id`, `phase_code`, `phase_name`, `archive_status`, `archive_date`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
      ('1665199280987811841',	'2023-01',	'2023上半年',	'0',	NULL,	'admin',	'2023-06-04 11:30:21',	NULL,	NULL,	'A01'),

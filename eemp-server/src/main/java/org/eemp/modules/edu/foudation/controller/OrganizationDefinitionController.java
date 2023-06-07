@@ -1,9 +1,11 @@
 package org.eemp.modules.edu.foudation.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -14,10 +16,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.common.util.PasswordUtil;
+import org.eemp.common.util.oConvertUtils;
+import org.eemp.modules.base.service.BaseCommonService;
 import org.eemp.modules.edu.foudation.entity.OrganizationDefinition;
 import org.eemp.modules.edu.foudation.service.IOrganizationDefinitionService;
+import org.eemp.modules.system.entity.SysUser;
+import org.eemp.modules.system.service.ISysUserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +41,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class OrganizationDefinitionController extends BaseController<OrganizationDefinition, IOrganizationDefinitionService> {
 	private final IOrganizationDefinitionService organizationDefinitionService;
+	private final ISysUserService sysUserService;
+	private final BaseCommonService baseCommonService;
 	
 	/**
 	 * 分页列表查询
@@ -67,8 +77,68 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 	@RequiresPermissions("edu.foudation:organization_definition:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody OrganizationDefinition organizationDefinition) {
+		Result<String> result = new Result<>();
+
+		String username = organizationDefinition.getAdminCode();
+		SysUser tmpUser = sysUserService.getUserByName(username);
+		if (tmpUser != null) {
+			result.setMessage("用户名已注册");
+			result.setSuccess(false);
+			organizationDefinition.setAdminGenerationSuccess("0");
+			organizationDefinition.setFailureReason(result.getMessage());
+			organizationDefinitionService.save(organizationDefinition);
+			return result;
+		}
+		String roleIds = null;
+		switch (organizationDefinition.getInstitutionType()) {
+			case "11":	roleIds = "1665577049181556738";	break;			// nursery_school	幼儿园
+			case "12":	roleIds = "1665577049168973825";	break;			// primary_school	小学
+			case "13":	roleIds = "1665577049152196610";	break;			// junior_school	初中
+			case "14":	roleIds = "1665577049122836482";	break;			// senior_school	高中
+			default:
+				result.setMessage("机构类型非标准值");
+				result.setSuccess(false);
+				organizationDefinition.setAdminGenerationSuccess("0");
+				organizationDefinition.setFailureReason(result.getMessage());
+				organizationDefinitionService.save(organizationDefinition);
+				return result;
+		}
+		organizationDefinition.setRoleCode(roleIds);								// 保存转换的角色代码
+		String password = organizationDefinition.getInitialPassword();			// 正常应该为 null
+		if(oConvertUtils.isEmpty(password)){
+			password = RandomUtil.randomString(8);
+			organizationDefinition.setInitialPassword(password);				// 保存生成的密码
+		}
+
+		try {
+			SysUser user = new SysUser();
+			user.setUsername(username);
+			user.setRealname(organizationDefinition.getInstitutionName());		// 设置学校名词
+			user.setCreateTime(new Date());										// 设置创建时间
+			String salt = oConvertUtils.randomGen(8);
+			user.setSalt(salt);
+			String passwordEncode = PasswordUtil.encrypt(username, password, salt);
+			user.setPassword(passwordEncode);
+			user.setStatus(1);
+			user.setDelFlag(CommonConstant.DEL_FLAG_0);							// 未删除
+			user.setOrgCode(null);
+			// 保存用户走一个service 保证事务
+			//获取租户ids
+//			String relTenantIds = jsonObject.getString("relTenantIds");
+//			sysUserService.saveUser(user, selectedRoles, selectedDeparts, relTenantIds);
+			sysUserService.saveUser(user, roleIds, null, null);
+			baseCommonService.addLog("添加用户，username： " +user.getUsername() ,CommonConstant.LOG_TYPE_2, 2);
+			organizationDefinition.setAdminGenerationSuccess("1");
+			result.success("添加成功！");
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			organizationDefinition.setAdminGenerationSuccess("0");
+			organizationDefinition.setFailureReason(e.getMessage().substring(0,28));
+			result.error500("操作失败");
+		}
+
 		organizationDefinitionService.save(organizationDefinition);
-		return Result.OK("添加成功！");
+		return result;
 	}
 	
 	/**
