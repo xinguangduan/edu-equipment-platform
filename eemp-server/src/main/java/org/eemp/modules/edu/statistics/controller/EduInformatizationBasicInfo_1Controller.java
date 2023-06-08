@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.modules.edu.statistics.entity.EduInformatizationBasicInfo_1;
@@ -46,6 +47,7 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
 	//@AutoLog(value = "教育信息化基本情况统计表（一）-分页列表查询")
 	@ApiOperation(value="教育信息化基本情况统计表（一）-分页列表查询", notes="教育信息化基本情况统计表（一）-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/statistics/EduInformatizationBasicInfo_1List")
 	public Result<IPage<EduInformatizationBasicInfo_1>> queryPageList(EduInformatizationBasicInfo_1 eduInformatizationBasicInfo_1,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
