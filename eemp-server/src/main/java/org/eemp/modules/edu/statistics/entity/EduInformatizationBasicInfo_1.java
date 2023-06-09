@@ -30,51 +30,53 @@ public class EduInformatizationBasicInfo_1 implements Serializable {
 	/**主键*/
 	@TableId(type = IdType.ASSIGN_ID)
     @ApiModelProperty(value = "主键")
-    private java.lang.String id;
+    private String id;
 	/**标识代码*/
-	@Excel(name = "标识代码", width = 15)
+	@Excel(name = "学校名称", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+	@Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
     @ApiModelProperty(value = "标识代码")
-    private java.lang.String identificationCode;
+    private String identificationCode;
 	/**时段代码*/
-	@Excel(name = "时段代码", width = 15)
+	@Excel(name = "信息时段", width = 15, dictTable = "info_phase_control", dicText = "phase_name", dicCode = "phase_code")
+	@Dict(dictTable = "info_phase_control", dicText = "phase_name", dicCode = "phase_code")
     @ApiModelProperty(value = "时段代码")
-    private java.lang.String phaseCode;
+    private String phaseCode;
 	/**任课教师总数（人）*/
 	@Excel(name = "任课教师总数（人）", width = 15)
     @ApiModelProperty(value = "任课教师总数（人）")
-    private java.lang.Integer teacherCount;
+    private Integer teacherCount;
 	/**学生总数（人）*/
 	@Excel(name = "学生总数（人）", width = 15)
     @ApiModelProperty(value = "学生总数（人）")
-    private java.lang.Integer studentCount;
+    private Integer studentCount;
 	/**教室（含功能室）总数（间）*/
 	@Excel(name = "教室（含功能室）总数（间）", width = 15)
     @ApiModelProperty(value = "教室（含功能室）总数（间）")
-    private java.lang.Integer roomCount;
+    private Integer roomCount;
 	/**班级教室总数（间）*/
 	@Excel(name = "班级教室总数（间）", width = 15)
     @ApiModelProperty(value = "班级教室总数（间）")
-    private java.lang.Integer classroomCount;
+    private Integer classroomCount;
 	/**学生课桌椅可用数（套）*/
 	@Excel(name = "学生课桌椅可用数（套）", width = 15)
     @ApiModelProperty(value = "学生课桌椅可用数（套）")
-    private java.lang.Integer studentDeskCount;
+    private Integer studentDeskCount;
 	/**已入网教室数（间）*/
 	@Excel(name = "已入网教室数（间）", width = 15)
     @ApiModelProperty(value = "已入网教室数（间）")
-    private java.lang.Integer connectedRoomCount;
+    private Integer connectedRoomCount;
 	/**是否建设网络中心机房*/
 	@Excel(name = "是否建设网络中心机房", width = 15, dicCode = "yn")
 	@Dict(dicCode = "yn")
     @ApiModelProperty(value = "是否建设网络中心机房")
-    private java.lang.String hasACentralServerRoom;
+    private String hasACentralServerRoom;
 	/**学校资源库教学资源容量（GB）*/
 	@Excel(name = "学校资源库教学资源容量（GB）", width = 15)
     @ApiModelProperty(value = "学校资源库教学资源容量（GB）")
-    private java.lang.Double teachingResourceCapacity;
+    private Double teachingResourceCapacity;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
-    private java.lang.String createBy;
+    private String createBy;
 	/**创建日期*/
 	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
@@ -82,7 +84,7 @@ public class EduInformatizationBasicInfo_1 implements Serializable {
     private java.util.Date createTime;
 	/**更新人*/
     @ApiModelProperty(value = "更新人")
-    private java.lang.String updateBy;
+    private String updateBy;
 	/**更新日期*/
 	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
@@ -90,5 +92,5 @@ public class EduInformatizationBasicInfo_1 implements Serializable {
     private java.util.Date updateTime;
 	/**所属部门*/
     @ApiModelProperty(value = "所属部门")
-    private java.lang.String sysOrgCode;
+    private String sysOrgCode;
 }

@@ -3217,8 +3217,8 @@ INSERT INTO `info_phase_control` (`id`, `phase_code`, `phase_name`, `archive_sta
      ('1665200128178499586',	'2022-01',	'2022上半年',	'1',	'2022-06-30',	'admin',	'2023-06-04 11:33:43',	NULL,	NULL,	'A01');
 
 INSERT INTO `edu_informatization_basic_info_1` (`id`, `identification_code`, `phase_code`, `teacher_count`, `student_count`, `room_count`, `classroom_count`, `student_desk_count`, `connected_room_count`, `has_a_central_server_room`, `teaching_resource_capacity`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
-     ('1665260317544001538',	'3142007024',	'2023-01',	210,	1600,	30,	22,	1800,	28,	'1',	21.86,	'admin',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
-     ('1665262789297680385',	'2142009669',	'2023-01',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01');
+     ('1665260317544001538',	'3142007024',	'2023-01',	210,	1600,	30,	22,	1800,	28,	'1',	21.86,	'admin_bbzx',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
+     ('1665262789297680385',	'2142009669',	'2023-01',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01');
 
 -- ----------------------------
 -- Table structure for edu_primary_equipment_req_template
@@ -3433,6 +3433,15 @@ INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
      ('1666328002759487490',	'1666328002738515970',	'1666258199700963330',	0),
      ('1666328237237858306',	'1666328237225275394',	'1666258199717740546',	0),
      ('1666328364086194178',	'1666328364073611266',	'1666258199717740546',	0);
+
+-- 角色数据权限：学校方仅能看到本校的统计数据#1
+INSERT INTO `sys_permission_data_rule` (`id`, `permission_id`, `rule_name`, `rule_column`, `rule_conditions`, `rule_value`, `status`, `create_time`, `create_by`, `update_time`, `update_by`) VALUES
+     ('1666813284424339458',	'2023060402428380260',	'学校方仅能看到本校的统计数据#1',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-06-08 22:23:50',	'admin',	'2023-06-08 22:43:41',	'admin');
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+     ('1666313219406430209',	'1666258199734517761',	'2023060402428380260',	'1666813284424339458',	'2023-06-07 13:16:45',	'127.0.0.1'),
+     ('1666313944958107639',	'1666258199679991810',	'2023060402428380260',	'1666813284424339458',	'2023-06-07 13:19:38',	'127.0.0.1'),
+     ('1666314346688544769',	'1666258199700963330',	'2023060402428380260',	'1666813284424339458',	'2023-06-07 13:21:14',	'127.0.0.1'),
+     ('1666314712519933952',	'1666258199717740546',	'2023060402428380260',	'1666813284424339458',	'2023-06-07 13:22:41',	'127.0.0.1');
 
 
 SET FOREIGN_KEY_CHECKS = 1;
