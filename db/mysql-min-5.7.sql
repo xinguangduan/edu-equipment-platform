@@ -3443,5 +3443,13 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666314346688544769',	'1666258199700963330',	'2023060402428380260',	'1666813284424339458',	'2023-06-07 13:21:14',	'127.0.0.1'),
      ('1666314712519933952',	'1666258199717740546',	'2023060402428380260',	'1666813284424339458',	'2023-06-07 13:22:41',	'127.0.0.1');
 
+-- 字段列显示控制（目前框架采用的vben似乎不支持对列编辑的控制，故简单在前段硬编码控制）
+INSERT INTO `sys_permission` (`id`, `parent_id`, `name`, `url`, `component`, `is_route`, `component_name`, `redirect`, `menu_type`, `perms`, `perms_type`, `sort_no`, `always_show`, `icon`, `is_leaf`, `keep_alive`, `hidden`, `hide_tab`, `description`, `create_by`, `create_time`, `update_by`, `update_time`, `del_flag`, `rule_flag`, `status`, `internal_or_external`) VALUES
+     ('1667854934080655362',	'2023060402428380260',	'学校代码列控制',	NULL,	NULL,	0,	NULL,	NULL,	2,	'colctrl:identificationCode_dictText',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-06-11 19:22:58',	NULL,	NULL,	0,	0,	'1',	0);
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+     ('1667870067091738625',	'f6817f48af4fb3af11b9e8bf182f618b',	'1667854934080655362',	NULL,	'2023-06-11 20:23:06',	'127.0.0.1'),
+     ('1667885284941000706',	'1666258199763877889',	'1667854934080655362',	NULL,	'2023-06-11 21:23:34',	'127.0.0.1'),
+     ('1667885347482267649',	'1666258199747100674',	'1667854934080655362',	NULL,	'2023-06-11 21:23:49',	'127.0.0.1');
+
 
 SET FOREIGN_KEY_CHECKS = 1;
