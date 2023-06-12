@@ -3246,7 +3246,7 @@ CREATE TABLE `edu_primary_equipment_req_template` (
 
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
-VALUES ('2023060404015910390', NULL, '小学器材设施配备要求模板表', '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplateList', 'primaryequipmentreqtemplate/EduPrimaryEquipmentReqTemplateList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 16:01:39', NULL, NULL, 0);
+VALUES ('2023060404015910390', NULL, '小学器材设施配备要求模板表', '/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplateList', '/edu/primaryequipmentreqtemplate/EduPrimaryEquipmentReqTemplateList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 16:01:39', NULL, NULL, 0);
 
 -- 权限控制sql
 -- 新增
