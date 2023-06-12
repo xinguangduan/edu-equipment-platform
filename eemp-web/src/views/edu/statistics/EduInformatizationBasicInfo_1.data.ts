@@ -5,14 +5,14 @@ import { render } from '/@/utils/common/renderUtils';
 //列表数据
 export const columns: BasicColumn[] = [
    {
-    title: '标识代码',
+    title: '学校名称',
     align:"center",
-    dataIndex: 'identificationCode'
+    dataIndex: 'identificationCode_dictText'
    },
    {
-    title: '时段代码',
+    title: '信息时段',
     align:"center",
-    dataIndex: 'phaseCode'
+    dataIndex: 'phaseCode_dictText'
    },
    {
     title: '任课教师总数（人）',
@@ -58,24 +58,33 @@ export const columns: BasicColumn[] = [
 //查询数据
 export const searchFormSchema: FormSchema[] = [
 	{
-      label: "标识代码",
+      label: "学校名称",
       field: 'identificationCode',
-      component: 'Input',
+      component: 'JDictSelectTag',
+      componentProps:{
+          dictCode:"organization_definition,institution_name,identification_code"
+      },
       colProps: {span: 6},
  	},
 	{
-      label: "时段代码",
+      label: "信息时段",
       field: 'phaseCode',
-      component: 'Input',
+      component: 'JDictSelectTag',
+      componentProps:{
+          dictCode:"info_phase_control,phase_name,phase_code"
+      },
       colProps: {span: 6},
  	},
 ];
 //表单数据
 export const formSchema: FormSchema[] = [
   {
-    label: '标识代码',
+    label: '学校名称',
     field: 'identificationCode',
-    component: 'Input',
+    component: 'JDictSelectTag',
+    componentProps:{
+        dictCode:"organization_definition,institution_name,identification_code"
+     },
     dynamicRules: ({model,schema}) => {
           return [
                  { required: true, message: '请输入标识代码!'},
@@ -83,9 +92,12 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
-    label: '时段代码',
+    label: '信息时段',
     field: 'phaseCode',
-    component: 'Input',
+    component: 'JDictSelectTag',
+    componentProps:{
+        dictCode:"info_phase_control,phase_name,phase_code"
+     },
     dynamicRules: ({model,schema}) => {
           return [
                  { required: true, message: '请输入时段代码!'},
