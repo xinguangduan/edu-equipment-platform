@@ -3036,6 +3036,7 @@ DROP TABLE IF EXISTS `organization_definition`;
 CREATE TABLE `organization_definition` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `township` varchar(16) COLLATE utf8mb4_general_ci NOT NULL COMMENT '乡镇',
   `institution_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT '机构名称',
   `institution_type` varchar(2) COLLATE utf8mb4_general_ci NOT NULL COMMENT '机构类型',
   `admin_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '账户名称',
@@ -3421,10 +3422,10 @@ INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
      ('1666324152967102465',	'1666324152950325249',	'1666258199780655106',	0);
 
 -- 借助机构定义生成账户
-INSERT INTO `organization_definition` (`id`, `identification_code`, `institution_name`, `institution_type`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
-     ('1666328002797236225',	'3142007024',	'八宝初级中学',	'13',	'admin_bbzx',	'1666258199700963330',	'p2llvkhq',	'1',	NULL,	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL),
-     ('1666328237288189954',	'2142009669',	'八宝小学',	'12',	'admin_bbxx',	'1666258199717740546',	'44d72cm7',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL),
-     ('1666328364132331521',	'2142004708',	'八宝小学中洲校区',	'12',	'admin_zzxx',	'1666258199717740546',	'w4l60um0',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL);
+INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, `institution_name`, `institution_type`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
+     ('1666328002797236225',	'3142007024',	'八宝镇',	'八宝初级中学',	'13',	'admin_bbzx',	'1666258199700963330',	'p2llvkhq',	'1',	NULL,	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL),
+     ('1666328237288189954',	'2142009669',	'八宝镇',	'八宝小学',	'12',	'admin_bbxx',	'1666258199717740546',	'44d72cm7',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL),
+     ('1666328364132331521',	'2142004708',	'八宝镇',	'八宝小学中洲校区',	'12',	'admin_zzxx',	'1666258199717740546',	'w4l60um0',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL);
 INSERT INTO `sys_user` (`id`, `username`, `realname`, `password`, `salt`, `avatar`, `birthday`, `sex`, `email`, `phone`, `org_code`, `status`, `del_flag`, `third_id`, `third_type`, `activiti_sync`, `work_no`, `post`, `telephone`, `create_by`, `create_time`, `update_by`, `update_time`, `user_identity`, `depart_ids`, `client_id`, `login_tenant_id`, `bpm_status`) VALUES
      ('1666328002738515970',	'admin_bbzx',	'八宝初级中学',	'762001a923071d8cb60e6d9311d59676',	'1Ph064Oy',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
      ('1666328237225275394',	'admin_bbxx',	'八宝小学',	'64913e3e0b72397c2f474a25eee928ba',	'RWHf0MZF',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
