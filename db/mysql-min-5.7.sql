@@ -3148,7 +3148,7 @@ INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,cr
 	 ('1664818329461768194','机构类型','institution_type','机构类型',0,'admin','2023-06-03 10:16:35','admin','2023-06-03 10:19:32',0,0,NULL),
 	 ('1668873268455092226',	'乡镇列表',	'township_list',	'乡镇列表',	0,	'admin',	'2023-06-14 14:49:28',	NULL,	NULL,	0,	0,	NULL);
 INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_order,status,create_by,create_time,update_by,update_time) VALUES
-	 ('1664818497951154178','1664818329461768194','装备中心','01',NULL,1,1,'admin','2023-06-03 10:17:15',NULL,NULL),
+	 ('1664818497951154178','1664818329461768194','装备中心','01',NULL,1,0,'admin','2023-06-03 10:17:15',NULL,NULL),
 	 ('1664818614024323074','1664818329461768194','幼儿园','11',NULL,1,1,'admin','2023-06-03 10:17:43',NULL,NULL),
 	 ('1664818711713857537','1664818329461768194','小学','12',NULL,1,1,'admin','2023-06-03 10:18:06',NULL,NULL),
 	 ('1664818781993615362','1664818329461768194','初中','13',NULL,1,1,'admin','2023-06-03 10:18:23',NULL,NULL),
@@ -3181,7 +3181,9 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
      ('2023060312357030190', '1666280628326367234', '机构组织定义', '/edu/foudation/organizationDefinitionList', 'edu/foudation/OrganizationDefinitionList', NULL, NULL, 1, NULL, '1', 1.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0),
+     /* 暂时屏蔽信息时段
      ('2023060409543950360', '1666280628326367234', '信息时段控制表', '/edu/foudation/infoPhaseControlList', 'edu/foudation/InfoPhaseControlList', NULL, NULL, 1, NULL, '1', 2.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0),
+     */
      ('2023060402428380260', '1666281667909779458', '教育信息化基本情况统计表（一）', '/edu/statistics/eduInformatizationBasicInfo_1List', 'edu/statistics/EduInformatizationBasicInfo_1List', NULL, NULL, 1, NULL, '1', 1.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
@@ -3191,12 +3193,14 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023060312357030194', '2023060312357030190', '批量删除机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
      ('2023060312357030195', '2023060312357030190', '导出excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
      ('2023060312357030196', '2023060312357030190', '导入excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     /* 暂时屏蔽信息时段
      ('2023060409543950361', '2023060409543950360', '添加信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
      ('2023060409543950362', '2023060409543950360', '编辑信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
      ('2023060409543950363', '2023060409543950360', '删除信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
      ('2023060409543950364', '2023060409543950360', '批量删除信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
      ('2023060409543960365', '2023060409543950360', '导出excel_信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
      ('2023060409543960366', '2023060409543950360', '导入excel_信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
+     */
      ('2023060402428380261', '2023060402428380260', '添加教育信息化基本情况统计表（一）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_1:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0, 0, '1', 0),
      ('2023060402428380262', '2023060402428380260', '编辑教育信息化基本情况统计表（一）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_1:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0, 0, '1', 0),
      ('2023060402428380263', '2023060402428380260', '删除教育信息化基本情况统计表（一）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_1:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0, 0, '1', 0),
@@ -3215,6 +3219,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1664959650874990594',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030195',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
      ('1664959650883379202',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030194',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
      ('1664959650883379203',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030196',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
+     /* 暂时屏蔽信息时段
      ('1665195409792020481',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950360',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
      ('1665195409829769217',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950361',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
      ('1665195409833963521',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950362',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
@@ -3222,6 +3227,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1665195409838157827',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543950364',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
      ('1665195409846546433',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543960365',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
      ('1665195409850740738',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060409543960366',	NULL,	'2023-06-04 11:14:58',	'127.0.0.1'),
+     */
      ('1665258381948203009',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380260',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
      ('1665258381969174530',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380261',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
      ('1665258381973368833',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380262',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
@@ -3336,7 +3342,8 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666285008857464838',	'1666258199780655106',	'2023060404015920393',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
      ('1666285008857464839',	'1666258199780655106',	'2023060404015920394',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
      ('1666285008857464840',	'1666258199780655106',	'2023060404015920395',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
-     ('1666285008857464841',	'1666258199780655106',	'2023060404015920396',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
+     ('1666285008857464841',	'1666258199780655106',	'2023060404015920396',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1');
+     /* 暂时屏蔽信息时段
      ('1666285008853270537',	'1666258199780655106',	'2023060409543950360',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
      ('1666285008853270538',	'1666258199780655106',	'2023060409543950361',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
      ('1666285008853270539',	'1666258199780655106',	'2023060409543950362',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
@@ -3344,6 +3351,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666285008853270541',	'1666258199780655106',	'2023060409543950364',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
      ('1666285008853270542',	'1666258199780655106',	'2023060409543960365',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
      ('1666285008857464834',	'1666258199780655106',	'2023060409543960366',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1');
+     */
 
 -- 角色权限：装备中心 – 统计分析
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
