@@ -36,7 +36,8 @@ public class OrganizationDefinition implements Serializable {
     @ApiModelProperty(value = "标识代码")
     private java.lang.String identificationCode;
 	/**乡镇*/
-	@Excel(name = "乡镇", width = 15)
+    @Excel(name = "乡镇", width = 15, dicCode = "township_list")
+    @Dict(dicCode = "township_list")
 	@ApiModelProperty(value = "乡镇")
 	private java.lang.String township;
 	/**机构名称*/
