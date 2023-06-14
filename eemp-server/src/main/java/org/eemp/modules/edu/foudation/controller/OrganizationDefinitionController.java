@@ -103,7 +103,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 				organizationDefinitionService.save(organizationDefinition);
 				return result;
 		}
-		organizationDefinition.setRoleCode(roleIds);								// 保存转换的角色代码
+		organizationDefinition.setRoleCode(roleIds);							// 保存转换的角色代码
 		String password = organizationDefinition.getInitialPassword();			// 正常应该为 null
 		if(oConvertUtils.isEmpty(password)){
 			password = RandomUtil.randomString(8);
@@ -122,6 +122,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			user.setStatus(1);
 			user.setDelFlag(CommonConstant.DEL_FLAG_0);							// 未删除
 			user.setOrgCode(null);
+			user.setTelephone(organizationDefinition.getIdentificationCode());	// 借用保存学校用户对应的机构代码
 			// 保存用户走一个service 保证事务
 			//获取租户ids
 //			String relTenantIds = jsonObject.getString("relTenantIds");

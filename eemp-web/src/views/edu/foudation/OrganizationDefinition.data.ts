@@ -12,7 +12,7 @@ export const columns: BasicColumn[] = [
    {
     title: '乡镇',
     align:"center",
-    dataIndex: 'township'
+    dataIndex: 'township_dictText'
    },
    {
     title: '机构名称',
@@ -56,7 +56,10 @@ export const searchFormSchema: FormSchema[] = [
 	{
       label: "乡镇",
       field: 'township',
-      component: 'Input',
+      component: 'JDictSelectTag',
+      componentProps:{
+        dictCode:"township_list"
+      },
       colProps: {span: 6},
  	},
 	{
@@ -105,7 +108,10 @@ export const formSchema: FormSchema[] = [
   {
     label: '乡镇',
     field: 'township',
-    component: 'Input',
+    component: 'JDictSelectTag',
+    componentProps:{
+        dictCode:"township_list"
+     },
     dynamicRules: ({model,schema}) => {
           return [
                  { required: true, message: '请输入乡镇!'},
