@@ -7,7 +7,8 @@ export const columns: BasicColumn[] = [
    {
     title: '学校名称',
     align:"center",
-    dataIndex: 'identificationCode_dictText'
+    dataIndex: 'identificationCode_dictText',
+    auth: 'colctrl:identificationCode_dictText',
    },
    {
     title: '信息时段',
@@ -81,6 +82,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '学校名称',
     field: 'identificationCode',
+    defaultValue: "3142007024",
     component: 'JDictSelectTag',
     componentProps:{
         dictCode:"organization_definition,institution_name,identification_code"
@@ -94,6 +96,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '信息时段',
     field: 'phaseCode',
+    defaultValue: "2023-01",
     component: 'JDictSelectTag',
     componentProps:{
         dictCode:"info_phase_control,phase_name,phase_code"
@@ -103,6 +106,7 @@ export const formSchema: FormSchema[] = [
                  { required: true, message: '请输入时段代码!'},
           ];
      },
+     dynamicDisabled:true
   },
   {
     label: '任课教师总数（人）',

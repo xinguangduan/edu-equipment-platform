@@ -10,6 +10,11 @@ export const columns: BasicColumn[] = [
     dataIndex: 'identificationCode'
    },
    {
+    title: '乡镇',
+    align:"center",
+    dataIndex: 'township'
+   },
+   {
     title: '机构名称',
     align:"center",
     dataIndex: 'institutionName'
@@ -23,11 +28,6 @@ export const columns: BasicColumn[] = [
     title: '账户名称',
     align:"center",
     dataIndex: 'adminCode'
-   },
-   {
-    title: '角色编码',
-    align:"center",
-    dataIndex: 'roleCode'
    },
    {
     title: '初始密码',
@@ -54,6 +54,12 @@ export const searchFormSchema: FormSchema[] = [
       colProps: {span: 6},
  	},
 	{
+      label: "乡镇",
+      field: 'township',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
+	{
       label: "机构名称",
       field: 'institutionName',
       component: 'Input',
@@ -75,17 +81,14 @@ export const searchFormSchema: FormSchema[] = [
       colProps: {span: 6},
  	},
 	{
-      label: "角色编码",
-      field: 'roleCode',
-      component: 'Input',
+      label: "账户生成是否成功",
+      field: 'adminGenerationSuccess',
+      component: 'JDictSelectTag',
+      componentProps:{
+          dictCode:"yn"
+      },
       colProps: {span: 6},
  	},
-     {
-      label: "账户生成是否成功",
-      field: "adminGenerationSuccess",
-      component: 'Input', //TODO 范围查询
-      colProps: {span: 6},
-	},
 ];
 //表单数据
 export const formSchema: FormSchema[] = [
@@ -96,6 +99,16 @@ export const formSchema: FormSchema[] = [
     dynamicRules: ({model,schema}) => {
           return [
                  { required: true, message: '请输入标识代码!'},
+          ];
+     },
+  },
+  {
+    label: '乡镇',
+    field: 'township',
+    component: 'Input',
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入乡镇!'},
           ];
      },
   },
@@ -131,29 +144,6 @@ export const formSchema: FormSchema[] = [
                  { required: true, message: '请输入账户名称!'},
           ];
      },
-  },
-  {
-    label: '角色编码',
-    field: 'roleCode',
-    component: 'Input',
-  },
-  {
-    label: '初始密码',
-    field: 'initialPassword',
-    component: 'Input',
-  },
-  {
-    label: '账户生成是否成功',
-    field: 'adminGenerationSuccess',
-    component: 'JDictSelectTag',
-    componentProps:{
-        dictCode:"yn"
-     },
-  },
-  {
-    label: '失败原因',
-    field: 'failureReason',
-    component: 'Input',
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{
