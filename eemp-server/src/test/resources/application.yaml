@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+# 升级至 springboot 2.5 以后，推荐采用 spring.sql.init.* 写法  -- begin
+#  sql:
+#    init:
+#      schema-locations: classpath:db/schema-h2.sql
+#      data-locations: classpath:db/data-h2.sql
+#      mode: always
+# 升级至 springboot 2.5 以后，推荐采用 spring.sql.init.* 写法  -- end
+
+logging:
+  level:
+    org.springframework.jdbc: debug
+    org.eemp.modules.edu: debug
