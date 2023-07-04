@@ -41,6 +41,7 @@ export interface UserInfo {
   tenantid?: string | number;
   roles: RoleInfo[];
   orgCode?: string;
+  telephone?: string;
 }
 
 export interface LoginInfo {

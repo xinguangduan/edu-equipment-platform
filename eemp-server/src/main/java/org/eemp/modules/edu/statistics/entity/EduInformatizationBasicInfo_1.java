@@ -36,11 +36,12 @@ public class EduInformatizationBasicInfo_1 implements Serializable {
 	@Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
     @ApiModelProperty(value = "标识代码")
     private String identificationCode;
-	/**时段代码*/
-	@Excel(name = "信息时段", width = 15, dictTable = "info_phase_control", dicText = "phase_name", dicCode = "phase_code")
-	@Dict(dictTable = "info_phase_control", dicText = "phase_name", dicCode = "phase_code")
-    @ApiModelProperty(value = "时段代码")
-    private String phaseCode;
+    /**填报日期*/
+    @Excel(name = "填报日期", width = 15, format = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @ApiModelProperty(value = "填报日期")
+    private java.util.Date fillDate;
 	/**任课教师总数（人）*/
 	@Excel(name = "任课教师总数（人）", width = 15)
     @ApiModelProperty(value = "任课教师总数（人）")

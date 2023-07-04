@@ -2,17 +2,26 @@ import {BasicColumn} from '/@/components/Table';
 import {FormSchema} from '/@/components/Table';
 import { rules} from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
+import { useUserStoreWithOut } from "/@/store/modules/user";
+import dayjs from 'dayjs';
+
+const userStore = useUserStoreWithOut();
+
 //列表数据
 export const columns: BasicColumn[] = [
    {
     title: '学校名称',
     align:"center",
-    dataIndex: 'identificationCode_dictText'
+    dataIndex: 'identificationCode_dictText',
+    auth: 'colctrl:identificationCode_dictText',
    },
    {
-    title: '信息时段',
+    title: '填报日期',
     align:"center",
-    dataIndex: 'phaseCode_dictText'
+    dataIndex: 'fillDate',
+    customRender:({text}) =>{
+      return !text?"":(text.length>10?text.substr(0,10):text)
+    },
    },
    {
     title: '任课教师总数（人）',
@@ -67,12 +76,9 @@ export const searchFormSchema: FormSchema[] = [
       colProps: {span: 6},
  	},
 	{
-      label: "信息时段",
-      field: 'phaseCode',
-      component: 'JDictSelectTag',
-      componentProps:{
-          dictCode:"info_phase_control,phase_name,phase_code"
-      },
+      label: "填报日期",
+      field: 'fillDate',
+      component: 'DatePicker',
       colProps: {span: 6},
  	},
 ];
@@ -81,6 +87,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '学校名称',
     field: 'identificationCode',
+    defaultValue: userStore.getUserInfo.telephone,                      // 借用保存学校用户对应的机构代码
     component: 'JDictSelectTag',
     componentProps:{
         dictCode:"organization_definition,institution_name,identification_code"
@@ -92,17 +99,16 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
-    label: '信息时段',
-    field: 'phaseCode',
-    component: 'JDictSelectTag',
-    componentProps:{
-        dictCode:"info_phase_control,phase_name,phase_code"
-     },
+    label: '填报日期',
+    field: 'fillDate',
+    defaultValue: dayjs(new Date()).format('YYYY-MM-DD'),
+    component: 'DatePicker',
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入时段代码!'},
+                 { required: true, message: '请输入填报日期!'},
           ];
      },
+     dynamicDisabled:true
   },
   {
     label: '任课教师总数（人）',
