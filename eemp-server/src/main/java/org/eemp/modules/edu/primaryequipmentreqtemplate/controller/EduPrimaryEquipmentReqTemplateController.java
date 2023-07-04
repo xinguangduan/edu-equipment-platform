@@ -292,9 +292,9 @@ public class EduPrimaryEquipmentReqTemplateController extends BaseController<Edu
                         EduPrimaryEquipmentReqTemplate req = new EduPrimaryEquipmentReqTemplate();
 
                         req.setSysOrgCode(loginUser.getOrgCode());
-                        req.setCreateBy(loginUser.getId());
+                        req.setCreateBy(loginUser.getUsername());
                         req.setCreateTime(new Date());
-                        req.setUpdateBy(loginUser.getId());
+                        req.setUpdateBy(loginUser.getUsername());
                         req.setUpdateTime(new Date());
                         req.setPhaseCode("2023");
                         req.setGrade("primary");

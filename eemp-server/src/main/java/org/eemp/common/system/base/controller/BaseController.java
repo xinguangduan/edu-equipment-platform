@@ -18,7 +18,6 @@ import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.shiro.SecurityUtils;
 import org.eemp.common.api.vo.Result;
-import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.poi.def.NormalExcelConstants;
 import org.eemp.common.poi.excel.ExcelImportUtil;
 import org.eemp.common.poi.excel.entity.ExportParams;
@@ -262,10 +261,6 @@ public class BaseController<T, S extends IService<T>> {
     }
 
     public String getLoginUserName(HttpServletRequest request) {
-        String token = request.getHeader(CommonConstant.X_ACCESS_TOKEN);
-        if (oConvertUtils.isEmpty(token)) {
-            return null;
-        }
-        return JwtUtil.getUsername(token);
+        return JwtUtil.getUserNameByToken(request);
     }
 }

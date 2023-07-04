@@ -30,6 +30,7 @@ public class EduPrimarySportEquipmentReq implements Serializable {
     private static final long serialVersionUID = 1L;
 
 	/**主键*/
+    @Excel(name = "ID", width = 15)
 	@TableId(type = IdType.ASSIGN_ID)
     @ApiModelProperty(value = "主键")
     private String id;
@@ -74,9 +75,12 @@ public class EduPrimarySportEquipmentReq implements Serializable {
     @ApiModelProperty(value = "备注")
     private String remark;
 	/**所属部门*/
+    @Excel(name = "所属部门", width = 15)
     @ApiModelProperty(value = "所属部门")
     private String sysOrgCode;
-	/**创建人*/
+
+    /**创建人*/
+    @Excel(name = "创建人", width = 15)
     @ApiModelProperty(value = "创建人")
     private String createBy;
 	/**创建日期*/
@@ -85,6 +89,7 @@ public class EduPrimarySportEquipmentReq implements Serializable {
     @ApiModelProperty(value = "创建日期")
     private Date createTime;
 	/**更新人*/
+    @Excel(name = "更新人", width = 15)
     @ApiModelProperty(value = "更新人")
     private String updateBy;
 	/**更新日期*/
