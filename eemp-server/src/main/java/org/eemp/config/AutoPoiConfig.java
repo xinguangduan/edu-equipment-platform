@@ -1,6 +1,6 @@
 package org.eemp.config;
 
-import org.jeecgframework.core.util.ApplicationContextUtil;
+import org.eemp.common.core.util.ApplicationContextUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
