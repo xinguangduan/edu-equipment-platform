@@ -1,0 +1,78 @@
+<template>
+  <div ref="chartRef" :style="{ width, height }"></div>
+</template>
+<script lang="ts" setup>
+  import { Ref, ref, watch } from 'vue';
+  import { useECharts } from '/@/hooks/web/useECharts';
+  const props = defineProps({
+    loading: Boolean,
+    width: {
+      type: String as PropType<string>,
+      default: '100%',
+    },
+    height: {
+      type: String as PropType<string>,
+      default: '300px',
+    },
+  });
+  const chartRef = ref<HTMLDivElement | null>(null);
+  const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
+  watch(
+    () => props.loading,
+    () => {
+      if (props.loading) {
+        return;
+      }
+      setOptions({
+        title: {
+          text: '科学实验室',
+          textStyle: { fontWeight: 'lighter' },
+        },
+        tooltip: {
+          trigger: 'item',
+        },
+        legend: {
+          top: '6%',
+          left: 'center',
+        },
+        series: [
+          {
+            name: '类别',
+            type: 'pie',
+            avoidLabelOverlap: false,
+            itemStyle: {
+              borderRadius: 10,
+              borderColor: '#fff',
+              borderWidth: 2,
+            },
+            label: {
+              show: false,
+              position: 'center',
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: '12',
+                fontWeight: 'bold',
+              },
+            },
+            labelLine: {
+              show: false,
+            },
+            data: [
+              { value: 4, name: '0间' },
+              { value: 51, name: '1间' },
+              { value: 3, name: '2间及以上' },
+            ],
+            animationType: 'scale',
+            animationEasing: 'exponentialInOut',
+            animationDelay: function () {
+              return Math.random() * 100;
+            },
+          },
+        ],
+      });
+    },
+    { immediate: true }
+  );
+</script>
