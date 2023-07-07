@@ -47,6 +47,7 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
 	//@AutoLog(value = "中小学实验室基本情况统计表（三）-分页列表查询")
 	@ApiOperation(value="中小学实验室基本情况统计表（三）-分页列表查询", notes="中小学实验室基本情况统计表（三）-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/statistics/SchoolLabBasicInfo_3List")
 	public Result<IPage<SchoolLabBasicInfo_3>> queryPageList(SchoolLabBasicInfo_3 schoolLabBasicInfo_3,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
