@@ -47,6 +47,7 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
 	//@AutoLog(value = "教育信息化基本情况统计表（二）-分页列表查询")
 	@ApiOperation(value="教育信息化基本情况统计表（二）-分页列表查询", notes="教育信息化基本情况统计表（二）-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/statistics/EduInformatizationBasicInfo_2List")
 	public Result<IPage<EduInformatizationBasicInfo_2>> queryPageList(EduInformatizationBasicInfo_2 eduInformatizationBasicInfo_2,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
@@ -65,7 +66,7 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
 	 */
 	@AutoLog(value = "教育信息化基本情况统计表（二）-添加")
 	@ApiOperation(value="教育信息化基本情况统计表（二）-添加", notes="教育信息化基本情况统计表（二）-添加")
-	@RequiresPermissions("org.eemp.modules.edu.statistics:edu_informatization_basic_info_2:add")
+	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody EduInformatizationBasicInfo_2 eduInformatizationBasicInfo_2) {
 		eduInformatizationBasicInfo_2Service.save(eduInformatizationBasicInfo_2);
@@ -80,7 +81,7 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
 	 */
 	@AutoLog(value = "教育信息化基本情况统计表（二）-编辑")
 	@ApiOperation(value="教育信息化基本情况统计表（二）-编辑", notes="教育信息化基本情况统计表（二）-编辑")
-	@RequiresPermissions("org.eemp.modules.edu.statistics:edu_informatization_basic_info_2:edit")
+	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody EduInformatizationBasicInfo_2 eduInformatizationBasicInfo_2) {
 		eduInformatizationBasicInfo_2Service.updateById(eduInformatizationBasicInfo_2);
@@ -95,7 +96,7 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
 	 */
 	@AutoLog(value = "教育信息化基本情况统计表（二）-通过id删除")
 	@ApiOperation(value="教育信息化基本情况统计表（二）-通过id删除", notes="教育信息化基本情况统计表（二）-通过id删除")
-	@RequiresPermissions("org.eemp.modules.edu.statistics:edu_informatization_basic_info_2:delete")
+	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		eduInformatizationBasicInfo_2Service.removeById(id);
@@ -110,7 +111,7 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
 	 */
 	@AutoLog(value = "教育信息化基本情况统计表（二）-批量删除")
 	@ApiOperation(value="教育信息化基本情况统计表（二）-批量删除", notes="教育信息化基本情况统计表（二）-批量删除")
-	@RequiresPermissions("org.eemp.modules.edu.statistics:edu_informatization_basic_info_2:deleteBatch")
+	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.eduInformatizationBasicInfo_2Service.removeByIds(Arrays.asList(ids.split(",")));
@@ -140,7 +141,7 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
     * @param request
     * @param eduInformatizationBasicInfo_2
     */
-    @RequiresPermissions("org.eemp.modules.edu.statistics:edu_informatization_basic_info_2:exportXls")
+    @RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:exportXls")
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, EduInformatizationBasicInfo_2 eduInformatizationBasicInfo_2) {
         return super.exportXls(request, eduInformatizationBasicInfo_2, EduInformatizationBasicInfo_2.class, "教育信息化基本情况统计表（二）");
@@ -153,7 +154,7 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
     * @param response
     * @return
     */
-    @RequiresPermissions("org.eemp.modules.edu.statistics:edu_informatization_basic_info_2:importExcel")
+    @RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:importExcel")
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, EduInformatizationBasicInfo_2.class);

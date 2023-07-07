@@ -32,7 +32,7 @@ public class EduInformatizationBasicInfo_2 implements Serializable {
     @ApiModelProperty(value = "主键")
     private java.lang.String id;
 	/**标识代码*/
-	@Excel(name = "标识代码", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+	@Excel(name = "学校名称", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
 	@Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
     @ApiModelProperty(value = "标识代码")
     private java.lang.String identificationCode;
