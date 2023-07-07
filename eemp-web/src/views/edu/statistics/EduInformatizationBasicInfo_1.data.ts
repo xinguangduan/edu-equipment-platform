@@ -94,7 +94,7 @@ export const formSchema: FormSchema[] = [
      },
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入标识代码!'},
+                 { required: true, message: '请选择学校名称!'},
           ];
      },
   },
