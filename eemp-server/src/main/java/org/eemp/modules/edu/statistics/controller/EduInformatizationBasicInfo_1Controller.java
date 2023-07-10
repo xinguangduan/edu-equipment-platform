@@ -1,6 +1,6 @@
 package org.eemp.modules.edu.statistics.controller;
 
-import java.util.Arrays;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +17,7 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.edu.statistics.entity.EduInformatizationBasicInfo_1;
 import org.eemp.modules.edu.statistics.service.IEduInformatizationBasicInfo_1Service;
 import org.springframework.web.bind.annotation.*;
@@ -159,5 +160,22 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, EduInformatizationBasicInfo_1.class);
     }
+
+	 @GetMapping("teacherInfo")
+	 public Result<List<Map<String,Object>>> teacherInfo() {
+		 Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		 Calendar calendar = new GregorianCalendar();
+		 calendar.set(Calendar.HOUR_OF_DAY,0);
+		 calendar.set(Calendar.MINUTE,0);
+		 calendar.set(Calendar.SECOND,0);
+		 calendar.set(Calendar.MILLISECOND,0);
+		 calendar.add(Calendar.DAY_OF_MONTH, 1);
+		 Date dayEnd = calendar.getTime();
+		 calendar.add(Calendar.YEAR, -3);
+		 Date dayStart = calendar.getTime();
+		 List<Map<String,Object>> list = eduInformatizationBasicInfo_1Service.getTeacherNumberInfo(dayStart, dayEnd);
+		 result.setResult(oConvertUtils.toLowerCasePageList(list));
+		 return result;
+	 }
 
 }
