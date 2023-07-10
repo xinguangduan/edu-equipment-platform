@@ -47,6 +47,7 @@ public class SchoolLibraryBasicInfo_4Controller extends BaseController<SchoolLib
 	//@AutoLog(value = "中小学图书室（馆）基本情况统计表（四）-分页列表查询")
 	@ApiOperation(value="中小学图书室（馆）基本情况统计表（四）-分页列表查询", notes="中小学图书室（馆）基本情况统计表（四）-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/statistics/SchoolLibraryBasicInfo_4List")
 	public Result<IPage<SchoolLibraryBasicInfo_4>> queryPageList(SchoolLibraryBasicInfo_4 schoolLibraryBasicInfo_4,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
