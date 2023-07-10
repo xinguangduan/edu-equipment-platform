@@ -200,10 +200,10 @@
   roomInfo.push({name: '藏书室', type: '2022上半年', value: 110});
   roomInfo.push({name: '藏书室', type: '2022下半年', value: 113});
   roomInfo.push({name: '藏书室', type: '2023上半年', value: 113});
-  roomInfo.push({name: '阅览室', type: '2021下半年', value: 900});
-  roomInfo.push({name: '阅览室', type: '2022上半年', value: 950});
-  roomInfo.push({name: '阅览室', type: '2022下半年', value: 960});
-  roomInfo.push({name: '阅览室', type: '2023上半年', value: 1002});
+  roomInfo.push({name: '阅览室', type: '2021下半年', value: 69});
+  roomInfo.push({name: '阅览室', type: '2022上半年', value: 70});
+  roomInfo.push({name: '阅览室', type: '2022下半年', value: 70});
+  roomInfo.push({name: '阅览室', type: '2023上半年', value: 72});
   roomInfo.push({name: '特色场所', type: '2021下半年', value: 76});
   roomInfo.push({name: '特色场所', type: '2022上半年', value: 80});
   roomInfo.push({name: '特色场所', type: '2022下半年', value: 80});

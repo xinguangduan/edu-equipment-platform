@@ -3252,9 +3252,10 @@ INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,cr
 INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_order,status,create_by,create_time,update_by,update_time) VALUES
 	 ('1664818497951154178','1664818329461768194','装备中心','01',NULL,1,0,'admin','2023-06-03 10:17:15',NULL,NULL),
 	 ('1664818614024323074','1664818329461768194','幼儿园','11',NULL,1,1,'admin','2023-06-03 10:17:43',NULL,NULL),
-	 ('1664818711713857537','1664818329461768194','小学','12',NULL,1,1,'admin','2023-06-03 10:18:06',NULL,NULL),
-	 ('1664818781993615362','1664818329461768194','初中','13',NULL,1,1,'admin','2023-06-03 10:18:23',NULL,NULL),
-	 ('1664818888109506562','1664818329461768194','高中','14','普通/职教',1,1,'admin','2023-06-03 10:18:48',NULL,NULL),
+	 ('1664818711713857537','1664818329461768194','中心小学','12',NULL,1,1,'admin','2023-06-03 10:18:06',NULL,NULL),
+	 ('1664818711713857538','1664818329461768194','完全小学','13',NULL,1,1,'admin','2023-06-03 10:18:06',NULL,NULL),
+	 ('1664818781993615362','1664818329461768194','初中','14',NULL,1,1,'admin','2023-06-03 10:18:23',NULL,NULL),
+	 ('1664818888109506562','1664818329461768194','高中','15','普通/职教',1,1,'admin','2023-06-03 10:18:48',NULL,NULL),
 	 ('1668874021735313410',	'1668873268455092226',	'八宝镇',	'11',	NULL,	1,	1,	'admin',	'2023-06-14 14:52:28',	NULL,	NULL),
 	 ('1668874146243227650',	'1668873268455092226',	'陈店镇',	'12',	NULL,	2,	1,	'admin',	'2023-06-14 14:52:57',	NULL,	NULL),
 	 ('1668874236567564289',	'1668873268455092226',	'街河市镇',	'13',	NULL,	3,	1,	'admin',	'2023-06-14 14:53:19',	NULL,	NULL),
@@ -3386,8 +3387,15 @@ INSERT INTO `info_phase_control` (`id`, `phase_code`, `phase_name`, `archive_sta
      ('1665200128178499586',	'2022-01',	'2022上半年',	'1',	'2022-06-30',	'admin',	'2023-06-04 11:33:43',	NULL,	NULL,	'A01');
 
 INSERT INTO `edu_informatization_basic_info_1` (`id`, `identification_code`, `fill_date`, `teacher_count`, `student_count`, `room_count`, `classroom_count`, `student_desk_count`, `connected_room_count`, `has_a_central_server_room`, `teaching_resource_capacity`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
-     ('1665260317544001538',	'3142007024',	'2023-01-12',	210,	1600,	30,	22,	1800,	28,	'1',	21.86,	'admin_bbzx',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
-     ('1665262789297680385',	'2142009669',	'2023-01-28',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01');
+     ('1665260317544001538',	'3142007024',	'2022-09-06',	210,	1600,	30,	22,	1800,	28,	'1',	21.86,	'admin_bbzx',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
+     ('1665260317544001539',	'3142007024',	'2023-01-12',	210,	1600,	30,	22,	1800,	28,	'1',	21.86,	'admin_bbzx',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
+     ('1665260317544001540',	'3142007024',	'2023-03-05',	210,	1600,	30,	22,	1800,	28,	'1',	21.86,	'admin_bbzx',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
+     ('1665260317544001541',	'3142007024',	'2023-07-08',	83,	1095,	32,	21,	1100,	24,	'1',	124,	'admin_bbzx',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
+     ('1665262789297680385',	'2142009669',	'2023-01-28',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01'),
+     ('1665262789297680386',	'2142009669',	'2023-03-15',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01'),
+     ('1665262789297680387',	'2142009669',	'2023-06-07',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01'),
+     ('1665262789297680388',	'2142009669',	'2023-07-03',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01'),
+     ('1665262789297680389',	'2142009669',	'2023-07-06',	80,	1333,	35,	25,	1383,	35,	'1',	200,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01');
 
 -- ----------------------------
 -- Table structure for edu_primary_equipment_req_template
@@ -3708,9 +3716,9 @@ INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
 
 -- 借助机构定义生成账户
 INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, `institution_name`, `institution_type`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
-     ('1666328002797236225',	'3142007024',	'11',	'八宝初级中学',	'13',	'admin_bbzx',	'1666258199700963330',	'p2llvkhq',	'1',	NULL,	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL),
+     ('1666328002797236225',	'3142007024',	'11',	'八宝初级中学',	'14',	'admin_bbzx',	'1666258199700963330',	'p2llvkhq',	'1',	NULL,	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL),
      ('1666328237288189954',	'2142009669',	'11',	'八宝小学',	'12',	'admin_bbxx',	'1666258199717740546',	'44d72cm7',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL),
-     ('1666328364132331521',	'2142004708',	'11',	'八宝小学中洲校区',	'12',	'admin_zzxx',	'1666258199717740546',	'w4l60um0',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL);
+     ('1666328364132331521',	'2142004708',	'11',	'八宝小学中洲校区',	'13',	'admin_zzxx',	'1666258199717740546',	'w4l60um0',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL);
 INSERT INTO `sys_user` (`id`, `username`, `realname`, `password`, `salt`, `avatar`, `birthday`, `sex`, `email`, `phone`, `org_code`, `status`, `del_flag`, `third_id`, `third_type`, `activiti_sync`, `work_no`, `post`, `telephone`, `create_by`, `create_time`, `update_by`, `update_time`, `user_identity`, `depart_ids`, `client_id`, `login_tenant_id`, `bpm_status`) VALUES
      ('1666328002738515970',	'admin_bbzx',	'八宝初级中学',	'762001a923071d8cb60e6d9311d59676',	'1Ph064Oy',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'3142007024',	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
      ('1666328237225275394',	'admin_bbxx',	'八宝小学',	'64913e3e0b72397c2f474a25eee928ba',	'RWHf0MZF',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'2142009669',	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
