@@ -49,6 +49,10 @@ public class OrganizationDefinition implements Serializable {
 	@Dict(dicCode = "institution_type")
     @ApiModelProperty(value = "机构类型")
     private java.lang.String institutionType;
+    /**图表分组*/
+    @Excel(name = "图表分组", width = 15)
+    @ApiModelProperty(value = "图表分组")
+    private java.lang.String chartGroup;
 	/**账户名称*/
 	@Excel(name = "账户名称", width = 15)
     @ApiModelProperty(value = "账户名称")
