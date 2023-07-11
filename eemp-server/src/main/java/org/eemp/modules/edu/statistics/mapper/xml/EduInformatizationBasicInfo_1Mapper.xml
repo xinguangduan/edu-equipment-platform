@@ -65,7 +65,7 @@
     <!-- 获取教师人数统计 -->
     <select id="getTeacherNumberInfo" resultType="java.util.HashMap">
         <if test="dbType == 'mysql'">
-            select name, concat(year, half) as type, sum(teacher_count) as value
+            select chart_group, concat(year, half) as type, sum(teacher_count) as value
             from
                 ( edu_informatization_basic_info_1 a
                 join
@@ -80,20 +80,14 @@
                 join
                 ( select
                         identification_code,
-                        case
-                            when institution_type = '11' then '高职特幼'
-                            when institution_type = '12' then '中心小学'
-                            when institution_type = '13' then '完全小学'
-                            when institution_type = '14' then '初中'
-                            when institution_type = '15' then '高职特幼'
-                        end as name
+                        chart_group
                     from organization_definition ) c
                 on a.identification_code = b.identification_code and a.fill_date = b.maxdate
                     and a.identification_code = c.identification_code )
-            group by name, year, half
+            group by chart_group, year, half
         </if>
         <if test="dbType == 'h2'">
-            select name, concat(year, half) as type, sum(teacher_count) as value
+            select chart_group, concat(year, half) as type, sum(teacher_count) as value
             from
                 ( edu_informatization_basic_info_1 a
                 join
@@ -108,17 +102,11 @@
                 join
                 ( select
                         identification_code,
-                        case
-                            when institution_type = '11' then '高职特幼'
-                            when institution_type = '12' then '中心小学'
-                            when institution_type = '13' then '完全小学'
-                            when institution_type = '14' then '初中'
-                            when institution_type = '15' then '高职特幼'
-                        end as name
+                        chart_group
                     from organization_definition ) c
                 on a.identification_code = b.identification_code and a.fill_date = b.maxdate
                     and a.identification_code = c.identification_code )
-            group by name, year, half
+            group by chart_group, year, half
         </if>
     </select>
 

@@ -1,12 +1,12 @@
-INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, `institution_name`, `institution_type`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`) VALUES
-     ('101',	'demo_01',	'11',	'初级中学一',	'14',	'admin',	'',	'',	''),
-     ('102',	'demo_02',	'11',	'中心小学一',	'12',	'admin',	'',	'',	''),
-     ('103',	'demo_03',	'11',	'完全小学一',	'13',	'admin',	'',	'',	''),
-     ('104',	'demo_04',	'11',	'高级中学一',	'15',	'admin',	'',	'',	''),
-     ('105',	'demo_05',	'11',	'幼儿园一',	'11',	'admin',	'',	'',	''),
-     ('201',	'school_01',	'11',	'八宝初级中学',	'14',	'admin',	'',	'',	''),
-     ('202',	'school_02',	'11',	'八宝小学',	'12',	'admin',	'',	'',	''),
-     ('203',	'school_03',	'11',	'八宝小学中洲校区',	'13',	'admin',	'',	'',	'');
+INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, `institution_name`, `institution_type`, `chart_group`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`) VALUES
+     ('101',	'demo_01',	'11',	'初级中学一',	'14',   '初中',	'admin',	'',	'',	''),
+     ('102',	'demo_02',	'11',	'中心小学一',	'12',	'中心小学',   'admin',	'',	'',	''),
+     ('103',	'demo_03',	'11',	'完全小学一',	'13',	'完全小学',   'admin',	'',	'',	''),
+     ('104',	'demo_04',	'11',	'高级中学一',	'15',	'高职特幼',   'admin',	'',	'',	''),
+     ('105',	'demo_05',	'11',	'幼儿园一',	'11',	'高职特幼',   'admin',	'',	'',	''),
+     ('201',	'school_01',	'11',	'八宝初级中学',	'14',	'初中',   'admin',	'',	'',	''),
+     ('202',	'school_02',	'11',	'八宝小学',	'12',	'中心小学',   'admin',	'',	'',	''),
+     ('203',	'school_03',	'11',	'八宝小学中洲校区',	'13',	'完全小学',   'admin',	'',	'',	'');
 
 
 INSERT INTO edu_informatization_basic_info_1 ( id, identification_code, fill_date, teacher_count, student_count, room_count, classroom_count, student_desk_count, connected_room_count, has_a_central_server_room, teaching_resource_capacity ) VALUES

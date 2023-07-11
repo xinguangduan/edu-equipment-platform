@@ -110,6 +110,13 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			password = RandomUtil.randomString(8);
 			organizationDefinition.setInitialPassword(password);				// 保存生成的密码
 		}
+		switch (organizationDefinition.getInstitutionType()) {
+			case "11":																	// nursery_school	幼儿园
+			case "15":	organizationDefinition.setChartGroup("高职特幼");	break;		// senior_school	高中
+			case "12":	organizationDefinition.setChartGroup("中心小学");	break;		// primary_school	中心小学
+			case "13":	organizationDefinition.setChartGroup("完全小学");	break;		// primary_school	完全小学
+			case "14":	organizationDefinition.setChartGroup("初中");		break;		// junior_school	初中
+		}
 
 		try {
 			SysUser user = new SysUser();

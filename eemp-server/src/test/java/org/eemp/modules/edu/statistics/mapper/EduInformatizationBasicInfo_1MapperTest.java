@@ -45,11 +45,11 @@ class EduInformatizationBasicInfo_1MapperTest {
         List<Map<String,Object>> result = mapper.getTeacherNumberInfo(dayStart, dayEnd, DbType.H2.getDb());
         result.forEach(System.out::println);
         assertThat(result.size()).isEqualTo(12);
-        assertThat(result.stream().filter(val -> val.get("NAME").equals("中心小学"))).hasSize(3);
-        assertThat(result.stream().filter(val -> val.get("NAME").equals("中心小学"))).
+        assertThat(result.stream().filter(val -> val.get("CHART_GROUP").equals("中心小学"))).hasSize(3);
+        assertThat(result.stream().filter(val -> val.get("CHART_GROUP").equals("中心小学"))).
                 anyMatch(val -> val.get("TYPE").equals("2023上半年")).
                 anyMatch(val -> val.get("VALUE").equals(310L));
-        assertThat(result.stream().filter(val -> val.get("NAME").equals("中心小学")).filter(val -> val.get("TYPE").equals("2023下半年"))).
+        assertThat(result.stream().filter(val -> val.get("CHART_GROUP").equals("中心小学")).filter(val -> val.get("TYPE").equals("2023下半年"))).
                 allMatch(val -> val.get("VALUE").equals(151L));
     }
 

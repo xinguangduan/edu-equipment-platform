@@ -98,11 +98,11 @@
   function initTeacherInfo() {
     getTeacherInfo(null).then((res) => {
       if (res.success) {
-        teacherInfo.value = res.result;
-        // teacherInfo.value = [];
-        // res.result.forEach((item) => {
-        //   teacherInfo.value.push({ name: item.name, type: item.type, value: item.value });
-        // });
+        // teacherInfo.value = res.result;
+        teacherInfo.value = [];
+        res.result.forEach((item) => {
+          teacherInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
+        });
       }
     });
   }

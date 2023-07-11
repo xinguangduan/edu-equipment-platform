@@ -5,6 +5,7 @@ CREATE TABLE `organization_definition` (
   `township` varchar(16)  NOT NULL COMMENT '乡镇',
   `institution_name` varchar(50)  NOT NULL COMMENT '机构名称',
   `institution_type` varchar(2)  NOT NULL COMMENT '机构类型',
+  `chart_group` varchar(10) DEFAULT NULL COMMENT '图表分组',
   `admin_code` varchar(18)  NOT NULL COMMENT '账户名称',
   `role_code` varchar(32)  DEFAULT NULL COMMENT '角色编码',
   `initial_password` varchar(32)  DEFAULT NULL COMMENT '初始密码',
