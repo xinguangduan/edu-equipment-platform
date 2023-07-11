@@ -16,5 +16,7 @@ import java.util.Map;
 public interface EduInformatizationBasicInfo_1Mapper extends BaseMapper<EduInformatizationBasicInfo_1> {
 
     List<Map<String,Object>> findNewestYearlyRecord(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
+    List<Map<String,Object>> findNewestSemesterlyRecord(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
+    List<Map<String,Object>> getTeacherNumberInfo(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
 
 }

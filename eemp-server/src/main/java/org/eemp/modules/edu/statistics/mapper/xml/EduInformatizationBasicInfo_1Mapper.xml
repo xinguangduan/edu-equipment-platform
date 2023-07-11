@@ -28,4 +28,98 @@
         </if>
     </select>
 
+    <!-- 查找最新的学期记录 -->
+    <select id="findNewestSemesterlyRecord" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select concat(year, half) as semester, a.*
+            from
+                edu_informatization_basic_info_1 a
+                join
+                ( select
+                        identification_code,
+                        date_format(fill_date, '%Y') as year,
+                        if(date_format(fill_date, '%m') >= 7, '下半年', '上半年') as half,
+                        max(fill_date) maxdate
+                    from `edu_informatization_basic_info_1`
+                    where fill_date >= #{dayStart} and fill_date &lt; #{dayEnd}
+                    group by identification_code, year, half ) b
+                on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+        </if>
+        <if test="dbType == 'h2'">
+            select concat(year, half) as semester, a.*
+            from
+                edu_informatization_basic_info_1 a
+                join
+                ( select
+                        identification_code,
+                        to_char(fill_date, 'yyyy') as year,
+                        case when to_char(fill_date, 'MM') >= 7 then '下半年' else '上半年' end as half,
+                        max(fill_date) maxdate
+                    from `edu_informatization_basic_info_1`
+                    where fill_date &gt;= #{dayStart} and fill_date &lt; #{dayEnd}
+                    group by identification_code, year, half ) b
+                on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+        </if>
+    </select>
+
+    <!-- 获取教师人数统计 -->
+    <select id="getTeacherNumberInfo" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select name, concat(year, half) as type, sum(teacher_count) as value
+            from
+                ( edu_informatization_basic_info_1 a
+                join
+                ( select
+                        identification_code,
+                        date_format(fill_date, '%Y') as year,
+                        if(date_format(fill_date, '%m') >= 7, '下半年', '上半年') as half,
+                        max(fill_date) maxdate
+                    from edu_informatization_basic_info_1
+                    where fill_date &gt;= #{dayStart} and fill_date &lt; #{dayEnd}
+                    group by identification_code, year, half ) b
+                join
+                ( select
+                        identification_code,
+                        case
+                            when institution_type = '11' then '高职特幼'
+                            when institution_type = '12' then '中心小学'
+                            when institution_type = '13' then '完全小学'
+                            when institution_type = '14' then '初中'
+                            when institution_type = '15' then '高职特幼'
+                        end as name
+                    from organization_definition ) c
+                on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+                    and a.identification_code = c.identification_code )
+            group by name, year, half
+        </if>
+        <if test="dbType == 'h2'">
+            select name, concat(year, half) as type, sum(teacher_count) as value
+            from
+                ( edu_informatization_basic_info_1 a
+                join
+                ( select
+                        identification_code,
+                        to_char(fill_date, 'yyyy') as year,
+                        case when to_char(fill_date, 'MM') >= 7 then '下半年' else '上半年' end as half,
+                        max(fill_date) maxdate
+                    from edu_informatization_basic_info_1
+                    where fill_date &gt;= #{dayStart} and fill_date &lt; #{dayEnd}
+                    group by identification_code, year, half ) b
+                join
+                ( select
+                        identification_code,
+                        case
+                            when institution_type = '11' then '高职特幼'
+                            when institution_type = '12' then '中心小学'
+                            when institution_type = '13' then '完全小学'
+                            when institution_type = '14' then '初中'
+                            when institution_type = '15' then '高职特幼'
+                        end as name
+                    from organization_definition ) c
+                on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+                    and a.identification_code = c.identification_code )
+            group by name, year, half
+        </if>
+    </select>
+
 </mapper>

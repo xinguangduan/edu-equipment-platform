@@ -84,6 +84,8 @@
   import EduScience from '../components/EduScience.vue';
   import EduLaboiratory from '../components/EduLaboiratory.vue';
   import EduCentralRoom from '../components/EduCentralRoom.vue';
+  import { getTeacherInfo } from '../api.ts';
+
 
   const loading = ref(true);
 
@@ -91,8 +93,23 @@
     loading.value = false;
   }, 500);
 
+  const teacherInfo = ref([])
+
+  function initTeacherInfo() {
+    getTeacherInfo(null).then((res) => {
+      if (res.success) {
+        teacherInfo.value = res.result;
+        // teacherInfo.value = [];
+        // res.result.forEach((item) => {
+        //   teacherInfo.value.push({ name: item.name, type: item.type, value: item.value });
+        // });
+      }
+    });
+  }
+
+  initTeacherInfo();
+
   const classInfo = []
-  const teacherInfo = []
   const StudentInfo = []
 
   classInfo.push({name: '中心小学', type: '2021下半年', value: 312});
@@ -111,23 +128,6 @@
   classInfo.push({name: '高职特幼', type: '2022上半年', value: 270});
   classInfo.push({name: '高职特幼', type: '2022下半年', value: 276});
   classInfo.push({name: '高职特幼', type: '2023上半年', value: 283});
-
-  teacherInfo.push({name: '中心小学', type: '2021下半年', value: 1261});
-  teacherInfo.push({name: '中心小学', type: '2022上半年', value: 1300});
-  teacherInfo.push({name: '中心小学', type: '2022下半年', value: 1398});
-  teacherInfo.push({name: '中心小学', type: '2023上半年', value: 1432});
-  teacherInfo.push({name: '完全小学', type: '2021下半年', value: 501});
-  teacherInfo.push({name: '完全小学', type: '2022上半年', value: 520});
-  teacherInfo.push({name: '完全小学', type: '2022下半年', value: 539});
-  teacherInfo.push({name: '完全小学', type: '2023上半年', value: 550});
-  teacherInfo.push({name: '初中', type: '2021下半年', value: 980});
-  teacherInfo.push({name: '初中', type: '2022上半年', value: 1000});
-  teacherInfo.push({name: '初中', type: '2022下半年', value: 1103});
-  teacherInfo.push({name: '初中', type: '2023上半年', value: 1276});
-  teacherInfo.push({name: '高职特幼', type: '2021下半年', value: 980});
-  teacherInfo.push({name: '高职特幼', type: '2022上半年', value: 990});
-  teacherInfo.push({name: '高职特幼', type: '2022下半年', value: 1000});
-  teacherInfo.push({name: '高职特幼', type: '2023上半年', value: 1053});
 
   StudentInfo.push({name: '中心小学', type: '2021下半年', value: 20008});
   StudentInfo.push({name: '中心小学', type: '2022上半年', value: 21809});
@@ -200,10 +200,10 @@
   roomInfo.push({name: '藏书室', type: '2022上半年', value: 110});
   roomInfo.push({name: '藏书室', type: '2022下半年', value: 113});
   roomInfo.push({name: '藏书室', type: '2023上半年', value: 113});
-  roomInfo.push({name: '阅览室', type: '2021下半年', value: 900});
-  roomInfo.push({name: '阅览室', type: '2022上半年', value: 950});
-  roomInfo.push({name: '阅览室', type: '2022下半年', value: 960});
-  roomInfo.push({name: '阅览室', type: '2023上半年', value: 1002});
+  roomInfo.push({name: '阅览室', type: '2021下半年', value: 69});
+  roomInfo.push({name: '阅览室', type: '2022上半年', value: 70});
+  roomInfo.push({name: '阅览室', type: '2022下半年', value: 70});
+  roomInfo.push({name: '阅览室', type: '2023上半年', value: 72});
   roomInfo.push({name: '特色场所', type: '2021下半年', value: 76});
   roomInfo.push({name: '特色场所', type: '2022上半年', value: 80});
   roomInfo.push({name: '特色场所', type: '2022下半年', value: 80});

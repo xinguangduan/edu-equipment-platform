@@ -1,3 +1,23 @@
+DROP TABLE IF EXISTS `organization_definition`;
+CREATE TABLE `organization_definition` (
+  `id` varchar(36)  NOT NULL,
+  `identification_code` varchar(18)  NOT NULL COMMENT '标识代码',
+  `township` varchar(16)  NOT NULL COMMENT '乡镇',
+  `institution_name` varchar(50)  NOT NULL COMMENT '机构名称',
+  `institution_type` varchar(2)  NOT NULL COMMENT '机构类型',
+  `admin_code` varchar(18)  NOT NULL COMMENT '账户名称',
+  `role_code` varchar(32)  DEFAULT NULL COMMENT '角色编码',
+  `initial_password` varchar(32)  DEFAULT NULL COMMENT '初始密码',
+  `admin_generation_success` varchar(1)  DEFAULT NULL COMMENT '账户生成是否成功',
+  `failure_reason` varchar(30)  DEFAULT NULL COMMENT '失败原因',
+  `create_by` varchar(50)  DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50)  DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64)  DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+);
+
 DROP TABLE IF EXISTS `edu_informatization_basic_info_1`;
 CREATE TABLE `edu_informatization_basic_info_1` (
   `id` varchar(36) NOT NULL,

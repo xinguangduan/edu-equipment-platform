@@ -92,9 +92,10 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 		String roleIds = null;
 		switch (organizationDefinition.getInstitutionType()) {
 			case "11":	roleIds = "1666258199734517761";	break;			// nursery_school	幼儿园
-			case "12":	roleIds = "1666258199717740546";	break;			// primary_school	小学
-			case "13":	roleIds = "1666258199700963330";	break;			// junior_school	初中
-			case "14":	roleIds = "1666258199679991810";	break;			// senior_school	高中
+			case "12":														// primary_school	中心小学
+			case "13":	roleIds = "1666258199717740546";	break;			// primary_school	完全小学
+			case "14":	roleIds = "1666258199700963330";	break;			// junior_school	初中
+			case "15":	roleIds = "1666258199679991810";	break;			// senior_school	高中
 			default:
 				result.setMessage("机构类型非标准值");
 				result.setSuccess(false);
