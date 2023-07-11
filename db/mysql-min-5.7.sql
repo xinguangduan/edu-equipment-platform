@@ -3396,7 +3396,14 @@ INSERT INTO `edu_informatization_basic_info_1` (`id`, `identification_code`, `fi
      ('1665262789297680386',	'2142009669',	'2023-03-15',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01'),
      ('1665262789297680387',	'2142009669',	'2023-06-07',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01'),
      ('1665262789297680388',	'2142009669',	'2023-07-03',	120,	1000,	26,	18,	1200,	22,	'1',	16.28,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01'),
-     ('1665262789297680389',	'2142009669',	'2023-07-06',	80,	1333,	35,	25,	1383,	35,	'1',	200,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01');
+     ('1665262789297680389',	'2142009669',	'2023-07-06',	80,	1333,	35,	25,	1383,	35,	'1',	200,	'admin_bbxx',	'2023-06-04 15:42:43',	NULL,	NULL,	'A01'),
+     ('1678627997017591801',	'5262003028',	'2022-12-21',	228,	3370,	100,	84,	5000,	70,	'1',	0,	'admin_szyz',	'2023-07-11 12:51:17',	NULL,	NULL,	NULL),
+     ('1678627997017591805',	'5262003028',	'2023-06-30',	230,	3380,	100,	84,	5000,	70,	'1',	0,	'admin_szyz',	'2023-07-11 12:51:17',	NULL,	NULL,	NULL),
+     ('1678627997017591809',	'5262003028',	'2023-07-11',	237,	3390,	100,	84,	5000,	70,	'1',	0,	'admin_szyz',	'2023-07-11 12:51:17',	NULL,	NULL,	NULL),
+     ('1678629645265817513',	'1232002606',	'2022-07-02',	32,	500,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL),
+     ('1678629645265817526',	'1232002606',	'2023-02-23',	36,	510,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL),
+     ('1678629645265817586',	'1232002606',	'2023-06-18',	38,	520,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL),
+     ('1678629645265817601',	'1232002606',	'2023-07-11',	51,	537,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL);
 
 -- ----------------------------
 -- Table structure for edu_primary_equipment_req_template
@@ -3719,7 +3726,9 @@ INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
 INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, `institution_name`, `institution_type`, `chart_group`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
      ('1666328002797236225',	'3142007024',	'11',	'八宝初级中学',	'14',	'初中',	'admin_bbzx',	'1666258199700963330',	'p2llvkhq',	'1',	NULL,	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL),
      ('1666328237288189954',	'2142009669',	'11',	'八宝小学',	'12',	'中心小学',	'admin_bbxx',	'1666258199717740546',	'44d72cm7',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL),
-     ('1666328364132331521',	'2142004708',	'11',	'八宝小学中洲校区',	'13',	'完全小学',	'admin_zzxx',	'1666258199717740546',	'w4l60um0',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL);
+     ('1666328364132331521',	'2142004708',	'11',	'八宝小学中洲校区',	'13',	'完全小学',	'admin_zzxx',	'1666258199717740546',	'w4l60um0',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL),
+     ('1678625014049558529',	'5262003028',	'27',	'松滋一中',	'15',	'高职特幼',	'admin_szyz',	'1666258199679991810',	'wu5pccw5',	'1',	NULL,	'sysadmin',	'2023-07-11 12:39:25',	NULL,	NULL,	NULL),
+     ('1678626320529117185',	'1232002606',	'27',	'市机关幼儿园',	'11',	'高职特幼',	'admin_jgyey',	'1666258199734517761',	'btt61r3k',	'1',	NULL,	'sysadmin',	'2023-07-11 12:44:37',	NULL,	NULL,	NULL);
 INSERT INTO `sys_user` (`id`, `username`, `realname`, `password`, `salt`, `avatar`, `birthday`, `sex`, `email`, `phone`, `org_code`, `status`, `del_flag`, `third_id`, `third_type`, `activiti_sync`, `work_no`, `post`, `telephone`, `create_by`, `create_time`, `update_by`, `update_time`, `user_identity`, `depart_ids`, `client_id`, `login_tenant_id`, `bpm_status`) VALUES
      ('1666328002738515970',	'admin_bbzx',	'八宝初级中学',	'762001a923071d8cb60e6d9311d59676',	'1Ph064Oy',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'3142007024',	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
      ('1666328237225275394',	'admin_bbxx',	'八宝小学',	'64913e3e0b72397c2f474a25eee928ba',	'RWHf0MZF',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'2142009669',	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
