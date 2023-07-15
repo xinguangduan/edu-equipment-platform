@@ -3308,6 +3308,40 @@ CREATE TABLE `school_functional_room_info_7` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for edu_informatization_equip_info_8
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `edu_informatization_equip_info_8`;
+CREATE TABLE `edu_informatization_equip_info_8` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `fill_date` date NOT NULL COMMENT '填报日期',
+  `classes_num` int NOT NULL COMMENT '班级数',
+  `student_computer_num` int NOT NULL COMMENT '学生计算机室现有计算机总数',
+  `student_computer_num_bef_2018` int NOT NULL COMMENT '学生计算机室2018年前台配备数',
+  `student_computer_num_aft_2018` int NOT NULL COMMENT '学生计算机室2018年后配备数',
+  `teacher_computer_num` int NOT NULL COMMENT '教师办公计算机总台数',
+  `teacher_computer_num_bef_2016` int NOT NULL COMMENT '教师办公计算机2015年及以前配备台数',
+  `teacher_computer_num_2016_2019` int NOT NULL COMMENT '教师办公计算机2016年至2019年配备数量',
+  `teacher_computer_num_aft_2020` int NOT NULL COMMENT '教师办公计算机2020年及以后配备数量',
+  `all_in_one_machine_num` int NOT NULL COMMENT '“班班通”智能触控一体机数',
+  `computer_plus_tv_num` int NOT NULL COMMENT '“班班通”电脑＋电视机',
+  `video_visualizer_num` int NOT NULL COMMENT '“班班通”视频展示台数量',
+  `class_num_without_equip` int NOT NULL COMMENT '无班班通设备班级数',
+  `is_the_backbone_gigabit` varchar(1) COLLATE utf8mb4_general_ci NOT NULL COMMENT '校园网主干线是否达到千兆(是或否)',
+  `has_a_dedicated_ap_network` varchar(1) COLLATE utf8mb4_general_ci NOT NULL COMMENT '校园网是否建有AP专网(是或否)',
+  `wireless_ap_num` int NOT NULL COMMENT '校园网无线AP数量',
+  `campus_surveillance_camera_num` int NOT NULL COMMENT '校园监控摄像头数',
+  `campus_surveillance_dvr_num` int NOT NULL COMMENT '校园监控硬盘录像机数',
+  `surveillance_retention_time` int NOT NULL COMMENT '校园监控留存时间(天)',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3404,7 +3438,8 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, 
      ('2023070705157320330', '1666281667909779458', '中小学图书室（馆）基本情况统计表（四）', '/edu/statistics/schoolLibraryBasicInfo_4List', 'edu/statistics/SchoolLibraryBasicInfo_4List', NULL, NULL, 1, NULL, '1', 4.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0),
      ('2023071505454370430', '1666281667909779458', '中小学体育用房统计表（五）', '/edu/statistics/schoolSportRoomInfo_5List', 'edu/statistics/SchoolSportRoomInfo_5List', NULL, NULL, 1, NULL, '1', 5.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0),
      ('2023071506100910410', '1666281667909779458', '中小学音乐、美术教学用房统计表（六）', '/edu/statistics/schoolMusicArtRoomInfo_6List', 'edu/statistics/SchoolMusicArtRoomInfo_6List', NULL, NULL, 1, NULL, '1', 6.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0),
-     ('2023071507171810530', '1666281667909779458', '中小学功能室用房统计表（七）', '/edu/statistics/schoolFunctionalRoomInfo_7List', 'edu/statistics/SchoolFunctionalRoomInfo_7List', NULL, NULL, 1, NULL, '1', 7.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0);
+     ('2023071507171810530', '1666281667909779458', '中小学功能室用房统计表（七）', '/edu/statistics/schoolFunctionalRoomInfo_7List', 'edu/statistics/SchoolFunctionalRoomInfo_7List', NULL, NULL, 1, NULL, '1', 7.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0),
+     ('2023071507187680160', '1666281667909779458', '教育信息化配备情况统计表（八）', '/edu/statistics/eduInformatizationEquipInfo_8List', 'edu/statistics/EduInformatizationEquipInfo_8List', NULL, NULL, 1, NULL, '1', 8.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
      ('2023060312357030191', '2023060312357030190', '添加机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
@@ -3462,7 +3497,13 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023071507171810533', '2023071507171810530', '删除中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
      ('2023071507171810534', '2023071507171810530', '批量删除中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
      ('2023071507171810535', '2023071507171810530', '导出excel_中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
-     ('2023071507171810536', '2023071507171810530', '导入excel_中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0);
+     ('2023071507171810536', '2023071507171810530', '导入excel_中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507187680161', '2023071507187680160', '添加教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507187680162', '2023071507187680160', '编辑教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507187680163', '2023071507187680160', '删除教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507187680164', '2023071507187680160', '批量删除教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507187680165', '2023071507187680160', '导出excel_教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507187680166', '2023071507187680160', '导入excel_教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0);
 
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
      ('1666338990082748417',	'f6817f48af4fb3af11b9e8bf182f618b',	'1666280628326367234',	NULL,	'2023-06-07 14:59:09',	'127.0.0.1'),
