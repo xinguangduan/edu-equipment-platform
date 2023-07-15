@@ -3198,6 +3198,43 @@ CREATE TABLE `school_library_basic_info_4` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for school_sport_room_info_5
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `school_sport_room_info_5`;
+CREATE TABLE `school_sport_room_info_5` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `fill_date` date NOT NULL COMMENT '填报日期',
+  `indoor_playground_num` int NOT NULL COMMENT '室内操场（风雨活动室）间数',
+  `indoor_playground_area` double NOT NULL COMMENT '室内操场（风雨活动室）面积（m2）',
+  `straight_track_length` double NOT NULL COMMENT '室外操场直跑道长度m',
+  `circular_track_circumference` double NOT NULL COMMENT '室外操场环形跑道周长m',
+  `is_the_playground_hardened` varchar(1) COLLATE utf8mb4_general_ci NOT NULL COMMENT '室外操场操场是否硬化',
+  `has_a_plastic_playground` varchar(1) COLLATE utf8mb4_general_ci NOT NULL COMMENT '室外操场是否有塑胶操场',
+  `has_a_plastic_track` varchar(1) COLLATE utf8mb4_general_ci NOT NULL COMMENT '室外操场是否有塑胶跑道',
+  `basketball_court_num` int NOT NULL COMMENT '室外操场蓝球场（个）',
+  `volleyball_court_num` int NOT NULL COMMENT '室外操场排球场（个）',
+  `soccer_field_area` double NOT NULL COMMENT '室外操场足球场面积（m2）',
+  `playground_area` double NOT NULL COMMENT '室外操场操场面积（m2）',
+  `sports_equipment_room_num` int NOT NULL COMMENT '体育器材室间数',
+  `sports_equipment_room_area` double NOT NULL COMMENT '体育器材室面积（m2）',
+  `sports_equipment_num` int NOT NULL COMMENT '体育器材室器材件数',
+  `sports_testing_room_num` int NOT NULL COMMENT '体质测试室间数',
+  `sports_testing_room_area` double NOT NULL COMMENT '体质测试室面积（m2）',
+  `sports_testing_equipment_num` int NOT NULL COMMENT '体质测试室器材件数',
+  `sports_counseling_room_num` int NOT NULL COMMENT '心理咨询室间数',
+  `sports_counseling_room_area` double NOT NULL COMMENT '心理咨询室面积（m2）',
+  `full_time_pe_teacher_num` int NOT NULL COMMENT '专职体育教师（人）',
+  `part_time_pe_teacher_num` int NOT NULL COMMENT '兼职体育教师（人）',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3291,7 +3328,8 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, 
      ('2023060402428380260', '1666281667909779458', '教育信息化基本情况统计表（一）', '/edu/statistics/eduInformatizationBasicInfo_1List', 'edu/statistics/EduInformatizationBasicInfo_1List', NULL, NULL, 1, NULL, '1', 1.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0),
      ('2023070711112570320', '1666281667909779458', '教育信息化基本情况统计表（二）', '/edu/statistics/eduInformatizationBasicInfo_2List', 'edu/statistics/EduInformatizationBasicInfo_2List', NULL, NULL, 1, NULL, '1', 2.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0),
      ('2023070704433360220', '1666281667909779458', '中小学实验室基本情况统计表（三）', '/edu/statistics/schoolLabBasicInfo_3List', 'edu/statistics/SchoolLabBasicInfo_3List', NULL, NULL, 1, NULL, '1', 3.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0),
-     ('2023070705157320330', '1666281667909779458', '中小学图书室（馆）基本情况统计表（四）', '/edu/statistics/schoolLibraryBasicInfo_4List', 'edu/statistics/SchoolLibraryBasicInfo_4List', NULL, NULL, 1, NULL, '1', 4.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0);
+     ('2023070705157320330', '1666281667909779458', '中小学图书室（馆）基本情况统计表（四）', '/edu/statistics/schoolLibraryBasicInfo_4List', 'edu/statistics/SchoolLibraryBasicInfo_4List', NULL, NULL, 1, NULL, '1', 4.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0),
+     ('2023071505454370430', '1666281667909779458', '中小学体育用房统计表（五）', '/edu/statistics/schoolSportRoomInfo_5List', 'edu/statistics/SchoolSportRoomInfo_5List', NULL, NULL, 1, NULL, '1', 5.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
      ('2023060312357030191', '2023060312357030190', '添加机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
@@ -3331,7 +3369,13 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023070705157320333', '2023070705157320330', '删除中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
      ('2023070705157320334', '2023070705157320330', '批量删除中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
      ('2023070705157320335', '2023070705157320330', '导出excel_中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
-     ('2023070705157320336', '2023070705157320330', '导入excel_中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0);
+     ('2023070705157320336', '2023070705157320330', '导入excel_中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
+     ('2023071505454370431', '2023071505454370430', '添加中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
+     ('2023071505454370432', '2023071505454370430', '编辑中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
+     ('2023071505454370433', '2023071505454370430', '删除中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
+     ('2023071505454370434', '2023071505454370430', '批量删除中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
+     ('2023071505454370435', '2023071505454370430', '导出excel_中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
+     ('2023071505454370436', '2023071505454370430', '导入excel_中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0);
 
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
      ('1666338990082748417',	'f6817f48af4fb3af11b9e8bf182f618b',	'1666280628326367234',	NULL,	'2023-06-07 14:59:09',	'127.0.0.1'),
