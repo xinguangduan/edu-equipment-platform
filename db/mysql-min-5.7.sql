@@ -3270,6 +3270,44 @@ CREATE TABLE `school_music_art_room_info_6` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for school_functional_room_info_7
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `school_functional_room_info_7`;
+CREATE TABLE `school_functional_room_info_7` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `fill_date` date NOT NULL COMMENT '填报日期',
+  `integrated_practice_room_num` int NOT NULL COMMENT '综合实践室间数',
+  `integrated_practice_room_area` double NOT NULL COMMENT '综合实践室面积（m2）',
+  `integrated_equipment_num` int NOT NULL COMMENT '综合实践室器材件数',
+  `computer_classroom_num` int NOT NULL COMMENT '计算机教室间数',
+  `computer_classroom_area` double NOT NULL COMMENT '计算机教室面积（m2）',
+  `multifunctional_room_num` int NOT NULL COMMENT '多功能会议室（演播室）间数',
+  `multifunctional_room_area` double NOT NULL COMMENT '多功能会议室（演播室）面积（m2）',
+  `multifunctional_seat_num` int NOT NULL COMMENT '多功能会议室（演播室）座位数',
+  `recording_classroom_num` int NOT NULL COMMENT '录播教室间数',
+  `recording_classroom_area` double NOT NULL COMMENT '录播教室面积（m2）',
+  `observation_classroom_num` int NOT NULL COMMENT '观摩教室间数',
+  `observation_classroom_area` double NOT NULL COMMENT '观摩教室面积（m2）',
+  `observation_seat_num` int NOT NULL COMMENT '观摩教室座位数',
+  `maker_classroom_num` int NOT NULL COMMENT '创客教室间数',
+  `maker_classroom_area` double NOT NULL COMMENT '创客教室面积（m2）',
+  `maker_equipment_num` int NOT NULL COMMENT '创客教室器材件数',
+  `first_featured_room_name` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '特色功能室一名称',
+  `first_featured_room_num` int NOT NULL COMMENT '特色功能室一间数',
+  `first_featured_room_area` double NOT NULL COMMENT '特色功能室一面积（m2）',
+  `second_featured_room_name` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '特色功能室二名称',
+  `second_featured_room_num` int NOT NULL COMMENT '特色功能室二间数',
+  `second_featured_room_area` double NOT NULL COMMENT '特色功能室二面积（m2）',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3365,7 +3403,8 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, 
      ('2023070704433360220', '1666281667909779458', '中小学实验室基本情况统计表（三）', '/edu/statistics/schoolLabBasicInfo_3List', 'edu/statistics/SchoolLabBasicInfo_3List', NULL, NULL, 1, NULL, '1', 3.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0),
      ('2023070705157320330', '1666281667909779458', '中小学图书室（馆）基本情况统计表（四）', '/edu/statistics/schoolLibraryBasicInfo_4List', 'edu/statistics/SchoolLibraryBasicInfo_4List', NULL, NULL, 1, NULL, '1', 4.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0),
      ('2023071505454370430', '1666281667909779458', '中小学体育用房统计表（五）', '/edu/statistics/schoolSportRoomInfo_5List', 'edu/statistics/SchoolSportRoomInfo_5List', NULL, NULL, 1, NULL, '1', 5.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0),
-     ('2023071506100910410', '1666281667909779458', '中小学音乐、美术教学用房统计表（六）', '/edu/statistics/schoolMusicArtRoomInfo_6List', 'edu/statistics/SchoolMusicArtRoomInfo_6List', NULL, NULL, 1, NULL, '1', 6.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0);
+     ('2023071506100910410', '1666281667909779458', '中小学音乐、美术教学用房统计表（六）', '/edu/statistics/schoolMusicArtRoomInfo_6List', 'edu/statistics/SchoolMusicArtRoomInfo_6List', NULL, NULL, 1, NULL, '1', 6.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0),
+     ('2023071507171810530', '1666281667909779458', '中小学功能室用房统计表（七）', '/edu/statistics/schoolFunctionalRoomInfo_7List', 'edu/statistics/SchoolFunctionalRoomInfo_7List', NULL, NULL, 1, NULL, '1', 7.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
      ('2023060312357030191', '2023060312357030190', '添加机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
@@ -3417,7 +3456,13 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023071506100910413', '2023071506100910410', '删除中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
      ('2023071506100910414', '2023071506100910410', '批量删除中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
      ('2023071506100910415', '2023071506100910410', '导出excel_中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
-     ('2023071506100910416', '2023071506100910410', '导入excel_中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0);
+     ('2023071506100910416', '2023071506100910410', '导入excel_中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507171810531', '2023071507171810530', '添加中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507171810532', '2023071507171810530', '编辑中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507171810533', '2023071507171810530', '删除中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507171810534', '2023071507171810530', '批量删除中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507171810535', '2023071507171810530', '导出excel_中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507171810536', '2023071507171810530', '导入excel_中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0);
 
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
      ('1666338990082748417',	'f6817f48af4fb3af11b9e8bf182f618b',	'1666280628326367234',	NULL,	'2023-06-07 14:59:09',	'127.0.0.1'),
