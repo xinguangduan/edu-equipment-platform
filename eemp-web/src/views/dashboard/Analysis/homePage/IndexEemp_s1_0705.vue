@@ -86,7 +86,7 @@
   import EduCentralRoom from '../components/EduCentralRoom.vue';
   import { getClassInfo, getTeacherInfo, getStudentInfo } from '../api.ts';
   import { getTeacherComputerInfo, getStudentComputerInfo } from '../api.ts';
-
+  import { getClassCommunicationInfo } from '../api.ts';
 
   const loading = ref(true);
 
@@ -152,16 +152,20 @@
 
   initTeacherAndStudentComputerInfo();
 
-  const classCommunicationInfo = []
+  const classCommunicationInfo = ref([])
 
-  classCommunicationInfo.push({name: '中心小学', type: '已开通', value: 504});
-  classCommunicationInfo.push({name: '中心小学', type: '未开通', value: 0});
-  classCommunicationInfo.push({name: '完全小学', type: '已开通', value: 193});
-  classCommunicationInfo.push({name: '完全小学', type: '未开通', value: 20});
-  classCommunicationInfo.push({name: '初中', type: '已开通', value: 305});
-  classCommunicationInfo.push({name: '初中', type: '未开通', value: 0});
-  classCommunicationInfo.push({name: '高职特幼', type: '已开通', value: 283});
-  classCommunicationInfo.push({name: '高职特幼', type: '未开通', value: 0});
+  function initClassCommunicationInfo() {
+    getClassCommunicationInfo(null).then((res) => {
+      if (res.success) {
+        classCommunicationInfo.value = [];
+        res.result.forEach((item) => {
+          classCommunicationInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
+        });
+      }
+    });
+  }
+
+  initClassCommunicationInfo();
 
   const roomInfo = []
 

@@ -146,4 +146,39 @@
         </if>
     </select>
 
+    <!-- 获取班班通统计 -->
+    <select id="getClassCommunicationNumberInfo" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql' || dbType == 'h2'">
+            select chart_group, type, sum(class_num) as value
+            from
+                ( ( select
+                        identification_code,
+                        fill_date,
+                        '已开通' as type,
+                        (classes_num - class_num_without_equip) as class_num
+                    from edu_informatization_equip_info_8
+                    union all
+                    select
+                        identification_code,
+                        fill_date,
+                        '未开通' as type,
+                        class_num_without_equip as class_num
+                    from edu_informatization_equip_info_8 ) a
+                join
+                ( select
+                        identification_code,
+                        max(fill_date) maxdate
+                    from edu_informatization_equip_info_8
+                    group by identification_code ) b
+                join
+                ( select
+                        identification_code,
+                        chart_group
+                    from organization_definition ) c
+                on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+                    and a.identification_code = c.identification_code )
+            group by chart_group, type
+        </if>
+    </select>
+
 </mapper>

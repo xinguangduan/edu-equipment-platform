@@ -20,4 +20,6 @@ public interface IEduInformatizationEquipInfo_8Service extends IService<EduInfor
 
     List<Map<String,Object>> getStudentComputerNumberInfo(Date dayStart, Date dayEnd);
 
+    List<Map<String,Object>> getClassCommunicationNumberInfo(Date dayStart, Date dayEnd);
+
 }

@@ -212,4 +212,21 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
 		 return result;
 	 }
 
+	 @GetMapping("classCommunicationInfo")
+	 public Result<List<Map<String,Object>>> classCommunicationInfo() {
+		 Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		 Calendar calendar = new GregorianCalendar();
+		 calendar.set(Calendar.HOUR_OF_DAY,0);
+		 calendar.set(Calendar.MINUTE,0);
+		 calendar.set(Calendar.SECOND,0);
+		 calendar.set(Calendar.MILLISECOND,0);
+		 calendar.add(Calendar.DAY_OF_MONTH, 1);
+		 Date dayEnd = calendar.getTime();
+		 calendar.add(Calendar.YEAR, -2);
+		 Date dayStart = calendar.getTime();
+		 List<Map<String,Object>> list = eduInformatizationEquipInfo_8Service.getClassCommunicationNumberInfo(dayStart, dayEnd);
+		 result.setResult(oConvertUtils.toLowerCasePageList(list));
+		 return result;
+	 }
+
  }
