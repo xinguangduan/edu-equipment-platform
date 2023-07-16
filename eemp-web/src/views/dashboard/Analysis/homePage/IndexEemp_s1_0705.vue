@@ -84,7 +84,7 @@
   import EduScience from '../components/EduScience.vue';
   import EduLaboiratory from '../components/EduLaboiratory.vue';
   import EduCentralRoom from '../components/EduCentralRoom.vue';
-  import { getTeacherInfo, getStudentInfo } from '../api.ts';
+  import { getClassInfo, getTeacherInfo, getStudentInfo } from '../api.ts';
 
 
   const loading = ref(true);
@@ -95,8 +95,17 @@
 
   const teacherInfo = ref([])
   const studentInfo = ref([])
+  const classInfo = ref([])
 
-  function initTeacherAndStudentInfo() {
+  function initClassAndTeacherAndStudentInfo() {
+    getClassInfo(null).then((res) => {
+      if (res.success) {
+        classInfo.value = [];
+        res.result.forEach((item) => {
+          classInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
+        });
+      }
+    });
     getTeacherInfo(null).then((res) => {
       if (res.success) {
         // teacherInfo.value = res.result;
@@ -116,26 +125,7 @@
     });
   }
 
-  initTeacherAndStudentInfo();
-
-  const classInfo = []
-
-  classInfo.push({name: '中心小学', type: '2021下半年', value: 312});
-  classInfo.push({name: '中心小学', type: '2022上半年', value: 369});
-  classInfo.push({name: '中心小学', type: '2022下半年', value: 500});
-  classInfo.push({name: '中心小学', type: '2023上半年', value: 504});
-  classInfo.push({name: '完全小学', type: '2021下半年', value: 190});
-  classInfo.push({name: '完全小学', type: '2022上半年', value: 200});
-  classInfo.push({name: '完全小学', type: '2022下半年', value: 205});
-  classInfo.push({name: '完全小学', type: '2023上半年', value: 213});
-  classInfo.push({name: '初中', type: '2021下半年', value: 280});
-  classInfo.push({name: '初中', type: '2022上半年', value: 290});
-  classInfo.push({name: '初中', type: '2022下半年', value: 300});
-  classInfo.push({name: '初中', type: '2023上半年', value: 305});
-  classInfo.push({name: '高职特幼', type: '2021下半年', value: 260});
-  classInfo.push({name: '高职特幼', type: '2022上半年', value: 270});
-  classInfo.push({name: '高职特幼', type: '2022下半年', value: 276});
-  classInfo.push({name: '高职特幼', type: '2023上半年', value: 283});
+  initClassAndTeacherAndStudentInfo();
 
   const teacherComputerInfo = []
   const studentComputerInfo = []

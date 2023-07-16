@@ -17,6 +17,7 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.edu.statistics.entity.EduInformatizationEquipInfo_8;
 import org.eemp.modules.edu.statistics.service.IEduInformatizationEquipInfo_8Service;
 import org.springframework.web.bind.annotation.*;
@@ -160,4 +161,21 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
         return super.importExcel(request, response, EduInformatizationEquipInfo_8.class);
     }
 
-}
+	 @GetMapping("classInfo")
+	 public Result<List<Map<String,Object>>> studentInfo() {
+		 Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		 Calendar calendar = new GregorianCalendar();
+		 calendar.set(Calendar.HOUR_OF_DAY,0);
+		 calendar.set(Calendar.MINUTE,0);
+		 calendar.set(Calendar.SECOND,0);
+		 calendar.set(Calendar.MILLISECOND,0);
+		 calendar.add(Calendar.DAY_OF_MONTH, 1);
+		 Date dayEnd = calendar.getTime();
+		 calendar.add(Calendar.YEAR, -3);
+		 Date dayStart = calendar.getTime();
+		 List<Map<String,Object>> list = eduInformatizationEquipInfo_8Service.getClassNumberInfo(dayStart, dayEnd);
+		 result.setResult(oConvertUtils.toLowerCasePageList(list));
+		 return result;
+	 }
+
+ }
