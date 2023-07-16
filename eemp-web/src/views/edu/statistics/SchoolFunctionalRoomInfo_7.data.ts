@@ -2,12 +2,18 @@ import {BasicColumn} from '/@/components/Table';
 import {FormSchema} from '/@/components/Table';
 import { rules} from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
+import { useUserStoreWithOut } from "/@/store/modules/user";
+import dayjs from 'dayjs';
+
+const userStore = useUserStoreWithOut();
+
 //列表数据
 export const columns: BasicColumn[] = [
    {
-    title: '标识代码',
+    title: '学校名称',
     align:"center",
-    dataIndex: 'identificationCode_dictText'
+    dataIndex: 'identificationCode_dictText',
+    auth: 'colctrl:identificationCode_dictText',
    },
    {
     title: '填报日期',
@@ -131,7 +137,7 @@ export const columns: BasicColumn[] = [
 //查询数据
 export const searchFormSchema: FormSchema[] = [
 	{
-      label: "标识代码",
+      label: "学校名称",
       field: 'identificationCode',
       component: 'JDictSelectTag',
       componentProps:{
@@ -149,27 +155,30 @@ export const searchFormSchema: FormSchema[] = [
 //表单数据
 export const formSchema: FormSchema[] = [
   {
-    label: '标识代码',
+    label: '学校名称',
     field: 'identificationCode',
+    defaultValue: userStore.getUserInfo.telephone,
     component: 'JDictSelectTag',
     componentProps:{
         dictCode:"organization_definition,institution_name,identification_code"
      },
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入标识代码!'},
+                 { required: true, message: '请选择学校名称!'},
           ];
      },
   },
   {
     label: '填报日期',
     field: 'fillDate',
+    defaultValue: dayjs(new Date()).format('YYYY-MM-DD'),
     component: 'DatePicker',
     dynamicRules: ({model,schema}) => {
           return [
                  { required: true, message: '请输入填报日期!'},
           ];
      },
+     dynamicDisabled:true
   },
   {
     label: '综合实践室间数',
