@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.modules.edu.statistics.entity.SchoolSportRoomInfo_5;
@@ -46,6 +47,7 @@ public class SchoolSportRoomInfo_5Controller extends BaseController<SchoolSportR
 	//@AutoLog(value = "中小学体育用房统计表（五）-分页列表查询")
 	@ApiOperation(value="中小学体育用房统计表（五）-分页列表查询", notes="中小学体育用房统计表（五）-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/statistics/SchoolSportRoomInfo_5List")
 	public Result<IPage<SchoolSportRoomInfo_5>> queryPageList(SchoolSportRoomInfo_5 schoolSportRoomInfo_5,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,

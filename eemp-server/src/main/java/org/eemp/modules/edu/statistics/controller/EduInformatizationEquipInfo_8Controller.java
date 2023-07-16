@@ -47,6 +47,7 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
 	//@AutoLog(value = "教育信息化配备情况统计表（八）-分页列表查询")
 	@ApiOperation(value="教育信息化配备情况统计表（八）-分页列表查询", notes="教育信息化配备情况统计表（八）-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/statistics/EduInformatizationEquipInfo_8List")
 	public Result<IPage<EduInformatizationEquipInfo_8>> queryPageList(EduInformatizationEquipInfo_8 eduInformatizationEquipInfo_8,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,

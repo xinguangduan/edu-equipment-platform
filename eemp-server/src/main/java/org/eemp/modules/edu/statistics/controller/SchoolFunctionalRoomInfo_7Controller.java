@@ -47,6 +47,7 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
 	//@AutoLog(value = "中小学功能室用房统计表（七）-分页列表查询")
 	@ApiOperation(value="中小学功能室用房统计表（七）-分页列表查询", notes="中小学功能室用房统计表（七）-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/statistics/SchoolFunctionalRoomInfo_7List")
 	public Result<IPage<SchoolFunctionalRoomInfo_7>> queryPageList(SchoolFunctionalRoomInfo_7 schoolFunctionalRoomInfo_7,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,

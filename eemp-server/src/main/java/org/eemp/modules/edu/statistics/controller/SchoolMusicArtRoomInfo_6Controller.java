@@ -47,6 +47,7 @@ public class SchoolMusicArtRoomInfo_6Controller extends BaseController<SchoolMus
 	//@AutoLog(value = "中小学音乐、美术教学用房统计表（六）-分页列表查询")
 	@ApiOperation(value="中小学音乐、美术教学用房统计表（六）-分页列表查询", notes="中小学音乐、美术教学用房统计表（六）-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/statistics/SchoolMusicArtRoomInfo_6List")
 	public Result<IPage<SchoolMusicArtRoomInfo_6>> queryPageList(SchoolMusicArtRoomInfo_6 schoolMusicArtRoomInfo_6,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
