@@ -188,7 +188,7 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
 		 calendar.set(Calendar.MILLISECOND,0);
 		 calendar.add(Calendar.DAY_OF_MONTH, 1);
 		 Date dayEnd = calendar.getTime();
-		 calendar.add(Calendar.YEAR, -3);
+		 calendar.add(Calendar.YEAR, -2);
 		 Date dayStart = calendar.getTime();
 		 List<Map<String,Object>> list = eduInformatizationBasicInfo_1Service.getStudentNumberInfo(dayStart, dayEnd);
 		 result.setResult(oConvertUtils.toLowerCasePageList(list));

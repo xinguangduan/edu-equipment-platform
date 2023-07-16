@@ -30,4 +30,16 @@ public class EduInformatizationEquipInfo_8ServiceImpl extends ServiceImpl<EduInf
         return mapper.getClassNumberInfo(dayStart, dayEnd,dbType.getDb());
     }
 
+    @Override
+    public List<Map<String,Object>> getTeacherComputerNumberInfo(Date dayStart, Date dayEnd) {
+        DbType dbType = CommonUtils.getDatabaseTypeEnum();
+        return mapper.getTeacherComputerNumberInfo(dayStart, dayEnd,dbType.getDb());
+    }
+
+    @Override
+    public List<Map<String,Object>> getStudentComputerNumberInfo(Date dayStart, Date dayEnd) {
+        DbType dbType = CommonUtils.getDatabaseTypeEnum();
+        return mapper.getStudentComputerNumberInfo(dayStart, dayEnd,dbType.getDb());
+    }
+
 }

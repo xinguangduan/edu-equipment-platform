@@ -85,6 +85,7 @@
   import EduLaboiratory from '../components/EduLaboiratory.vue';
   import EduCentralRoom from '../components/EduCentralRoom.vue';
   import { getClassInfo, getTeacherInfo, getStudentInfo } from '../api.ts';
+  import { getTeacherComputerInfo, getStudentComputerInfo } from '../api.ts';
 
 
   const loading = ref(true);
@@ -127,42 +128,29 @@
 
   initClassAndTeacherAndStudentInfo();
 
-  const teacherComputerInfo = []
-  const studentComputerInfo = []
+  const teacherComputerInfo = ref([])
+  const studentComputerInfo = ref([])
 
-  teacherComputerInfo.push({name: '中心小学', type: '2021下半年', value: 380});
-  teacherComputerInfo.push({name: '中心小学', type: '2022上半年', value: 390});
-  teacherComputerInfo.push({name: '中心小学', type: '2022下半年', value: 392});
-  teacherComputerInfo.push({name: '中心小学', type: '2023上半年', value: 496});
-  teacherComputerInfo.push({name: '完全小学', type: '2021下半年', value: 160});
-  teacherComputerInfo.push({name: '完全小学', type: '2022上半年', value: 170});
-  teacherComputerInfo.push({name: '完全小学', type: '2022下半年', value: 178});
-  teacherComputerInfo.push({name: '完全小学', type: '2023上半年', value: 222});
-  teacherComputerInfo.push({name: '初中', type: '2021下半年', value: 380});
-  teacherComputerInfo.push({name: '初中', type: '2022上半年', value: 390});
-  teacherComputerInfo.push({name: '初中', type: '2022下半年', value: 393});
-  teacherComputerInfo.push({name: '初中', type: '2023上半年', value: 439});
-  teacherComputerInfo.push({name: '高职特幼', type: '2021下半年', value: 780});
-  teacherComputerInfo.push({name: '高职特幼', type: '2022上半年', value: 790});
-  teacherComputerInfo.push({name: '高职特幼', type: '2022下半年', value: 793});
-  teacherComputerInfo.push({name: '高职特幼', type: '2023上半年', value: 804});
+  function initTeacherAndStudentComputerInfo() {
+    getTeacherComputerInfo(null).then((res) => {
+      if (res.success) {
+        teacherComputerInfo.value = [];
+        res.result.forEach((item) => {
+          teacherComputerInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
+        });
+      }
+    });
+    getStudentComputerInfo(null).then((res) => {
+      if (res.success) {
+        studentComputerInfo.value = [];
+        res.result.forEach((item) => {
+          studentComputerInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
+        });
+      }
+    });
+  }
 
-  studentComputerInfo.push({name: '中心小学', type: '2021下半年', value: 1000});
-  studentComputerInfo.push({name: '中心小学', type: '2022上半年', value: 1080});
-  studentComputerInfo.push({name: '中心小学', type: '2022下半年', value: 1090});
-  studentComputerInfo.push({name: '中心小学', type: '2023上半年', value: 1105});
-  studentComputerInfo.push({name: '完全小学', type: '2021下半年', value: 800});
-  studentComputerInfo.push({name: '完全小学', type: '2022上半年', value: 850});
-  studentComputerInfo.push({name: '完全小学', type: '2022下半年', value: 900});
-  studentComputerInfo.push({name: '完全小学', type: '2023上半年', value: 942});
-  studentComputerInfo.push({name: '初中', type: '2021下半年', value: 860});
-  studentComputerInfo.push({name: '初中', type: '2022上半年', value: 900});
-  studentComputerInfo.push({name: '初中', type: '2022下半年', value: 960});
-  studentComputerInfo.push({name: '初中', type: '2023上半年', value: 1009});
-  studentComputerInfo.push({name: '高职特幼', type: '2021下半年', value: 910});
-  studentComputerInfo.push({name: '高职特幼', type: '2022上半年', value: 1000});
-  studentComputerInfo.push({name: '高职特幼', type: '2022下半年', value: 1060});
-  studentComputerInfo.push({name: '高职特幼', type: '2023上半年', value: 1117});
+  initTeacherAndStudentComputerInfo();
 
   const classCommunicationInfo = []
 

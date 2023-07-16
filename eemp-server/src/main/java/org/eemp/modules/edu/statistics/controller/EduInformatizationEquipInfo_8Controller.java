@@ -162,7 +162,7 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
     }
 
 	 @GetMapping("classInfo")
-	 public Result<List<Map<String,Object>>> studentInfo() {
+	 public Result<List<Map<String,Object>>> classInfo() {
 		 Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
 		 Calendar calendar = new GregorianCalendar();
 		 calendar.set(Calendar.HOUR_OF_DAY,0);
@@ -171,9 +171,43 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
 		 calendar.set(Calendar.MILLISECOND,0);
 		 calendar.add(Calendar.DAY_OF_MONTH, 1);
 		 Date dayEnd = calendar.getTime();
-		 calendar.add(Calendar.YEAR, -3);
+		 calendar.add(Calendar.YEAR, -2);
 		 Date dayStart = calendar.getTime();
 		 List<Map<String,Object>> list = eduInformatizationEquipInfo_8Service.getClassNumberInfo(dayStart, dayEnd);
+		 result.setResult(oConvertUtils.toLowerCasePageList(list));
+		 return result;
+	 }
+
+	 @GetMapping("teacherComputerInfo")
+	 public Result<List<Map<String,Object>>> teacherComputerInfo() {
+		 Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		 Calendar calendar = new GregorianCalendar();
+		 calendar.set(Calendar.HOUR_OF_DAY,0);
+		 calendar.set(Calendar.MINUTE,0);
+		 calendar.set(Calendar.SECOND,0);
+		 calendar.set(Calendar.MILLISECOND,0);
+		 calendar.add(Calendar.DAY_OF_MONTH, 1);
+		 Date dayEnd = calendar.getTime();
+		 calendar.add(Calendar.YEAR, -2);
+		 Date dayStart = calendar.getTime();
+		 List<Map<String,Object>> list = eduInformatizationEquipInfo_8Service.getTeacherComputerNumberInfo(dayStart, dayEnd);
+		 result.setResult(oConvertUtils.toLowerCasePageList(list));
+		 return result;
+	 }
+
+	 @GetMapping("studentComputerInfo")
+	 public Result<List<Map<String,Object>>> studentComputerInfo() {
+		 Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		 Calendar calendar = new GregorianCalendar();
+		 calendar.set(Calendar.HOUR_OF_DAY,0);
+		 calendar.set(Calendar.MINUTE,0);
+		 calendar.set(Calendar.SECOND,0);
+		 calendar.set(Calendar.MILLISECOND,0);
+		 calendar.add(Calendar.DAY_OF_MONTH, 1);
+		 Date dayEnd = calendar.getTime();
+		 calendar.add(Calendar.YEAR, -2);
+		 Date dayStart = calendar.getTime();
+		 List<Map<String,Object>> list = eduInformatizationEquipInfo_8Service.getStudentComputerNumberInfo(dayStart, dayEnd);
 		 result.setResult(oConvertUtils.toLowerCasePageList(list));
 		 return result;
 	 }
