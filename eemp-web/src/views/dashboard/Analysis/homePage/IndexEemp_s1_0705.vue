@@ -20,7 +20,7 @@
             </a-col>
             <a-col :span="8">
               <BarMulti
-                :chartData="StudentInfo"
+                :chartData="studentInfo"
                 :option="{ title: { text: '学生人数统计', textStyle: { fontWeight: 'lighter' } } }"
                 height="30vh"
               />
@@ -84,7 +84,7 @@
   import EduScience from '../components/EduScience.vue';
   import EduLaboiratory from '../components/EduLaboiratory.vue';
   import EduCentralRoom from '../components/EduCentralRoom.vue';
-  import { getTeacherInfo } from '../api.ts';
+  import { getTeacherInfo, getStudentInfo } from '../api.ts';
 
 
   const loading = ref(true);
@@ -94,8 +94,9 @@
   }, 500);
 
   const teacherInfo = ref([])
+  const studentInfo = ref([])
 
-  function initTeacherInfo() {
+  function initTeacherAndStudentInfo() {
     getTeacherInfo(null).then((res) => {
       if (res.success) {
         // teacherInfo.value = res.result;
@@ -105,12 +106,19 @@
         });
       }
     });
+    getStudentInfo(null).then((res) => {
+      if (res.success) {
+        studentInfo.value = [];
+        res.result.forEach((item) => {
+          studentInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
+        });
+      }
+    });
   }
 
-  initTeacherInfo();
+  initTeacherAndStudentInfo();
 
   const classInfo = []
-  const StudentInfo = []
 
   classInfo.push({name: '中心小学', type: '2021下半年', value: 312});
   classInfo.push({name: '中心小学', type: '2022上半年', value: 369});
@@ -128,23 +136,6 @@
   classInfo.push({name: '高职特幼', type: '2022上半年', value: 270});
   classInfo.push({name: '高职特幼', type: '2022下半年', value: 276});
   classInfo.push({name: '高职特幼', type: '2023上半年', value: 283});
-
-  StudentInfo.push({name: '中心小学', type: '2021下半年', value: 20008});
-  StudentInfo.push({name: '中心小学', type: '2022上半年', value: 21809});
-  StudentInfo.push({name: '中心小学', type: '2022下半年', value: 23601});
-  StudentInfo.push({name: '中心小学', type: '2023上半年', value: 25257});
-  StudentInfo.push({name: '完全小学', type: '2021下半年', value: 6530});
-  StudentInfo.push({name: '完全小学', type: '2022上半年', value: 6109});
-  StudentInfo.push({name: '完全小学', type: '2022下半年', value: 6358});
-  StudentInfo.push({name: '完全小学', type: '2023上半年', value: 6127});
-  StudentInfo.push({name: '初中', type: '2021下半年', value: 20096});
-  StudentInfo.push({name: '初中', type: '2022上半年', value: 16392});
-  StudentInfo.push({name: '初中', type: '2022下半年', value: 18296});
-  StudentInfo.push({name: '初中', type: '2023上半年', value: 15737});
-  StudentInfo.push({name: '高职特幼', type: '2021下半年', value: 14561});
-  StudentInfo.push({name: '高职特幼', type: '2022上半年', value: 13967});
-  StudentInfo.push({name: '高职特幼', type: '2022下半年', value: 15682});
-  StudentInfo.push({name: '高职特幼', type: '2023上半年', value: 14586});
 
   const teacherComputerInfo = []
   const studentComputerInfo = []

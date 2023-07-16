@@ -178,4 +178,21 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
 		 return result;
 	 }
 
+	 @GetMapping("studentInfo")
+	 public Result<List<Map<String,Object>>> studentInfo() {
+		 Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		 Calendar calendar = new GregorianCalendar();
+		 calendar.set(Calendar.HOUR_OF_DAY,0);
+		 calendar.set(Calendar.MINUTE,0);
+		 calendar.set(Calendar.SECOND,0);
+		 calendar.set(Calendar.MILLISECOND,0);
+		 calendar.add(Calendar.DAY_OF_MONTH, 1);
+		 Date dayEnd = calendar.getTime();
+		 calendar.add(Calendar.YEAR, -3);
+		 Date dayStart = calendar.getTime();
+		 List<Map<String,Object>> list = eduInformatizationBasicInfo_1Service.getStudentNumberInfo(dayStart, dayEnd);
+		 result.setResult(oConvertUtils.toLowerCasePageList(list));
+		 return result;
+	 }
+
 }
