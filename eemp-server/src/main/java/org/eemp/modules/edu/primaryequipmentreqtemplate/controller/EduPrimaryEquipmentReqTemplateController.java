@@ -212,7 +212,10 @@ public class EduPrimaryEquipmentReqTemplateController extends BaseController<Edu
                 }
                 LoginUser loginUser = sysBaseApi.getUserByName(username);
                 String suffix = getFileSuffix(file);
-                List<EduPrimaryEquipmentReqTemplate> list = parsePDF(file.getInputStream(), suffix, params, loginUser);
+                if (!"pdf".equalsIgnoreCase(suffix)) {// 只支持pdf
+                    return Result.error("文件导入只支持PDF文件！");
+                }
+                List<EduPrimaryEquipmentReqTemplate> list = parsePDF(file.getInputStream(), params, loginUser);
                 //update-begin-author:taoyan date:20190528 for:批量插入数据
                 int count = list == null ? 0 : list.size();
                 log.info("read data from excel, count={}", count);
@@ -330,10 +333,7 @@ public class EduPrimaryEquipmentReqTemplateController extends BaseController<Edu
     }
 
     // 主要用于导入Excel解析
-    public List<EduPrimaryEquipmentReqTemplate> parsePDF(InputStream inputStream, String suffix, ImportParams params, LoginUser loginUser) {
-        if (!"pdf".equalsIgnoreCase(suffix)) {// 只支持pdf
-            return null;
-        }
+    public List<EduPrimaryEquipmentReqTemplate> parsePDF(InputStream inputStream, ImportParams params, LoginUser loginUser) {
         final List<EduPrimaryEquipmentReqTemplate> objects = new ArrayList<>();
         //加载PDF文档
         PdfDocument pdf = new PdfDocument(inputStream);
