@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.spire.pdf.PdfDocument;
+import com.spire.pdf.utilities.PdfTable;
+import com.spire.pdf.utilities.PdfTableExtractor;
+import com.spire.pdf.widget.PdfPageCollection;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +27,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
+import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.poi.excel.entity.ImportParams;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
@@ -46,6 +51,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Api(tags = "小学器材设施配备要求模板表")
 @RestController
 @RequestMapping("/edu/primaryequipmentreqtemplate/eduPrimaryEquipmentReqTemplate")
+@PermissionData
 @Slf4j
 public class EduPrimaryEquipmentReqTemplateController extends BaseController<EduPrimaryEquipmentReqTemplate, IEduPrimaryEquipmentReqTemplateService> {
     @Autowired
@@ -66,6 +72,7 @@ public class EduPrimaryEquipmentReqTemplateController extends BaseController<Edu
      */
     //@AutoLog(value = "小学器材设施配备要求模板表-分页列表查询")
     @ApiOperation(value = "小学器材设施配备要求模板表-分页列表查询", notes = "小学器材设施配备要求模板表-分页列表查询")
+    @PermissionData(pageComponent = "edu/primaryequipmentreqtemplate/EduPrimaryEquipmentReqTemplateList")
     @GetMapping(value = "/list")
     public Result<IPage<EduPrimaryEquipmentReqTemplate>> queryPageList(EduPrimaryEquipmentReqTemplate eduPrimaryEquipmentReqTemplate,
                                                                        @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -205,7 +212,10 @@ public class EduPrimaryEquipmentReqTemplateController extends BaseController<Edu
                 }
                 LoginUser loginUser = sysBaseApi.getUserByName(username);
                 String suffix = getFileSuffix(file);
-                List<EduPrimaryEquipmentReqTemplate> list = parseExcel(file.getInputStream(), suffix, params, loginUser);
+                if (!"pdf".equalsIgnoreCase(suffix)) {// 只支持pdf
+                    return Result.error("文件导入只支持PDF文件！");
+                }
+                List<EduPrimaryEquipmentReqTemplate> list = parsePDF(file.getInputStream(), params, loginUser);
                 //update-begin-author:taoyan date:20190528 for:批量插入数据
                 int count = list == null ? 0 : list.size();
                 log.info("read data from excel, count={}", count);
@@ -322,4 +332,94 @@ public class EduPrimaryEquipmentReqTemplateController extends BaseController<Edu
         return objects;
     }
 
+    // 主要用于导入Excel解析
+    public List<EduPrimaryEquipmentReqTemplate> parsePDF(InputStream inputStream, ImportParams params, LoginUser loginUser) {
+        final List<EduPrimaryEquipmentReqTemplate> objects = new ArrayList<>();
+        //加载PDF文档
+        PdfDocument pdf = new PdfDocument(inputStream);
+        //创建一个PdfTableExtractor实例
+        PdfTableExtractor extractor = new PdfTableExtractor(pdf);
+        PdfPageCollection pageCollections = pdf.getPages();
+        int count = pageCollections.getCount();
+        for (int pageIndex = 0; pageIndex < count; pageIndex++) {
+            extractPDFTableContent(extractor, pageIndex, objects, loginUser, "2023");
+        }
+        return objects;
+    }
+
+    private static void extractPDFTableContent(PdfTableExtractor extractor, int pageIndex, List<EduPrimaryEquipmentReqTemplate> templateList, LoginUser loginUser, String phaseCode) {
+        log.info("current page num :{}", pageIndex + 1);
+        PdfTable[] pdfTables = extractor.extractTable(pageIndex);
+
+        //如果找到任何表格
+        if (pdfTables == null || pdfTables.length < 0) {
+            return;
+        }
+        log.info("tables length:{}", pdfTables.length);
+        //循环遍历表格
+        for (int tableNum = 0; tableNum < pdfTables.length; tableNum++) {
+            int colNum = pdfTables[tableNum].getColumnCount();
+            log.info("current row column Count :{}", colNum);
+            //循环遍历当前表格中的行
+            String mainName = "";
+            for (int rowNum = 0; rowNum < pdfTables[tableNum].getRowCount(); rowNum++) {
+                //循环遍历当前表格中的列
+                EduPrimaryEquipmentReqTemplate req = new EduPrimaryEquipmentReqTemplate();
+                req.setId(UUID.randomUUID().toString());
+                req.setSysOrgCode(loginUser.getOrgCode());
+                req.setCreateBy(loginUser.getUsername());
+                req.setCreateTime(new Date());
+                req.setUpdateBy(loginUser.getUsername());
+                req.setUpdateTime(new Date());
+                req.setPhaseCode(phaseCode);
+                req.setGrade("primary");
+
+                String categoryCode = pdfTables[tableNum].getText(rowNum, 0);
+
+                if (StringUtils.isEmpty(categoryCode) || categoryCode.contains("分类代码") || categoryCode.contains("名")) {
+                    continue;
+                }
+                int offset = 0;
+                String name = "";
+                if (colNum > 9) {
+                    offset = 1;
+                    String tempMainName = pdfTables[tableNum].getText(rowNum, 1);
+                    String subName = pdfTables[tableNum].getText(rowNum, offset + 1);
+
+                    if (StringUtils.isNotEmpty(tempMainName) && !mainName.equalsIgnoreCase(tempMainName)) {
+                        mainName = tempMainName;
+                    }
+                    name = mainName + subName;
+                } else {
+                    name = pdfTables[tableNum].getText(rowNum, offset + 1);
+                }
+                String specModelFunc = pdfTables[tableNum].getText(rowNum, offset + 2);
+                String unit = pdfTables[tableNum].getText(rowNum, offset + 3);
+                String quantity = pdfTables[tableNum].getText(rowNum, offset + 4);
+                String basicRequirement = pdfTables[tableNum].getText(rowNum, offset + 5);
+                String optionRequirement = pdfTables[tableNum].getText(rowNum, offset + 6);
+                String executiveStandardCode = pdfTables[tableNum].getText(rowNum, offset + 7);
+                String remark = pdfTables[tableNum].getText(rowNum, offset + 8);
+
+                String equipmentRequirement = "";
+                if (StringUtils.isNotEmpty(basicRequirement)) {
+                    equipmentRequirement = "基本";
+                } else if (StringUtils.isNotEmpty(optionRequirement)) {
+                    equipmentRequirement = "选配";
+                }
+
+                // set the value to Object
+                req.setCategoryCode(categoryCode);
+                req.setName(name.replaceAll("\\s*|\r|\n|\t", ""));
+                req.setSpecModelFunc(specModelFunc.replaceAll("\\s*|\r|\n|\t", ""));
+                req.setUnit(unit);
+                req.setQuantity(quantity);
+                req.setEquipmentRequirement(equipmentRequirement);
+                req.setExecutiveStandardCode(executiveStandardCode.replaceAll("\\s*|\r|\n|\t", ""));
+                req.setRemark(remark.replaceAll("\\s*|\r|\n|\t", ""));
+                log.info("{}", req);
+                templateList.add(req);
+            }
+        }
+    }
 }

@@ -410,7 +410,6 @@ public class CommonUtils {
     @NotNull
     public static String getFileSuffix(MultipartFile file) {
         String fileName = getFileName(file.getOriginalFilename());
-        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
-        return suffix;
+        return fileName.substring(fileName.lastIndexOf(".") + 1);
     }
 }
