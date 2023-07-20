@@ -413,7 +413,7 @@ public class EduPrimaryEquipmentReqTemplateController extends BaseController<Edu
                 req.setName(name.replaceAll("\\s*|\r|\n|\t", ""));
                 req.setSpecModelFunc(specModelFunc.replaceAll("\\s*|\r|\n|\t", ""));
                 req.setUnit(unit);
-                req.setQuantity(quantity);
+                req.setQuantity(quantity.replaceAll("\\s*|\r|\n|\t", ""));
                 req.setEquipmentRequirement(equipmentRequirement);
                 req.setExecutiveStandardCode(executiveStandardCode.replaceAll("\\s*|\r|\n|\t", ""));
                 req.setRemark(remark.replaceAll("\\s*|\r|\n|\t", ""));
