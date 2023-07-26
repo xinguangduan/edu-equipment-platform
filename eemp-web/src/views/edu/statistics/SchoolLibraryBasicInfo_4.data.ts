@@ -51,7 +51,7 @@ export const columns: BasicColumn[] = [
    {
     title: '是否配备图书管理软件',
     align:"center",
-    dataIndex: 'hasABookManagementSystem'
+    dataIndex: 'hasABookManagementSystem_dictText'
    },
    {
     title: '生均册数',
@@ -198,7 +198,10 @@ export const formSchema: FormSchema[] = [
   {
     label: '是否配备图书管理软件',
     field: 'hasABookManagementSystem',
-    component: 'Input',
+    component: 'JDictSelectTag',
+    componentProps:{
+        dictCode:"yn"
+     },
     dynamicRules: ({model,schema}) => {
           return [
                  { required: true, message: '请输入是否配备图书管理软件!'},

@@ -63,7 +63,8 @@ public class SchoolLibraryBasicInfo_4 implements Serializable {
     @ApiModelProperty(value = "藏书册数")
     private java.lang.String bookNum;
 	/**是否配备图书管理软件*/
-	@Excel(name = "是否配备图书管理软件", width = 15)
+	@Excel(name = "是否配备图书管理软件", width = 15, dicCode = "yn")
+    @Dict(dicCode = "yn")
     @ApiModelProperty(value = "是否配备图书管理软件")
     private java.lang.String hasABookManagementSystem;
 	/**生均册数*/
