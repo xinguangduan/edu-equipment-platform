@@ -7,6 +7,11 @@
 
   const props = defineProps({
     loading: Boolean,
+    chartData: {
+        type: Array,
+        default: () => [],
+        required: true,
+      },
     width: {
       type: String as PropType<string>,
       default: '100%',
@@ -41,12 +46,10 @@
             radius: '80%',
             center: ['50%', '50%'],
             color: ['#5ab1ef', '#b6a2de', '#67e0e3', '#2ec7c9'],
-            data: [
-              { value: 75, name: '已建中心机房' },
-              { value: 11, name: '未建中心机房' },
-            ].sort(function (a, b) {
-              return a.value - b.value;
-            }),
+            data: props.chartData
+              .sort(function (a, b) {
+                return a.value - b.value;
+              }),
             roseType: 'radius',
             animationType: 'scale',
             animationEasing: 'exponentialInOut',

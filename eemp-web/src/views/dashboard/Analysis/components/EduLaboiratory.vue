@@ -6,6 +6,11 @@
   import { useECharts } from '/@/hooks/web/useECharts';
   const props = defineProps({
     loading: Boolean,
+    chartData: {
+      type: Array,
+      default: () => [],
+      required: true,
+    },
     width: {
       type: String as PropType<string>,
       default: '100%',
@@ -61,11 +66,7 @@
             labelLine: {
               show: false,
             },
-            data: [
-              { value: 261, name: '物理' },
-              { value: 190, name: '化学' },
-              { value: 138, name: '生物' },
-            ],
+            data: props.chartData,
             animationType: 'scale',
             animationEasing: 'exponentialInOut',
             animationDelay: function () {

@@ -56,15 +56,15 @@
             </a-col>
             <a-col :span="8">
               <div class="md:flex enter-y">
-                <EduCentralRoom class="md:w-1/1 w-full" :loading="loading" />
+                <EduCentralRoom :chartData="centralRoomInfo" class="md:w-1/1 w-full" :loading="loading" />
               </div>
             </a-col>
           </a-row>
         </a-card>
         <a-card :loading="loading" :bordered="false" title="教育装备" :style="{ marginTop: '24px' }">
           <div class="md:flex enter-y">
-            <EduScience class="md:w-1/3 w-full" :loading="loading" />
-            <EduLaboiratory class="md:w-1/3 !md:mx-4 !md:my-0 !my-4 w-full" :loading="loading" />
+            <EduScience :chartData="scienceRoomInfo" class="md:w-1/3 w-full" :loading="loading" />
+            <EduLaboiratory :chartData="laboiratoryRoomInfo" class="md:w-1/3 !md:mx-4 !md:my-0 !my-4 w-full" :loading="loading" />
             <BarMulti
                 :chartData="roomInfo"
                 :option="{ title: { text: '图书室统计', textStyle: { fontWeight: 'lighter' } } }"
@@ -166,6 +166,20 @@
   }
 
   initClassCommunicationInfo();
+
+  const centralRoomInfo = []
+  centralRoomInfo.push({ value: 60, name: '已建中心机房' });
+  centralRoomInfo.push({ value: 18, name: '未建中心机房' });
+
+  const scienceRoomInfo = []
+  scienceRoomInfo.push({ value: 3, name: '0间' });
+  scienceRoomInfo.push({ value: 20, name: '1间' });
+  scienceRoomInfo.push({ value: 8, name: '2间及以上' });
+
+  const laboiratoryRoomInfo = []
+  laboiratoryRoomInfo.push({ value: 261, name: '物理' });
+  laboiratoryRoomInfo.push({ value: 390, name: '化学' });
+  laboiratoryRoomInfo.push({ value: 138, name: '生物' });
 
   const roomInfo = []
 
