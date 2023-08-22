@@ -66,7 +66,7 @@
             <EduScience :chartData="scienceRoomInfo" class="md:w-1/3 w-full" :loading="loading" />
             <EduLaboiratory :chartData="laboiratoryRoomInfo" class="md:w-1/3 !md:mx-4 !md:my-0 !my-4 w-full" :loading="loading" />
             <BarMulti
-                :chartData="roomInfo"
+                :chartData="libraryInfo"
                 :option="{ title: { text: '图书室统计', textStyle: { fontWeight: 'lighter' } } }"
                 height="30vh"
               />
@@ -87,6 +87,7 @@
   import { getClassInfo, getTeacherInfo, getStudentInfo } from '../api.ts';
   import { getTeacherComputerInfo, getStudentComputerInfo } from '../api.ts';
   import { getClassCommunicationInfo } from '../api.ts';
+  import { getLibraryInfo } from '../api.ts';
 
   const loading = ref(true);
 
@@ -181,20 +182,20 @@
   laboiratoryRoomInfo.push({ value: 390, name: '化学' });
   laboiratoryRoomInfo.push({ value: 138, name: '生物' });
 
-  const roomInfo = []
+  const libraryInfo = ref([])
 
-  roomInfo.push({name: '藏书室', type: '2021下半年', value: 100});
-  roomInfo.push({name: '藏书室', type: '2022上半年', value: 110});
-  roomInfo.push({name: '藏书室', type: '2022下半年', value: 113});
-  roomInfo.push({name: '藏书室', type: '2023上半年', value: 113});
-  roomInfo.push({name: '阅览室', type: '2021下半年', value: 69});
-  roomInfo.push({name: '阅览室', type: '2022上半年', value: 70});
-  roomInfo.push({name: '阅览室', type: '2022下半年', value: 70});
-  roomInfo.push({name: '阅览室', type: '2023上半年', value: 72});
-  roomInfo.push({name: '特色场所', type: '2021下半年', value: 76});
-  roomInfo.push({name: '特色场所', type: '2022上半年', value: 80});
-  roomInfo.push({name: '特色场所', type: '2022下半年', value: 80});
-  roomInfo.push({name: '特色场所', type: '2023上半年', value: 82});
+  function initLibraryInfo() {
+    getLibraryInfo(null).then((res) => {
+      if (res.success) {
+        libraryInfo.value = [];
+        res.result.forEach((item) => {
+          libraryInfo.value.push({ name: item.name, type: item.type, value: item.value });
+        });
+      }
+    });
+  }
+
+  initLibraryInfo();
 </script>
 
 <style>

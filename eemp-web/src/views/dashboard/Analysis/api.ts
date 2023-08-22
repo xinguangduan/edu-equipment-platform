@@ -12,6 +12,8 @@ enum Api {
   studentComputerInfo = '/org.eemp.modules.edu.statistics/eduInformatizationEquipInfo_8/studentComputerInfo',
 
   classCommunicationInfo = '/org.eemp.modules.edu.statistics/eduInformatizationEquipInfo_8/classCommunicationInfo',
+
+  libraryInfo = '/org.eemp.modules.edu.statistics/schoolLibraryBasicInfo_4/libraryInfo'
 }
 /**
  * 日志统计信息
@@ -35,3 +37,5 @@ export const getTeacherComputerInfo = (params) => defHttp.get({ url: Api.teacher
 export const getStudentComputerInfo = (params) => defHttp.get({ url: Api.studentComputerInfo, params }, { isTransformResponse: false });
 
 export const getClassCommunicationInfo = (params) => defHttp.get({ url: Api.classCommunicationInfo, params }, { isTransformResponse: false });
+
+export const getLibraryInfo = (params) => defHttp.get({ url: Api.libraryInfo, params }, { isTransformResponse: false });
