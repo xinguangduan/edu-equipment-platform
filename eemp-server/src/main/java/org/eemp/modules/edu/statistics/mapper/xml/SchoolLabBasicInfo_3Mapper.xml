@@ -2,4 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.eemp.modules.edu.statistics.mapper.SchoolLabBasicInfo_3Mapper">
 
+    <!-- 获取科学实验室情况 -->
+    <select id="getScienceRoomInfo" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select name, sum(num) value
+            from
+              ( select identification_code, fill_date, '0间' name, 1 num
+                from school_lab_basic_info_3
+                where science_lab_room_num = 0
+                union
+                select identification_code, fill_date, '1间' name, 1 num
+                from school_lab_basic_info_3
+                where science_lab_room_num = 1
+                union
+                select identification_code, fill_date, '2间及以上' name, 1 num
+                from school_lab_basic_info_3
+                where science_lab_room_num >= 2 ) a
+              join
+              ( select identification_code, max(fill_date) maxdate
+                from school_lab_basic_info_3
+                group by identification_code ) b
+              on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+            group by name
+        </if>
+    </select>
+
 </mapper>

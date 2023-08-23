@@ -3,7 +3,20 @@ import { defHttp } from '/@/utils/http/axios';
 enum Api {
   loginfo = '/sys/loginfo',
   visitInfo = '/sys/visitInfo',
-  teacherInfo = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/teacherInfo'
+
+  classInfo = '/org.eemp.modules.edu.statistics/eduInformatizationEquipInfo_8/classInfo',
+  teacherInfo = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/teacherInfo',
+  studentInfo = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/studentInfo',
+
+  teacherComputerInfo = '/org.eemp.modules.edu.statistics/eduInformatizationEquipInfo_8/teacherComputerInfo',
+  studentComputerInfo = '/org.eemp.modules.edu.statistics/eduInformatizationEquipInfo_8/studentComputerInfo',
+
+  classCommunicationInfo = '/org.eemp.modules.edu.statistics/eduInformatizationEquipInfo_8/classCommunicationInfo',
+
+  centralRoomInfo = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/centralRoomInfo',
+  scienceRoomInfo = '/org.eemp.modules.edu.statistics/schoolLabBasicInfo_3/scienceRoomInfo',
+
+  libraryInfo = '/org.eemp.modules.edu.statistics/schoolLibraryBasicInfo_4/libraryInfo'
 }
 /**
  * 日志统计信息
@@ -16,4 +29,20 @@ export const getLoginfo = (params) => defHttp.get({ url: Api.loginfo, params }, 
  */
 export const getVisitInfo = (params) => defHttp.get({ url: Api.visitInfo, params }, { isTransformResponse: false });
 
+export const getClassInfo = (params) => defHttp.get({ url: Api.classInfo, params }, { isTransformResponse: false });
+
 export const getTeacherInfo = (params) => defHttp.get({ url: Api.teacherInfo, params }, { isTransformResponse: false });
+
+export const getStudentInfo = (params) => defHttp.get({ url: Api.studentInfo, params }, { isTransformResponse: false });
+
+export const getTeacherComputerInfo = (params) => defHttp.get({ url: Api.teacherComputerInfo, params }, { isTransformResponse: false });
+
+export const getStudentComputerInfo = (params) => defHttp.get({ url: Api.studentComputerInfo, params }, { isTransformResponse: false });
+
+export const getClassCommunicationInfo = (params) => defHttp.get({ url: Api.classCommunicationInfo, params }, { isTransformResponse: false });
+
+export const getCentralRoomInfo = (params) => defHttp.get({ url: Api.centralRoomInfo, params }, { isTransformResponse: false });
+
+export const getScienceRoomInfo = (params) => defHttp.get({ url: Api.scienceRoomInfo, params }, { isTransformResponse: false });
+
+export const getLibraryInfo = (params) => defHttp.get({ url: Api.libraryInfo, params }, { isTransformResponse: false });

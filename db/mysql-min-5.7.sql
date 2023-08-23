@@ -3317,12 +3317,12 @@ CREATE TABLE `edu_informatization_equip_info_8` (
   `fill_date` date NOT NULL COMMENT '填报日期',
   `classes_num` int NOT NULL COMMENT '班级数',
   `student_computer_num` int NOT NULL COMMENT '学生计算机室现有计算机总数',
-  `student_computer_num_bef_2018` int NOT NULL COMMENT '学生计算机室2018年前台配备数',
-  `student_computer_num_aft_2018` int NOT NULL COMMENT '学生计算机室2018年后配备数',
+  `student_computer_num_bef2018` int NOT NULL COMMENT '学生计算机室2018年前台配备数',
+  `student_computer_num_aft2018` int NOT NULL COMMENT '学生计算机室2018年后配备数',
   `teacher_computer_num` int NOT NULL COMMENT '教师办公计算机总台数',
-  `teacher_computer_num_bef_2016` int NOT NULL COMMENT '教师办公计算机2015年及以前配备台数',
-  `teacher_computer_num_2016_2019` int NOT NULL COMMENT '教师办公计算机2016年至2019年配备数量',
-  `teacher_computer_num_aft_2020` int NOT NULL COMMENT '教师办公计算机2020年及以后配备数量',
+  `teacher_computer_num_bef2016` int NOT NULL COMMENT '教师办公计算机2015年及以前配备台数',
+  `teacher_computer_num20162019` int NOT NULL COMMENT '教师办公计算机2016年至2019年配备数量',
+  `teacher_computer_num_aft2020` int NOT NULL COMMENT '教师办公计算机2020年及以后配备数量',
   `all_in_one_machine_num` int NOT NULL COMMENT '“班班通”智能触控一体机数',
   `computer_plus_tv_num` int NOT NULL COMMENT '“班班通”电脑＋电视机',
   `video_visualizer_num` int NOT NULL COMMENT '“班班通”视频展示台数量',
@@ -3575,7 +3575,40 @@ INSERT INTO `edu_informatization_basic_info_1` (`id`, `identification_code`, `fi
      ('1678629645265817513',	'1232002606',	'2022-07-02',	32,	500,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL),
      ('1678629645265817526',	'1232002606',	'2023-02-23',	36,	510,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL),
      ('1678629645265817586',	'1232002606',	'2023-06-18',	38,	520,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL),
-     ('1678629645265817601',	'1232002606',	'2023-07-11',	51,	537,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL);
+     ('1678629645265817601',	'1232002606',	'2023-07-11',	51,	537,	20,	15,	100,	15,	'1',	1000,	'admin_jgyey',	'2023-07-11 12:57:50',	NULL,	NULL,	NULL),
+     ('1680516855657287680',	'2142004708',	'2022-08-13',	15,	180,	11,	6,	220,	11,	'0',	100,	'admin_zzxx',	'2023-07-16 17:56:56',	NULL,	NULL,	NULL),
+     ('1680516855657287681',	'2142004708',	'2023-03-22',	16,	190,	11,	6,	220,	11,	'0',	100,	'admin_zzxx',	'2023-07-16 17:56:56',	NULL,	NULL,	NULL),
+     ('1680516855657287682',	'2142004708',	'2023-07-16',	17,	200,	11,	6,	220,	11,	'0',	100,	'admin_zzxx',	'2023-07-16 17:56:56',	NULL,	NULL,	NULL);
+
+INSERT INTO `school_library_basic_info_4` (`id`, `identification_code`, `fill_date`, `library_num`, `library_area`, `reading_room_area`, `reading_room_table_num`, `book_num`, `has_a_book_management_system`, `average_books_per_student`, `first_featured_place_name`, `first_featured_place_num`, `first_featured_place_area`, `second_featured_place_name`, `second_featured_place_num`, `second_featured_place_area`, `full_time_admin_name`, `part_time_admin_name`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
+    ('1684115497483968514',	'5262003028',	'2023-07-26',	1,	726,	726,	64,	'65221',	'0',	20,	'-',	0,	0,	'-',	0,	0,	'3',	'0',	'admin_syz',	'2023-07-26 16:16:39',	NULL,	NULL,	NULL),
+    ('1684122672860114946',	'2142009669',	'2023-07-26',	1,	30,	100,	5,	'33325',	'1',	25,	'共享书吧',	2,	20,	'图书角',	25,	125,	'黄娇容',	'-',	'admin_bbxx',	'2023-07-26 16:45:09',	NULL,	NULL,	NULL),
+    ('1684126426552479746',	'3142007024',	'2023-07-26',	3,	267.3,	80,	12,	'4000',	'0',	41,	'书吧',	1,	80,	'班级图书角',	21,	210,	'余婧',	'-',	'admin_bbzx',	'2023-07-26 17:00:04',	NULL,	NULL,	NULL),
+    ('1684127497970659330',	'2142004708',	'2023-07-26',	1,	50,	50,	20,	'4000',	'0',	20,	'-',	0,	0,	'图书角',	6,	18,	'庞玉洪',	'-',	'admin_zzxx',	'2023-07-26 17:04:20',	NULL,	NULL,	NULL),
+    ('1684128314677145602',	'1232002606',	'2023-07-26',	1,	50,	50,	1,	'12000',	'0',	12,	'图书角',	17,	50,	'-',	0,	0,	'0',	'1',	'admin_jgyey',	'2023-07-26 17:07:34',	NULL,	NULL,	NULL),
+    ('1684128314677145603',	'1232002606',	'2023-01-18',	1,	50,	50,	1,	'12000',	'0',	12,	'图书角',	17,	30,	'-',	0,	0,	'0',	'1',	'admin_jgyey',	'2023-07-26 17:07:34',	NULL,	NULL,	NULL),
+    ('1684128314677145604',	'1232002606',	'2022-09-10',	1,	50,	50,	1,	'12000',	'0',	12,	'图书角',	17,	20,	'-',	0,	0,	'0',	'1',	'admin_jgyey',	'2023-07-26 17:07:34',	NULL,	NULL,	NULL);
+
+INSERT INTO `edu_informatization_equip_info_8` (`id`, `identification_code`, `fill_date`, `classes_num`, `student_computer_num`, `student_computer_num_bef2018`, `student_computer_num_aft2018`, `teacher_computer_num`, `teacher_computer_num_bef2016`, `teacher_computer_num20162019`, `teacher_computer_num_aft2020`, `all_in_one_machine_num`, `computer_plus_tv_num`, `video_visualizer_num`, `class_num_without_equip`, `is_the_backbone_gigabit`, `has_a_dedicated_ap_network`, `wireless_ap_num`, `campus_surveillance_camera_num`, `campus_surveillance_dvr_num`, `surveillance_retention_time`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
+    ('1680555625727340540',	'1232002606',	'2022-03-18',	16,	0,	0,	0,	30,	24,	26,	30,	15,	0,	0,	0,	'0',	'0',	0,	52,	2,	30,	'admin_jgyey',	'2023-07-16 20:30:59',	NULL,	NULL,	NULL),
+    ('1680555625727340542',	'1232002606',	'2022-07-03',	12,	0,	0,	0,	30,	24,	26,	30,	15,	0,	0,	0,	'0',	'0',	0,	52,	2,	30,	'admin_jgyey',	'2023-07-16 20:30:59',	NULL,	NULL,	NULL),
+    ('1680555625727340545',	'1232002606',	'2023-03-21',	13,	0,	0,	0,	30,	24,	26,	30,	15,	0,	0,	0,	'0',	'0',	0,	52,	2,	30,	'admin_jgyey',	'2023-07-16 20:30:59',	NULL,	NULL,	NULL),
+    ('1680555625727340546',	'1232002606',	'2023-07-16',	15,	0,	0,	0,	30,	24,	26,	30,	15,	0,	0,	0,	'0',	'0',	0,	52,	2,	30,	'admin_jgyey',	'2023-07-16 20:30:59',	NULL,	NULL,	NULL),
+    ('1680555625727340547',	'2142009669',	'2022-01-16',	23,	61,	61,	61,	15,	5,	10,	15,	26,	9,	0,	0,	'1',	'0',	0,	48,	3,	30,	'admin_bbxx',	'2023-07-16 20:30:59',	NULL,	NULL,	NULL),
+    ('1680555625727340548',	'2142009669',	'2022-10-05',	25,	61,	61,	61,	15,	5,	10,	15,	26,	9,	0,	0,	'1',	'0',	0,	48,	3,	30,	'admin_bbxx',	'2023-07-16 20:30:59',	NULL,	NULL,	NULL),
+    ('1680555625727340549',	'2142009669',	'2023-05-23',	25,	61,	61,	61,	15,	5,	10,	15,	26,	9,	0,	0,	'1',	'0',	0,	48,	3,	30,	'admin_bbxx',	'2023-07-16 20:30:59',	NULL,	NULL,	NULL),
+    ('1680555625727340550',	'2142009669',	'2023-07-16',	25,	61,	61,	61,	15,	5,	10,	15,	26,	9,	0,	0,	'1',	'0',	0,	48,	3,	30,	'admin_bbxx',	'2023-07-16 20:30:59',	NULL,	NULL,	NULL),
+    ('1680576743020404732',	'3142007024',	'2022-05-16',	18,	54,	54,	0,	92,	0,	90,	0,	21,	21,	21,	0,	'1',	'1',	5,	48,	4,	30,	'admin_bbzx',	'2023-07-16 21:54:54',	NULL,	NULL,	NULL),
+    ('1680576743020404733',	'3142007024',	'2022-09-25',	19,	54,	54,	0,	92,	0,	90,	0,	21,	21,	21,	0,	'1',	'1',	5,	48,	4,	30,	'admin_bbzx',	'2023-07-16 21:54:54',	NULL,	NULL,	NULL),
+    ('1680576743020404736',	'3142007024',	'2023-04-12',	20,	54,	54,	0,	92,	0,	90,	0,	21,	21,	21,	0,	'1',	'1',	5,	48,	4,	30,	'admin_bbzx',	'2023-07-16 21:54:54',	NULL,	NULL,	NULL),
+    ('1680576743020404738',	'3142007024',	'2023-07-16',	21,	54,	54,	0,	92,	0,	90,	0,	21,	21,	21,	0,	'1',	'1',	5,	48,	4,	30,	'admin_bbzx',	'2023-07-16 21:54:54',	NULL,	NULL,	NULL),
+    ('1680579141503787001',	'2142004708',	'2022-02-27',	1,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
+    ('1680579141503787003',	'2142004708',	'2022-03-05',	2,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
+    ('1680579141503787006',	'2142004708',	'2022-11-08',	3,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
+    ('1680579141503787007',	'2142004708',	'2023-03-26',	4,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
+    ('1680579141503787008',	'2142004708',	'2023-06-07',	5,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
+    ('1680579141503787010',	'2142004708',	'2023-07-16',	6,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL);
+
 
 -- ----------------------------
 -- Table structure for edu_primary_equipment_req_template

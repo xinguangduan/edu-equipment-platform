@@ -110,4 +110,73 @@
         </if>
     </select>
 
+    <!-- 获取学生人数统计 -->
+    <select id="getStudentNumberInfo" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select chart_group, concat(year, half) as type, sum(student_count) as value
+            from
+            ( edu_informatization_basic_info_1 a
+            join
+            ( select
+            identification_code,
+            date_format(fill_date, '%Y') as year,
+            if(date_format(fill_date, '%m') >= 7, '下半年', '上半年') as half,
+            max(fill_date) maxdate
+            from edu_informatization_basic_info_1
+            where fill_date &gt;= #{dayStart} and fill_date &lt; #{dayEnd}
+            group by identification_code, year, half ) b
+            join
+            ( select
+            identification_code,
+            chart_group
+            from organization_definition ) c
+            on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+            and a.identification_code = c.identification_code )
+            group by chart_group, year, half
+        </if>
+        <if test="dbType == 'h2'">
+            select chart_group, concat(year, half) as type, sum(student_count) as value
+            from
+            ( edu_informatization_basic_info_1 a
+            join
+            ( select
+            identification_code,
+            to_char(fill_date, 'yyyy') as year,
+            case when to_char(fill_date, 'MM') >= 7 then '下半年' else '上半年' end as half,
+            max(fill_date) maxdate
+            from edu_informatization_basic_info_1
+            where fill_date &gt;= #{dayStart} and fill_date &lt; #{dayEnd}
+            group by identification_code, year, half ) b
+            join
+            ( select
+            identification_code,
+            chart_group
+            from organization_definition ) c
+            on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+            and a.identification_code = c.identification_code )
+            group by chart_group, year, half
+        </if>
+    </select>
+
+    <!-- 获取中心机房建设情况 -->
+    <select id="getCentralRoomInfo" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select name, sum(num) value
+            from
+              ( select identification_code, fill_date, '已建中心机房' name, 1 num
+                from edu_informatization_basic_info_1
+                where has_a_central_server_room = 1
+                union
+                select identification_code, fill_date, '未建中心机房' name, 1 num
+                from edu_informatization_basic_info_1
+                where has_a_central_server_room = 0 ) a
+              join
+              ( select identification_code, max(fill_date) maxdate
+                from edu_informatization_basic_info_1
+                group by identification_code ) b
+              on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+            group by name
+        </if>
+    </select>
+
 </mapper>

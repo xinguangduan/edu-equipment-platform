@@ -2,4 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.eemp.modules.edu.statistics.mapper.SchoolLibraryBasicInfo_4Mapper">
 
+    <!-- 获取图书室统计 -->
+    <select id="getLibraryInfo" resultType="java.util.HashMap">
+    <if test="dbType == 'mysql'">
+        select name, concat(year, half) as type, sum(place_area) as value
+        from (
+          ( select identification_code, fill_date, '藏书室' as name, library_area as place_area
+            from school_library_basic_info_4
+            union
+            select identification_code, fill_date, '阅览室' as name, reading_room_area as place_area
+            from school_library_basic_info_4
+            union
+            select identification_code, fill_date, '特色场所' as name,
+              (first_featured_place_area + second_featured_place_area) as place_area
+            from school_library_basic_info_4 ) a
+          join
+          ( select identification_code, date_format(fill_date, '%Y') as year,
+              if(date_format(fill_date, '%m') >= 7, '下半年', '上半年') as half,
+              max(fill_date) maxdate
+            from school_library_basic_info_4
+            where fill_date &gt;= #{dayStart} and fill_date &lt; #{dayEnd}
+            group by identification_code, year, half ) b
+          on a.identification_code = b.identification_code and a.fill_date = b.maxdate )
+        group by name, year, half
+    </if>
+    </select>
+
 </mapper>

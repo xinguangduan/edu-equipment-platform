@@ -1,6 +1,8 @@
 package org.eemp.modules.edu.statistics.controller;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +19,7 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.edu.statistics.entity.SchoolLabBasicInfo_3;
 import org.eemp.modules.edu.statistics.service.ISchoolLabBasicInfo_3Service;
 import org.springframework.web.bind.annotation.*;
@@ -159,5 +162,13 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, SchoolLabBasicInfo_3.class);
     }
+
+	@GetMapping("scienceRoomInfo")
+	public Result<List<Map<String,Object>>> scienceRoomInfo() {
+		Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		List<Map<String,Object>> list = schoolLabBasicInfo_3Service.getScienceRoomInfo();
+		result.setResult(oConvertUtils.toLowerCasePageList(list));
+		return result;
+	}
 
 }
