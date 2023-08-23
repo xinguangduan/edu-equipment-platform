@@ -87,6 +87,7 @@
   import { getClassInfo, getTeacherInfo, getStudentInfo } from '../api.ts';
   import { getTeacherComputerInfo, getStudentComputerInfo } from '../api.ts';
   import { getClassCommunicationInfo } from '../api.ts';
+  import { getCentralRoomInfo } from '../api.ts';
   import { getLibraryInfo } from '../api.ts';
 
   const loading = ref(true);
@@ -168,9 +169,20 @@
 
   initClassCommunicationInfo();
 
-  const centralRoomInfo = []
-  centralRoomInfo.push({ value: 60, name: '已建中心机房' });
-  centralRoomInfo.push({ value: 18, name: '未建中心机房' });
+  const centralRoomInfo = ref([])
+
+  function initCentralRoomInfo() {
+    getCentralRoomInfo(null).then((res) => {
+      if (res.success) {
+        centralRoomInfo.value = [];
+        res.result.forEach((item) => {
+          centralRoomInfo.value.push({ name: item.name, value: item.value });
+        });
+      }
+    });
+  }
+
+  initCentralRoomInfo();
 
   const scienceRoomInfo = []
   scienceRoomInfo.push({ value: 3, name: '0间' });

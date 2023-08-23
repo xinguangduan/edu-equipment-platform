@@ -16,4 +16,5 @@ public interface IEduInformatizationBasicInfo_1Service extends IService<EduInfor
 
     List<Map<String,Object>> getTeacherNumberInfo(Date dayStart, Date dayEnd);
     List<Map<String,Object>> getStudentNumberInfo(Date dayStart, Date dayEnd);
+    List<Map<String,Object>> getCentralRoomInfo();
 }

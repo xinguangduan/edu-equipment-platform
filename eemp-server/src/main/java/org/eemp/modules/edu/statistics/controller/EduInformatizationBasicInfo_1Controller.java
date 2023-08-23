@@ -195,4 +195,12 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
 		 return result;
 	 }
 
+	@GetMapping("centralRoomInfo")
+	public Result<List<Map<String,Object>>> centralRoomInfo() {
+		Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		List<Map<String,Object>> list = eduInformatizationBasicInfo_1Service.getCentralRoomInfo();
+		result.setResult(oConvertUtils.toLowerCasePageList(list));
+		return result;
+	}
+
 }

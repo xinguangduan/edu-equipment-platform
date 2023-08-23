@@ -158,4 +158,25 @@
         </if>
     </select>
 
+    <!-- 获取中心机房建设情况 -->
+    <select id="getCentralRoomInfo" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select name, sum(num) value
+            from
+              ( select identification_code, fill_date, '已建中心机房' name, 1 num
+                from edu_informatization_basic_info_1
+                where has_a_central_server_room = 1
+                union
+                select identification_code, fill_date, '未建中心机房' name, 1 num
+                from edu_informatization_basic_info_1
+                where has_a_central_server_room = 0 ) a
+              join
+              ( select identification_code, max(fill_date) maxdate
+                from edu_informatization_basic_info_1
+                group by identification_code ) b
+              on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+            group by name
+        </if>
+    </select>
+
 </mapper>
