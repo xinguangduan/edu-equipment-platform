@@ -27,4 +27,23 @@
         </if>
     </select>
 
+    <!-- 获取初中实验室情况 -->
+    <select id="getLaboratoryRoomInfo" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select name, sum(num) value
+            from
+              ( select identification_code, fill_date, '物理' name, physics_lab_room_num num
+                from school_lab_basic_info_3
+                union
+                select identification_code, fill_date, '化学（生化）' name, biochemistry_lab_room_num num
+                from school_lab_basic_info_3 ) a
+              join
+              ( select identification_code, max(fill_date) maxdate
+                from school_lab_basic_info_3
+                group by identification_code ) b
+              on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+            group by name
+        </if>
+    </select>
+
 </mapper>

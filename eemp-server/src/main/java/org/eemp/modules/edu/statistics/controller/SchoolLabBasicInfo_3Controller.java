@@ -171,4 +171,12 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
 		return result;
 	}
 
+	@GetMapping("laboratoryRoomInfo")
+	public Result<List<Map<String,Object>>> laboratoryRoomInfo() {
+		Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
+		List<Map<String,Object>> list = schoolLabBasicInfo_3Service.getLaboratoryRoomInfo();
+		result.setResult(oConvertUtils.toLowerCasePageList(list));
+		return result;
+	}
+
 }

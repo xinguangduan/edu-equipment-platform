@@ -16,4 +16,6 @@ public interface SchoolLabBasicInfo_3Mapper extends BaseMapper<SchoolLabBasicInf
 
     List<Map<String,Object>> getScienceRoomInfo(@Param("dbType") String dbType);
 
+    List<Map<String,Object>> getLaboratoryRoomInfo(@Param("dbType") String dbType);
+
 }
