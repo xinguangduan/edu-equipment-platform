@@ -1,10 +1,7 @@
 package org.eemp.modules.edu.primaryartequipment.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-import org.eemp.modules.edu.primaryartequipment.entity.EduPrimaryArtEquipment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.eemp.modules.edu.primaryartequipment.entity.EduPrimaryArtEquipment;
 
 /**
  * @Description: 小学美术教学器材配备标准

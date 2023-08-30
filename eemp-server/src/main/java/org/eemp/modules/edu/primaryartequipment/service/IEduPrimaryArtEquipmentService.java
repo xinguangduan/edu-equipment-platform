@@ -1,7 +1,7 @@
 package org.eemp.modules.edu.primaryartequipment.service;
 
-import org.eemp.modules.edu.primaryartequipment.entity.EduPrimaryArtEquipment;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.eemp.modules.edu.primaryartequipment.entity.EduPrimaryArtEquipment;
 
 /**
  * @Description: 小学美术教学器材配备标准

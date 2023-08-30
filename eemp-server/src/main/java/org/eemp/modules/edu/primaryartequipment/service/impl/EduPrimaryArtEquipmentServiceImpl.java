@@ -1,11 +1,10 @@
 package org.eemp.modules.edu.primaryartequipment.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.eemp.modules.edu.primaryartequipment.entity.EduPrimaryArtEquipment;
 import org.eemp.modules.edu.primaryartequipment.mapper.EduPrimaryArtEquipmentMapper;
 import org.eemp.modules.edu.primaryartequipment.service.IEduPrimaryArtEquipmentService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
  * @Description: 小学美术教学器材配备标准
