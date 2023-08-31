@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.jeecg.modules.demo.org.eemp.modules.edu.foudation.mapper.OrganizationDefinitionMapper">
+<mapper namespace="org.eemp.modules.edu.foudation.mapper.OrganizationDefinitionMapper">
+
+    <!-- 查找 excel 导入的新数据 -->
+    <select id="getImportedExcelRecords" resultType="org.eemp.modules.edu.foudation.entity.OrganizationDefinition">
+        <if test="dbType == 'mysql'">
+            select *
+            from organization_definition
+            where role_code is null
+                and initial_password is null
+                and admin_generation_success is null
+                and failure_reason is null
+        </if>
+    </select>
 
 </mapper>
