@@ -4191,4 +4191,98 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
     ('1694592660549046273',	'1666258199700963330',	'1592114772665790465',	NULL,	'2023-08-24 14:09:09',	'127.0.0.1');
 
 
+-- ----------------------------
+-- Table structure for edu_equipment_req_template
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_equipment_req_template`;
+CREATE TABLE `edu_equipment_req_template` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `file_date` date DEFAULT NULL COMMENT '文件日期',
+  `file_name` varchar(256) COLLATE utf8mb4_general_ci NOT NULL COMMENT '文件名字',
+  `file_size` int DEFAULT NULL COMMENT '文件大小',
+  `file_data` longblob NOT NULL COMMENT '文件数据',
+  `remark` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- 注意：该页面对应的前台目录为views/eduequipmentreqtemplate文件夹下
+-- 如果你想更改到其他目录，请修改sql中component字段对应的值
+
+
+INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
+VALUES ('2023082908316370490', NULL, '教学器材配备标准模板', '/edu/eduequipmentreqtemplate/eduEquipmentReqTemplateList', '/edu/eduequipmentreqtemplate/EduEquipmentReqTemplateList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-08-29 08:31:49', NULL, NULL, 0);
+
+-- 权限控制sql
+-- 新增
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082908316370491', '2023082908316370490', '添加教学器材配备标准模板', NULL, NULL, 0, NULL, NULL, 2, 'eduequipmentreqtemplate:edu_equipment_req_template:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-29 08:31:49', NULL, NULL, 0, 0, '1', 0);
+-- 编辑
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082908316370492', '2023082908316370490', '编辑教学器材配备标准模板', NULL, NULL, 0, NULL, NULL, 2, 'eduequipmentreqtemplate:edu_equipment_req_template:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-29 08:31:49', NULL, NULL, 0, 0, '1', 0);
+-- 删除
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082908316370493', '2023082908316370490', '删除教学器材配备标准模板', NULL, NULL, 0, NULL, NULL, 2, 'eduequipmentreqtemplate:edu_equipment_req_template:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-29 08:31:49', NULL, NULL, 0, 0, '1', 0);
+-- 批量删除
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082908316370494', '2023082908316370490', '批量删除教学器材配备标准模板', NULL, NULL, 0, NULL, NULL, 2, 'eduequipmentreqtemplate:edu_equipment_req_template:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-29 08:31:49', NULL, NULL, 0, 0, '1', 0);
+-- 导出excel
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082908316370495', '2023082908316370490', '导出excel_教学器材配备标准模板', NULL, NULL, 0, NULL, NULL, 2, 'eduequipmentreqtemplate:edu_equipment_req_template:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-29 08:31:49', NULL, NULL, 0, 0, '1', 0);
+-- 导入excel
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082908316370496', '2023082908316370490', '导入excel_教学器材配备标准模板', NULL, NULL, 0, NULL, NULL, 2, 'eduequipmentreqtemplate:edu_equipment_req_template:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-29 08:31:49', NULL, NULL, 0, 0, '1', 0);
+
+-- ----------------------------
+-- Table structure for edu_primary_art_equipment
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_primary_art_equipment`;
+CREATE TABLE `edu_primary_art_equipment` (
+  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `school` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '学校',
+  `file_date` date DEFAULT NULL COMMENT '文件日期',
+  `file_name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文件名字',
+  `file_size` int DEFAULT NULL COMMENT '文件大小',
+  `file_data` longblob NOT NULL COMMENT '文件数据',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  `sys_org_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- 注意：该页面对应的前台目录为views/primaryartequipment文件夹下
+-- 如果你想更改到其他目录，请修改sql中component字段对应的值
+
+
+INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external)
+VALUES ('2023082703451490310', NULL, '小学美术教学器材配备标准', '/edu/primaryartequipment/eduPrimaryArtEquipmentList', '/edu/primaryartequipment/EduPrimaryArtEquipmentList', NULL, NULL, 0, NULL, '1', 0.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-08-27 15:45:31', NULL, NULL, 0);
+
+-- 权限控制sql
+-- 新增
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082703451490311', '2023082703451490310', '添加小学美术教学器材配备标准', NULL, NULL, 0, NULL, NULL, 2, 'primaryartequipment:edu_primary_art_equipment:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-27 15:45:31', NULL, NULL, 0, 0, '1', 0);
+-- 编辑
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082703451490312', '2023082703451490310', '编辑小学美术教学器材配备标准', NULL, NULL, 0, NULL, NULL, 2, 'primaryartequipment:edu_primary_art_equipment:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-27 15:45:31', NULL, NULL, 0, 0, '1', 0);
+-- 删除
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082703451490313', '2023082703451490310', '删除小学美术教学器材配备标准', NULL, NULL, 0, NULL, NULL, 2, 'primaryartequipment:edu_primary_art_equipment:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-27 15:45:31', NULL, NULL, 0, 0, '1', 0);
+-- 批量删除
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082703451490314', '2023082703451490310', '批量删除小学美术教学器材配备标准', NULL, NULL, 0, NULL, NULL, 2, 'primaryartequipment:edu_primary_art_equipment:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-27 15:45:31', NULL, NULL, 0, 0, '1', 0);
+-- 导出excel
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082703451490315', '2023082703451490310', '导出excel_小学美术教学器材配备标准', NULL, NULL, 0, NULL, NULL, 2, 'primaryartequipment:edu_primary_art_equipment:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-27 15:45:31', NULL, NULL, 0, 0, '1', 0);
+-- 导入excel
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
+VALUES ('2023082703451490316', '2023082703451490310', '导入excel_小学美术教学器材配备标准', NULL, NULL, 0, NULL, NULL, 2, 'primaryartequipment:edu_primary_art_equipment:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-27 15:45:31', NULL, NULL, 0, 0, '1', 0);
+
+
 SET FOREIGN_KEY_CHECKS = 1;

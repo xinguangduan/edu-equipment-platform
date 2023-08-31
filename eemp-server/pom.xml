@@ -22,11 +22,11 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
         <!--加载hutool-->
-<!--        <dependency>-->
-<!--            <groupId>cn.hutool</groupId>-->
-<!--            <artifactId>hutool-all</artifactId>-->
-<!--            <version>5.3.6</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>cn.hutool</groupId>-->
+        <!--            <artifactId>hutool-all</artifactId>-->
+        <!--            <version>5.3.6</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
@@ -214,19 +214,6 @@
             <artifactId>codegenerate</artifactId>
             <version>${codegenerate.version}</version>
         </dependency>
-
-        <!-- AutoPoi Excel工具类-->
-<!--        <dependency>-->
-<!--            <groupId>org.jeecgframework</groupId>-->
-<!--            <artifactId>autopoi-web</artifactId>-->
-<!--            <version>${autopoi-web.version}</version>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>commons-codec</groupId>-->
-<!--                    <artifactId>commons-codec</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
-<!--        </dependency>-->
 
         <!-- mini文件存储服务 -->
         <dependency>
