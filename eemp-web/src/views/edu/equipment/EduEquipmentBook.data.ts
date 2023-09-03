@@ -5,9 +5,9 @@ import { render } from '/@/utils/common/renderUtils';
 //列表数据
 export const columns: BasicColumn[] = [
    {
-    title: '学校类型',
+    title: '学校名称',
     align:"center",
-    dataIndex: 'schoolType_dictText'
+    dataIndex: 'identificationCode_dictText'
    },
    {
     title: '学科',
@@ -23,56 +23,51 @@ export const columns: BasicColumn[] = [
     },
    },
    {
-    title: '模板文件',
+    title: '登记册文件',
     align:"center",
-    dataIndex: 'templateFile',
+    dataIndex: 'bookFile',
     slots: { customRender: 'fileSlot' },
-   },
-   {
-    title: '文件大小',
-    align:"center",
-    dataIndex: 'fileSize'
    },
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
 	{
-    label: "学校类型",
-    field: 'schoolType',
-    component: 'JDictSelectTag',
-    componentProps:{
-        dictCode:"school_type_for_template"
-    },
-    colProps: {span: 6},
-  },
-  {
-    label: "学科",
-    field: 'subject',
-    component: 'JDictSelectTag',
-    componentProps:{
-        dictCode:"subject_for_template"
-    },
-    colProps: {span: 6},
-  },
-  {
-    label: "生效日期",
-    field: 'effictiveDate',
-    component: 'DatePicker',
-    colProps: {span: 6},
-  },
+      label: "学校名称",
+      field: 'identificationCode',
+      component: 'JDictSelectTag',
+      componentProps:{
+          dictCode:"organization_definition,institution_name,identification_code"
+      },
+      colProps: {span: 6},
+ 	},
+	{
+      label: "学科",
+      field: 'subject',
+      component: 'JDictSelectTag',
+      componentProps:{
+          dictCode:"subject_for_template"
+      },
+      colProps: {span: 6},
+ 	},
+	{
+      label: "生效日期",
+      field: 'effictiveDate',
+      component: 'DatePicker',
+      colProps: {span: 6},
+ 	},
 ];
 //表单数据
 export const formSchema: FormSchema[] = [
   {
-    label: '学校类型',
-    field: 'schoolType',
+    label: '学校名称',
+    field: 'identificationCode',
     component: 'JDictSelectTag',
     componentProps:{
-        dictCode:"school_type_for_template"
+        dictCode:"organization_definition,institution_name,identification_code"
      },
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入学校类型!'},
+                 { required: true, message: '请输入学校名称!'},
           ];
      },
   },
@@ -100,27 +95,16 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
-    label: '模板文件',
-    field: 'templateFile',
+    label: '登记册文件',
+    field: 'bookFile',
     component: 'JUpload',
     componentProps:{
      },
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入模板文件!'},
+                 { required: true, message: '请输入登记册文件!'},
           ];
      },
-  },
-  {
-    label: '文件大小',
-    field: 'fileSize',
-    component: 'InputNumber',
-    dynamicRules: ({model,schema}) => {
-          return [
-                 { required: true, message: '请输入文件大小!'},
-          ];
-     },
-    // dynamicDisabled:true
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{

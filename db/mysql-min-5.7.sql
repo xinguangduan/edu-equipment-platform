@@ -4303,9 +4303,9 @@ DROP TABLE IF EXISTS `edu_equipment_basis_template`;
 CREATE TABLE `edu_equipment_basis_template` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
   `school_type` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学校类型',
-  `subject` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学科',
+  `subject` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学科',
   `effictive_date` date NOT NULL COMMENT '生效日期',
-  `template_file` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT '模板文件',
+  `template_file` varchar(600) COLLATE utf8mb4_general_ci NOT NULL COMMENT '模板文件',
   `file_size` int NOT NULL COMMENT '文件大小',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
@@ -4315,8 +4315,27 @@ CREATE TABLE `edu_equipment_basis_template` (
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
+-- --------------------------------------------------------------
+-- Table structure for edu_equipment_book
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `edu_equipment_book`;
+CREATE TABLE `edu_equipment_book` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学校名称',
+  `subject` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学科',
+  `effictive_date` date NOT NULL COMMENT '生效日期',
+  `book_file` varchar(600) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记册文件',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
-    ('2023090208549650210', '1666280628326367234', '教学装备配置标准模板', '/edu/foudation/eduEquipmentBasisTemplateList', 'edu/foudation/EduEquipmentBasisTemplateList', NULL, NULL, 1, NULL, '1', 2.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0);
+    ('2023090208549650210', '1666280628326367234', '教学装备配置标准模板', '/edu/foudation/eduEquipmentBasisTemplateList', 'edu/foudation/EduEquipmentBasisTemplateList', NULL, NULL, 1, NULL, '1', 2.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0),
+    ('2023090304278950330', '1666282632293515265', '教学装备登记表', '/edu/equipment/eduEquipmentBookList', 'edu/equipment/EduEquipmentBookList', NULL, NULL, 1, NULL, '1', 1.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
     ('2023090208549650211', '2023090208549650210', '添加教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
@@ -4324,6 +4343,12 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
     ('2023090208549650213', '2023090208549650210', '删除教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
     ('2023090208549650214', '2023090208549650210', '批量删除教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
     ('2023090208549650215', '2023090208549650210', '导出excel_教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
-    ('2023090208549650216', '2023090208549650210', '导入excel_教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0);
+    ('2023090208549650216', '2023090208549650210', '导入excel_教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
+    ('2023090304278950331', '2023090304278950330', '添加教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0),
+    ('2023090304278950332', '2023090304278950330', '编辑教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0),
+    ('2023090304278950333', '2023090304278950330', '删除教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0),
+    ('2023090304278950334', '2023090304278950330', '批量删除教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0),
+    ('2023090304278950335', '2023090304278950330', '导出excel_教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0),
+    ('2023090304278950336', '2023090304278950330', '导入excel_教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
