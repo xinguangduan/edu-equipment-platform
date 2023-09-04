@@ -50,7 +50,6 @@ public class OrganizationDefinition implements Serializable {
     @ApiModelProperty(value = "机构类型")
     private java.lang.String institutionType;
     /**图表分组*/
-    @Excel(name = "图表分组", width = 15)
     @ApiModelProperty(value = "图表分组")
     private java.lang.String chartGroup;
 	/**账户名称*/

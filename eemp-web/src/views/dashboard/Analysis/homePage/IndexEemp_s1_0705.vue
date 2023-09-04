@@ -64,7 +64,7 @@
         <a-card :loading="loading" :bordered="false" title="教育装备" :style="{ marginTop: '24px' }">
           <div class="md:flex enter-y">
             <EduScience :chartData="scienceRoomInfo" class="md:w-1/3 w-full" :loading="loading" />
-            <EduLaboiratory :chartData="laboiratoryRoomInfo" class="md:w-1/3 !md:mx-4 !md:my-0 !my-4 w-full" :loading="loading" />
+            <EduLaboiratory :chartData="laboratoryRoomInfo" class="md:w-1/3 !md:mx-4 !md:my-0 !my-4 w-full" :loading="loading" />
             <BarMulti
                 :chartData="libraryInfo"
                 :option="{ title: { text: '图书室统计', textStyle: { fontWeight: 'lighter' } } }"
@@ -87,7 +87,7 @@
   import { getClassInfo, getTeacherInfo, getStudentInfo } from '../api.ts';
   import { getTeacherComputerInfo, getStudentComputerInfo } from '../api.ts';
   import { getClassCommunicationInfo } from '../api.ts';
-  import { getCentralRoomInfo, getScienceRoomInfo } from '../api.ts';
+  import { getCentralRoomInfo, getScienceRoomInfo, getLaboratoryRoomInfo } from '../api.ts';
   import { getLibraryInfo } from '../api.ts';
 
   const loading = ref(true);
@@ -199,10 +199,20 @@
 
   initScienceRoomInfo();
 
-  const laboiratoryRoomInfo = []
-  laboiratoryRoomInfo.push({ value: 261, name: '物理' });
-  laboiratoryRoomInfo.push({ value: 390, name: '化学' });
-  laboiratoryRoomInfo.push({ value: 138, name: '生物' });
+  const laboratoryRoomInfo = ref([])
+
+  function initLaboratoryRoomInfo() {
+    getLaboratoryRoomInfo(null).then((res) => {
+      if (res.success) {
+        laboratoryRoomInfo.value = [];
+        res.result.forEach((item) => {
+          laboratoryRoomInfo.value.push({ name: item.name, value: item.value });
+        });
+      }
+    });
+  }
+
+  initLaboratoryRoomInfo();
 
   const libraryInfo = ref([])
 

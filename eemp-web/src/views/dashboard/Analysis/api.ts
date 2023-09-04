@@ -15,6 +15,7 @@ enum Api {
 
   centralRoomInfo = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/centralRoomInfo',
   scienceRoomInfo = '/org.eemp.modules.edu.statistics/schoolLabBasicInfo_3/scienceRoomInfo',
+  laboratoryRoomInfo = '/org.eemp.modules.edu.statistics/schoolLabBasicInfo_3/laboratoryRoomInfo',
 
   libraryInfo = '/org.eemp.modules.edu.statistics/schoolLibraryBasicInfo_4/libraryInfo'
 }
@@ -44,5 +45,7 @@ export const getClassCommunicationInfo = (params) => defHttp.get({ url: Api.clas
 export const getCentralRoomInfo = (params) => defHttp.get({ url: Api.centralRoomInfo, params }, { isTransformResponse: false });
 
 export const getScienceRoomInfo = (params) => defHttp.get({ url: Api.scienceRoomInfo, params }, { isTransformResponse: false });
+
+export const getLaboratoryRoomInfo = (params) => defHttp.get({ url: Api.laboratoryRoomInfo, params }, { isTransformResponse: false });
 
 export const getLibraryInfo = (params) => defHttp.get({ url: Api.libraryInfo, params }, { isTransformResponse: false });

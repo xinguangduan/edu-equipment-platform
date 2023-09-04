@@ -2,6 +2,7 @@ package org.eemp.modules.edu.foudation.controller;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,11 +15,13 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.eemp.common.api.CommonAPI;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.common.system.vo.DictModel;
 import org.eemp.common.util.PasswordUtil;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.base.service.BaseCommonService;
@@ -43,6 +46,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 	private final IOrganizationDefinitionService organizationDefinitionService;
 	private final ISysUserService sysUserService;
 	private final BaseCommonService baseCommonService;
+	private final CommonAPI commonAPI;
 	
 	/**
 	 * 分页列表查询
@@ -234,7 +238,95 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
     @RequiresPermissions("edu.foudation:organization_definition:importExcel")
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
-        return super.importExcel(request, response, OrganizationDefinition.class);
+		Result<?> result = super.importExcel(request, response, OrganizationDefinition.class);
+		if (!result.isSuccess())
+			return result;
+
+		List<DictModel> institutionTypes = commonAPI.queryDictItemsByCode("institution_type");
+		List<DictModel> townshipList = commonAPI.queryDictItemsByCode("township_list");
+
+		for (OrganizationDefinition rec: organizationDefinitionService.getImportedExcelRecords()) {
+			if (institutionTypes.stream().noneMatch(it -> ((DictModel)it).getValue().equals(rec.getInstitutionType()))) {
+				result.setMessage("机构类型非标准值");
+				result.setSuccess(false);
+				rec.setAdminGenerationSuccess("0");
+				rec.setFailureReason(result.getMessage());
+				organizationDefinitionService.updateById(rec);
+
+				continue;
+			}
+			if (townshipList.stream().noneMatch(ts -> ((DictModel)ts).getValue().equals(rec.getTownship()))) {
+				result.setMessage("乡镇非标准值");
+				result.setSuccess(false);
+				rec.setAdminGenerationSuccess("0");
+				rec.setFailureReason(result.getMessage());
+				organizationDefinitionService.updateById(rec);
+
+				continue;
+			}
+
+			String roleIds = null;
+			switch (rec.getInstitutionType()) {
+				case "11":	roleIds = "1666258199734517761";	break;			// nursery_school	幼儿园
+				case "12":														// primary_school	中心小学
+				case "13":	roleIds = "1666258199717740546";	break;			// primary_school	完全小学
+				case "14":	roleIds = "1666258199700963330";	break;			// junior_school	初中
+				case "15":	roleIds = "1666258199679991810";	break;			// senior_school	高中
+				default:
+					result.setMessage("机构类型非标准值");
+					result.setSuccess(false);
+					rec.setAdminGenerationSuccess("0");
+					rec.setFailureReason(result.getMessage());
+					organizationDefinitionService.updateById(rec);
+					return result;
+			}
+			rec.setRoleCode(roleIds);							// 保存转换的角色代码
+			String password = rec.getInitialPassword();			// 正常应该为 null
+			if(oConvertUtils.isEmpty(password)){
+				password = RandomUtil.randomString(8);
+				rec.setInitialPassword(password);				// 保存生成的密码
+			}
+			switch (rec.getInstitutionType()) {
+				case "11":												// nursery_school	幼儿园
+				case "15":	rec.setChartGroup("高职特幼");	break;		// senior_school	高中
+				case "12":	rec.setChartGroup("中心小学");	break;		// primary_school	中心小学
+				case "13":	rec.setChartGroup("完全小学");	break;		// primary_school	完全小学
+				case "14":	rec.setChartGroup("初中");		break;		// junior_school	初中
+			}
+
+			try {
+				SysUser user = new SysUser();
+				user.setUsername(rec.getAdminCode());
+				user.setRealname(rec.getInstitutionName());		// 设置学校名词
+				user.setCreateTime(new Date());										// 设置创建时间
+				String salt = oConvertUtils.randomGen(8);
+				user.setSalt(salt);
+				String passwordEncode = PasswordUtil.encrypt(rec.getAdminCode(), password, salt);
+				user.setPassword(passwordEncode);
+				user.setStatus(1);
+				user.setDelFlag(CommonConstant.DEL_FLAG_0);							// 未删除
+				user.setOrgCode(null);
+				user.setTelephone(rec.getIdentificationCode());	// 借用保存学校用户对应的机构代码
+				// 保存用户走一个service 保证事务
+				//获取租户ids
+//				String relTenantIds = jsonObject.getString("relTenantIds");
+//				sysUserService.saveUser(user, selectedRoles, selectedDeparts, relTenantIds);
+				sysUserService.saveUser(user, roleIds, null, null);
+				baseCommonService.addLog("添加用户，username： " +user.getUsername() ,CommonConstant.LOG_TYPE_2, 2);
+				rec.setAdminGenerationSuccess("1");
+				result.success("添加成功！");
+			} catch (Exception e) {
+				log.error(e.getMessage(), e);
+				rec.setAdminGenerationSuccess("0");
+				rec.setInitialPassword("");
+				rec.setFailureReason(e.getMessage().substring(0,28));
+				result.error500("操作失败");
+			}
+
+			organizationDefinitionService.updateById(rec);
+		}
+
+		return result;
     }
 
 }

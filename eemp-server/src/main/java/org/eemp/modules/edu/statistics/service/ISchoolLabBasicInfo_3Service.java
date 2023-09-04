@@ -15,4 +15,6 @@ public interface ISchoolLabBasicInfo_3Service extends IService<SchoolLabBasicInf
 
     List<Map<String,Object>> getScienceRoomInfo();
 
+    List<Map<String,Object>> getLaboratoryRoomInfo();
+
 }

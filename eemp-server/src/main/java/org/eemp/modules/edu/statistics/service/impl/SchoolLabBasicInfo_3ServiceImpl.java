@@ -28,4 +28,10 @@ public class SchoolLabBasicInfo_3ServiceImpl extends ServiceImpl<SchoolLabBasicI
         DbType dbType = CommonUtils.getDatabaseTypeEnum();
         return mapper.getScienceRoomInfo(dbType.getDb());
     }
+
+    @Override
+    public List<Map<String,Object>> getLaboratoryRoomInfo() {
+        DbType dbType = CommonUtils.getDatabaseTypeEnum();
+        return mapper.getLaboratoryRoomInfo(dbType.getDb());
+    }
 }
