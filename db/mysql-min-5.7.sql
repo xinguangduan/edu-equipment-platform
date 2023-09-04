@@ -4073,8 +4073,11 @@ INSERT INTO `sys_user` (`id`, `username`, `realname`, `password`, `salt`, `avata
      ('1698318665734311938',	'zbb',	'装备办',	'0cbe6591736e769b',	'Rmj2pEc8',	NULL,	NULL,	NULL,	'392@29.co',	'15321232121',	NULL,	1,	0,	NULL,	NULL,	1,	'121345',	NULL,	NULL,	'admin',	'2023-09-03 20:54:58',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL);
 INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
      ('1698530433756774401',	'1698318183380963329',	'1666258199763877889',	0),             -- 电教办 => 装备中心 – 统计分析
-     ('1698530433769357314',	'1698318183380963329',	'1666258199747100674',	0),             -- 电教办 => 装备中心 – 信息化数据检核
-     ('1698531839532285953',	'1698318665734311938',	'1698527018892869633',	0);             -- 装备办 => 装备中心 - 登记册备案检查
+     ('1698530433769357314',	'1698318183380963329',	'1666258199747100674',	0),             --       => 装备中心 – 信息化数据检核
+     ('1698531839532285953',	'1698318665734311938',	'1698527018892869633',	0),             -- 装备办 => 装备中心 - 登记册备案检查
+     ('1698821151595401218',	'1698318665734311938',	'1666258199763877889',	0),             --       => 装备中心 – 统计分析
+     ('1698832307147980802',	'1666324152950325249',	'1666258199780655106',	0),             -- 管理员 => 装备中心 - 登记册备案检查
+     ('1698832307164758018',	'1666324152950325249',	'1666258199763877889',	0);             --       => 装备中心 – 统计分析
 
 -- 借助机构定义生成账户
 INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, `institution_name`, `institution_type`, `chart_group`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
@@ -4269,7 +4272,7 @@ CREATE TABLE `edu_equipment_basis_template` (
   `subject` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学科',
   `effictive_date` date NOT NULL COMMENT '生效日期',
   `template_file` varchar(600) COLLATE utf8mb4_general_ci NOT NULL COMMENT '模板文件',
-  `file_size` int NOT NULL COMMENT '文件大小',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -4288,6 +4291,7 @@ CREATE TABLE `edu_equipment_book` (
   `subject` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学科',
   `effictive_date` date NOT NULL COMMENT '生效日期',
   `book_file` varchar(600) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记册文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',

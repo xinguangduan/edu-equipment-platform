@@ -29,9 +29,9 @@ export const columns: BasicColumn[] = [
     slots: { customRender: 'fileSlot' },
    },
    {
-    title: '文件大小',
+    title: '备注',
     align:"center",
-    dataIndex: 'fileSize'
+    dataIndex: 'memo'
    },
 ];
 //查询数据
@@ -112,15 +112,9 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
-    label: '文件大小',
-    field: 'fileSize',
-    component: 'InputNumber',
-    dynamicRules: ({model,schema}) => {
-          return [
-                 { required: true, message: '请输入文件大小!'},
-          ];
-     },
-    // dynamicDisabled:true
+    label: '备注',
+    field: 'memo',
+    component: 'InputTextArea',
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{

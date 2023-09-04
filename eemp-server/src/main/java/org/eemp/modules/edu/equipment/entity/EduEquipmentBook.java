@@ -51,6 +51,10 @@ public class EduEquipmentBook implements Serializable {
 	@Excel(name = "登记册文件", width = 15)
     @ApiModelProperty(value = "登记册文件")
     private java.lang.String bookFile;
+    /**备注*/
+    @Excel(name = "备注", width = 15)
+    @ApiModelProperty(value = "备注")
+    private java.lang.String memo;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private java.lang.String createBy;
