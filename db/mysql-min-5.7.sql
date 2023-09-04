@@ -1068,7 +1068,7 @@ INSERT INTO sys_permission (id,parent_id,name,url,component,is_route,component_n
 	 ('1214376304951664642','3f915b2769fc80648e92d04e84ca059d','用户编辑','','',0,NULL,NULL,2,'system:user:edit','1',1.0,0,NULL,1,0,0,0,NULL,'admin','2020-01-07 10:40:47','admin','2022-11-17 16:24:33',0,0,'1',0),
 	 ('1214462306546319362','3f915b2769fc80648e92d04e84ca059d','新增用户','','',0,NULL,NULL,2,'system:user:add','1',1.0,0,NULL,1,0,0,0,NULL,'admin','2020-01-07 16:22:32','admin','2022-11-17 16:24:47',0,0,'1',0),
 	 ('1280350452934307841','d7d6e2e4e2934f2c9385a623fd98c6f3','租户管理','/system/tenant','system/tenant/index',1,NULL,NULL,1,NULL,'1',3.1,0,'ant-design:appstore-twotone',0,0,0,0,NULL,'admin','2020-07-07 11:58:30','admin','2023-03-04 15:03:01',0,0,'1',0),
-	 ('1438108176273760258','','驾驶舱','/dashboard','layouts/default/index',1,NULL,'/dashboard/analysis',0,NULL,'1',1.0,0,'ion:grid-outline',0,0,0,0,NULL,'admin','2021-09-15 19:51:23','admin','2023-04-16 12:02:18',0,1,'1',0),
+	 ('1438108176273760258','','驾驶舱','/dashboard','layouts/default/index',1,NULL,'/dashboard/analysis',0,NULL,'1',0.0,0,'ion:grid-outline',0,0,0,0,NULL,'admin','2021-09-15 19:51:23','admin','2023-04-16 12:02:18',0,1,'1',0),
 	 ('1438108176814825473','1438108176273760258','工作台','/dashboard/workbench','dashboard/workbench/index',1,NULL,NULL,1,NULL,'1',1.0,0,'ant-design:appstore-twotone',1,0,0,NULL,NULL,'admin','2021-09-15 19:51:23','admin','2021-09-17 15:42:42',0,0,'1',0),
 	 ('1438469604861403137','d7d6e2e4e2934f2c9385a623fd98c6f3','职务管理','/system/position','system/position/index',1,NULL,NULL,1,NULL,'0',5.0,0,'ant-design:database-filled',1,0,0,NULL,NULL,'admin','2021-09-16 19:47:33','admin','2021-09-17 15:58:22',0,0,NULL,0),
 	 ('1438782530717495298','d7d6e2e4e2934f2c9385a623fd98c6f3','分类字典','/system/category','system/category/index',1,NULL,NULL,1,NULL,'0',9.0,0,'ant-design:group-outlined',1,0,0,NULL,NULL,'admin','2021-09-17 16:31:01',NULL,NULL,0,0,NULL,0);
@@ -1190,6 +1190,7 @@ INSERT INTO sys_permission (id,parent_id,name,url,component,is_route,component_n
 	 ('190c2b43bec6a5f7a4194a85db67d96a','d7d6e2e4e2934f2c9385a623fd98c6f3','角色管理','/system/role','system/role/index',1,NULL,NULL,1,NULL,NULL,2.0,0,'ant-design:solution',0,1,0,NULL,NULL,NULL,'2018-12-25 20:34:38','admin','2021-09-17 15:58:00',0,0,NULL,0),
 	 ('1a0811914300741f4e11838ff37a1d3a','3f915b2769fc80648e92d04e84ca059d','手机号禁用','','',0,NULL,NULL,2,'user:form:phone','2',1.0,0,NULL,1,NULL,0,NULL,NULL,'admin','2019-05-11 17:19:30','admin','2019-05-11 18:00:22',0,0,'1',NULL),
 	 ('1d592115213910765570','3f915b2769fc80648e92d04e84ca059d','通过ID查询用户拥有的角色',NULL,NULL,0,NULL,NULL,2,'system:user:queryUserRole','1',NULL,0,NULL,1,0,0,0,NULL,'admin','2022-11-14 19:20:22',NULL,NULL,0,0,'1',0),
+/* 暂时屏蔽 demo
 	 ('2023041607073870410','1647430912296435713','小学美术教学装备配置登记表','/edu/eduartequipment/eduArtEquipmentInfoList','edu/eduartequipment/EduArtEquipmentInfoList',1,NULL,NULL,1,NULL,'1',5.0,0,'ant-design:ant-cloud-outlined',0,0,0,0,NULL,'admin','2023-04-16 19:07:41','admin','2023-04-16 20:35:27',0,0,'1',0),
 	 ('2023041607073870411','2023041607073870410','添加小学美术教学装备配置登记表',NULL,NULL,0,NULL,NULL,2,'edu.eduartequipment:edu_art_equipment_info:add','1',NULL,0,NULL,1,0,0,0,NULL,'admin','2023-04-16 19:07:41',NULL,NULL,0,0,'1',0),
 	 ('2023041607073870412','2023041607073870410','编辑小学美术教学装备配置登记表',NULL,NULL,0,NULL,NULL,2,'edu.eduartequipment:edu_art_equipment_info:edit','1',NULL,0,NULL,1,0,0,0,NULL,'admin','2023-04-16 19:07:41',NULL,NULL,0,0,'1',0);
@@ -1267,6 +1268,7 @@ INSERT INTO sys_permission (id,parent_id,name,url,component,is_route,component_n
 	 ('2023041611346310024','2023041611346300020','批量删除小学教学仪器设备登记册',NULL,NULL,0,NULL,NULL,2,'edu.eduequipmentregister:edu_equipment_register_info:deleteBatch','1',NULL,0,NULL,1,0,0,0,NULL,'admin','2023-04-16 11:34:02',NULL,NULL,0,0,'1',0),
 	 ('2023041611346310025','2023041611346300020','导出excel_小学教学仪器设备登记册',NULL,NULL,0,NULL,NULL,2,'edu.eduequipmentregister:edu_equipment_register_info:exportXls','1',NULL,0,NULL,1,0,0,0,NULL,'admin','2023-04-16 11:34:02',NULL,NULL,0,0,'1',0),
 	 ('2023041611346310026','2023041611346300020','导入excel_小学教学仪器设备登记册',NULL,NULL,0,NULL,NULL,2,'edu.eduequipmentregister:edu_equipment_register_info:importExcel','1',NULL,0,NULL,1,0,0,0,NULL,'admin','2023-04-16 11:34:02',NULL,NULL,0,0,'1',0),
+*/
 	 ('3f915b2769fc80648e92d04e84ca059d','d7d6e2e4e2934f2c9385a623fd98c6f3','用户管理','/system/user','system/user/index',1,NULL,NULL,1,NULL,NULL,1.0,0,'ant-design:user',0,1,0,NULL,NULL,NULL,'2018-12-25 20:34:38','sunjianlei','2021-05-08 09:57:31',0,0,NULL,0),
 	 ('45c966826eeff4c99b8f8ebfe74511fc','d7d6e2e4e2934f2c9385a623fd98c6f3','部门管理','/system/depart','system/depart/index',1,NULL,NULL,1,NULL,NULL,3.0,0,'ant-design:team',0,0,0,NULL,NULL,'admin','2019-01-29 18:47:40','admin','2021-09-17 15:58:13',0,0,NULL,0),
 	 ('5c2f42277948043026b7a14692456828','d7d6e2e4e2934f2c9385a623fd98c6f3','我的部门','/system/depart-user','system/departUser/index',1,NULL,NULL,1,NULL,NULL,3.0,0,'ant-design:home-outlined',0,0,0,0,NULL,'admin','2019-04-17 15:12:24','admin','2023-03-04 15:03:07',0,0,NULL,0);
@@ -2744,6 +2746,7 @@ CREATE TABLE `sys_user_tenant`  (
 -- Education Tables
 -- ------------------------------------------------------------------------------------
 --
+/* 暂时屏蔽 demo
 -- ----------------------------
 -- Table structure for edu_lab_basic_info
 -- ----------------------------
@@ -3028,6 +3031,7 @@ CREATE TABLE `edu_scientific_equipment_info` (
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+*/
 
 -- --------------------------------------------------------------
 -- Table structure for organization_definition
@@ -3625,7 +3629,7 @@ INSERT INTO `edu_informatization_equip_info_8` (`id`, `identification_code`, `fi
     ('1680579141503787008',	'2142004708',	'2023-06-07',	5,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
     ('1680579141503787010',	'2142004708',	'2023-07-16',	6,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL);
 
-
+/* 暂时屏蔽 小学器材设施配备要求模板表
 -- ----------------------------
 -- Table structure for edu_primary_equipment_req_template
 -- ----------------------------
@@ -3659,7 +3663,8 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023060404015920394', '2023060404015910390', '批量删除小学器材设施配备要求模板表', NULL, NULL, 0, NULL, NULL, 2, 'primaryequipmentreqtemplate:edu_primary_equipment_req_template:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 16:01:39', NULL, NULL, 0, 0, '1', 0),
      ('2023060404015920395', '2023060404015910390', '导出excel_小学器材设施配备要求模板表', NULL, NULL, 0, NULL, NULL, 2, 'primaryequipmentreqtemplate:edu_primary_equipment_req_template:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 16:01:39', NULL, NULL, 0, 0, '1', 0),
      ('2023060404015920396', '2023060404015910390', '导入excel_小学器材设施配备要求模板表', NULL, NULL, 0, NULL, NULL, 2, 'primaryequipmentreqtemplate:edu_primary_equipment_req_template:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 16:01:39', NULL, NULL, 0, 0, '1', 0);
-
+*/
+/* 暂时屏蔽 小学体育器材设施配备要求表
 -- ----------------------------
 -- Table structure for edu_primary_sport_equipment_req
 -- ----------------------------
@@ -3696,15 +3701,22 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023060304491680494', '2023060304491680490', '批量删除小学体育器材设施配备要求表', NULL, NULL, 0, NULL, NULL, 2, 'primarysportequipmentreq:edu_primary_sport_equipment_req:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 16:49:49', NULL, NULL, 0, 0, '1', 0),
      ('2023060304491680495', '2023060304491680490', '导出excel_小学体育器材设施配备要求表', NULL, NULL, 0, NULL, NULL, 2, 'primarysportequipmentreq:edu_primary_sport_equipment_req:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 16:49:49', NULL, NULL, 0, 0, '1', 0),
      ('2023060304491680496', '2023060304491680490', '导入excel_小学体育器材设施配备要求表', NULL, NULL, 0, NULL, NULL, 2, 'primarysportequipmentreq:edu_primary_sport_equipment_req:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 16:49:49', NULL, NULL, 0, 0, '1', 0);
+*/
 
 INSERT INTO `sys_role` (`id`, `role_name`, `role_code`, `description`, `create_by`, `create_time`, `update_by`, `update_time`, `tenant_id`) VALUES
      ('1666258199679991810',	'装备代表 - 高中',	'senior_school',	'录入/编辑（高中）学校的信息化、装备情况及明细',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
      ('1666258199700963330',	'装备代表 - 初中',	'junior_school',	'录入/编辑（初中）学校的信息化、装备情况及明细',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
      ('1666258199717740546',	'装备代表 - 小学',	'primary_school',	'录入/编辑（小学）学校的信息化、装备情况及明细',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
      ('1666258199734517761',	'装备代表 – 幼儿园',	'nursery_school',	'录入/编辑（幼儿园）学校的信息化、装备情况及明细',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
-     ('1666258199747100674',	'装备中心 – 数据检核',	'center_check',	'检查学校录入信息',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
+     ('1666258199747100674',	'装备中心 – 信息化数据检核',	'center_check',	'检查学校录入的信息化整体情况数据',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
      ('1666258199763877889',	'装备中心 – 统计分析',	'center_analysis',	'多维度汇总展现信息化、装备情况',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
-     ('1666258199780655106',	'装备中心 – 系统管理',	'center_admin',	'及时更新维护学校、用户、信息时段等基础定义',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0);
+     ('1698527018892869633',	'装备中心 - 登记册备案检查',	'center_book_check',	'检查学校方对装备登记册的备案执行情况',	'admin',	'2023-09-04 10:42:53',	NULL,	NULL,	0),
+     ('1666258199780655106',	'装备中心 – 系统管理',	'center_admin',	'及时更新维护学校、用户、模板、信息时段等基础定义',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0);
+
+-- 角色权限：装备中心 - 统计分析
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+    ('1698324007239176193',	'1666258199763877889',	'9502685863ab87f0ad1134142788a385',	NULL,	'2023-09-03 21:16:11',	'127.0.0.1'),       -- 首页
+    ('1698324007247564801',	'1666258199763877889',	'1438108176273760258',	NULL,	'2023-09-03 21:16:11',	'127.0.0.1');                   -- 驾驶舱
 
 -- 角色权限：装备中心 – 系统管理
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
@@ -4089,11 +4101,15 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1680407757720780803',	'1666258199734517761',	'2023071507187680165',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757720780804',	'1666258199734517761',	'2023071507187680166',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1');
 
--- 预设账户：装备中心配置管理员
+-- 预设账户：装备中心配置管理员、电教办、装备办
 INSERT INTO `sys_user` (`id`, `username`, `realname`, `password`, `salt`, `avatar`, `birthday`, `sex`, `email`, `phone`, `org_code`, `status`, `del_flag`, `third_id`, `third_type`, `activiti_sync`, `work_no`, `post`, `telephone`, `create_by`, `create_time`, `update_by`, `update_time`, `user_identity`, `depart_ids`, `client_id`, `login_tenant_id`, `bpm_status`) VALUES
-     ('1666324152950325249',	'sysadmin',	'装备中心配置管理员',	'7d881e7fdf6c411836dea81b1c31fae8',	'VN0bWdEW',	NULL,	NULL,	NULL,	'1@1.ow',	'13212341234',	NULL,	1,	0,	NULL,	NULL,	1,	'sysadmin',	NULL,	NULL,	'admin',	'2023-06-07 14:00:12',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL);
+     ('1666324152950325249',	'sysadmin',	'装备中心配置管理员',	'7d881e7fdf6c411836dea81b1c31fae8',	'VN0bWdEW',	NULL,	NULL,	NULL,	'1@1.ow',	'13212341234',	NULL,	1,	0,	NULL,	NULL,	1,	'sysadmin',	NULL,	NULL,	'admin',	'2023-06-07 14:00:12',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL),
+     ('1698318183380963329',	'djb',	'电教办',	'f9c5649ad5b2df17',	'9nuy0iQD',	NULL,	NULL,	NULL,	'12@123.com',	'13112211121',	NULL,	1,	0,	NULL,	NULL,	1,	'12111',	NULL,	NULL,	'admin',	'2023-09-03 20:53:03',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL),
+     ('1698318665734311938',	'zbb',	'装备办',	'0cbe6591736e769b',	'Rmj2pEc8',	NULL,	NULL,	NULL,	'392@29.co',	'15321232121',	NULL,	1,	0,	NULL,	NULL,	1,	'121345',	NULL,	NULL,	'admin',	'2023-09-03 20:54:58',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL);
 INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
-     ('1666324152967102465',	'1666324152950325249',	'1666258199780655106',	0);
+     ('1698530433756774401',	'1698318183380963329',	'1666258199763877889',	0),             -- 电教办 => 装备中心 – 统计分析
+     ('1698530433769357314',	'1698318183380963329',	'1666258199747100674',	0),             -- 电教办 => 装备中心 – 信息化数据检核
+     ('1698531839532285953',	'1698318665734311938',	'1698527018892869633',	0);             -- 装备办 => 装备中心 - 登记册备案检查
 
 -- 借助机构定义生成账户
 INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, `institution_name`, `institution_type`, `chart_group`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
@@ -4202,7 +4218,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
     ('1694592608531288065',	'1666258199717740546',	'1592114772665790465',	NULL,	'2023-08-24 14:08:57',	'127.0.0.1'),
     ('1694592660549046273',	'1666258199700963330',	'1592114772665790465',	NULL,	'2023-08-24 14:09:09',	'127.0.0.1');
 
-
+/* 暂时屏蔽 教学器材配备标准模板 & 小学美术教学器材配备标准
 -- ----------------------------
 -- Table structure for edu_equipment_req_template
 -- ----------------------------
@@ -4295,7 +4311,7 @@ VALUES ('2023082703451490315', '2023082703451490310', '导出excel_小学美术�
 -- 导入excel
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external)
 VALUES ('2023082703451490316', '2023082703451490310', '导入excel_小学美术教学器材配备标准', NULL, NULL, 0, NULL, NULL, 2, 'primaryartequipment:edu_primary_art_equipment:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-08-27 15:45:31', NULL, NULL, 0, 0, '1', 0);
-
+*/
 -- --------------------------------------------------------------
 -- Table structure for edu_equipment_basis_template
 -- --------------------------------------------------------------
