@@ -4068,7 +4068,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
 
 -- 预设账户：装备中心配置管理员、电教办、装备办
 INSERT INTO `sys_user` (`id`, `username`, `realname`, `password`, `salt`, `avatar`, `birthday`, `sex`, `email`, `phone`, `org_code`, `status`, `del_flag`, `third_id`, `third_type`, `activiti_sync`, `work_no`, `post`, `telephone`, `create_by`, `create_time`, `update_by`, `update_time`, `user_identity`, `depart_ids`, `client_id`, `login_tenant_id`, `bpm_status`) VALUES
-     ('1666324152950325249',	'sysadmin',	'装备中心配置管理员',	'7d881e7fdf6c411836dea81b1c31fae8',	'VN0bWdEW',	NULL,	NULL,	NULL,	'1@1.ow',	'13212341234',	NULL,	1,	0,	NULL,	NULL,	1,	'sysadmin',	NULL,	NULL,	'admin',	'2023-06-07 14:00:12',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL),
+     ('1666324152950325249',	'sys',	'装备中心配置管理员',	'd35a7f065dff8d1d',	'baCgBXot',	NULL,	NULL,	NULL,	'1@1.ow',	'13212341234',	NULL,	1,	0,	NULL,	NULL,	1,	'sys',	NULL,	NULL,	'admin',	'2023-06-07 14:00:12',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL),
      ('1698318183380963329',	'djb',	'电教办',	'f9c5649ad5b2df17',	'9nuy0iQD',	NULL,	NULL,	NULL,	'12@123.com',	'13112211121',	NULL,	1,	0,	NULL,	NULL,	1,	'12111',	NULL,	NULL,	'admin',	'2023-09-03 20:53:03',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL),
      ('1698318665734311938',	'zbb',	'装备办',	'0cbe6591736e769b',	'Rmj2pEc8',	NULL,	NULL,	NULL,	'392@29.co',	'15321232121',	NULL,	1,	0,	NULL,	NULL,	1,	'121345',	NULL,	NULL,	'admin',	'2023-09-03 20:54:58',	NULL,	NULL,	1,	'',	NULL,	NULL,	NULL);
 INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
@@ -4081,15 +4081,15 @@ INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
 
 -- 借助机构定义生成账户
 INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, `institution_name`, `institution_type`, `chart_group`, `admin_code`, `role_code`, `initial_password`, `admin_generation_success`, `failure_reason`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
-     ('1666328002797236225',	'3142007024',	'11',	'八宝初级中学',	'14',	'初中',	'admin_bbzx',	'1666258199700963330',	'p2llvkhq',	'1',	NULL,	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL),
-     ('1666328237288189954',	'2142009669',	'11',	'八宝小学',	'12',	'中心小学',	'admin_bbxx',	'1666258199717740546',	'44d72cm7',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL),
-     ('1666328364132331521',	'2142004708',	'11',	'八宝小学中洲校区',	'13',	'完全小学',	'admin_zzxx',	'1666258199717740546',	'w4l60um0',	'1',	NULL,	'sysadmin',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL),
+     ('1666328002797236225',	'3142007024',	'11',	'八宝初级中学',	'14',	'初中',	'admin_bbzx',	'1666258199700963330',	'p2llvkhq',	'1',	NULL,	'sys',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL),
+     ('1666328237288189954',	'2142009669',	'11',	'八宝小学',	'12',	'中心小学',	'admin_bbxx',	'1666258199717740546',	'44d72cm7',	'1',	NULL,	'sys',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL),
+     ('1666328364132331521',	'2142004708',	'11',	'八宝小学中洲校区',	'13',	'完全小学',	'admin_zzxx',	'1666258199717740546',	'w4l60um0',	'1',	NULL,	'sys',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL),
      ('1680440305557606402',	'5262003028',	'27',	'市一中',	'15',	'高职特幼',	'admin_syz',	'1666258199679991810',	'e7yzrwzp',	'1',	NULL,	'admin',	'2023-07-16 12:52:45',	NULL,	NULL,	'A01'),
      ('1680440642771259393',	'1232002606',	'27',	'市机关幼儿园',	'11',	'高职特幼',	'admin_jgyey',	'1666258199734517761',	'bstp81l1',	'1',	NULL,	'admin',	'2023-07-16 12:54:05',	NULL,	NULL,	'A01');
 INSERT INTO `sys_user` (`id`, `username`, `realname`, `password`, `salt`, `avatar`, `birthday`, `sex`, `email`, `phone`, `org_code`, `status`, `del_flag`, `third_id`, `third_type`, `activiti_sync`, `work_no`, `post`, `telephone`, `create_by`, `create_time`, `update_by`, `update_time`, `user_identity`, `depart_ids`, `client_id`, `login_tenant_id`, `bpm_status`) VALUES
-     ('1666328002738515970',	'admin_bbzx',	'八宝初级中学',	'762001a923071d8cb60e6d9311d59676',	'1Ph064Oy',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'3142007024',	'sysadmin',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
-     ('1666328237225275394',	'admin_bbxx',	'八宝小学',	'64913e3e0b72397c2f474a25eee928ba',	'RWHf0MZF',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'2142009669',	'sysadmin',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
-     ('1666328364073611266',	'admin_zzxx',	'八宝小学中洲校区',	'90a071c0524d2a391c90056f657bbd36',	'p07RptE1',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'2142004708',	'sysadmin',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
+     ('1666328002738515970',	'admin_bbzx',	'八宝初级中学',	'762001a923071d8cb60e6d9311d59676',	'1Ph064Oy',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'3142007024',	'sys',	'2023-06-07 14:15:29',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
+     ('1666328237225275394',	'admin_bbxx',	'八宝小学',	'64913e3e0b72397c2f474a25eee928ba',	'RWHf0MZF',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'2142009669',	'sys',	'2023-06-07 14:16:25',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
+     ('1666328364073611266',	'admin_zzxx',	'八宝小学中洲校区',	'90a071c0524d2a391c90056f657bbd36',	'p07RptE1',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'2142004708',	'sys',	'2023-06-07 14:16:56',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
      ('1680440305494691841',	'admin_syz',	'市一中',	'3c0162ce917f4f5f0e01b7a61e4c0cce',	'oct2m3Lv',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'5262003028',	'admin',	'2023-07-16 12:52:45',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
      ('1680440642699956225',	'admin_jgyey',	'市机关幼儿园',	'14e83fa4b3aaf94aae7db8641b2c63a0',	'UzCcycGF',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	1,	0,	NULL,	NULL,	NULL,	NULL,	NULL,	'1232002606',	'admin',	'2023-07-16 12:54:05',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL);
 INSERT INTO `sys_user_role` (`id`, `user_id`, `role_id`, `tenant_id`) VALUES
