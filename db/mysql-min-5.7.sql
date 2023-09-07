@@ -3733,7 +3733,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666285008853270534',	'1666258199780655106',	'2023060312357030194',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 批量删除
      ('1666285008853270535',	'1666258199780655106',	'2023060312357030195',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 导出excel
      ('1666285008853270536',	'1666258199780655106',	'2023060312357030196',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 导入excel
-     ('1698592905930948609',	'1666258199780655106',	'2023090208549650210',	NULL,	'2023-09-04 15:04:42',	'127.0.0.1'),               -- 教学装备配置标准模板
+     ('1698592905930948609',	'1666258199780655106',	'2023090208549650210',	NULL,	'2023-09-04 15:04:42',	'127.0.0.1'),               -- 模板管理
      ('1698592905930948610',	'1666258199780655106',	'2023090208549650211',	NULL,	'2023-09-04 15:04:42',	'127.0.0.1'),               -- 添加
      ('1698592905930948611',	'1666258199780655106',	'2023090208549650212',	NULL,	'2023-09-04 15:04:42',	'127.0.0.1'),               -- 编辑
      ('1698592905930948612',	'1666258199780655106',	'2023090208549650213',	NULL,	'2023-09-04 15:04:42',	'127.0.0.1'),               -- 删除
@@ -3940,7 +3940,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1680408226585247749',	'1666258199700963330',	'2023071507187680165',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226585247750',	'1666258199700963330',	'2023071507187680166',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1698615157976154113',	'1666258199700963330',	'1666280628326367234',	NULL,	'2023-09-04 16:33:07',	'127.0.0.1'),               -- 配置定义
-     ('1698615157976154114',	'1666258199700963330',	'2023090208549650210',	NULL,	'2023-09-04 16:33:07',	'127.0.0.1'),               -- 教学装备配置标准模板
+     ('1698615157976154114',	'1666258199700963330',	'2023090208549650210',	NULL,	'2023-09-04 16:33:07',	'127.0.0.1'),               -- 模板管理
      ('1698622972362964993',	'1666258199700963330',	'1666282632293515265',	NULL,	'2023-09-04 17:04:10',	'127.0.0.1'),               -- 器材管理
      ('1698622972362964994',	'1666258199700963330',	'2023090304278950330',	NULL,	'2023-09-04 17:04:10',	'127.0.0.1'),               -- 教学装备登记表
      ('1698622972362964995',	'1666258199700963330',	'2023090304278950331',	NULL,	'2023-09-04 17:04:10',	'127.0.0.1'),
@@ -4004,7 +4004,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1680408000558399493',	'1666258199717740546',	'2023071507187680165',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000558399494',	'1666258199717740546',	'2023071507187680166',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1698621384906981377',	'1666258199717740546',	'1666280628326367234',	NULL,	'2023-09-04 16:57:52',	'127.0.0.1'),               -- 配置定义
-     ('1698621384911175682',	'1666258199717740546',	'2023090208549650210',	NULL,	'2023-09-04 16:57:52',	'127.0.0.1'),               -- 教学装备配置标准模板
+     ('1698621384911175682',	'1666258199717740546',	'2023090208549650210',	NULL,	'2023-09-04 16:57:52',	'127.0.0.1'),               -- 模板管理
      ('1698622269464723457',	'1666258199717740546',	'1666282632293515265',	NULL,	'2023-09-04 17:01:23',	'127.0.0.1'),               -- 器材管理
      ('1698622269477306370',	'1666258199717740546',	'2023090304278950330',	NULL,	'2023-09-04 17:01:23',	'127.0.0.1'),               -- 教学装备登记表
      ('1698622269477306371',	'1666258199717740546',	'2023090304278950331',	NULL,	'2023-09-04 17:01:23',	'127.0.0.1'),
@@ -4302,17 +4302,19 @@ CREATE TABLE `edu_equipment_book` (
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
+INSERT INTO sys_permission (id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
+    ('2023090208549650210',	'',	'模板管理',	'/edu/foudation/eduEquipmentBasisTemplateList',	'edu/foudation/EduEquipmentBasisTemplateList',	1,	NULL,	NULL,	0,	NULL,	'1',	0.20,	0,	'ant-design:account-book-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-09-02 20:54:21',	'admin',	'2023-09-07 20:04:16',	0,	0,	'1',	0);
+
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
-    ('2023090208549650210', '1666280628326367234', '教学装备配置标准模板', '/edu/foudation/eduEquipmentBasisTemplateList', 'edu/foudation/EduEquipmentBasisTemplateList', NULL, NULL, 1, NULL, '1', 2.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0),
     ('2023090304278950330', '1666282632293515265', '教学装备登记表', '/edu/equipment/eduEquipmentBookList', 'edu/equipment/EduEquipmentBookList', NULL, NULL, 1, NULL, '1', 1.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
-    ('2023090208549650211', '2023090208549650210', '添加教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
-    ('2023090208549650212', '2023090208549650210', '编辑教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
-    ('2023090208549650213', '2023090208549650210', '删除教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
-    ('2023090208549650214', '2023090208549650210', '批量删除教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
-    ('2023090208549650215', '2023090208549650210', '导出excel_教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
-    ('2023090208549650216', '2023090208549650210', '导入excel_教学装备配置标准模板', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
+    ('2023090208549650211', '2023090208549650210', '添加模板管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
+    ('2023090208549650212', '2023090208549650210', '编辑模板管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
+    ('2023090208549650213', '2023090208549650210', '删除模板管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
+    ('2023090208549650214', '2023090208549650210', '批量删除模板管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
+    ('2023090208549650215', '2023090208549650210', '导出excel_模板管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
+    ('2023090208549650216', '2023090208549650210', '导入excel_模板管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:edu_equipment_basis_template:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-02 20:54:21', NULL, NULL, 0, 0, '1', 0),
     ('2023090304278950331', '2023090304278950330', '添加教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0),
     ('2023090304278950332', '2023090304278950330', '编辑教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0),
     ('2023090304278950333', '2023090304278950330', '删除教学装备登记表', NULL, NULL, 0, NULL, NULL, 2, 'edu.equipment:edu_equipment_book:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-03 16:27:33', NULL, NULL, 0, 0, '1', 0),
