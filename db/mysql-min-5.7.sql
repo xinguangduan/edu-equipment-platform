@@ -1273,7 +1273,7 @@ INSERT INTO sys_permission (id,parent_id,name,url,component,is_route,component_n
 	 ('45c966826eeff4c99b8f8ebfe74511fc','d7d6e2e4e2934f2c9385a623fd98c6f3','部门管理','/system/depart','system/depart/index',1,NULL,NULL,1,NULL,NULL,3.0,0,'ant-design:team',0,0,0,NULL,NULL,'admin','2019-01-29 18:47:40','admin','2021-09-17 15:58:13',0,0,NULL,0),
 	 ('5c2f42277948043026b7a14692456828','d7d6e2e4e2934f2c9385a623fd98c6f3','我的部门','/system/depart-user','system/departUser/index',1,NULL,NULL,1,NULL,NULL,3.0,0,'ant-design:home-outlined',0,0,0,0,NULL,'admin','2019-04-17 15:12:24','admin','2023-03-04 15:03:07',0,0,NULL,0);
 INSERT INTO sys_permission (id,parent_id,name,url,component,is_route,component_name,redirect,menu_type,perms,perms_type,sort_no,always_show,icon,is_leaf,keep_alive,hidden,hide_tab,description,create_by,create_time,update_by,update_time,del_flag,rule_flag,status,internal_or_external) VALUES
-	 ('9502685863ab87f0ad1134142788a385','1438108176273760258','首页','/dashboard/analysis','dashboard/Analysis',1,NULL,NULL,1,NULL,NULL,1.0,0,'ant-design:bank-filled',1,1,0,NULL,NULL,NULL,'2018-12-25 20:34:38','admin','2021-09-17 15:43:16',0,0,NULL,0),
+     ('9502685863ab87f0ad1134142788a385',	NULL,	'首页',	'/dashboard/analysis',	'dashboard/Analysis',	1,	NULL,	NULL,	0,	NULL,	NULL,	0.00,	0,	'ant-design:bank-filled',	1,	1,	0,	0,	NULL,	NULL,	'2018-12-25 20:34:38',	'admin',	'2023-09-07 19:17:51',	0,	0,	NULL,	0),
 	 ('d7d6e2e4e2934f2c9385a623fd98c6f3','','系统管理','/isystem','layouts/RouteView',1,NULL,NULL,0,NULL,NULL,3.0,0,'ant-design:setting',0,0,0,0,NULL,NULL,'2018-12-25 20:34:38','admin','2022-11-11 15:37:11',0,0,NULL,0);
 
 -- ----------------------------
