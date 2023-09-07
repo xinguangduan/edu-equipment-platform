@@ -3443,8 +3443,10 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('1666281667909779458', '1647430912296435713', '基本信息', '/edu/statistics', 'layouts/RouteView', 1, '', NULL, 1, NULL, '0', 2.00, 0, NULL, 0, 0, 0, 0, NULL, 'admin', '2023-06-07 11:11:22', NULL, NULL, 0, 0, NULL, 0),
      ('1666282632293515265', '1647430912296435713', '器材管理', '/edu/equipment', 'layouts/RouteView', 1, '', NULL, 1, NULL, '0', 3.00, 0, NULL, 0, 0, 0, 0, NULL, 'admin', '2023-06-07 11:15:12', NULL, NULL, 0, 0, NULL, 0);
 
+INSERT INTO sys_permission (id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
+     ('2023060312357030190',	'',	'学校管理',	'/edu/foudation/organizationDefinitionList',	'edu/foudation/OrganizationDefinitionList',	1,	NULL,	NULL,	0,	NULL,	'1',	0.10,	0,	'ant-design:read-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-03 12:35:19',	'admin',	'2023-09-07 19:51:43',	0,	0,	'1',	0);
+
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
-     ('2023060312357030190', '1666280628326367234', '机构组织定义', '/edu/foudation/organizationDefinitionList', 'edu/foudation/OrganizationDefinitionList', NULL, NULL, 1, NULL, '1', 1.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0),
      /* 暂时屏蔽信息时段
      ('2023060409543950360', '1666280628326367234', '信息时段控制表', '/edu/foudation/infoPhaseControlList', 'edu/foudation/InfoPhaseControlList', NULL, NULL, 1, NULL, '1', 2.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0),
      */
@@ -3458,12 +3460,12 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, 
      ('2023071507187680160', '1666281667909779458', '教育信息化配备情况统计表（八）', '/edu/statistics/eduInformatizationEquipInfo_8List', 'edu/statistics/EduInformatizationEquipInfo_8List', NULL, NULL, 1, NULL, '1', 8.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
-     ('2023060312357030191', '2023060312357030190', '添加机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
-     ('2023060312357030192', '2023060312357030190', '编辑机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
-     ('2023060312357030193', '2023060312357030190', '删除机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
-     ('2023060312357030194', '2023060312357030190', '批量删除机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
-     ('2023060312357030195', '2023060312357030190', '导出excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
-     ('2023060312357030196', '2023060312357030190', '导入excel_机构组织定义', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030191', '2023060312357030190', '添加学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030192', '2023060312357030190', '编辑学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030193', '2023060312357030190', '删除学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030194', '2023060312357030190', '批量删除学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030195', '2023060312357030190', '导出excel_学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
+     ('2023060312357030196', '2023060312357030190', '导入excel_学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
      /* 暂时屏蔽信息时段
      ('2023060409543950361', '2023060409543950360', '添加信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
      ('2023060409543950362', '2023060409543950360', '编辑信息时段控制表', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:info_phase_control:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 09:54:36', NULL, NULL, 0, 0, '1', 0),
@@ -3724,7 +3726,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1694592400351203329',	'1666258199780655106',	'1592114772665790465',	NULL,	'2023-08-24 14:08:07',	'127.0.0.1'),               -- 用户可修改密码
      ('1666285008849076225',	'1666258199780655106',	'1647430912296435713',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 装备管理
      ('1666285008849076226',	'1666258199780655106',	'1666280628326367234',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 配置定义
-     ('1666285008853270530',	'1666258199780655106',	'2023060312357030190',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 机构组织定义
+     ('1666285008853270530',	'1666258199780655106',	'2023060312357030190',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 学校管理
      ('1666285008853270531',	'1666258199780655106',	'2023060312357030191',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 添加
      ('1666285008853270532',	'1666258199780655106',	'2023060312357030192',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 编辑
      ('1666285008853270533',	'1666258199780655106',	'2023060312357030193',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 删除
