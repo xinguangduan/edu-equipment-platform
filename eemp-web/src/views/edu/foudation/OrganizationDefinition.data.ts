@@ -30,19 +30,19 @@ export const columns: BasicColumn[] = [
     dataIndex: 'adminCode'
    },
    {
-    title: '初始密码',
+    title: '管理员姓名',
     align:"center",
-    dataIndex: 'initialPassword'
+    dataIndex: 'adminName'
+   },
+   {
+    title: '联系电话',
+    align:"center",
+    dataIndex: 'phoneNumber'
    },
    {
     title: '账户生成是否成功',
     align:"center",
     dataIndex: 'adminGenerationSuccess_dictText'
-   },
-   {
-    title: '失败原因',
-    align:"center",
-    dataIndex: 'failureReason'
    },
 ];
 //查询数据
@@ -83,7 +83,19 @@ export const searchFormSchema: FormSchema[] = [
       component: 'Input',
       colProps: {span: 6},
  	},
-	{
+  {
+      label: "管理员姓名",
+      field: 'adminName',
+      component: 'Input',
+      colProps: {span: 6},
+  },
+  {
+      label: "联系电话",
+      field: 'phoneNumber',
+      component: 'Input',
+      colProps: {span: 6},
+  },
+  {
       label: "账户生成是否成功",
       field: 'adminGenerationSuccess',
       component: 'JDictSelectTag',
@@ -150,6 +162,16 @@ export const formSchema: FormSchema[] = [
                  { required: true, message: '请输入账号名称!'},
           ];
      },
+  },
+  {
+    label: '管理员姓名',
+    field: 'adminName',
+    component: 'Input',
+  },
+  {
+    label: '联系电话',
+    field: 'phoneNumber',
+    component: 'Input',
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{

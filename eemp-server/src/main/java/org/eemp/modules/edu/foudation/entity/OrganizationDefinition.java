@@ -52,12 +52,19 @@ public class OrganizationDefinition implements Serializable {
     /**图表分组*/
     @ApiModelProperty(value = "图表分组")
     private java.lang.String chartGroup;
-	/**账户名称*/
-	@Excel(name = "账户名称", width = 15)
-    @ApiModelProperty(value = "账户名称")
+	/**账号名称*/
+	@Excel(name = "账号名称", width = 15)
+    @ApiModelProperty(value = "账号名称")
     private java.lang.String adminCode;
+    /**管理员姓名*/
+    @Excel(name = "管理员姓名", width = 15)
+    @ApiModelProperty(value = "管理员姓名")
+    private java.lang.String adminName;
+    /**联系电话*/
+    @Excel(name = "联系电话", width = 15)
+    @ApiModelProperty(value = "联系电话")
+    private java.lang.String phoneNumber;
 	/**角色编码*/
-	@Excel(name = "角色编码", width = 15)
     @ApiModelProperty(value = "角色编码")
     private String roleCode;
 	/**初始密码*/
@@ -65,7 +72,7 @@ public class OrganizationDefinition implements Serializable {
     @ApiModelProperty(value = "初始密码")
     private java.lang.String initialPassword;
 	/**账户生成是否成功*/
-	@Excel(name = "账户生成是否成功", width = 15, dicCode = "yn")
+	@Excel(name = "账户生成是否成功", width = 18, dicCode = "yn")
 	@Dict(dicCode = "yn")
     @ApiModelProperty(value = "账户生成是否成功")
     private java.lang.String adminGenerationSuccess;
