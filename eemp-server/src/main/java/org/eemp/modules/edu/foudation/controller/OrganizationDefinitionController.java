@@ -33,11 +33,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
  /**
- * @Description: 机构组织定义
+ * @Description: 学校管理
  * @Date:   2023-06-03
  * @Version: V1.0
  */
-@Api(tags="机构组织定义")
+@Api(tags="学校管理")
 @RestController
 @RequestMapping("/org.eemp.modules.edu.foudation/organizationDefinition")
 @Slf4j
@@ -57,8 +57,8 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 	 * @param req
 	 * @return
 	 */
-	//@AutoLog(value = "机构组织定义-分页列表查询")
-	@ApiOperation(value="机构组织定义-分页列表查询", notes="机构组织定义-分页列表查询")
+	//@AutoLog(value = "学校管理-分页列表查询")
+	@ApiOperation(value="学校管理-分页列表查询", notes="学校管理-分页列表查询")
 	@GetMapping(value = "/list")
 	public Result<IPage<OrganizationDefinition>> queryPageList(OrganizationDefinition organizationDefinition,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
@@ -76,8 +76,8 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 	 * @param organizationDefinition
 	 * @return
 	 */
-	@AutoLog(value = "机构组织定义-添加")
-	@ApiOperation(value="机构组织定义-添加", notes="机构组织定义-添加")
+	@AutoLog(value = "学校管理-添加")
+	@ApiOperation(value="学校管理-添加", notes="学校管理-添加")
 	@RequiresPermissions("edu.foudation:organization_definition:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody OrganizationDefinition organizationDefinition) {
@@ -101,7 +101,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			case "14":	roleIds = "1666258199700963330";	break;			// junior_school	初中
 			case "15":	roleIds = "1666258199679991810";	break;			// senior_school	高中
 			default:
-				result.setMessage("机构类型非标准值");
+				result.setMessage("学校类型非标准值");
 				result.setSuccess(false);
 				organizationDefinition.setAdminGenerationSuccess("0");
 				organizationDefinition.setFailureReason(result.getMessage());
@@ -160,8 +160,8 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 	 * @param organizationDefinition
 	 * @return
 	 */
-	@AutoLog(value = "机构组织定义-编辑")
-	@ApiOperation(value="机构组织定义-编辑", notes="机构组织定义-编辑")
+	@AutoLog(value = "学校管理-编辑")
+	@ApiOperation(value="学校管理-编辑", notes="学校管理-编辑")
 	@RequiresPermissions("edu.foudation:organization_definition:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody OrganizationDefinition organizationDefinition) {
@@ -175,8 +175,8 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 	 * @param id
 	 * @return
 	 */
-	@AutoLog(value = "机构组织定义-通过id删除")
-	@ApiOperation(value="机构组织定义-通过id删除", notes="机构组织定义-通过id删除")
+	@AutoLog(value = "学校管理-通过id删除")
+	@ApiOperation(value="学校管理-通过id删除", notes="学校管理-通过id删除")
 	@RequiresPermissions("edu.foudation:organization_definition:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
@@ -190,8 +190,8 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 	 * @param ids
 	 * @return
 	 */
-	@AutoLog(value = "机构组织定义-批量删除")
-	@ApiOperation(value="机构组织定义-批量删除", notes="机构组织定义-批量删除")
+	@AutoLog(value = "学校管理-批量删除")
+	@ApiOperation(value="学校管理-批量删除", notes="学校管理-批量删除")
 	@RequiresPermissions("edu.foudation:organization_definition:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
@@ -205,8 +205,8 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 	 * @param id
 	 * @return
 	 */
-	//@AutoLog(value = "机构组织定义-通过id查询")
-	@ApiOperation(value="机构组织定义-通过id查询", notes="机构组织定义-通过id查询")
+	//@AutoLog(value = "学校管理-通过id查询")
+	@ApiOperation(value="学校管理-通过id查询", notes="学校管理-通过id查询")
 	@GetMapping(value = "/queryById")
 	public Result<OrganizationDefinition> queryById(@RequestParam(name="id",required=true) String id) {
 		OrganizationDefinition organizationDefinition = organizationDefinitionService.getById(id);
@@ -225,7 +225,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
     @RequiresPermissions("edu.foudation:organization_definition:exportXls")
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, OrganizationDefinition organizationDefinition) {
-        return super.exportXls(request, organizationDefinition, OrganizationDefinition.class, "机构组织定义");
+        return super.exportXls(request, organizationDefinition, OrganizationDefinition.class, "学校管理");
     }
 
     /**
@@ -273,7 +273,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 				case "14":	roleIds = "1666258199700963330";	break;			// junior_school	初中
 				case "15":	roleIds = "1666258199679991810";	break;			// senior_school	高中
 				default:
-					result.setMessage("机构类型非标准值");
+					result.setMessage("学校类型非标准值");
 					result.setSuccess(false);
 					rec.setAdminGenerationSuccess("0");
 					rec.setFailureReason(result.getMessage());

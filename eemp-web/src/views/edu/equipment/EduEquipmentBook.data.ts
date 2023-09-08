@@ -28,6 +28,11 @@ export const columns: BasicColumn[] = [
     dataIndex: 'bookFile',
     slots: { customRender: 'fileSlot' },
    },
+   {
+    title: '备注',
+    align:"center",
+    dataIndex: 'memo'
+   },
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
@@ -105,6 +110,11 @@ export const formSchema: FormSchema[] = [
                  { required: true, message: '请输入登记册文件!'},
           ];
      },
+  },
+  {
+    label: '备注',
+    field: 'memo',
+    component: 'InputTextArea',
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{

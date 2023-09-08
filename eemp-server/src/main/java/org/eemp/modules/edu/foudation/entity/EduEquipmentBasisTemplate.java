@@ -51,10 +51,10 @@ public class EduEquipmentBasisTemplate implements Serializable {
 	@Excel(name = "模板文件", width = 15)
     @ApiModelProperty(value = "模板文件")
     private java.lang.String templateFile;
-	/**文件大小*/
-	@Excel(name = "文件大小", width = 15)
-    @ApiModelProperty(value = "文件大小")
-    private java.lang.Integer fileSize;
+    /**备注*/
+    @Excel(name = "备注", width = 15)
+    @ApiModelProperty(value = "备注")
+    private java.lang.String memo;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private java.lang.String createBy;

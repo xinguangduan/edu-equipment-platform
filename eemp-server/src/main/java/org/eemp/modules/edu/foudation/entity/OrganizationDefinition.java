@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * @Description: 机构组织定义
+ * @Description: 学校管理
  * @Date:   2023-06-03
  * @Version: V1.0
  */
@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
 @TableName("organization_definition")
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="organization_definition对象", description="机构组织定义")
+@ApiModel(value="organization_definition对象", description="学校管理")
 public class OrganizationDefinition implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -40,24 +40,31 @@ public class OrganizationDefinition implements Serializable {
     @Dict(dicCode = "township_list")
 	@ApiModelProperty(value = "乡镇")
 	private java.lang.String township;
-	/**机构名称*/
-	@Excel(name = "机构名称", width = 15)
-    @ApiModelProperty(value = "机构名称")
+	/**学校名称*/
+	@Excel(name = "学校名称", width = 15)
+    @ApiModelProperty(value = "学校名称")
     private java.lang.String institutionName;
-	/**机构类型*/
-	@Excel(name = "机构类型", width = 15, dicCode = "institution_type")
+	/**学校类型*/
+	@Excel(name = "学校类型", width = 15, dicCode = "institution_type")
 	@Dict(dicCode = "institution_type")
-    @ApiModelProperty(value = "机构类型")
+    @ApiModelProperty(value = "学校类型")
     private java.lang.String institutionType;
     /**图表分组*/
     @ApiModelProperty(value = "图表分组")
     private java.lang.String chartGroup;
-	/**账户名称*/
-	@Excel(name = "账户名称", width = 15)
-    @ApiModelProperty(value = "账户名称")
+	/**账号名称*/
+	@Excel(name = "账号名称", width = 15)
+    @ApiModelProperty(value = "账号名称")
     private java.lang.String adminCode;
+    /**管理员姓名*/
+    @Excel(name = "管理员姓名", width = 15)
+    @ApiModelProperty(value = "管理员姓名")
+    private java.lang.String adminName;
+    /**联系电话*/
+    @Excel(name = "联系电话", width = 15)
+    @ApiModelProperty(value = "联系电话")
+    private java.lang.String phoneNumber;
 	/**角色编码*/
-	@Excel(name = "角色编码", width = 15)
     @ApiModelProperty(value = "角色编码")
     private String roleCode;
 	/**初始密码*/
@@ -65,7 +72,7 @@ public class OrganizationDefinition implements Serializable {
     @ApiModelProperty(value = "初始密码")
     private java.lang.String initialPassword;
 	/**账户生成是否成功*/
-	@Excel(name = "账户生成是否成功", width = 15, dicCode = "yn")
+	@Excel(name = "账户生成是否成功", width = 18, dicCode = "yn")
 	@Dict(dicCode = "yn")
     @ApiModelProperty(value = "账户生成是否成功")
     private java.lang.String adminGenerationSuccess;
