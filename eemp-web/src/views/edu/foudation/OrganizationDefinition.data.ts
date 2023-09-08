@@ -15,17 +15,17 @@ export const columns: BasicColumn[] = [
     dataIndex: 'township_dictText'
    },
    {
-    title: '机构名称',
+    title: '学校名称',
     align:"center",
     dataIndex: 'institutionName'
    },
    {
-    title: '机构类型',
+    title: '学校类型',
     align:"center",
     dataIndex: 'institutionType_dictText'
    },
    {
-    title: '账户名称',
+    title: '账号名称',
     align:"center",
     dataIndex: 'adminCode'
    },
@@ -63,13 +63,13 @@ export const searchFormSchema: FormSchema[] = [
       colProps: {span: 6},
  	},
 	{
-      label: "机构名称",
+      label: "学校名称",
       field: 'institutionName',
       component: 'Input',
       colProps: {span: 6},
  	},
 	{
-      label: "机构类型",
+      label: "学校类型",
       field: 'institutionType',
       component: 'JDictSelectTag',
       componentProps:{
@@ -78,7 +78,7 @@ export const searchFormSchema: FormSchema[] = [
       colProps: {span: 6},
  	},
 	{
-      label: "账户名称",
+      label: "账号名称",
       field: 'adminCode',
       component: 'Input',
       colProps: {span: 6},
@@ -119,17 +119,17 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
-    label: '机构名称',
+    label: '学校名称',
     field: 'institutionName',
     component: 'Input',
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入机构名称!'},
+                 { required: true, message: '请输入学校名称!'},
           ];
      },
   },
   {
-    label: '机构类型',
+    label: '学校类型',
     field: 'institutionType',
     component: 'JDictSelectTag',
     componentProps:{
@@ -137,17 +137,17 @@ export const formSchema: FormSchema[] = [
      },
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入机构类型!'},
+                 { required: true, message: '请输入学校类型!'},
           ];
      },
   },
   {
-    label: '账户名称',
+    label: '账号名称',
     field: 'adminCode',
     component: 'Input',
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入账户名称!'},
+                 { required: true, message: '请输入账号名称!'},
           ];
      },
   },

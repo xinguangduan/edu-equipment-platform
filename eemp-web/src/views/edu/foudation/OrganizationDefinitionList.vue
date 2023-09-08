@@ -58,7 +58,7 @@
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
       tableProps:{
-           title: '机构组织定义',
+           title: '学校管理',
            api: list,
            columns,
            canResize:false,
@@ -78,7 +78,7 @@
             },
       },
        exportConfig: {
-            name:"机构组织定义",
+            name:"学校管理",
             url: getExportUrl,
           },
           importConfig: {
