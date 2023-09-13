@@ -14,4 +14,5 @@ public interface IOrganizationDefinitionService extends IService<OrganizationDef
 
     List<OrganizationDefinition> getImportedExcelRecords();
 
+    void checkAndUpdateSchoolUser(String username);
 }

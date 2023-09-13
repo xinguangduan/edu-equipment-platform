@@ -3043,6 +3043,7 @@ CREATE TABLE `organization_definition` (
   `institution_type` varchar(2) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学校类型',
   `chart_group` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '图表分组',
   `admin_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '账号名称',
+  `last_login_time` datetime DEFAULT NULL COMMENT '最近访问时间',
   `admin_name` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '管理员姓名',
   `phone_number` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '联系电话',
   `role_code` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '角色编码',

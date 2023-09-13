@@ -30,6 +30,11 @@ export const columns: BasicColumn[] = [
     dataIndex: 'adminCode'
    },
    {
+    title: '最近访问时间',
+    align:"center",
+    dataIndex: 'lastLoginTime'
+   },
+   {
     title: '管理员姓名',
     align:"center",
     dataIndex: 'adminName'
