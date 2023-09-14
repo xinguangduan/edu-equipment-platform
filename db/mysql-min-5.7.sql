@@ -3329,6 +3329,25 @@ CREATE TABLE `edu_informatization_equip_info_8` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for filling_control
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `filling_control`;
+CREATE TABLE `filling_control` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `filling_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '填报代码',
+  `control_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT '控制名称',
+  `start_date` date NOT NULL COMMENT '开始日期',
+  `end_date` date NOT NULL COMMENT '结束日期',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3412,7 +3431,8 @@ INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_or
 INSERT INTO sys_permission (id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
     ('2023060312357030190',	'',	'学校管理',	'/edu/foudation/organizationDefinitionList',	'edu/foudation/OrganizationDefinitionList',	1,	NULL,	NULL,	0,	NULL,	'1',	0.10,	0,	'ant-design:read-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-03 12:35:19',	'admin',	'2023-09-07 19:51:43',	0,	0,	'1',	0),
     ('1666281667909779458',	'',	'教育信息化',	'/edu/statistics',	'layouts/RouteView',	1,	'',	NULL,	0,	NULL,	'0',	0.30,	0,	'ant-design:book-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-07 11:11:22',	'admin',	'2023-09-07 20:17:26',	0,	0,	NULL,	0),
-    ('1666282632293515265',	'',	'教育装备管理',	'/edu/equipment',	'layouts/RouteView',	1,	'',	NULL,	0,	NULL,	'0',	0.40,	0,	'ant-design:calculator-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-07 11:15:12',	'admin',	'2023-09-07 20:24:38',	0,	0,	NULL,	0);
+    ('1666282632293515265',	'',	'教育装备管理',	'/edu/equipment',	'layouts/RouteView',	1,	'',	NULL,	0,	NULL,	'0',	0.40,	0,	'ant-design:calculator-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-07 11:15:12',	'admin',	'2023-09-07 20:24:38',	0,	0,	NULL,	0),
+    ('2023091403567720490',	'',	'填报控制',	'/edu/foudation/fillingControlList',	'edu/foudation/FillingControlList',	1,	NULL,	NULL,	0,	NULL,	'1',	0.20,	0,	'ant-design:lock-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-09-14 15:56:49',	'admin',	'2023-09-14 16:55:01',	0,	0,	'1',	0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
      ('2023060402428380260', '1666281667909779458', '教育信息化基本情况统计表（一）', '/edu/statistics/eduInformatizationBasicInfo_1List', 'edu/statistics/EduInformatizationBasicInfo_1List', NULL, NULL, 1, NULL, '1', 1.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0),
@@ -3478,7 +3498,13 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023071507187680163', '2023071507187680160', '删除教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
      ('2023071507187680164', '2023071507187680160', '批量删除教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
      ('2023071507187680165', '2023071507187680160', '导出excel_教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
-     ('2023071507187680166', '2023071507187680160', '导入excel_教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0);
+     ('2023071507187680166', '2023071507187680160', '导入excel_教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
+     ('2023091403567720491', '2023091403567720490', '添加填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
+     ('2023091403567720492', '2023091403567720490', '编辑填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
+     ('2023091403567720493', '2023091403567720490', '删除填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
+     ('2023091403567720494', '2023091403567720490', '批量删除填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
+     ('2023091403567720495', '2023091403567720490', '导出excel_填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
+     ('2023091403567720496', '2023091403567720490', '导入excel_填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0);
 
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
      ('1666340189662081026',	'f6817f48af4fb3af11b9e8bf182f618b',	'1666281667909779458',	NULL,	'2023-06-07 15:03:55',	'127.0.0.1'),
@@ -3671,7 +3697,14 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666285008853270533',	'1666258199780655106',	'2023060312357030193',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 删除
      ('1666285008853270534',	'1666258199780655106',	'2023060312357030194',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 批量删除
      ('1666285008853270535',	'1666258199780655106',	'2023060312357030195',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 导出excel
-     ('1666285008853270536',	'1666258199780655106',	'2023060312357030196',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1');               -- 导入excel
+     ('1666285008853270536',	'1666258199780655106',	'2023060312357030196',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),               -- 导入excel
+     ('1702247210298769410',	'1666258199780655106',	'2023091403567720490',	NULL,	'2023-09-14 17:05:36',	'127.0.0.1'),               -- 填报控制
+     ('1702247210332323842',	'1666258199780655106',	'2023091403567720491',	NULL,	'2023-09-14 17:05:36',	'127.0.0.1'),
+     ('1702247210336518145',	'1666258199780655106',	'2023091403567720492',	NULL,	'2023-09-14 17:05:36',	'127.0.0.1'),
+     ('1702247210340712449',	'1666258199780655106',	'2023091403567720493',	NULL,	'2023-09-14 17:05:36',	'127.0.0.1'),
+     ('1702247210344906754',	'1666258199780655106',	'2023091403567720494',	NULL,	'2023-09-14 17:05:36',	'127.0.0.1'),
+     ('1702247210353295361',	'1666258199780655106',	'2023091403567720495',	NULL,	'2023-09-14 17:05:36',	'127.0.0.1'),
+     ('1702247210357489666',	'1666258199780655106',	'2023091403567720496',	NULL,	'2023-09-14 17:05:36',	'127.0.0.1');
      /* 暂时屏蔽 小学器材设施配备要求模板表
      ('1666285008857464835',	'1666258199780655106',	'2023060404015910390',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
      ('1666285008857464836',	'1666258199780655106',	'2023060404015920391',	NULL,	'2023-06-07 11:24:39',	'127.0.0.1'),
