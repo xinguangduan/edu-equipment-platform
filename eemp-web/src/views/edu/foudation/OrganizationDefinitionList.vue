@@ -40,12 +40,15 @@
     </BasicTable>
     <!-- 表单区域 -->
     <OrganizationDefinitionModal @register="registerModal" @success="handleSuccess"></OrganizationDefinitionModal>
+    <!--修改密码-->
+    <PasswordModal @register="registerPasswordModal" @success="reload" />
   </div>
 </template>
 
 <script lang="ts" name="org.eemp.modules.edu.foudation-organizationDefinition" setup>
   import {ref, computed, unref} from 'vue';
   import {BasicTable, useTable, TableAction} from '/@/components/Table';
+  import PasswordModal from '/@/views/system/user/PasswordModal.vue';
   import {useModal} from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage'
   import OrganizationDefinitionModal from './components/OrganizationDefinitionModal.vue'
@@ -55,6 +58,9 @@
   const checkedKeys = ref<Array<string | number>>([]);
   //注册model
   const [registerModal, {openModal}] = useModal();
+  //密码model
+  const [registerPasswordModal, { openModal: openPasswordModal }] = useModal();
+
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
       tableProps:{
@@ -136,6 +142,14 @@
   function handleSuccess() {
       (selectedRowKeys.value = []) && reload();
    }
+  
+  /**
+   * 打开修改密码弹窗
+   */
+   function handleChangePassword(username) {
+    openPasswordModal(true, { username });
+  }
+ 
    /**
       * 操作栏
       */
@@ -144,6 +158,11 @@
          {
            label: '编辑',
            onClick: handleEdit.bind(null, record),
+         },
+         {
+           label: '密码',
+           //auth: 'user:changepwd',
+           onClick: handleChangePassword.bind(null, record.adminCode),
          }
        ]
    }
