@@ -13,5 +13,5 @@ import java.util.Date;
  */
 public interface IFillingControlService extends IService<FillingControl> {
 
-    JSONObject getFillingControl(String identificationCode, String packageName, Date inDate);
+    JSONObject getFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs);
 }

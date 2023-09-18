@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,12 +36,22 @@ public class FillingControlServiceTest {
         fillingControlList.add(fc);
         service.saveBatch(fillingControlList);
 
-        Date testDate = new Date(2023 - 1900, Calendar.SEPTEMBER, 18);
-        JSONObject json = service.getFillingControl("demo_01", "edu_informatization_basic_info_1", testDate);
+        Date testDate = new Date(2023 - 1900, Calendar.OCTOBER, 5);
+        JSONObject json = service.getFillingControl("demo_01", "edu_informatization_basic_info_1", testDate, 1);
         assertThat(json.get("fillingCode")).isEqualTo("2023-02");
         assertThat(json.get("startDate")).isEqualTo(new Date(2023 - 1900, Calendar.SEPTEMBER, 6));
         assertThat(json.get("endDate")).isEqualTo(new Date(2023 - 1900, Calendar.OCTOBER, 5));
         System.out.println(json);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        testDate = new Date(2023 - 1900, Calendar.AUGUST, 29);
+        json = service.getFillingControl("demo_01", "edu_informatization_basic_info_1", testDate, 10);
+        assertThat(json).isNull();
     }
 
 }

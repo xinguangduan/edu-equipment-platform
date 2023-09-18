@@ -27,17 +27,17 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
     private RedisUtil redisUtil;
 
     @Override
-    public JSONObject getFillingControl(String identificationCode, String packageName, Date inDate) {
+    public JSONObject getFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs) {
         String key = "fc-" + identificationCode + "-" + packageName;
         JSONObject fc_record = (JSONObject)redisUtil.get(key);
         if (null == fc_record) {
-            buildFillingControl(identificationCode, packageName, inDate);
+            buildFillingControl(identificationCode, packageName, inDate, extendSecs);
         }
 
         return (JSONObject)redisUtil.get(key);
     }
 
-    private void buildFillingControl(String identificationCode, String packageName, Date inDate) {
+    private void buildFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs) {
         LambdaQueryWrapper<FillingControl> wrapper = new LambdaQueryWrapper<>();
         wrapper.orderByDesc(FillingControl::getStartDate, FillingControl::getEndDate);
         wrapper.le(FillingControl::getStartDate, inDate);
@@ -51,7 +51,7 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
             fc_record.put("fillingCode", fc.getFillingCode());
             fc_record.put("startDate", fc.getStartDate());
             fc_record.put("endDate", fc.getEndDate());
-            redisUtil.set(key, fc_record, (fc.getEndDate().compareTo(inDate) / 1000) + 14 * 24 * 3600);
+            redisUtil.set(key, fc_record, (fc.getEndDate().compareTo(inDate) / 1000) + extendSecs);
         }
     }
 }
