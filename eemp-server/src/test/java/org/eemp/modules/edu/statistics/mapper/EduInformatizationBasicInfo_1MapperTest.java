@@ -3,6 +3,7 @@ package org.eemp.modules.edu.statistics.mapper;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.test.autoconfigure.MybatisPlusTest;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
@@ -12,6 +13,7 @@ import java.util.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @MybatisPlusTest
+//@MapperScan("org.eemp.modules.**.mapper")
 class EduInformatizationBasicInfo_1MapperTest {
     @Autowired
     private EduInformatizationBasicInfo_1Mapper mapper;

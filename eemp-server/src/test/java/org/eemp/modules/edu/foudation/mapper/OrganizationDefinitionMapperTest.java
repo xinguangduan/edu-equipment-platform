@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.test.autoconfigure.MybatisPlusTest;
 import org.assertj.core.data.Percentage;
 import org.eemp.modules.edu.foudation.entity.OrganizationDefinition;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @MybatisPlusTest
+@MapperScan("org.eemp.modules.**.mapper")
 public class OrganizationDefinitionMapperTest {
     @Autowired
     private OrganizationDefinitionMapper mapper;
