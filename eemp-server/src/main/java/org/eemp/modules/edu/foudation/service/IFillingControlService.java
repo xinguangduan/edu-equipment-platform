@@ -1,7 +1,10 @@
 package org.eemp.modules.edu.foudation.service;
 
+import com.alibaba.fastjson.JSONObject;
 import org.eemp.modules.edu.foudation.entity.FillingControl;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.Date;
 
 /**
  * @Description: 填报控制
@@ -10,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IFillingControlService extends IService<FillingControl> {
 
+    JSONObject getFillingControl(String identificationCode, String packageName, Date inDate);
 }

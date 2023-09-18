@@ -8,6 +8,9 @@ INSERT INTO `organization_definition` (`id`, `identification_code`, `township`, 
      ('202',	'school_02',	'11',	'八宝小学',	'12',	'中心小学',   'admin',	'',	'',	''),
      ('203',	'school_03',	'11',	'八宝小学中洲校区',	'13',	'完全小学',   'admin',	'',	'',	'');
 
+INSERT INTO filling_control (id, filling_code, control_name, start_date, end_date) VALUES
+  ('101', '2022-02', '2022学年下学期', {ts '2023-02-16'}, {ts '2023-03-31'}),
+  ('102', '2023-01', '2023学年上学期', {ts '2023-09-01'}, {ts '2023-10-31'});
 
 INSERT INTO edu_informatization_basic_info_1 ( id, identification_code, fill_date, teacher_count, student_count, room_count, classroom_count, student_desk_count, connected_room_count, has_a_central_server_room, teaching_resource_capacity ) VALUES
   ( '101', 'demo_01', current_timestamp(), 169, 3629, 90, 52, 3698, 60, 'Y', 3.2 ),

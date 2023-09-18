@@ -22,6 +22,22 @@ CREATE TABLE `organization_definition` (
   PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `filling_control`;
+CREATE TABLE `filling_control` (
+  `id` varchar(36) NOT NULL,
+  `filling_code` varchar(18) NOT NULL COMMENT '填报代码',
+  `control_name` varchar(50) NOT NULL COMMENT '控制名称',
+  `start_date` date NOT NULL COMMENT '开始日期',
+  `end_date` date NOT NULL COMMENT '结束日期',
+  `memo` longtext COMMENT '备注',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+);
+
 DROP TABLE IF EXISTS `edu_informatization_basic_info_1`;
 CREATE TABLE `edu_informatization_basic_info_1` (
   `id` varchar(36) NOT NULL,
