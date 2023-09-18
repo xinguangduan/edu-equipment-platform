@@ -13,7 +13,7 @@ import java.util.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @MybatisPlusTest
-//@MapperScan("org.eemp.modules.**.mapper")
+@MapperScan("org.eemp.modules.**.mapper")
 class EduInformatizationBasicInfo_1MapperTest {
     @Autowired
     private EduInformatizationBasicInfo_1Mapper mapper;
