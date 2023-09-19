@@ -22,15 +22,15 @@ public class FillingControlServiceTest {
         System.out.println(service.list());
 
         List<FillingControl> fillingControlList = new ArrayList<>();
-        FillingControl fc = new FillingControl().setId("201").setFillingCode("2022-02").setControlName("2022年下半年填报")
+        FillingControl fc = new FillingControl().setId("201").setControlType("01").setFillingCode("2022-02").setControlName("2022年下半年填报")
                 .setStartDate(new Date(2022 - 1900, Calendar.SEPTEMBER, 1))
                 .setEndDate(new Date(2022 - 1900, Calendar.OCTOBER, 31));
         fillingControlList.add(fc);
-        fc = new FillingControl().setId("202").setFillingCode("2023-01").setControlName("2023年上半年填报")
+        fc = new FillingControl().setId("202").setControlType("01").setFillingCode("2023-01").setControlName("2023年上半年填报")
                 .setStartDate(new Date(2023 - 1900, Calendar.FEBRUARY, 16))
                 .setEndDate(new Date(2023 - 1900, Calendar.APRIL, 15));
         fillingControlList.add(fc);
-        fc = new FillingControl().setId("203").setFillingCode("2023-02").setControlName("2023年下半年填报")
+        fc = new FillingControl().setId("203").setControlType("01").setFillingCode("2023-02").setControlName("2023年下半年填报")
                 .setStartDate(new Date(2023 - 1900, Calendar.SEPTEMBER, 6))
                 .setEndDate(new Date(2023 - 1900, Calendar.OCTOBER, 5));
         fillingControlList.add(fc);

@@ -25,6 +25,7 @@ CREATE TABLE `organization_definition` (
 DROP TABLE IF EXISTS `filling_control`;
 CREATE TABLE `filling_control` (
   `id` varchar(36) NOT NULL,
+  `control_type` varchar(18) NOT NULL COMMENT '填报控制类型',
   `filling_code` varchar(18) NOT NULL COMMENT '填报代码',
   `control_name` varchar(50) NOT NULL COMMENT '控制名称',
   `start_date` date NOT NULL COMMENT '开始日期',

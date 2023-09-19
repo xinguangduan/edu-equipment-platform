@@ -38,10 +38,17 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
     }
 
     private void buildFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs) {
+        String fillingControlType = "01";
+        switch (packageName) {
+            case "edu_informatization_basic_info_1":
+                break;
+        }
+
         LambdaQueryWrapper<FillingControl> wrapper = new LambdaQueryWrapper<>();
-        wrapper.orderByDesc(FillingControl::getStartDate, FillingControl::getEndDate);
+        wrapper.eq(FillingControl::getControlType, fillingControlType);
         wrapper.le(FillingControl::getStartDate, inDate);
         wrapper.ge(FillingControl::getEndDate, inDate);
+        wrapper.orderByDesc(FillingControl::getStartDate, FillingControl::getEndDate);
         wrapper.last("LIMIT 1");
         FillingControl fc = mapper.selectOne(wrapper);
 

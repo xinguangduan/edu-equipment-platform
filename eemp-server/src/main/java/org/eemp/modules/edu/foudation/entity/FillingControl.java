@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.eemp.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.eemp.common.poi.excel.annotation.Excel;
 import io.swagger.annotations.ApiModel;
@@ -30,6 +31,11 @@ public class FillingControl implements Serializable {
 	@TableId(type = IdType.ASSIGN_ID)
     @ApiModelProperty(value = "主键")
     private java.lang.String id;
+    /**填报控制类型*/
+    @Excel(name = "填报控制类型", width = 15, dicCode = "filling_control_type")
+    @Dict(dicCode = "filling_control_type")
+    @ApiModelProperty(value = "填报控制类型")
+    private java.lang.String controlType;
 	/**填报代码*/
 	@Excel(name = "填报代码", width = 15)
     @ApiModelProperty(value = "填报代码")

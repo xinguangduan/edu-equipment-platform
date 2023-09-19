@@ -3334,6 +3334,7 @@ CREATE TABLE `edu_informatization_equip_info_8` (
 DROP TABLE IF EXISTS `filling_control`;
 CREATE TABLE `filling_control` (
   `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `control_type` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '填报控制类型',
   `filling_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '填报代码',
   `control_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT '控制名称',
   `start_date` date NOT NULL COMMENT '开始日期',
@@ -3399,7 +3400,8 @@ INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_or
 
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
 	 ('1664818329461768194','机构类型','institution_type','机构类型',0,'admin','2023-06-03 10:16:35','admin','2023-06-03 10:19:32',0,0,NULL),
-	 ('1668873268455092226',	'乡镇列表',	'township_list',	'乡镇列表',	0,	'admin',	'2023-06-14 14:49:28',	NULL,	NULL,	0,	0,	NULL);
+	 ('1668873268455092226',	'乡镇列表',	'township_list',	'乡镇列表',	0,	'admin',	'2023-06-14 14:49:28',	NULL,	NULL,	0,	0,	NULL),
+     ('1703928685203632130',	'填报控制类型',	'filling_control_type',	'填报控制类型',	0,	'admin',	'2023-09-19 08:27:11',	NULL,	NULL,	0,	0,	NULL);
 INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_order,status,create_by,create_time,update_by,update_time) VALUES
 	 ('1664818497951154178','1664818329461768194','装备中心','01',NULL,1,0,'admin','2023-06-03 10:17:15',NULL,NULL),
 	 ('1664818614024323074','1664818329461768194','幼儿园','11',NULL,1,1,'admin','2023-06-03 10:17:43',NULL,NULL),
@@ -3423,7 +3425,9 @@ INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_or
 	 ('1668875277392490498',	'1668873268455092226',	'卸甲坪乡',	'24',	NULL,	14,	1,	'admin',	'2023-06-14 14:57:27',	NULL,	NULL),
 	 ('1668875357214289921',	'1668873268455092226',	'杨林市镇',	'25',	NULL,	15,	1,	'admin',	'2023-06-14 14:57:46',	NULL,	NULL),
 	 ('1668875444619390977',	'1668873268455092226',	'纸厂河镇',	'26',	NULL,	16,	1,	'admin',	'2023-06-14 14:58:07',	NULL,	NULL),
-	 ('1668875536655003649',	'1668873268455092226',	'市直',	'27',	NULL,	17,	1,	'admin',	'2023-06-14 14:58:29',	NULL,	NULL);
+	 ('1668875536655003649',	'1668873268455092226',	'市直',	'27',	NULL,	17,	1,	'admin',	'2023-06-14 14:58:29',	NULL,	NULL),
+     ('1703929428887285761',	'1703928685203632130',	'教育装备信息',	'01',	NULL,	1,	1,	'admin',	'2023-09-19 08:30:08',	NULL,	NULL),
+	 ('1703929810464092162',	'1703928685203632130',	'教学装备配置',	'02',	NULL,	2,	1,	'admin',	'2023-09-19 08:31:39',	NULL,	NULL);
 
 -- ----------------------------
 -- Records of sys_permission

@@ -5,6 +5,11 @@ import { render } from '/@/utils/common/renderUtils';
 //列表数据
 export const columns: BasicColumn[] = [
    {
+    title: '填报控制类型',
+    align:"center",
+    dataIndex: 'controlType_dictText'
+   },
+   {
     title: '填报代码',
     align:"center",
     dataIndex: 'fillingCode'
@@ -39,6 +44,15 @@ export const columns: BasicColumn[] = [
 //查询数据
 export const searchFormSchema: FormSchema[] = [
 	{
+      label: "填报控制类型",
+      field: 'controlType',
+      component: 'JDictSelectTag',
+      componentProps:{
+          dictCode:"filling_control_type"
+      },
+      colProps: {span: 6},
+  },
+  {
       label: "填报代码",
       field: 'fillingCode',
       component: 'Input',
@@ -71,6 +85,19 @@ export const searchFormSchema: FormSchema[] = [
 ];
 //表单数据
 export const formSchema: FormSchema[] = [
+  {
+    label: '填报控制类型',
+    field: 'controlType',
+    component: 'JDictSelectTag',
+    componentProps:{
+        dictCode:"filling_control_type"
+     },
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入填报控制类型!'},
+          ];
+     },
+  },
   {
     label: '填报代码',
     field: 'fillingCode',
