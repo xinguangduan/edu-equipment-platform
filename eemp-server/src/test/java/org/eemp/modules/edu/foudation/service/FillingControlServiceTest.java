@@ -19,32 +19,6 @@ public class FillingControlServiceTest {
 
     @Test
     void testGetCurrentFillingControl() {
-        System.out.println(service.list());
-
-        List<FillingControl> fillingControlList = new ArrayList<>();
-        FillingControl fc = new FillingControl().setId("201").setControlType("01").setControlName("2022年下半年填报")
-                .setStartDate(new Date(2022 - 1900, Calendar.SEPTEMBER, 1))
-                .setEndDate(new Date(2022 - 1900, Calendar.OCTOBER, 31))
-                .setCheckStartDate(new Date(2023 - 1900, Calendar.DECEMBER, 1))
-                .setCheckEndDate(new Date(2023 - 1900, Calendar.DECEMBER, 15));
-        fillingControlList.add(fc);
-        fc = new FillingControl().setId("202").setControlType("01").setControlName("2023年上半年填报")
-                .setStartDate(new Date(2023 - 1900, Calendar.FEBRUARY, 16))
-                .setEndDate(new Date(2023 - 1900, Calendar.APRIL, 15))
-                .setCheckStartDate(new Date(2023 - 1900, Calendar.APRIL, 16))
-                .setCheckEndDate(new Date(2023 - 1900, Calendar.APRIL, 30));
-        fillingControlList.add(fc);
-        fc = new FillingControl().setId("203").setControlType("01").setControlName("2023年下半年填报")
-                .setStartDate(new Date(2023 - 1900, Calendar.SEPTEMBER, 6))
-                .setEndDate(new Date(2023 - 1900, Calendar.OCTOBER, 5))
-                .setCheckStartDate(new Date(2023 - 1900, Calendar.DECEMBER, 6))
-                .setCheckEndDate(new Date(2023 - 1900, Calendar.DECEMBER, 15))
-                .setNurserySchool("demo_06,demo_01x,demo_02")
-                .setPrimarySchool("demo_010")
-                .setJuniorSchool("demo_03,demo_01");
-        fillingControlList.add(fc);
-        service.saveBatch(fillingControlList);
-
         Date testDate = new Date(2023 - 1900, Calendar.OCTOBER, 5);
         JSONObject json = service.getFillingControl("demo_01", "edu_informatization_basic_info_1", testDate, 1);
         assertThat(json.get("addable")).isEqualTo(true);
