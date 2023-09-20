@@ -27,6 +27,16 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
     private RedisUtil redisUtil;
 
     @Override
+    public JSONObject getFillingControl(String identificationCode, String packageName) {
+        return getFillingControl(identificationCode, packageName, new Date());
+    }
+
+    @Override
+    public JSONObject getFillingControl(String identificationCode, String packageName, Date inDate) {
+        return getFillingControl(identificationCode, packageName, inDate, 0);
+    }
+
+    @Override
     public JSONObject getFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs) {
         String key = "fc-" + identificationCode + "-" + packageName;
         JSONObject fc_record = (JSONObject)redisUtil.get(key);
@@ -38,9 +48,17 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
     }
 
     private void buildFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs) {
-        String fillingControlType = "01";
+        String fillingControlType = "";
         switch (packageName) {
             case "edu_informatization_basic_info_1":
+            case "edu_informatization_basic_info_2":
+            case "school_lab_basic_info_3":
+            case "school_library_basic_info_4":
+            case "school_sport_room_info_5":
+            case "school_music_art_room_info_6":
+            case "school_functional_room_info_7":
+            case "edu_informatization_equip_info_8":
+                fillingControlType = "01";
                 break;
         }
 
@@ -75,7 +93,83 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
             String key = "fc-" + identificationCode + "-" + packageName;
             JSONObject fc_record = new JSONObject();
             fc_record.put("addable", true);
-            redisUtil.set(key, fc_record, (fc.getEndDate().compareTo(inDate) / 1000) + extendSecs);
+            fc_record.put("due_date", fc.getEndDate());
+            fc_record.put("check_due_date", fc.getCheckEndDate());
+
+            if (extendSecs == 0)
+                extendSecs = (fc.getEndDate().getTime() - inDate.getTime()) / 1000;
+
+            redisUtil.set(key, fc_record, extendSecs);
         }
+    }
+
+    @Override
+    public boolean updateFillingControlAfterNewData(String identificationCode, String packageName, String id) {
+        return updateFillingControlAfterNewData(identificationCode, packageName, id, 0);
+    }
+
+    @Override
+    public boolean updateFillingControlAfterNewData(String identificationCode, String packageName, String id, long extendSecs) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null != fc_record && fc_record.getBooleanValue("addable")) {
+            long restTime = redisUtil.getExpire(key);
+            if (extendSecs == 0)
+                extendSecs = (fc_record.getDate("check_due_date").getTime() - fc_record.getDate("due_date").getTime()) / 1000;
+            restTime += extendSecs;
+            fc_record.remove("addable");
+            fc_record.put("reportable", true);
+            fc_record.put("id", id);
+            redisUtil.set(key, fc_record, restTime);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean updateFillingControlAfterReported(String identificationCode, String packageName) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null != fc_record && fc_record.getBooleanValue("reportable")) {
+            long restTime = redisUtil.getExpire(key);
+            fc_record.remove("reportable");
+            fc_record.put("revokable", true);
+            redisUtil.set(key, fc_record, restTime);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean updateFillingControlAfterRevoked(String identificationCode, String packageName) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null != fc_record && fc_record.getBooleanValue("revokable")) {
+            long restTime = redisUtil.getExpire(key);
+            fc_record.remove("revokable");
+            fc_record.put("reportable", true);
+            redisUtil.set(key, fc_record, restTime);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean updateFillingControlAfterDeleteData(String identificationCode, String packageName, String id) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null != fc_record && fc_record.get("id").equals(id) && fc_record.getBooleanValue("reportable")) {
+            redisUtil.del(key);
+
+            return true;
+        }
+
+        return false;
     }
 }

@@ -13,5 +13,16 @@ import java.util.Date;
  */
 public interface IFillingControlService extends IService<FillingControl> {
 
+    JSONObject getFillingControl(String identificationCode, String packageName);
+    JSONObject getFillingControl(String identificationCode, String packageName, Date inDate);
     JSONObject getFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs);
+
+    boolean updateFillingControlAfterNewData(String identificationCode, String packageName, String id);
+    boolean updateFillingControlAfterNewData(String identificationCode, String packageName, String id, long extendSecs);
+
+    boolean updateFillingControlAfterReported(String identificationCode, String packageName);
+
+    boolean updateFillingControlAfterRevoked(String identificationCode, String packageName);
+
+    boolean updateFillingControlAfterDeleteData(String identificationCode, String packageName, String id);
 }
