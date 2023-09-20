@@ -31,31 +31,59 @@ public class FillingControl implements Serializable {
 	@TableId(type = IdType.ASSIGN_ID)
     @ApiModelProperty(value = "主键")
     private java.lang.String id;
-    /**填报控制类型*/
-    @Excel(name = "填报控制类型", width = 15, dicCode = "filling_control_type")
+    /**填报类型*/
+    @Excel(name = "填报类型", width = 15, dicCode = "filling_control_type")
     @Dict(dicCode = "filling_control_type")
-    @ApiModelProperty(value = "填报控制类型")
+    @ApiModelProperty(value = "填报类型")
     private java.lang.String controlType;
-	/**填报代码*/
-	@Excel(name = "填报代码", width = 15)
-    @ApiModelProperty(value = "填报代码")
-    private java.lang.String fillingCode;
-	/**控制名称*/
-	@Excel(name = "控制名称", width = 15)
-    @ApiModelProperty(value = "控制名称")
+	/**填报说明*/
+	@Excel(name = "填报说明", width = 15)
+    @ApiModelProperty(value = "填报说明")
     private java.lang.String controlName;
-	/**开始日期*/
-	@Excel(name = "开始日期", width = 15, format = "yyyy-MM-dd")
+	/**填报开始日期*/
+	@Excel(name = "填报开始日期", width = 15, format = "yyyy-MM-dd")
 	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    @ApiModelProperty(value = "开始日期")
+    @ApiModelProperty(value = "填报开始日期")
     private java.util.Date startDate;
-	/**结束日期*/
-	@Excel(name = "结束日期", width = 15, format = "yyyy-MM-dd")
+	/**填报结束日期*/
+	@Excel(name = "填报结束日期", width = 15, format = "yyyy-MM-dd")
 	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    @ApiModelProperty(value = "结束日期")
+    @ApiModelProperty(value = "填报结束日期")
     private java.util.Date endDate;
+    /**审核开始日期*/
+    @Excel(name = "审核开始日期", width = 15, format = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @ApiModelProperty(value = "审核开始日期")
+    private java.util.Date checkStartDate;
+    /**审核结束日期*/
+    @Excel(name = "审核结束日期", width = 15, format = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @ApiModelProperty(value = "审核结束日期")
+    private java.util.Date checkEndDate;
+    /**幼儿园*/
+    @Excel(name = "幼儿园", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    @Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    @ApiModelProperty(value = "幼儿园")
+    private java.lang.String nurserySchool;
+    /**小学*/
+    @Excel(name = "小学", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    @Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    @ApiModelProperty(value = "小学")
+    private java.lang.String primarySchool;
+    /**初中*/
+    @Excel(name = "初中", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    @Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    @ApiModelProperty(value = "初中")
+    private java.lang.String juniorSchool;
+    /**高中*/
+    @Excel(name = "高中", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    @Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    @ApiModelProperty(value = "高中")
+    private java.lang.String seniorSchool;
 	/**备注*/
 	@Excel(name = "备注", width = 15)
     @ApiModelProperty(value = "备注")

@@ -5,22 +5,17 @@ import { render } from '/@/utils/common/renderUtils';
 //列表数据
 export const columns: BasicColumn[] = [
    {
-    title: '填报控制类型',
+    title: '填报类型',
     align:"center",
     dataIndex: 'controlType_dictText'
    },
    {
-    title: '填报代码',
-    align:"center",
-    dataIndex: 'fillingCode'
-   },
-   {
-    title: '控制名称',
+    title: '填报说明',
     align:"center",
     dataIndex: 'controlName'
    },
    {
-    title: '开始日期',
+    title: '填报开始日期',
     align:"center",
     dataIndex: 'startDate',
     customRender:({text}) =>{
@@ -28,12 +23,48 @@ export const columns: BasicColumn[] = [
     },
    },
    {
-    title: '结束日期',
+    title: '填报结束日期',
     align:"center",
     dataIndex: 'endDate',
     customRender:({text}) =>{
       return !text?"":(text.length>10?text.substr(0,10):text)
     },
+   },
+   {
+    title: '审核开始日期',
+    align:"center",
+    dataIndex: 'checkStartDate',
+    customRender:({text}) =>{
+      return !text?"":(text.length>10?text.substr(0,10):text)
+    },
+   },
+   {
+    title: '审核结束日期',
+    align:"center",
+    dataIndex: 'checkEndDate',
+    customRender:({text}) =>{
+      return !text?"":(text.length>10?text.substr(0,10):text)
+    },
+   },
+   {
+    title: '幼儿园',
+    align:"center",
+    dataIndex: 'nurserySchool_dictText'
+   },
+   {
+    title: '小学',
+    align:"center",
+    dataIndex: 'primarySchool_dictText'
+   },
+   {
+    title: '初中',
+    align:"center",
+    dataIndex: 'juniorSchool_dictText'
+   },
+   {
+    title: '高中',
+    align:"center",
+    dataIndex: 'seniorSchool_dictText'
    },
    {
     title: '备注',
@@ -44,7 +75,7 @@ export const columns: BasicColumn[] = [
 //查询数据
 export const searchFormSchema: FormSchema[] = [
 	{
-      label: "填报控制类型",
+      label: "填报类型",
       field: 'controlType',
       component: 'JDictSelectTag',
       componentProps:{
@@ -52,20 +83,14 @@ export const searchFormSchema: FormSchema[] = [
       },
       colProps: {span: 6},
   },
-  {
-      label: "填报代码",
-      field: 'fillingCode',
-      component: 'Input',
-      colProps: {span: 6},
- 	},
 	{
-      label: "控制名称",
+      label: "填报说明",
       field: 'controlName',
       component: 'Input',
       colProps: {span: 6},
  	},
      {
-      label: "开始日期",
+      label: "填报开始日期",
       field: "startDate",
       component: 'RangePicker',
       componentProps: {
@@ -74,7 +99,7 @@ export const searchFormSchema: FormSchema[] = [
       colProps: {span: 6},
 	},
      {
-      label: "结束日期",
+      label: "填报结束日期",
       field: "endDate",
       component: 'RangePicker',
       componentProps: {
@@ -86,7 +111,7 @@ export const searchFormSchema: FormSchema[] = [
 //表单数据
 export const formSchema: FormSchema[] = [
   {
-    label: '填报控制类型',
+    label: '填报类型',
     field: 'controlType',
     component: 'JDictSelectTag',
     componentProps:{
@@ -94,48 +119,90 @@ export const formSchema: FormSchema[] = [
      },
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入填报控制类型!'},
+                 { required: true, message: '请输入填报类型!'},
           ];
      },
   },
   {
-    label: '填报代码',
-    field: 'fillingCode',
-    component: 'Input',
-    dynamicRules: ({model,schema}) => {
-          return [
-                 { required: true, message: '请输入填报代码!'},
-          ];
-     },
-  },
-  {
-    label: '控制名称',
+    label: '填报说明',
     field: 'controlName',
     component: 'Input',
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入控制名称!'},
+                 { required: true, message: '请输入填报说明!'},
           ];
      },
   },
   {
-    label: '开始日期',
+    label: '填报开始日期',
     field: 'startDate',
     component: 'DatePicker',
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入开始日期!'},
+                 { required: true, message: '请输入填报开始日期!'},
           ];
      },
   },
   {
-    label: '结束日期',
+    label: '填报结束日期',
     field: 'endDate',
     component: 'DatePicker',
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入结束日期!'},
+                 { required: true, message: '请输入填报结束日期!'},
           ];
+     },
+  },
+  {
+    label: '审核开始日期',
+    field: 'checkStartDate',
+    component: 'DatePicker',
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入审核开始日期!'},
+          ];
+     },
+  },
+  {
+    label: '审核结束日期',
+    field: 'checkEndDate',
+    component: 'DatePicker',
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入审核结束日期!'},
+          ];
+     },
+  },
+  {
+    label: '幼儿园',
+    field: 'nurserySchool',
+    component: 'JSelectMultiple',
+    componentProps:{
+        dictCode:"organization_definition,institution_name,identification_code"
+     },
+  },
+  {
+    label: '小学',
+    field: 'primarySchool',
+    component: 'JSelectMultiple',
+    componentProps:{
+        dictCode:"organization_definition,institution_name,identification_code"
+     },
+  },
+  {
+    label: '初中',
+    field: 'juniorSchool',
+    component: 'JSelectMultiple',
+    componentProps:{
+        dictCode:"organization_definition,institution_name,identification_code"
+     },
+  },
+  {
+    label: '高中',
+    field: 'seniorSchool',
+    component: 'JSelectMultiple',
+    componentProps:{
+        dictCode:"organization_definition,institution_name,identification_code"
      },
   },
   {

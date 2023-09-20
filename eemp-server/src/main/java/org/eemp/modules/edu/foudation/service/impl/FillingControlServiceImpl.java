@@ -48,6 +48,25 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
         wrapper.eq(FillingControl::getControlType, fillingControlType);
         wrapper.le(FillingControl::getStartDate, inDate);
         wrapper.ge(FillingControl::getEndDate, inDate);
+        wrapper.and(qw -> qw.likeRight(FillingControl::getNurserySchool, identificationCode + ",")
+                .or().likeLeft(FillingControl::getNurserySchool, "," + identificationCode)
+                .or().eq(FillingControl::getNurserySchool, identificationCode)
+                .or().like(FillingControl::getNurserySchool, "," + identificationCode + ",")
+                .or()
+                .likeRight(FillingControl::getPrimarySchool, identificationCode + ",")
+                .or().likeLeft(FillingControl::getPrimarySchool, "," + identificationCode)
+                .or().eq(FillingControl::getPrimarySchool, identificationCode)
+                .or().like(FillingControl::getPrimarySchool, "," + identificationCode + ",")
+                .or()
+                .likeRight(FillingControl::getJuniorSchool, identificationCode + ",")
+                .or().likeLeft(FillingControl::getJuniorSchool, "," + identificationCode)
+                .or().eq(FillingControl::getJuniorSchool, identificationCode)
+                .or().like(FillingControl::getJuniorSchool, "," + identificationCode + ",")
+                .or()
+                .likeRight(FillingControl::getSeniorSchool, identificationCode + ",")
+                .or().likeLeft(FillingControl::getSeniorSchool, "," + identificationCode)
+                .or().eq(FillingControl::getSeniorSchool, identificationCode)
+                .or().like(FillingControl::getSeniorSchool, "," + identificationCode + ","));
         wrapper.orderByDesc(FillingControl::getStartDate, FillingControl::getEndDate);
         wrapper.last("LIMIT 1");
         FillingControl fc = mapper.selectOne(wrapper);
@@ -55,9 +74,7 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
         if (null != fc) {
             String key = "fc-" + identificationCode + "-" + packageName;
             JSONObject fc_record = new JSONObject();
-            fc_record.put("fillingCode", fc.getFillingCode());
-            fc_record.put("startDate", fc.getStartDate());
-            fc_record.put("endDate", fc.getEndDate());
+            fc_record.put("addable", true);
             redisUtil.set(key, fc_record, (fc.getEndDate().compareTo(inDate) / 1000) + extendSecs);
         }
     }
