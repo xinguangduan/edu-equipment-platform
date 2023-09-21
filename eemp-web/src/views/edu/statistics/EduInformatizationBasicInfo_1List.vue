@@ -4,7 +4,7 @@
    <BasicTable @register="registerTable" :rowSelection="rowSelection">
      <!--插槽:table标题-->
       <template #tableTitle>
-          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> 新增</a-button>
+          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" :disabled="!addable"> 新增</a-button>
           <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
           <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
           <a-dropdown v-if="selectedRowKeys.length > 0">
@@ -20,6 +20,8 @@
                 <Icon icon="mdi:chevron-down"></Icon>
               </a-button>
         </a-dropdown>
+        <a-button v-if="reportable" :ghost="true" type="primary" preIcon="ant-design:send-outlined" size="midlle">上报</a-button>
+        <a-button v-if="revokable" :ghost="true" type="primary" preIcon="ant-design:send-outlined" size="midlle">退回学校修改</a-button>
       </template>
        <!--操作栏-->
       <template #action="{ record }">
@@ -44,7 +46,7 @@
 </template>
 
 <script lang="ts" name="org.eemp.modules.edu.statistics-eduInformatizationBasicInfo_1" setup>
-  import {ref, computed, unref} from 'vue';
+  import {ref, computed, unref, onMounted} from 'vue';
   import {BasicTable, useTable, TableAction} from '/@/components/Table';
   import {useModal} from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage'
@@ -52,7 +54,12 @@
   import {columns, searchFormSchema} from './EduInformatizationBasicInfo_1.data';
   import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './EduInformatizationBasicInfo_1.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
+  import { defHttp } from '/@/utils/http/axios';
+  import { useUserStoreWithOut } from '/@/store/modules/user';
   const checkedKeys = ref<Array<string | number>>([]);
+
+  const userStore = useUserStoreWithOut();
+
   //注册model
   const [registerModal, {openModal}] = useModal();
   //注册table数据
@@ -134,7 +141,7 @@
     * 成功回调
     */
   function handleSuccess() {
-      (selectedRowKeys.value = []) && reload();
+      (selectedRowKeys.value = []) && getFillingControl() && reload();
    }
    /**
       * 操作栏
@@ -165,6 +172,26 @@
        ]
    }
 
+  const addable = ref(false)
+  const reportable = ref(false)
+  const revokable = ref(false)
+
+  onMounted(() => {
+    getFillingControl()
+    console.log("onMounted...")
+  })
+
+  let reqData = {identificationCode: userStore.getUserInfo.telephone, packageName: 'edu_informatization_basic_info_1'};
+  const getFillingControlUrl = '/org.eemp.modules.edu.foudation/fillingControl/getFillingControl';
+  async function getFillingControl(){
+    let params = {reqData: JSON.stringify(reqData)};
+    await defHttp.get({url: getFillingControlUrl, params}).then((res) => {
+      console.log(res);
+      addable.value = res.addable
+      reportable.value = res.reportable
+      revokable.value = res.revokable
+    });;
+  }
 
 </script>
 

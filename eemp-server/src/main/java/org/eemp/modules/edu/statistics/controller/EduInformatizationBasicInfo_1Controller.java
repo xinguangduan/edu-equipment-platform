@@ -18,6 +18,7 @@ import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.oConvertUtils;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.EduInformatizationBasicInfo_1;
 import org.eemp.modules.edu.statistics.service.IEduInformatizationBasicInfo_1Service;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class EduInformatizationBasicInfo_1Controller extends BaseController<EduInformatizationBasicInfo_1, IEduInformatizationBasicInfo_1Service> {
 	private final IEduInformatizationBasicInfo_1Service eduInformatizationBasicInfo_1Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -71,6 +73,11 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody EduInformatizationBasicInfo_1 eduInformatizationBasicInfo_1) {
 		eduInformatizationBasicInfo_1Service.save(eduInformatizationBasicInfo_1);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				eduInformatizationBasicInfo_1.getIdentificationCode(),
+				"edu_informatization_basic_info_1",
+				eduInformatizationBasicInfo_1.getId()
+				);
 		return Result.OK("添加成功！");
 	}
 	

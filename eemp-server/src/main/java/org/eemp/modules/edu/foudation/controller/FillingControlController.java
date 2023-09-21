@@ -1,8 +1,11 @@
 package org.eemp.modules.edu.foudation.controller;
 
 import java.util.Arrays;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSONObject;
 import org.eemp.common.api.vo.Result;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.modules.edu.foudation.entity.FillingControl;
@@ -159,4 +162,12 @@ public class FillingControlController extends BaseController<FillingControl, IFi
         return super.importExcel(request, response, FillingControl.class);
     }
 
+	@GetMapping(value = "/getFillingControl")
+	public Result getFillingControl(@RequestParam("reqData") String reqData) {
+		Map map = (Map) JSONObject.parse(reqData);
+		String identificationCode = (String) map.get("identificationCode");
+		String packageName = (String) map.get("packageName");
+		JSONObject json = service.getFillingControl(identificationCode, packageName);
+		return Result.OK(json);
+	}
 }
