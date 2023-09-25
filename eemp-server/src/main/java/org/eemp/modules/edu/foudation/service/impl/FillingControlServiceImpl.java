@@ -1,0 +1,175 @@
+package org.eemp.modules.edu.foudation.service.impl;
+
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import org.eemp.modules.edu.foudation.entity.FillingControl;
+import org.eemp.modules.edu.foudation.mapper.FillingControlMapper;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import org.eemp.common.util.RedisUtil;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import java.util.Date;
+
+/**
+ * @Description: 填报控制
+ * @Date:   2023-09-14
+ * @Version: V1.0
+ */
+@Service
+public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper, FillingControl> implements IFillingControlService {
+    @Autowired
+    private FillingControlMapper mapper;
+    @Autowired
+    private RedisUtil redisUtil;
+
+    @Override
+    public JSONObject getFillingControl(String identificationCode, String packageName) {
+        return getFillingControl(identificationCode, packageName, new Date());
+    }
+
+    @Override
+    public JSONObject getFillingControl(String identificationCode, String packageName, Date inDate) {
+        return getFillingControl(identificationCode, packageName, inDate, 0);
+    }
+
+    @Override
+    public JSONObject getFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null == fc_record) {
+            buildFillingControl(identificationCode, packageName, inDate, extendSecs);
+        }
+
+        return (JSONObject)redisUtil.get(key);
+    }
+
+    private void buildFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs) {
+        String fillingControlType = "";
+        switch (packageName) {
+            case "edu_informatization_basic_info_1":
+            case "edu_informatization_basic_info_2":
+            case "school_lab_basic_info_3":
+            case "school_library_basic_info_4":
+            case "school_sport_room_info_5":
+            case "school_music_art_room_info_6":
+            case "school_functional_room_info_7":
+            case "edu_informatization_equip_info_8":
+                fillingControlType = "01";
+                break;
+        }
+
+        LambdaQueryWrapper<FillingControl> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(FillingControl::getControlType, fillingControlType);
+        wrapper.le(FillingControl::getStartDate, inDate);
+        wrapper.ge(FillingControl::getEndDate, inDate);
+        wrapper.and(qw -> qw.likeRight(FillingControl::getNurserySchool, identificationCode + ",")
+                .or().likeLeft(FillingControl::getNurserySchool, "," + identificationCode)
+                .or().eq(FillingControl::getNurserySchool, identificationCode)
+                .or().like(FillingControl::getNurserySchool, "," + identificationCode + ",")
+                .or()
+                .likeRight(FillingControl::getPrimarySchool, identificationCode + ",")
+                .or().likeLeft(FillingControl::getPrimarySchool, "," + identificationCode)
+                .or().eq(FillingControl::getPrimarySchool, identificationCode)
+                .or().like(FillingControl::getPrimarySchool, "," + identificationCode + ",")
+                .or()
+                .likeRight(FillingControl::getJuniorSchool, identificationCode + ",")
+                .or().likeLeft(FillingControl::getJuniorSchool, "," + identificationCode)
+                .or().eq(FillingControl::getJuniorSchool, identificationCode)
+                .or().like(FillingControl::getJuniorSchool, "," + identificationCode + ",")
+                .or()
+                .likeRight(FillingControl::getSeniorSchool, identificationCode + ",")
+                .or().likeLeft(FillingControl::getSeniorSchool, "," + identificationCode)
+                .or().eq(FillingControl::getSeniorSchool, identificationCode)
+                .or().like(FillingControl::getSeniorSchool, "," + identificationCode + ","));
+        wrapper.orderByDesc(FillingControl::getStartDate, FillingControl::getEndDate);
+        wrapper.last("LIMIT 1");
+        FillingControl fc = mapper.selectOne(wrapper);
+
+        if (null != fc) {
+            String key = "fc-" + identificationCode + "-" + packageName;
+            JSONObject fc_record = new JSONObject();
+            fc_record.put("addable", true);
+            fc_record.put("due_date", fc.getEndDate());
+            fc_record.put("check_due_date", fc.getCheckEndDate());
+
+            if (extendSecs == 0)
+                extendSecs = (fc.getEndDate().getTime() - inDate.getTime()) / 1000;
+
+            redisUtil.set(key, fc_record, extendSecs);
+        }
+    }
+
+    @Override
+    public boolean updateFillingControlAfterNewData(String identificationCode, String packageName, String id) {
+        return updateFillingControlAfterNewData(identificationCode, packageName, id, 0);
+    }
+
+    @Override
+    public boolean updateFillingControlAfterNewData(String identificationCode, String packageName, String id, long extendSecs) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null != fc_record && fc_record.getBooleanValue("addable")) {
+            long restTime = redisUtil.getExpire(key);
+            if (extendSecs == 0)
+                extendSecs = (fc_record.getDate("check_due_date").getTime() - fc_record.getDate("due_date").getTime()) / 1000;
+            restTime += extendSecs;
+            fc_record.remove("addable");
+            fc_record.put("reportable", true);
+            fc_record.put("id", id);
+            redisUtil.set(key, fc_record, restTime);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean updateFillingControlAfterReported(String identificationCode, String packageName) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null != fc_record && fc_record.getBooleanValue("reportable")) {
+            long restTime = redisUtil.getExpire(key);
+            fc_record.remove("reportable");
+            fc_record.put("revokable", true);
+            redisUtil.set(key, fc_record, restTime);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean updateFillingControlAfterRevoked(String identificationCode, String packageName) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null != fc_record && fc_record.getBooleanValue("revokable")) {
+            long restTime = redisUtil.getExpire(key);
+            fc_record.remove("revokable");
+            fc_record.put("reportable", true);
+            redisUtil.set(key, fc_record, restTime);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean updateFillingControlAfterDeleteData(String identificationCode, String packageName, String id) {
+        String key = "fc-" + identificationCode + "-" + packageName;
+        JSONObject fc_record = (JSONObject)redisUtil.get(key);
+        if (null != fc_record && fc_record.get("id").equals(id) && fc_record.getBooleanValue("reportable")) {
+            redisUtil.del(key);
+
+            return true;
+        }
+
+        return false;
+    }
+}

@@ -75,6 +75,9 @@ public class EduInformatizationBasicInfo_1 implements Serializable {
 	@Excel(name = "学校资源库教学资源容量（GB）", width = 15)
     @ApiModelProperty(value = "学校资源库教学资源容量（GB）")
     private Double teachingResourceCapacity;
+    /**上报状态*/
+    @ApiModelProperty(value = "上报状态")
+    private Integer reported;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private String createBy;

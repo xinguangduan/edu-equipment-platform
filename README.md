@@ -62,4 +62,12 @@ Educational equipment management platform
 5. [Docker 安装 MySQL和Adminer](https://blog.csdn.net/chinaxsw/article/details/103573495)
 6. [史上最详细Docker安装Redis （含每一步的图解）实战](https://blog.csdn.net/weixin_45821811/article/details/116211724)
 7. [使用docker部署mysql - 支持普通用户访问](http://www.coolpython.net/informal_essay/20-07/docker-deploy-mysql.html)
+8. [Mybatis-plus 动态条件查询QueryWrapper的使用](https://blog.csdn.net/qq_26383975/article/details/119646390)
+9. [（一）mybatis-plus学习--搭建基础框架](https://blog.csdn.net/qq_59159431/article/details/126972102)
+10. [java~springboot~h2数据库在单元测试中的使用](https://www.cnblogs.com/lori/p/9684946.html)
+11. [详解MyBatis中的Mapper Update](https://www.python100.com/html/108468.html)
+12. [Current_timestamp全面解析](https://www.python100.com/html/113151.html)
+13. [jeecgboot(vue+springboot)前端往后台传数据](https://zhuanlan.zhihu.com/p/610027414)
+14. [SpringBoot整合H2数据库](https://blog.csdn.net/qq_46921028/article/details/129958593)
+15. [02SpringBoot配置文件详解](https://blog.csdn.net/nie13739606256/article/details/123068340)
 

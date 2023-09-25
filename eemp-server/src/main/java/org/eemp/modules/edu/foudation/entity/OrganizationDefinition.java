@@ -56,6 +56,12 @@ public class OrganizationDefinition implements Serializable {
 	@Excel(name = "账号名称", width = 15)
     @ApiModelProperty(value = "账号名称")
     private java.lang.String adminCode;
+    /**最近访问时间*/
+    @Excel(name = "最近访问时间", width = 20, format = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @ApiModelProperty(value = "最近访问时间")
+    private java.util.Date lastLoginTime;
     /**管理员姓名*/
     @Excel(name = "管理员姓名", width = 15)
     @ApiModelProperty(value = "管理员姓名")

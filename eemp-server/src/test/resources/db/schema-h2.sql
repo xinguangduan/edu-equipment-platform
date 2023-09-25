@@ -7,6 +7,9 @@ CREATE TABLE `organization_definition` (
   `institution_type` varchar(2)  NOT NULL COMMENT '机构类型',
   `chart_group` varchar(10) DEFAULT NULL COMMENT '图表分组',
   `admin_code` varchar(18)  NOT NULL COMMENT '账户名称',
+  `last_login_time` datetime DEFAULT NULL COMMENT '最近访问时间',
+  `admin_name` varchar(32)  DEFAULT NULL COMMENT '管理员姓名',
+  `phone_number` varchar(32) DEFAULT NULL COMMENT '联系电话',
   `role_code` varchar(32)  DEFAULT NULL COMMENT '角色编码',
   `initial_password` varchar(32)  DEFAULT NULL COMMENT '初始密码',
   `admin_generation_success` varchar(1)  DEFAULT NULL COMMENT '账户生成是否成功',
@@ -16,6 +19,28 @@ CREATE TABLE `organization_definition` (
   `update_by` varchar(50)  DEFAULT NULL COMMENT '更新人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
   `sys_org_code` varchar(64)  DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS `filling_control`;
+CREATE TABLE `filling_control` (
+  `id` varchar(36) NOT NULL,
+  `control_type` varchar(18) NOT NULL COMMENT '填报类型',
+  `control_name` varchar(50) NOT NULL COMMENT '填报说明',
+  `start_date` date NOT NULL COMMENT '填报开始日期',
+  `end_date` date NOT NULL COMMENT '填报结束日期',
+  `check_start_date` date NOT NULL COMMENT '审核开始日期',
+  `check_end_date` date NOT NULL COMMENT '审核结束日期',
+  `nursery_school` longtext COMMENT '幼儿园',
+  `primary_school` longtext COMMENT '小学',
+  `junior_school` longtext COMMENT '初中',
+  `senior_school` longtext COMMENT '高中',
+  `memo` longtext COMMENT '备注',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) DEFAULT NULL COMMENT '所属部门',
   PRIMARY KEY (`id`)
 );
 

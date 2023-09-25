@@ -12,11 +12,11 @@
     import {computed, defineComponent} from 'vue';
     import {defHttp} from '/@/utils/http/axios';
     import { propTypes } from '/@/utils/propTypes';
-    import {getBpmFormSchema} from '../InfoPhaseControl.data';
-    import {saveOrUpdate} from '../InfoPhaseControl.api';
+    import {getBpmFormSchema} from '../FillingControl.data';
+    import {saveOrUpdate} from '../FillingControl.api';
     
     export default defineComponent({
-        name: "InfoPhaseControlForm",
+        name: "FillingControlForm",
         components:{
             BasicForm
         },
@@ -40,7 +40,7 @@
             });
 
             let formData = {};
-            const queryByIdUrl = '/org.eemp.modules.edu.foudation/infoPhaseControl/queryById';
+            const queryByIdUrl = '/org.eemp.modules.edu.foudation/fillingControl/queryById';
             async function initFormData(){
                 let params = {id: props.formData.dataId};
                 const data = await defHttp.get({url: queryByIdUrl, params});

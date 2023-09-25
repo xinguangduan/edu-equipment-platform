@@ -39,18 +39,18 @@
       </template>
     </BasicTable>
     <!-- 表单区域 -->
-    <InfoPhaseControlModal @register="registerModal" @success="handleSuccess"></InfoPhaseControlModal>
+    <FillingControlModal @register="registerModal" @success="handleSuccess"></FillingControlModal>
   </div>
 </template>
 
-<script lang="ts" name="org.eemp.modules.edu.foudation-infoPhaseControl" setup>
+<script lang="ts" name="org.eemp.modules.edu.foudation-fillingControl" setup>
   import {ref, computed, unref} from 'vue';
   import {BasicTable, useTable, TableAction} from '/@/components/Table';
   import {useModal} from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage'
-  import InfoPhaseControlModal from './components/InfoPhaseControlModal.vue'
-  import {columns, searchFormSchema} from './InfoPhaseControl.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './InfoPhaseControl.api';
+  import FillingControlModal from './components/FillingControlModal.vue'
+  import {columns, searchFormSchema} from './FillingControl.data';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './FillingControl.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   const checkedKeys = ref<Array<string | number>>([]);
   //注册model
@@ -58,7 +58,7 @@
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
       tableProps:{
-           title: '信息时段控制表',
+           title: '填报控制',
            api: list,
            columns,
            canResize:false,
@@ -70,6 +70,8 @@
               fieldMapToNumber: [
               ],
               fieldMapToTime: [
+                 ['startDate', ['startDate_begin', 'startDate_end'], 'YYYY-MM-DD'],
+                 ['endDate', ['endDate_begin', 'endDate_end'], 'YYYY-MM-DD'],
               ],
             },
            actionColumn: {
@@ -78,7 +80,7 @@
             },
       },
        exportConfig: {
-            name:"信息时段控制表",
+            name:"填报控制",
             url: getExportUrl,
           },
           importConfig: {

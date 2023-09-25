@@ -25,6 +25,7 @@ import org.eemp.common.util.*;
 import org.eemp.common.util.encryption.EncryptedString;
 import org.eemp.config.JeecgBaseConfig;
 import org.eemp.modules.base.service.BaseCommonService;
+import org.eemp.modules.edu.foudation.service.impl.OrganizationDefinitionServiceImpl;
 import org.eemp.modules.system.entity.SysDepart;
 import org.eemp.modules.system.entity.SysRoleIndex;
 import org.eemp.modules.system.entity.SysUser;
@@ -67,6 +68,9 @@ public class LoginController {
 
 	@Autowired
 	private JeecgBaseConfig jeecgBaseConfig;
+
+	@Autowired
+	private OrganizationDefinitionServiceImpl organizationDefinitionService;
 
 	private final String BASE_CHECK_CODES = "qwertyuiplkjhgfdsazxcvbnmQWERTYUPLKJHGFDSAZXCVBNM1234567890";
 
@@ -141,6 +145,10 @@ public class LoginController {
 		BeanUtils.copyProperties(sysUser, loginUser);
 		baseCommonService.addLog("用户名: " + username + ",登录成功！", CommonConstant.LOG_TYPE_1, null,loginUser);
         //update-end--Author:wangshuai  Date:20200714  for：登录日志没有记录人员
+
+		// 针对学校用户进行相应的更新操作
+		organizationDefinitionService.checkAndUpdateSchoolUser(username);
+
 		return result;
 	}
 

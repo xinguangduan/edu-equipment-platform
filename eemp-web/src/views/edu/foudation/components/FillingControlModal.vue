@@ -8,8 +8,8 @@
     import {ref, computed, unref} from 'vue';
     import {BasicModal, useModalInner} from '/@/components/Modal';
     import {BasicForm, useForm} from '/@/components/Form/index';
-    import {formSchema} from '../InfoPhaseControl.data';
-    import {saveOrUpdate} from '../InfoPhaseControl.api';
+    import {formSchema} from '../FillingControl.data';
+    import {saveOrUpdate} from '../FillingControl.api';
     // Emits声明
     const emit = defineEmits(['register','success']);
     const isUpdate = ref(true);

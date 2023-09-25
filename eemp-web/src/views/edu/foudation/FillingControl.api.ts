@@ -4,13 +4,13 @@ import { useMessage } from "/@/hooks/web/useMessage";
 const { createConfirm } = useMessage();
 
 enum Api {
-  list = '/org.eemp.modules.edu.foudation/infoPhaseControl/list',
-  save='/org.eemp.modules.edu.foudation/infoPhaseControl/add',
-  edit='/org.eemp.modules.edu.foudation/infoPhaseControl/edit',
-  deleteOne = '/org.eemp.modules.edu.foudation/infoPhaseControl/delete',
-  deleteBatch = '/org.eemp.modules.edu.foudation/infoPhaseControl/deleteBatch',
-  importExcel = '/org.eemp.modules.edu.foudation/infoPhaseControl/importExcel',
-  exportXls = '/org.eemp.modules.edu.foudation/infoPhaseControl/exportXls',
+  list = '/org.eemp.modules.edu.foudation/fillingControl/list',
+  save='/org.eemp.modules.edu.foudation/fillingControl/add',
+  edit='/org.eemp.modules.edu.foudation/fillingControl/edit',
+  deleteOne = '/org.eemp.modules.edu.foudation/fillingControl/delete',
+  deleteBatch = '/org.eemp.modules.edu.foudation/fillingControl/deleteBatch',
+  importExcel = '/org.eemp.modules.edu.foudation/fillingControl/importExcel',
+  exportXls = '/org.eemp.modules.edu.foudation/fillingControl/exportXls',
 }
 /**
  * 导出api

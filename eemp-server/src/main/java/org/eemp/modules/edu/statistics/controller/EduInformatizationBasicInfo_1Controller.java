@@ -18,6 +18,7 @@ import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.oConvertUtils;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.EduInformatizationBasicInfo_1;
 import org.eemp.modules.edu.statistics.service.IEduInformatizationBasicInfo_1Service;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class EduInformatizationBasicInfo_1Controller extends BaseController<EduInformatizationBasicInfo_1, IEduInformatizationBasicInfo_1Service> {
 	private final IEduInformatizationBasicInfo_1Service eduInformatizationBasicInfo_1Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -71,6 +73,11 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody EduInformatizationBasicInfo_1 eduInformatizationBasicInfo_1) {
 		eduInformatizationBasicInfo_1Service.save(eduInformatizationBasicInfo_1);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				eduInformatizationBasicInfo_1.getIdentificationCode(),
+				"edu_informatization_basic_info_1",
+				eduInformatizationBasicInfo_1.getId()
+				);
 		return Result.OK("添加成功！");
 	}
 	
@@ -100,7 +107,13 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
 	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_1:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		EduInformatizationBasicInfo_1 rec = eduInformatizationBasicInfo_1Service.getById(id);
 		eduInformatizationBasicInfo_1Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"edu_informatization_basic_info_1",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -160,6 +173,31 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, EduInformatizationBasicInfo_1.class);
     }
+
+	 @RequiresPermissions("edu.statistics:edu_informatization_basic_info_1:report")
+	 @PostMapping(value = "/report")
+	 public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		 eduInformatizationBasicInfo_1Service.changeReported(id, 1);
+		 boolean rst = fillingControlService.updateFillingControlAfterReported(
+				 identificationCode,
+				 "edu_informatization_basic_info_1"
+		 );
+		 return Result.OK("上报成功!");
+	 }
+
+	 @RequiresPermissions("edu.statistics:edu_informatization_basic_info_1:revoke")
+	 @PostMapping(value = "/revoke")
+	 public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		 for (String id: ids.split(",")) {
+			 EduInformatizationBasicInfo_1 rec = eduInformatizationBasicInfo_1Service.getById(id);
+			 eduInformatizationBasicInfo_1Service.changeReported(id, 0);
+			 boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					 rec.getIdentificationCode(),
+					 "edu_informatization_basic_info_1"
+			 );
+		 }
+		 return Result.OK("退回成功!");
+	 }
 
 	 @GetMapping("teacherInfo")
 	 public Result<List<Map<String,Object>>> teacherInfo() {

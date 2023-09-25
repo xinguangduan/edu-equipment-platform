@@ -11,6 +11,8 @@ enum Api {
   deleteBatch = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/deleteBatch',
   importExcel = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/importExcel',
   exportXls = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/exportXls',
+  reportOne = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/report',
+  batchRevoke = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/revoke',
 }
 /**
  * 导出api
@@ -61,4 +63,16 @@ export const batchDelete = (params, handleSuccess) => {
 export const saveOrUpdate = (params, isUpdate) => {
   let url = isUpdate ? Api.edit : Api.save;
   return defHttp.post({url: url, params});
+}
+// 上报
+export const reportOne = (params, handleSuccess) => {
+  return defHttp.post({url: Api.reportOne, params}, {joinParamsToUrl: true}).then(() => {
+    handleSuccess();
+  });
+}
+// 退回
+export const batchRevoke = (params, handleSuccess) => {
+  return defHttp.post({url: Api.batchRevoke, data: params}, {joinParamsToUrl: true}).then(() => {
+    handleSuccess();
+  });
 }

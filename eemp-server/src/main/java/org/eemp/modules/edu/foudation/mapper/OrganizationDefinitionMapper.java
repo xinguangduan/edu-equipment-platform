@@ -1,6 +1,7 @@
 package org.eemp.modules.edu.foudation.mapper;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 import org.eemp.modules.edu.foudation.entity.OrganizationDefinition;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -15,4 +16,6 @@ public interface OrganizationDefinitionMapper extends BaseMapper<OrganizationDef
 
     List<OrganizationDefinition> getImportedExcelRecords(@Param("dbType") String dbType);
 
+    @Update("UPDATE organization_definition SET last_login_time=now() WHERE admin_code=#{adminCode}")
+    int updateLastLoginTimeByAdminCode(String adminCode);
 }
