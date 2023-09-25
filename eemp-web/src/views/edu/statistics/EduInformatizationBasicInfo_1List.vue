@@ -4,9 +4,9 @@
    <BasicTable @register="registerTable" :rowSelection="rowSelection">
      <!--插槽:table标题-->
       <template #tableTitle>
-          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" :disabled="!addable"> 新增</a-button>
-          <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
-          <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
+          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.statistics:edu_informatization_basic_info_1:add'" :disabled="!addable"> 新增</a-button>
+          <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.statistics:edu_informatization_basic_info_1:exportXls'"> 导出</a-button>
+          <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.statistics:edu_informatization_basic_info_1:importExcel'">导入</j-upload-button>
           <a-dropdown v-if="selectedRowKeys.length > 0">
               <template #overlay>
                 <a-menu>
@@ -20,8 +20,8 @@
                 <Icon icon="mdi:chevron-down"></Icon>
               </a-button>
         </a-dropdown>
-        <a-button v-if="reportable" :ghost="true" type="primary" preIcon="ant-design:send-outlined" size="midlle">上报</a-button>
-        <a-button v-if="revokable" :ghost="true" type="primary" preIcon="ant-design:send-outlined" size="midlle">退回学校修改</a-button>
+        <a-button type="primary" @click="handleReport" preIcon="ant-design:send-outlined" v-auth="'edu.statistics:edu_informatization_basic_info_1:report'" :disabled="!reportable">上报</a-button>
+        <a-button :ghost="true" type="primary" @click="handleRevoke" preIcon="ant-design:send-outlined" v-auth="'edu.statistics:edu_informatization_basic_info_1:revoke'">退回学校修改</a-button>
       </template>
        <!--操作栏-->
       <template #action="{ record }">
@@ -52,7 +52,7 @@
   import { useListPage } from '/@/hooks/system/useListPage'
   import EduInformatizationBasicInfo_1Modal from './components/EduInformatizationBasicInfo_1Modal.vue'
   import {columns, searchFormSchema} from './EduInformatizationBasicInfo_1.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './EduInformatizationBasicInfo_1.api';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, reportOne, batchRevoke} from './EduInformatizationBasicInfo_1.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   import { defHttp } from '/@/utils/http/axios';
   import { useUserStoreWithOut } from '/@/store/modules/user';
@@ -172,9 +172,17 @@
        ]
    }
 
+  async function handleReport() {
+    await reportOne({identificationCode: userStore.getUserInfo.telephone, id: recId.value}, handleSuccess);
+  }
+  async function handleRevoke() {
+    await batchRevoke({ids: selectedRowKeys.value}, handleSuccess);
+  }
+ 
   const addable = ref(false)
   const reportable = ref(false)
   const revokable = ref(false)
+  const recId = ref(0)
 
   onMounted(() => {
     getFillingControl()
@@ -190,6 +198,7 @@
       addable.value = res.addable
       reportable.value = res.reportable
       revokable.value = res.revokable
+      recId.value = res.id
     });;
   }
 

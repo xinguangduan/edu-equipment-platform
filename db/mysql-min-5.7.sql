@@ -3074,6 +3074,7 @@ CREATE TABLE `edu_informatization_basic_info_1` (
   `connected_room_count` int NOT NULL COMMENT '已入网教室数（间）',
   `has_a_central_server_room` varchar(1) COLLATE utf8mb4_general_ci NOT NULL COMMENT '是否建设网络中心机房',
   `teaching_resource_capacity` double NOT NULL COMMENT '学校资源库教学资源容量（GB）',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3466,6 +3467,8 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023060402428380264', '2023060402428380260', '批量删除教育信息化基本情况统计表（一）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_1:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0, 0, '1', 0),
      ('2023060402428380265', '2023060402428380260', '导出excel_教育信息化基本情况统计表（一）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_1:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0, 0, '1', 0),
      ('2023060402428380266', '2023060402428380260', '导入excel_教育信息化基本情况统计表（一）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_1:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0, 0, '1', 0),
+     ('2023060402428380267', '2023060402428380260',	'上报教育信息化基本情况统计表（一）',	NULL, NULL,	0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_1:report',	'1', NULL, 0, NULL,	1, 0, 0, 0,	NULL, 'admin', '2023-09-22 15:58:04', NULL,	NULL, 0, 0,	'1', 0),
+     ('2023060402428380268', '2023060402428380260',	'退回教育信息化基本情况统计表（一）',	NULL, NULL,	0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_1:revoke',	'1', NULL, 0, NULL,	1, 0, 0, 0,	NULL, 'admin', '2023-09-22 15:59:20', NULL,	NULL, 0, 0,	'1', 0),
      ('2023070711112570321', '2023070711112570320', '添加教育信息化基本情况统计表（二）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_2:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0, 0, '1', 0),
      ('2023070711112570322', '2023070711112570320', '编辑教育信息化基本情况统计表（二）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_2:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0, 0, '1', 0),
      ('2023070711112570323', '2023070711112570320', '删除教育信息化基本情况统计表（二）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_2:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0, 0, '1', 0),
@@ -3526,13 +3529,14 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1664959650874990594',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030195',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
      ('1664959650883379202',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030194',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
      ('1664959650883379203',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060312357030196',	NULL,	'2023-06-03 19:38:09',	'127.0.0.1'),
-     ('1665258381948203009',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380260',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),               -- 教育信息化基本情况统计表（一）
-     ('1665258381969174530',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380261',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
+     ('1665258381969174530',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380261',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),               -- 教育信息化基本情况统计表（一）
      ('1665258381973368833',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380262',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
      ('1665258381973368834',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380263',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
      ('1665258381977563138',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380264',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
      ('1665258381981757442',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380265',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
      ('1665258381981757443',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380266',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
+     ('1704148738474614786',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380267',	NULL,	'2023-09-22 11:28:53',	'127.0.0.1'),
+     ('1705133070140825601',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380268',	NULL,	'2023-09-22 16:12:58',	'127.0.0.1'),               -- 退回
      ('1677176153070256129',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570320',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),               -- 教育信息化基本情况统计表（二）
      ('1677176153082839042',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570321',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),
      ('1677176153087033345',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570322',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),
@@ -3615,6 +3619,9 @@ INSERT INTO `edu_informatization_equip_info_8` (`id`, `identification_code`, `fi
     ('1680579141503787007',	'2142004708',	'2023-03-26',	4,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
     ('1680579141503787008',	'2142004708',	'2023-06-07',	5,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
     ('1680579141503787010',	'2142004708',	'2023-07-16',	6,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL);
+
+INSERT INTO `filling_control` (`id`, `control_type`, `control_name`, `start_date`, `end_date`, `check_start_date`, `check_end_date`, `nursery_school`, `primary_school`, `junior_school`, `senior_school`, `memo`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
+    ('1705147748615184385',	'01',	'2023下半年填报',	'2023-09-01',	'2023-09-30',	'2023-10-01',	'2023-10-15',	'1232002606',	NULL,	NULL,	NULL,	NULL,	'admin',	'2023-09-22 17:11:18',	NULL,	NULL,	'A01');
 
 /* 暂时屏蔽 小学器材设施配备要求模板表
 -- ----------------------------
@@ -3968,6 +3975,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666313219406430215',	'1666258199734517761',	'2023060402428380264',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),
      ('1666313219406430216',	'1666258199734517761',	'2023060402428380265',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),
      ('1666313219406430217',	'1666258199734517761',	'2023060402428380266',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),
+     ('1705159882216448002',	'1666258199734517761',	'2023060402428380267',	NULL,	'2023-09-22 17:59:31',	'127.0.0.1'),               -- 上报
      ('1677171858836963329',	'1666258199734517761',	'2023070711112570321',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（二）
      ('1677171858836963330',	'1666258199734517761',	'2023070711112570322',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
      ('1677171858836963331',	'1666258199734517761',	'2023070711112570323',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
@@ -4089,6 +4097,11 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1680408226581053448',	'1666258199700963330',	'2023071507187680160',	'1680416297336307714',	'2023-07-16 10:45:16',	'127.0.0.1'),           -- 初中
      ('1680408415920324613',	'1666258199679991810',	'2023071507187680160',	'1680416297336307714',	'2023-07-16 10:46:01',	'127.0.0.1');           -- 高中
 
+-- 角色数据权限：电教中心仅能看到学校上报的统计数据
+INSERT INTO `sys_permission_data_rule` (`id`, `permission_id`, `rule_name`, `rule_column`, `rule_conditions`, `rule_value`, `status`, `create_time`, `create_by`, `update_time`, `update_by`) VALUES
+    ('1705486882726629378',	'2023060402428380260',	'电教中心仅能看到学校上报的统计数据#1',	'reported',	'=',	'1',	'1',	'2023-09-23 15:38:54',	'admin',	'2023-09-23 15:53:08',	'admin');
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+    ('1665258381948203009',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380260',	'1705486882726629378',	'2023-06-04 15:25:12',	'127.0.0.1');       -- 系统管理员 & #1
 
 -- 字段列显示控制（目前框架采用的vben似乎不支持对列编辑的控制，故简单在前段硬编码控制）
 INSERT INTO `sys_permission` (`id`, `parent_id`, `name`, `url`, `component`, `is_route`, `component_name`, `redirect`, `menu_type`, `perms`, `perms_type`, `sort_no`, `always_show`, `icon`, `is_leaf`, `keep_alive`, `hidden`, `hide_tab`, `description`, `create_by`, `create_time`, `update_by`, `update_time`, `del_flag`, `rule_flag`, `status`, `internal_or_external`) VALUES

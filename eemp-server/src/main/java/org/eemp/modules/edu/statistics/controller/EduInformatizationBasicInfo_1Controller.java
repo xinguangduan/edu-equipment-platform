@@ -107,7 +107,13 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
 	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_1:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		EduInformatizationBasicInfo_1 rec = eduInformatizationBasicInfo_1Service.getById(id);
 		eduInformatizationBasicInfo_1Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"edu_informatization_basic_info_1",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -167,6 +173,31 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, EduInformatizationBasicInfo_1.class);
     }
+
+	 @RequiresPermissions("edu.statistics:edu_informatization_basic_info_1:report")
+	 @PostMapping(value = "/report")
+	 public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		 eduInformatizationBasicInfo_1Service.changeReported(id, 1);
+		 boolean rst = fillingControlService.updateFillingControlAfterReported(
+				 identificationCode,
+				 "edu_informatization_basic_info_1"
+		 );
+		 return Result.OK("上报成功!");
+	 }
+
+	 @RequiresPermissions("edu.statistics:edu_informatization_basic_info_1:revoke")
+	 @PostMapping(value = "/revoke")
+	 public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		 for (String id: ids.split(",")) {
+			 EduInformatizationBasicInfo_1 rec = eduInformatizationBasicInfo_1Service.getById(id);
+			 eduInformatizationBasicInfo_1Service.changeReported(id, 0);
+			 boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					 rec.getIdentificationCode(),
+					 "edu_informatization_basic_info_1"
+			 );
+		 }
+		 return Result.OK("退回成功!");
+	 }
 
 	 @GetMapping("teacherInfo")
 	 public Result<List<Map<String,Object>>> teacherInfo() {
