@@ -16,7 +16,7 @@
                   </a-menu-item>
                 </a-menu>
               </template>
-              <a-button>批量操作
+              <a-button  v-auth="'edu.statistics:edu_informatization_basic_info_1:deleteBatch'">批量操作
                 <Icon icon="mdi:chevron-down"></Icon>
               </a-button>
         </a-dropdown>
@@ -25,7 +25,7 @@
       </template>
        <!--操作栏-->
       <template #action="{ record }">
-        <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
+        <TableAction v-if="recId !== undefined && record.id === recId.valueOf()" :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
       </template>
       <!--字段回显插槽-->
       <template #htmlSlot="{text}">
@@ -81,7 +81,7 @@
             },
            actionColumn: {
                width: 120,
-               fixed:'right'
+               fixed:'left'
             },
       },
        exportConfig: {
@@ -151,6 +151,12 @@
          {
            label: '编辑',
            onClick: handleEdit.bind(null, record),
+         }, {
+           label: '删除',
+           popConfirm: {
+             title: '是否确认删除',
+             confirm: handleDelete.bind(null, record),
+           }
          }
        ]
    }
@@ -159,16 +165,10 @@
         */
   function getDropDownAction(record){
        return [
-         {
-           label: '详情',
-           onClick: handleDetail.bind(null, record),
-         }, {
-           label: '删除',
-           popConfirm: {
-             title: '是否确认删除',
-             confirm: handleDelete.bind(null, record),
-           }
-         }
+        //  {
+        //    label: '详情',
+        //    onClick: handleDetail.bind(null, record),
+        //  }
        ]
    }
 
