@@ -25,7 +25,7 @@
       </template>
        <!--操作栏-->
       <template #action="{ record }">
-        <TableAction v-if="recId !== undefined && record.id === recId.valueOf()" :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
+        <TableAction v-if="recId !== undefined && record.id === recId.valueOf() && reportable" :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
       </template>
       <!--字段回显插槽-->
       <template #htmlSlot="{text}">
@@ -52,7 +52,7 @@
   import { useListPage } from '/@/hooks/system/useListPage'
   import EduInformatizationBasicInfo_1Modal from './components/EduInformatizationBasicInfo_1Modal.vue'
   import {columns, searchFormSchema} from './EduInformatizationBasicInfo_1.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, reportOne, batchRevoke} from './EduInformatizationBasicInfo_1.api';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, reportOne, batchRevoke, getFillingControlUrl} from './EduInformatizationBasicInfo_1.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   import { defHttp } from '/@/utils/http/axios';
   import { useUserStoreWithOut } from '/@/store/modules/user';
@@ -189,17 +189,15 @@
     console.log("onMounted...")
   })
 
-  let reqData = {identificationCode: userStore.getUserInfo.telephone, packageName: 'edu_informatization_basic_info_1'};
-  const getFillingControlUrl = '/org.eemp.modules.edu.foudation/fillingControl/getFillingControl';
-  async function getFillingControl(){
-    let params = {reqData: JSON.stringify(reqData)};
-    await defHttp.get({url: getFillingControlUrl, params}).then((res) => {
+  async function getFillingControl() {
+    let params = {identificationCode: userStore.getUserInfo.telephone, packageName: 'edu_informatization_basic_info_1'};
+    await defHttp.post({url: getFillingControlUrl, params}, {joinParamsToUrl: true}).then((res) => {
       console.log(res);
       addable.value = res.addable
       reportable.value = res.reportable
       revokable.value = res.revokable
       recId.value = res.id
-    });;
+    });
   }
 
 </script>

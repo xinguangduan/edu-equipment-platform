@@ -13,6 +13,8 @@ enum Api {
   exportXls = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/exportXls',
   reportOne = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/report',
   batchRevoke = '/org.eemp.modules.edu.statistics/eduInformatizationBasicInfo_1/revoke',
+
+  fillingControl = '/org.eemp.modules.edu.foudation/fillingControl/getFillingControl',
 }
 /**
  * 导出api
@@ -23,6 +25,7 @@ export const getExportUrl = Api.exportXls;
  * 导入api
  */
 export const getImportUrl = Api.importExcel;
+export const getFillingControlUrl = Api.fillingControl;
 /**
  * 列表接口
  * @param params
