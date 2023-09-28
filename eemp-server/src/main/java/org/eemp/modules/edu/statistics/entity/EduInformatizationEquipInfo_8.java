@@ -116,6 +116,9 @@ public class EduInformatizationEquipInfo_8 implements Serializable {
 	@Excel(name = "校园监控留存时间(天)", width = 15)
     @ApiModelProperty(value = "校园监控留存时间(天)")
     private java.lang.Integer surveillanceRetentionTime;
+    /**上报状态*/
+    @ApiModelProperty(value = "上报状态")
+    private Integer reported;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private java.lang.String createBy;

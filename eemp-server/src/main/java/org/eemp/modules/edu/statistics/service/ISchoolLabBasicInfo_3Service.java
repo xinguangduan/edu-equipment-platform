@@ -13,6 +13,8 @@ import java.util.Map;
  */
 public interface ISchoolLabBasicInfo_3Service extends IService<SchoolLabBasicInfo_3> {
 
+    int changeReported(String id, int val);
+
     List<Map<String,Object>> getScienceRoomInfo();
 
     List<Map<String,Object>> getLaboratoryRoomInfo();

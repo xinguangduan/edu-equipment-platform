@@ -10,4 +10,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IEduInformatizationBasicInfo_2Service extends IService<EduInformatizationBasicInfo_2> {
 
+    int changeReported(String id, int val);
+
 }

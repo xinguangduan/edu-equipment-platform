@@ -10,4 +10,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISchoolSportRoomInfo_5Service extends IService<SchoolSportRoomInfo_5> {
 
+    int changeReported(String id, int val);
+
 }

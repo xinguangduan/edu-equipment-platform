@@ -102,6 +102,9 @@ public class EduInformatizationBasicInfo_2 implements Serializable {
 	@Excel(name = "信息技术兼职教师人数", width = 15)
     @ApiModelProperty(value = "信息技术兼职教师人数")
     private java.lang.Integer partTimeTeacherNum;
+    /**上报状态*/
+    @ApiModelProperty(value = "上报状态")
+    private Integer reported;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private java.lang.String createBy;

@@ -25,6 +25,11 @@ public class EduInformatizationEquipInfo_8ServiceImpl extends ServiceImpl<EduInf
     private EduInformatizationEquipInfo_8Mapper mapper;
 
     @Override
+    public int changeReported(String id, int val) {
+        return mapper.changeReported(id, val);
+    }
+
+    @Override
     public List<Map<String,Object>> getClassNumberInfo(Date dayStart, Date dayEnd) {
         DbType dbType = CommonUtils.getDatabaseTypeEnum();
         return mapper.getClassNumberInfo(dayStart, dayEnd,dbType.getDb());

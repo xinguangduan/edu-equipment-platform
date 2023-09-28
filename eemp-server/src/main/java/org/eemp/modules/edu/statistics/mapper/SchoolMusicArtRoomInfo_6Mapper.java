@@ -1,5 +1,6 @@
 package org.eemp.modules.edu.statistics.mapper;
 
+import org.apache.ibatis.annotations.Update;
 import org.eemp.modules.edu.statistics.entity.SchoolMusicArtRoomInfo_6;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -9,5 +10,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Version: V1.0
  */
 public interface SchoolMusicArtRoomInfo_6Mapper extends BaseMapper<SchoolMusicArtRoomInfo_6> {
+
+    @Update("UPDATE school_music_art_room_info_6 SET reported=#{val} WHERE id=#{id}")
+    int changeReported(String id, int val);
 
 }

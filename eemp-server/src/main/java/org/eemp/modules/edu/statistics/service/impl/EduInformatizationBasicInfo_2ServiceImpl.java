@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import javax.annotation.Resource;
+
 /**
  * @Description: 教育信息化基本情况统计表（二）
  * @Date:   2023-07-07
@@ -14,5 +16,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  */
 @Service
 public class EduInformatizationBasicInfo_2ServiceImpl extends ServiceImpl<EduInformatizationBasicInfo_2Mapper, EduInformatizationBasicInfo_2> implements IEduInformatizationBasicInfo_2Service {
+    @Resource
+    private EduInformatizationBasicInfo_2Mapper mapper;
+
+    @Override
+    public int changeReported(String id, int val) {
+        return mapper.changeReported(id, val);
+    }
 
 }

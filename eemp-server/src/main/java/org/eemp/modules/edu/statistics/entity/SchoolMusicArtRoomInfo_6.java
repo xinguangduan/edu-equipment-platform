@@ -119,6 +119,9 @@ public class SchoolMusicArtRoomInfo_6 implements Serializable {
 	@Dict(dicCode = "yn")
     @ApiModelProperty(value = "是否配备书法软件系统")
     private java.lang.String hasACalligraphySystem;
+    /**上报状态*/
+    @ApiModelProperty(value = "上报状态")
+    private Integer reported;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private java.lang.String createBy;

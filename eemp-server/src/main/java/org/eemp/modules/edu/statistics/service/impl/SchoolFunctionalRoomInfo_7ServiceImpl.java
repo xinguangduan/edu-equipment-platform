@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import javax.annotation.Resource;
+
 /**
  * @Description: 中小学功能室用房统计表（七）
  * @Date:   2023-07-15
@@ -14,5 +16,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  */
 @Service
 public class SchoolFunctionalRoomInfo_7ServiceImpl extends ServiceImpl<SchoolFunctionalRoomInfo_7Mapper, SchoolFunctionalRoomInfo_7> implements ISchoolFunctionalRoomInfo_7Service {
+    @Resource
+    private SchoolFunctionalRoomInfo_7Mapper mapper;
+
+    @Override
+    public int changeReported(String id, int val) {
+        return mapper.changeReported(id, val);
+    }
 
 }

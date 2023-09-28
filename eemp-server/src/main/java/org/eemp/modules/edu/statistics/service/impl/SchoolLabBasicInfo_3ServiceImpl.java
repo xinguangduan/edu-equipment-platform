@@ -24,6 +24,11 @@ public class SchoolLabBasicInfo_3ServiceImpl extends ServiceImpl<SchoolLabBasicI
     private SchoolLabBasicInfo_3Mapper mapper;
 
     @Override
+    public int changeReported(String id, int val) {
+        return mapper.changeReported(id, val);
+    }
+
+    @Override
     public List<Map<String,Object>> getScienceRoomInfo() {
         DbType dbType = CommonUtils.getDatabaseTypeEnum();
         return mapper.getScienceRoomInfo(dbType.getDb());
