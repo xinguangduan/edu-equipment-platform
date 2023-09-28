@@ -18,6 +18,7 @@ import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.oConvertUtils;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.SchoolLibraryBasicInfo_4;
 import org.eemp.modules.edu.statistics.service.ISchoolLibraryBasicInfo_4Service;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class SchoolLibraryBasicInfo_4Controller extends BaseController<SchoolLibraryBasicInfo_4, ISchoolLibraryBasicInfo_4Service> {
 	private final ISchoolLibraryBasicInfo_4Service schoolLibraryBasicInfo_4Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -71,6 +73,11 @@ public class SchoolLibraryBasicInfo_4Controller extends BaseController<SchoolLib
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody SchoolLibraryBasicInfo_4 schoolLibraryBasicInfo_4) {
 		schoolLibraryBasicInfo_4Service.save(schoolLibraryBasicInfo_4);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				schoolLibraryBasicInfo_4.getIdentificationCode(),
+				"school_library_basic_info_4",
+				schoolLibraryBasicInfo_4.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -100,7 +107,13 @@ public class SchoolLibraryBasicInfo_4Controller extends BaseController<SchoolLib
 	@RequiresPermissions("edu.statistics:school_library_basic_info_4:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		SchoolLibraryBasicInfo_4 rec = schoolLibraryBasicInfo_4Service.getById(id);
 		schoolLibraryBasicInfo_4Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"school_library_basic_info_4",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	

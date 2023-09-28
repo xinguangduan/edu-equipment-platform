@@ -17,6 +17,7 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.EduInformatizationBasicInfo_2;
 import org.eemp.modules.edu.statistics.service.IEduInformatizationBasicInfo_2Service;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class EduInformatizationBasicInfo_2Controller extends BaseController<EduInformatizationBasicInfo_2, IEduInformatizationBasicInfo_2Service> {
 	private final IEduInformatizationBasicInfo_2Service eduInformatizationBasicInfo_2Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -70,6 +72,11 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody EduInformatizationBasicInfo_2 eduInformatizationBasicInfo_2) {
 		eduInformatizationBasicInfo_2Service.save(eduInformatizationBasicInfo_2);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				eduInformatizationBasicInfo_2.getIdentificationCode(),
+				"edu_informatization_basic_info_2",
+				eduInformatizationBasicInfo_2.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -99,7 +106,13 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
 	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		EduInformatizationBasicInfo_2 rec = eduInformatizationBasicInfo_2Service.getById(id);
 		eduInformatizationBasicInfo_2Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"edu_informatization_basic_info_2",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	

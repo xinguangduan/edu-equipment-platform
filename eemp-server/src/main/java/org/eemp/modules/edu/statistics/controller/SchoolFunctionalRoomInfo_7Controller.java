@@ -17,6 +17,7 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.SchoolFunctionalRoomInfo_7;
 import org.eemp.modules.edu.statistics.service.ISchoolFunctionalRoomInfo_7Service;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolFunctionalRoomInfo_7, ISchoolFunctionalRoomInfo_7Service> {
 	private final ISchoolFunctionalRoomInfo_7Service schoolFunctionalRoomInfo_7Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -70,6 +72,11 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody SchoolFunctionalRoomInfo_7 schoolFunctionalRoomInfo_7) {
 		schoolFunctionalRoomInfo_7Service.save(schoolFunctionalRoomInfo_7);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				schoolFunctionalRoomInfo_7.getIdentificationCode(),
+				"school_functional_room_info_7",
+				schoolFunctionalRoomInfo_7.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -99,7 +106,13 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
 	@RequiresPermissions("edu.statistics:school_functional_room_info_7:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		SchoolFunctionalRoomInfo_7 rec = schoolFunctionalRoomInfo_7Service.getById(id);
 		schoolFunctionalRoomInfo_7Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"school_functional_room_info_7",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
