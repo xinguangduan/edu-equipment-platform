@@ -173,4 +173,29 @@ public class SchoolMusicArtRoomInfo_6Controller extends BaseController<SchoolMus
         return super.importExcel(request, response, SchoolMusicArtRoomInfo_6.class);
     }
 
+	@RequiresPermissions("edu.statistics:school_music_art_room_info_6:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolMusicArtRoomInfo_6Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_music_art_room_info_6"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_music_art_room_info_6:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolMusicArtRoomInfo_6 rec = schoolMusicArtRoomInfo_6Service.getById(id);
+			schoolMusicArtRoomInfo_6Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_music_art_room_info_6"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
+
 }

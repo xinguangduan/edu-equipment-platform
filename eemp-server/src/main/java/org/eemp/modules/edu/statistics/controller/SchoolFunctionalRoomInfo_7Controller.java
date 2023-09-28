@@ -173,4 +173,29 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
         return super.importExcel(request, response, SchoolFunctionalRoomInfo_7.class);
     }
 
+	@RequiresPermissions("edu.statistics:school_functional_room_info_7:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolFunctionalRoomInfo_7Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_functional_room_info_7"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_functional_room_info_7:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolFunctionalRoomInfo_7 rec = schoolFunctionalRoomInfo_7Service.getById(id);
+			schoolFunctionalRoomInfo_7Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_functional_room_info_7"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
+
 }

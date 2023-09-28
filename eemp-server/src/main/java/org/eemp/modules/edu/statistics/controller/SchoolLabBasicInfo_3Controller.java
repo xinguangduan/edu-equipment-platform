@@ -176,6 +176,31 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
         return super.importExcel(request, response, SchoolLabBasicInfo_3.class);
     }
 
+	@RequiresPermissions("edu.statistics:school_lab_basic_info_3:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolLabBasicInfo_3Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_lab_basic_info_3"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_lab_basic_info_3:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolLabBasicInfo_3 rec = schoolLabBasicInfo_3Service.getById(id);
+			schoolLabBasicInfo_3Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_lab_basic_info_3"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
+
 	@GetMapping("scienceRoomInfo")
 	public Result<List<Map<String,Object>>> scienceRoomInfo() {
 		Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();

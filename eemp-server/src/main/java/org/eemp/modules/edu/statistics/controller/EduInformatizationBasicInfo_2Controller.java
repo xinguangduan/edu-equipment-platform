@@ -173,4 +173,29 @@ public class EduInformatizationBasicInfo_2Controller extends BaseController<EduI
         return super.importExcel(request, response, EduInformatizationBasicInfo_2.class);
     }
 
+	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		eduInformatizationBasicInfo_2Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"edu_informatization_basic_info_2"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:edu_informatization_basic_info_2:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			EduInformatizationBasicInfo_2 rec = eduInformatizationBasicInfo_2Service.getById(id);
+			eduInformatizationBasicInfo_2Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"edu_informatization_basic_info_2"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
+
 }

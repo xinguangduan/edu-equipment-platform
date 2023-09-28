@@ -174,6 +174,31 @@ public class SchoolLibraryBasicInfo_4Controller extends BaseController<SchoolLib
         return super.importExcel(request, response, SchoolLibraryBasicInfo_4.class);
     }
 
+	@RequiresPermissions("edu.statistics:school_library_basic_info_4:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolLibraryBasicInfo_4Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_library_basic_info_4"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_library_basic_info_4:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolLibraryBasicInfo_4 rec = schoolLibraryBasicInfo_4Service.getById(id);
+			schoolLibraryBasicInfo_4Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_library_basic_info_4"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
+
 	@GetMapping("libraryInfo")
 	public Result<List<Map<String,Object>>> libraryInfo() {
 		Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();

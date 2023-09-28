@@ -173,4 +173,29 @@ public class SchoolSportRoomInfo_5Controller extends BaseController<SchoolSportR
         return super.importExcel(request, response, SchoolSportRoomInfo_5.class);
     }
 
+	@RequiresPermissions("edu.statistics:school_sport_room_info_5:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolSportRoomInfo_5Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_sport_room_info_5"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_sport_room_info_5:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolSportRoomInfo_5 rec = schoolSportRoomInfo_5Service.getById(id);
+			schoolSportRoomInfo_5Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_sport_room_info_5"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
+
 }

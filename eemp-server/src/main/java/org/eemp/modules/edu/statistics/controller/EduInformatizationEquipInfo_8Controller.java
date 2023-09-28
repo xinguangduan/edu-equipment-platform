@@ -174,6 +174,31 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
         return super.importExcel(request, response, EduInformatizationEquipInfo_8.class);
     }
 
+	@RequiresPermissions("edu.statistics:edu_informatization_equip_info_8:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		eduInformatizationEquipInfo_8Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"edu_informatization_equip_info_8"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:edu_informatization_equip_info_8:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			EduInformatizationEquipInfo_8 rec = eduInformatizationEquipInfo_8Service.getById(id);
+			eduInformatizationEquipInfo_8Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"edu_informatization_equip_info_8"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
+
 	 @GetMapping("classInfo")
 	 public Result<List<Map<String,Object>>> classInfo() {
 		 Result<List<Map<String,Object>>> result = new Result<List<Map<String,Object>>>();
