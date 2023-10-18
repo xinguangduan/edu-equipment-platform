@@ -1,5 +1,6 @@
 package org.eemp.modules.edu.register.mapper;
 
+import org.apache.ibatis.annotations.Update;
 import org.eemp.modules.edu.register.entity.PsMathematicsEquipmentFile;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -9,5 +10,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Version: V1.0
  */
 public interface PsMathematicsEquipmentFileMapper extends BaseMapper<PsMathematicsEquipmentFile> {
+
+    @Update("UPDATE ps_mathematics_equipment_file SET reported=#{val} WHERE id=#{id}")
+    int changeReported(String id, int val);
 
 }

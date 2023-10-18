@@ -11,6 +11,10 @@ enum Api {
   deleteBatch = '/org.eemp.modules.edu.register/psMathematicsEquipmentFile/deleteBatch',
   importExcel = '/org.eemp.modules.edu.register/psMathematicsEquipmentFile/importExcel',
   exportXls = '/org.eemp.modules.edu.register/psMathematicsEquipmentFile/exportXls',
+  reportOne = '/org.eemp.modules.edu.register/psMathematicsEquipmentFile/report',
+  batchRevoke = '/org.eemp.modules.edu.register/psMathematicsEquipmentFile/revoke',
+
+  fillingControl = '/org.eemp.modules.edu.foudation/fillingControl/getFillingControl',
 }
 /**
  * 导出api
@@ -21,6 +25,7 @@ export const getExportUrl = Api.exportXls;
  * 导入api
  */
 export const getImportUrl = Api.importExcel;
+export const getFillingControlUrl = Api.fillingControl;
 /**
  * 列表接口
  * @param params
@@ -61,4 +66,16 @@ export const batchDelete = (params, handleSuccess) => {
 export const saveOrUpdate = (params, isUpdate) => {
   let url = isUpdate ? Api.edit : Api.save;
   return defHttp.post({url: url, params});
+}
+// 上报
+export const reportOne = (params, handleSuccess) => {
+  return defHttp.post({url: Api.reportOne, params}, {joinParamsToUrl: true}).then(() => {
+    handleSuccess();
+  });
+}
+// 退回
+export const batchRevoke = (params, handleSuccess) => {
+  return defHttp.post({url: Api.batchRevoke, data: params}, {joinParamsToUrl: true}).then(() => {
+    handleSuccess();
+  });
 }

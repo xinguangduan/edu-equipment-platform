@@ -60,6 +60,9 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
             case "edu_informatization_equip_info_8":
                 fillingControlType = "01";
                 break;
+            case "ps_mathematics_equipment_file":
+                fillingControlType = "02";
+                break;
         }
 
         LambdaQueryWrapper<FillingControl> wrapper = new LambdaQueryWrapper<>();

@@ -10,4 +10,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IPsMathematicsEquipmentFileService extends IService<PsMathematicsEquipmentFile> {
 
+    int changeReported(String id, int val);
+
 }

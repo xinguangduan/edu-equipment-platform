@@ -36,6 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class PsMathematicsEquipmentFileController extends BaseController<PsMathematicsEquipmentFile, IPsMathematicsEquipmentFileService> {
 	private final IPsMathematicsEquipmentFileService psMathematicsEquipmentFileService;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -72,6 +73,11 @@ public class PsMathematicsEquipmentFileController extends BaseController<PsMathe
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody PsMathematicsEquipmentFile psMathematicsEquipmentFile) {
 		psMathematicsEquipmentFileService.save(psMathematicsEquipmentFile);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				psMathematicsEquipmentFile.getIdentificationCode(),
+				"ps_mathematics_equipment_file",
+				psMathematicsEquipmentFile.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -101,7 +107,13 @@ public class PsMathematicsEquipmentFileController extends BaseController<PsMathe
 	@RequiresPermissions("edu.register:ps_mathematics_equipment_file:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		PsMathematicsEquipmentFile rec = psMathematicsEquipmentFileService.getById(id);
 		psMathematicsEquipmentFileService.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"ps_mathematics_equipment_file",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -162,5 +174,30 @@ public class PsMathematicsEquipmentFileController extends BaseController<PsMathe
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, PsMathematicsEquipmentFile.class);
     }
+
+	 @RequiresPermissions("edu.register:ps_mathematics_equipment_file:report")
+	 @PostMapping(value = "/report")
+	 public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		 psMathematicsEquipmentFileService.changeReported(id, 1);
+		 boolean rst = fillingControlService.updateFillingControlAfterReported(
+				 identificationCode,
+				 "ps_mathematics_equipment_file"
+		 );
+		 return Result.OK("上报成功!");
+	 }
+
+	 @RequiresPermissions("edu.register:ps_mathematics_equipment_file:revoke")
+	 @PostMapping(value = "/revoke")
+	 public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		 for (String id: ids.split(",")) {
+			 PsMathematicsEquipmentFile rec = psMathematicsEquipmentFileService.getById(id);
+			 psMathematicsEquipmentFileService.changeReported(id, 0);
+			 boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					 rec.getIdentificationCode(),
+					 "ps_mathematics_equipment_file"
+			 );
+		 }
+		 return Result.OK("退回成功!");
+	 }
 
 }

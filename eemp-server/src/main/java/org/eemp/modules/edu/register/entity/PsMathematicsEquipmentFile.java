@@ -51,7 +51,6 @@ public class PsMathematicsEquipmentFile implements Serializable {
     @ApiModelProperty(value = "备注")
     private java.lang.String memo;
 	/**上报状态*/
-	@Excel(name = "上报状态", width = 15)
     @ApiModelProperty(value = "上报状态")
     private java.lang.Integer reported;
 	/**创建人*/
