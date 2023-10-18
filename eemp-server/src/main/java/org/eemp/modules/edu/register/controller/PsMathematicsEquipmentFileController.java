@@ -49,6 +49,7 @@ public class PsMathematicsEquipmentFileController extends BaseController<PsMathe
 	//@AutoLog(value = "小学数学教学装备配置文件-分页列表查询")
 	@ApiOperation(value="小学数学教学装备配置文件-分页列表查询", notes="小学数学教学装备配置文件-分页列表查询")
 	@GetMapping(value = "/list")
+	@PermissionData(pageComponent = "edu/register/PsMathematicsEquipmentFileList")
 	public Result<IPage<PsMathematicsEquipmentFile>> queryPageList(PsMathematicsEquipmentFile psMathematicsEquipmentFile,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
@@ -144,6 +145,7 @@ public class PsMathematicsEquipmentFileController extends BaseController<PsMathe
     */
     @RequiresPermissions("edu.register:ps_mathematics_equipment_file:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/register/PsMathematicsEquipmentFileList")
     public ModelAndView exportXls(HttpServletRequest request, PsMathematicsEquipmentFile psMathematicsEquipmentFile) {
         return super.exportXls(request, psMathematicsEquipmentFile, PsMathematicsEquipmentFile.class, "小学数学教学装备配置文件");
     }
