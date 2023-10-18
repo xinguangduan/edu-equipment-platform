@@ -3362,6 +3362,25 @@ CREATE TABLE `filling_control` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for ps_mathematics_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `ps_mathematics_equipment_file`;
+CREATE TABLE `ps_mathematics_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3449,6 +3468,7 @@ INSERT INTO sys_permission (id, parent_id, name, url, component, is_route, compo
     ('2023060312357030190',	'',	'学校管理',	'/edu/foudation/organizationDefinitionList',	'edu/foudation/OrganizationDefinitionList',	1,	NULL,	NULL,	0,	NULL,	'1',	0.10,	0,	'ant-design:read-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-03 12:35:19',	'admin',	'2023-09-07 19:51:43',	0,	0,	'1',	0),
     ('1666281667909779458',	'',	'教育信息化',	'/edu/statistics',	'layouts/RouteView',	1,	'',	NULL,	0,	NULL,	'0',	0.30,	0,	'ant-design:book-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-07 11:11:22',	'admin',	'2023-09-07 20:17:26',	0,	0,	NULL,	0),
     ('1666282632293515265',	'',	'教育装备管理',	'/edu/equipment',	'layouts/RouteView',	1,	'',	NULL,	0,	NULL,	'0',	0.40,	0,	'ant-design:calculator-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-07 11:15:12',	'admin',	'2023-09-07 20:24:38',	0,	0,	NULL,	0),
+    ('1714103540890349570',	'1666282632293515265',	'教学装备配置',	'/edu/register',	'layouts/RouteView',	1,	'',	NULL,	1,	NULL,	'0',	9.00,	0,	'ant-design:form-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-10-17 10:18:25',	'admin',	'2023-10-17 10:24:17',	0,	0,	NULL,	0),
     ('2023091403567720490',	'',	'填报控制',	'/edu/foudation/fillingControlList',	'edu/foudation/FillingControlList',	1,	NULL,	NULL,	0,	NULL,	'1',	0.20,	0,	'ant-design:lock-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-09-14 15:56:49',	'admin',	'2023-09-14 16:55:01',	0,	0,	'1',	0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
@@ -3459,7 +3479,9 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, 
      ('2023071505454370430', '1666282632293515265', '体育用房统计表（五）', '/edu/statistics/schoolSportRoomInfo_5List', 'edu/statistics/SchoolSportRoomInfo_5List', NULL, NULL, 1, NULL, '1', 5.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0),
      ('2023071506100910410', '1666282632293515265', '音乐、美术教学用房统计表（六）', '/edu/statistics/schoolMusicArtRoomInfo_6List', 'edu/statistics/SchoolMusicArtRoomInfo_6List', NULL, NULL, 1, NULL, '1', 6.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0),
      ('2023071507171810530', '1666282632293515265', '功能室用房统计表（七）', '/edu/statistics/schoolFunctionalRoomInfo_7List', 'edu/statistics/SchoolFunctionalRoomInfo_7List', NULL, NULL, 1, NULL, '1', 7.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0),
-     ('2023071507187680160', '1666281667909779458', '信息化配备情况统计表（八）', '/edu/statistics/eduInformatizationEquipInfo_8List', 'edu/statistics/EduInformatizationEquipInfo_8List', NULL, NULL, 1, NULL, '1', 8.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0);
+     ('2023071507187680160', '1666281667909779458', '信息化配备情况统计表（八）', '/edu/statistics/eduInformatizationEquipInfo_8List', 'edu/statistics/EduInformatizationEquipInfo_8List', NULL, NULL, 1, NULL, '1', 8.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0)
+    ,('2023101809294300140', '1714103540890349570', '小学数学教学装备配置文件', '/edu/register/psMathematicsEquipmentFileList', 'edu/register/PsMathematicsEquipmentFileList', NULL, NULL, 1, NULL, '1', 1.00, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0)
+     ;
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
      ('2023060312357030191', '2023060312357030190', '添加学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
@@ -3539,6 +3561,15 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023091403567720495', '2023091403567720490', '导出excel_填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
      ('2023091403567720496', '2023091403567720490', '导入excel_填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0);
 
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
+    ('2023101809294300141', '2023101809294300140', '添加小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300142', '2023101809294300140', '编辑小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300143', '2023101809294300140', '删除小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300144', '2023101809294300140', '批量删除小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300145', '2023101809294300140', '导出excel_小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300146', '2023101809294300140', '导入excel_小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0)
+    ;
+
 -- 角色权限：系统管理员
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
      ('1666340189662081026',	'f6817f48af4fb3af11b9e8bf182f618b',	'1666281667909779458',	NULL,	'2023-06-07 15:03:55',	'127.0.0.1'),               -- 教育信息化
@@ -3584,7 +3615,16 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1704051501875564546',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720493',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1'),
      ('1704051501875564547',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720494',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1'),
      ('1704051501879758850',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720495',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1'),
-     ('1704051501879758851',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720496',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1');
+     ('1704051501879758851',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720496',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1')
+    ,('1714115193287618561',	'f6817f48af4fb3af11b9e8bf182f618b',	'1714103540890349570',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),               -- 教学装备配置
+     ('1714115193291812865',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300140',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),               -- 小学数学教学装备配置文件
+     ('1714115193296007169',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300141',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007170',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300142',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007171',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300143',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007172',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300144',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007173',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300145',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007174',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300146',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1')
+     ;
 
 INSERT INTO `edu_informatization_basic_info_1` (`id`, `identification_code`, `fill_date`, `teacher_count`, `student_count`, `room_count`, `classroom_count`, `student_desk_count`, `connected_room_count`, `has_a_central_server_room`, `teaching_resource_capacity`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
      ('1665260317544001538',	'3142007024',	'2022-09-06',	210,	1600,	30,	22,	1800,	28,	'1',	21.86,	'admin_bbzx',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
@@ -3820,9 +3860,18 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1680407502270889990',	'1666258199747100674',	'2023071507187680166',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1707331100424265730',	'1666258199747100674',	'2023071507187680168',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1');
 
--- 角色权限：装备中心 – 登记册备案检查
+-- 角色权限：装备中心 – 装备管理检查
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
-     ('1698605380663459842',	'1698527018892869633',	'1666282632293515265',	NULL,	'2023-09-04 15:54:16',	'127.0.0.1');               -- 教育装备管理
+     ('1698605380663459842',	'1698527018892869633',	'1666282632293515265',	NULL,	'2023-09-04 15:54:16',	'127.0.0.1')                -- 教育装备管理
+    ,('1714117993681793025',	'1698527018892869633',	'1714103540890349570',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),               -- 教学装备配置
+     ('1714117993685987330',	'1698527018892869633',	'2023101809294300140',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),               -- 小学数学教学装备配置文件
+     ('1714117993685987331',	'1698527018892869633',	'2023101809294300141',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),               -- 小学数学教学装备配置文件
+     ('1714117993685987332',	'1698527018892869633',	'2023101809294300142',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+     ('1714117993685987333',	'1698527018892869633',	'2023101809294300143',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+     ('1714117993685987334',	'1698527018892869633',	'2023101809294300144',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+     ('1714117993685987335',	'1698527018892869633',	'2023101809294300145',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+     ('1714117993685987336',	'1698527018892869633',	'2023101809294300146',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1')
+     ;
 
 -- 角色权限：装备代表 – 高中
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
@@ -4008,7 +4057,16 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1680408000558399493',	'1666258199717740546',	'2023071507187680165',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
 --     ('1680408000558399494',	'1666258199717740546',	'2023071507187680166',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1707322226182971393',	'1666258199717740546',	'2023071507187680167',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
-     ('1698622269464723457',	'1666258199717740546',	'1666282632293515265',	NULL,	'2023-09-04 17:01:23',	'127.0.0.1');               -- 教育装备管理
+     ('1698622269464723457',	'1666258199717740546',	'1666282632293515265',	NULL,	'2023-09-04 17:01:23',	'127.0.0.1')                -- 教育装备管理
+    ,('1714116811101974529',	'1666258199717740546',	'1714103540890349570',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),               -- 教学装备配置
+     ('1714116811106168833',	'1666258199717740546',	'2023101809294300140',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),               -- 小学数学教学装备配置文件
+     ('1714116811106168834',	'1666258199717740546',	'2023101809294300141',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),               -- 小学数学教学装备配置文件
+     ('1714116811106168835',	'1666258199717740546',	'2023101809294300142',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+     ('1714116811106168836',	'1666258199717740546',	'2023101809294300143',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+     ('1714116811106168837',	'1666258199717740546',	'2023101809294300144',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+     ('1714116811106168838',	'1666258199717740546',	'2023101809294300145',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+     ('1714116811110363138',	'1666258199717740546',	'2023101809294300146',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1')
+     ;
 
 -- 角色权限：装备代表 – 幼儿园
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
