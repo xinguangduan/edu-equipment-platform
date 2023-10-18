@@ -157,6 +157,7 @@ public class SchoolLibraryBasicInfo_4Controller extends BaseController<SchoolLib
     */
     @RequiresPermissions("edu.statistics:school_library_basic_info_4:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolLibraryBasicInfo_4List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolLibraryBasicInfo_4 schoolLibraryBasicInfo_4) {
         return super.exportXls(request, schoolLibraryBasicInfo_4, SchoolLibraryBasicInfo_4.class, "中小学图书室（馆）基本情况统计表（四）");
     }

@@ -156,6 +156,7 @@ public class SchoolMusicArtRoomInfo_6Controller extends BaseController<SchoolMus
     */
     @RequiresPermissions("edu.statistics:school_music_art_room_info_6:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolMusicArtRoomInfo_6List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolMusicArtRoomInfo_6 schoolMusicArtRoomInfo_6) {
         return super.exportXls(request, schoolMusicArtRoomInfo_6, SchoolMusicArtRoomInfo_6.class, "中小学音乐、美术教学用房统计表（六）");
     }

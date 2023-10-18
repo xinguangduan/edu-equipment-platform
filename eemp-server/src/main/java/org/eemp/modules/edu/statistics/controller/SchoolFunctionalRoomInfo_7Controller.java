@@ -156,6 +156,7 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
     */
     @RequiresPermissions("edu.statistics:school_functional_room_info_7:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolFunctionalRoomInfo_7List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolFunctionalRoomInfo_7 schoolFunctionalRoomInfo_7) {
         return super.exportXls(request, schoolFunctionalRoomInfo_7, SchoolFunctionalRoomInfo_7.class, "中小学功能室用房统计表（七）");
     }

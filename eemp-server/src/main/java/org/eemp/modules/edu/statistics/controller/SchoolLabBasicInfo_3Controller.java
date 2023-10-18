@@ -159,6 +159,7 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
     */
     @RequiresPermissions("edu.statistics:school_lab_basic_info_3:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolLabBasicInfo_3List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolLabBasicInfo_3 schoolLabBasicInfo_3) {
         return super.exportXls(request, schoolLabBasicInfo_3, SchoolLabBasicInfo_3.class, "中小学实验室基本情况统计表（三）");
     }

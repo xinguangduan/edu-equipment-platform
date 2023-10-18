@@ -157,6 +157,7 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
     */
     @RequiresPermissions("edu.statistics:edu_informatization_equip_info_8:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/EduInformatizationEquipInfo_8List")
     public ModelAndView exportXls(HttpServletRequest request, EduInformatizationEquipInfo_8 eduInformatizationEquipInfo_8) {
         return super.exportXls(request, eduInformatizationEquipInfo_8, EduInformatizationEquipInfo_8.class, "教育信息化配备情况统计表（八）");
     }

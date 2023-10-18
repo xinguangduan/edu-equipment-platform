@@ -156,6 +156,7 @@ public class SchoolSportRoomInfo_5Controller extends BaseController<SchoolSportR
     */
     @RequiresPermissions("edu.statistics:school_sport_room_info_5:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolSportRoomInfo_5List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolSportRoomInfo_5 schoolSportRoomInfo_5) {
         return super.exportXls(request, schoolSportRoomInfo_5, SchoolSportRoomInfo_5.class, "中小学体育用房统计表（五）");
     }
