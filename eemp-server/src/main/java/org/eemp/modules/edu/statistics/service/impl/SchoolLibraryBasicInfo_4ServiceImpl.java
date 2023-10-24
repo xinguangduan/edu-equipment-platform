@@ -25,6 +25,11 @@ public class SchoolLibraryBasicInfo_4ServiceImpl extends ServiceImpl<SchoolLibra
     private SchoolLibraryBasicInfo_4Mapper mapper;
 
     @Override
+    public int changeReported(String id, int val) {
+        return mapper.changeReported(id, val);
+    }
+
+    @Override
     public List<Map<String,Object>> getLibraryInfo(Date dayStart, Date dayEnd) {
         DbType dbType = CommonUtils.getDatabaseTypeEnum();
         return mapper.getLibraryInfo(dayStart, dayEnd, dbType.getDb());

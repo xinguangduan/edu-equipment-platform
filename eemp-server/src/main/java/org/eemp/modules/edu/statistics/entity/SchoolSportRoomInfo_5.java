@@ -129,6 +129,9 @@ public class SchoolSportRoomInfo_5 implements Serializable {
 	@Excel(name = "兼职体育教师（人）", width = 15)
     @ApiModelProperty(value = "兼职体育教师（人）")
     private java.lang.Integer partTimePeTeacherNum;
+    /**上报状态*/
+    @ApiModelProperty(value = "上报状态")
+    private Integer reported;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private java.lang.String createBy;

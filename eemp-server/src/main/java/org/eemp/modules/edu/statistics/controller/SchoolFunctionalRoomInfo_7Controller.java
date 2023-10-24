@@ -17,6 +17,7 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.SchoolFunctionalRoomInfo_7;
 import org.eemp.modules.edu.statistics.service.ISchoolFunctionalRoomInfo_7Service;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolFunctionalRoomInfo_7, ISchoolFunctionalRoomInfo_7Service> {
 	private final ISchoolFunctionalRoomInfo_7Service schoolFunctionalRoomInfo_7Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -70,6 +72,11 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody SchoolFunctionalRoomInfo_7 schoolFunctionalRoomInfo_7) {
 		schoolFunctionalRoomInfo_7Service.save(schoolFunctionalRoomInfo_7);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				schoolFunctionalRoomInfo_7.getIdentificationCode(),
+				"school_functional_room_info_7",
+				schoolFunctionalRoomInfo_7.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -99,7 +106,13 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
 	@RequiresPermissions("edu.statistics:school_functional_room_info_7:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		SchoolFunctionalRoomInfo_7 rec = schoolFunctionalRoomInfo_7Service.getById(id);
 		schoolFunctionalRoomInfo_7Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"school_functional_room_info_7",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -143,6 +156,7 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
     */
     @RequiresPermissions("edu.statistics:school_functional_room_info_7:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolFunctionalRoomInfo_7List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolFunctionalRoomInfo_7 schoolFunctionalRoomInfo_7) {
         return super.exportXls(request, schoolFunctionalRoomInfo_7, SchoolFunctionalRoomInfo_7.class, "中小学功能室用房统计表（七）");
     }
@@ -159,5 +173,30 @@ public class SchoolFunctionalRoomInfo_7Controller extends BaseController<SchoolF
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, SchoolFunctionalRoomInfo_7.class);
     }
+
+	@RequiresPermissions("edu.statistics:school_functional_room_info_7:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolFunctionalRoomInfo_7Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_functional_room_info_7"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_functional_room_info_7:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolFunctionalRoomInfo_7 rec = schoolFunctionalRoomInfo_7Service.getById(id);
+			schoolFunctionalRoomInfo_7Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_functional_room_info_7"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
 
 }

@@ -16,7 +16,7 @@
                   </a-menu-item>
                 </a-menu>
               </template>
-              <a-button>批量操作
+              <a-button  v-auth="'edu.statistics:edu_informatization_basic_info_1:deleteBatch'">批量操作
                 <Icon icon="mdi:chevron-down"></Icon>
               </a-button>
         </a-dropdown>
@@ -25,7 +25,7 @@
       </template>
        <!--操作栏-->
       <template #action="{ record }">
-        <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
+        <TableAction v-if="recId !== undefined && record.id === recId.valueOf() && reportable" :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
       </template>
       <!--字段回显插槽-->
       <template #htmlSlot="{text}">
@@ -52,7 +52,7 @@
   import { useListPage } from '/@/hooks/system/useListPage'
   import EduInformatizationBasicInfo_1Modal from './components/EduInformatizationBasicInfo_1Modal.vue'
   import {columns, searchFormSchema} from './EduInformatizationBasicInfo_1.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, reportOne, batchRevoke} from './EduInformatizationBasicInfo_1.api';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, reportOne, batchRevoke, getFillingControlUrl} from './EduInformatizationBasicInfo_1.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   import { defHttp } from '/@/utils/http/axios';
   import { useUserStoreWithOut } from '/@/store/modules/user';
@@ -81,7 +81,7 @@
             },
            actionColumn: {
                width: 120,
-               fixed:'right'
+               fixed:'left'
             },
       },
        exportConfig: {
@@ -151,6 +151,12 @@
          {
            label: '编辑',
            onClick: handleEdit.bind(null, record),
+         }, {
+           label: '删除',
+           popConfirm: {
+             title: '是否确认删除',
+             confirm: handleDelete.bind(null, record),
+           }
          }
        ]
    }
@@ -159,16 +165,10 @@
         */
   function getDropDownAction(record){
        return [
-         {
-           label: '详情',
-           onClick: handleDetail.bind(null, record),
-         }, {
-           label: '删除',
-           popConfirm: {
-             title: '是否确认删除',
-             confirm: handleDelete.bind(null, record),
-           }
-         }
+        //  {
+        //    label: '详情',
+        //    onClick: handleDetail.bind(null, record),
+        //  }
        ]
    }
 
@@ -189,17 +189,15 @@
     console.log("onMounted...")
   })
 
-  let reqData = {identificationCode: userStore.getUserInfo.telephone, packageName: 'edu_informatization_basic_info_1'};
-  const getFillingControlUrl = '/org.eemp.modules.edu.foudation/fillingControl/getFillingControl';
-  async function getFillingControl(){
-    let params = {reqData: JSON.stringify(reqData)};
-    await defHttp.get({url: getFillingControlUrl, params}).then((res) => {
+  async function getFillingControl() {
+    let params = {identificationCode: userStore.getUserInfo.telephone, packageName: 'edu_informatization_basic_info_1'};
+    await defHttp.post({url: getFillingControlUrl, params}, {joinParamsToUrl: true}).then((res) => {
       console.log(res);
       addable.value = res.addable
       reportable.value = res.reportable
       revokable.value = res.revokable
       recId.value = res.id
-    });;
+    });
   }
 
 </script>

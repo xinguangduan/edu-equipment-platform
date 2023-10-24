@@ -25,4 +25,7 @@ public interface IFillingControlService extends IService<FillingControl> {
     boolean updateFillingControlAfterRevoked(String identificationCode, String packageName);
 
     boolean updateFillingControlAfterDeleteData(String identificationCode, String packageName, String id);
+
+    JSONObject getTemplateInfo(String packageName);
+    boolean updateTemplateInfo(String packageName, String templateUrl);
 }

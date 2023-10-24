@@ -17,6 +17,7 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.SchoolSportRoomInfo_5;
 import org.eemp.modules.edu.statistics.service.ISchoolSportRoomInfo_5Service;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class SchoolSportRoomInfo_5Controller extends BaseController<SchoolSportRoomInfo_5, ISchoolSportRoomInfo_5Service> {
 	private final ISchoolSportRoomInfo_5Service schoolSportRoomInfo_5Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -70,6 +72,11 @@ public class SchoolSportRoomInfo_5Controller extends BaseController<SchoolSportR
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody SchoolSportRoomInfo_5 schoolSportRoomInfo_5) {
 		schoolSportRoomInfo_5Service.save(schoolSportRoomInfo_5);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				schoolSportRoomInfo_5.getIdentificationCode(),
+				"school_sport_room_info_5",
+				schoolSportRoomInfo_5.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -99,7 +106,13 @@ public class SchoolSportRoomInfo_5Controller extends BaseController<SchoolSportR
 	@RequiresPermissions("edu.statistics:school_sport_room_info_5:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		SchoolSportRoomInfo_5 rec = schoolSportRoomInfo_5Service.getById(id);
 		schoolSportRoomInfo_5Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"school_sport_room_info_5",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -143,6 +156,7 @@ public class SchoolSportRoomInfo_5Controller extends BaseController<SchoolSportR
     */
     @RequiresPermissions("edu.statistics:school_sport_room_info_5:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolSportRoomInfo_5List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolSportRoomInfo_5 schoolSportRoomInfo_5) {
         return super.exportXls(request, schoolSportRoomInfo_5, SchoolSportRoomInfo_5.class, "中小学体育用房统计表（五）");
     }
@@ -159,5 +173,30 @@ public class SchoolSportRoomInfo_5Controller extends BaseController<SchoolSportR
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, SchoolSportRoomInfo_5.class);
     }
+
+	@RequiresPermissions("edu.statistics:school_sport_room_info_5:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolSportRoomInfo_5Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_sport_room_info_5"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_sport_room_info_5:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolSportRoomInfo_5 rec = schoolSportRoomInfo_5Service.getById(id);
+			schoolSportRoomInfo_5Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_sport_room_info_5"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
 
 }

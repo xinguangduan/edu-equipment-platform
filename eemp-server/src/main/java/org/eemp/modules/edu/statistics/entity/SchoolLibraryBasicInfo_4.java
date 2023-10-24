@@ -103,6 +103,9 @@ public class SchoolLibraryBasicInfo_4 implements Serializable {
 	@Excel(name = "兼职管理员姓名", width = 15)
     @ApiModelProperty(value = "兼职管理员姓名")
     private java.lang.String partTimeAdminName;
+    /**上报状态*/
+    @ApiModelProperty(value = "上报状态")
+    private Integer reported;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private java.lang.String createBy;

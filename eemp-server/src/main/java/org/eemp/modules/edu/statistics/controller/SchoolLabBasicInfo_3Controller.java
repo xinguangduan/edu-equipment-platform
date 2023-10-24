@@ -20,6 +20,7 @@ import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.oConvertUtils;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.SchoolLabBasicInfo_3;
 import org.eemp.modules.edu.statistics.service.ISchoolLabBasicInfo_3Service;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasicInfo_3, ISchoolLabBasicInfo_3Service> {
 	private final ISchoolLabBasicInfo_3Service schoolLabBasicInfo_3Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -73,6 +75,11 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody SchoolLabBasicInfo_3 schoolLabBasicInfo_3) {
 		schoolLabBasicInfo_3Service.save(schoolLabBasicInfo_3);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				schoolLabBasicInfo_3.getIdentificationCode(),
+				"school_lab_basic_info_3",
+				schoolLabBasicInfo_3.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -102,7 +109,13 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
 	@RequiresPermissions("edu.statistics:school_lab_basic_info_3:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		SchoolLabBasicInfo_3 rec = schoolLabBasicInfo_3Service.getById(id);
 		schoolLabBasicInfo_3Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"school_lab_basic_info_3",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -146,6 +159,7 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
     */
     @RequiresPermissions("edu.statistics:school_lab_basic_info_3:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolLabBasicInfo_3List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolLabBasicInfo_3 schoolLabBasicInfo_3) {
         return super.exportXls(request, schoolLabBasicInfo_3, SchoolLabBasicInfo_3.class, "中小学实验室基本情况统计表（三）");
     }
@@ -162,6 +176,31 @@ public class SchoolLabBasicInfo_3Controller extends BaseController<SchoolLabBasi
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, SchoolLabBasicInfo_3.class);
     }
+
+	@RequiresPermissions("edu.statistics:school_lab_basic_info_3:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolLabBasicInfo_3Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_lab_basic_info_3"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_lab_basic_info_3:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolLabBasicInfo_3 rec = schoolLabBasicInfo_3Service.getById(id);
+			schoolLabBasicInfo_3Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_lab_basic_info_3"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
 
 	@GetMapping("scienceRoomInfo")
 	public Result<List<Map<String,Object>>> scienceRoomInfo() {

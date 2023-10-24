@@ -10,4 +10,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISchoolMusicArtRoomInfo_6Service extends IService<SchoolMusicArtRoomInfo_6> {
 
+    int changeReported(String id, int val);
+
 }

@@ -157,6 +157,7 @@ public class EduInformatizationBasicInfo_1Controller extends BaseController<EduI
     */
     @RequiresPermissions("edu.statistics:edu_informatization_basic_info_1:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/EduInformatizationBasicInfo_1List")
     public ModelAndView exportXls(HttpServletRequest request, EduInformatizationBasicInfo_1 eduInformatizationBasicInfo_1) {
         return super.exportXls(request, eduInformatizationBasicInfo_1, EduInformatizationBasicInfo_1.class, "教育信息化基本情况统计表（一）");
     }

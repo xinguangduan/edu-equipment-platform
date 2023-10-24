@@ -1,7 +1,6 @@
 package org.eemp.modules.edu.foudation.controller;
 
 import java.util.Arrays;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -162,12 +161,21 @@ public class FillingControlController extends BaseController<FillingControl, IFi
         return super.importExcel(request, response, FillingControl.class);
     }
 
-	@GetMapping(value = "/getFillingControl")
-	public Result getFillingControl(@RequestParam("reqData") String reqData) {
-		Map map = (Map) JSONObject.parse(reqData);
-		String identificationCode = (String) map.get("identificationCode");
-		String packageName = (String) map.get("packageName");
+	@PostMapping(value = "/getFillingControl")
+	public Result getFillingControl(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="packageName", required=true) String packageName) {
 		JSONObject json = service.getFillingControl(identificationCode, packageName);
 		return Result.OK(json);
 	}
+
+	 @PostMapping(value = "/getTemplateInfo")
+	 public Result getTemplateInfo(@RequestParam(name="packageName", required=true) String packageName) {
+		 JSONObject json = service.getTemplateInfo(packageName);
+		 return Result.OK(json);
+	 }
+
+	 @PostMapping(value = "/updateTemplateInfo")
+	 public Result updateTemplateInfo(@RequestParam(name="packageName", required=true) String packageName, @RequestParam(name="templateUrl", required=true) String templateUrl) {
+		 boolean ret = service.updateTemplateInfo(packageName, templateUrl);
+		 return Result.OK(ret);
+	 }
 }

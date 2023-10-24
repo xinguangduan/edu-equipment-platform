@@ -18,6 +18,7 @@ import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.oConvertUtils;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.EduInformatizationEquipInfo_8;
 import org.eemp.modules.edu.statistics.service.IEduInformatizationEquipInfo_8Service;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class EduInformatizationEquipInfo_8Controller extends BaseController<EduInformatizationEquipInfo_8, IEduInformatizationEquipInfo_8Service> {
 	private final IEduInformatizationEquipInfo_8Service eduInformatizationEquipInfo_8Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -71,6 +73,11 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody EduInformatizationEquipInfo_8 eduInformatizationEquipInfo_8) {
 		eduInformatizationEquipInfo_8Service.save(eduInformatizationEquipInfo_8);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				eduInformatizationEquipInfo_8.getIdentificationCode(),
+				"edu_informatization_equip_info_8",
+				eduInformatizationEquipInfo_8.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -100,7 +107,13 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
 	@RequiresPermissions("edu.statistics:edu_informatization_equip_info_8:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		EduInformatizationEquipInfo_8 rec = eduInformatizationEquipInfo_8Service.getById(id);
 		eduInformatizationEquipInfo_8Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"edu_informatization_equip_info_8",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -144,6 +157,7 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
     */
     @RequiresPermissions("edu.statistics:edu_informatization_equip_info_8:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/EduInformatizationEquipInfo_8List")
     public ModelAndView exportXls(HttpServletRequest request, EduInformatizationEquipInfo_8 eduInformatizationEquipInfo_8) {
         return super.exportXls(request, eduInformatizationEquipInfo_8, EduInformatizationEquipInfo_8.class, "教育信息化配备情况统计表（八）");
     }
@@ -160,6 +174,31 @@ public class EduInformatizationEquipInfo_8Controller extends BaseController<EduI
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, EduInformatizationEquipInfo_8.class);
     }
+
+	@RequiresPermissions("edu.statistics:edu_informatization_equip_info_8:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		eduInformatizationEquipInfo_8Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"edu_informatization_equip_info_8"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:edu_informatization_equip_info_8:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			EduInformatizationEquipInfo_8 rec = eduInformatizationEquipInfo_8Service.getById(id);
+			eduInformatizationEquipInfo_8Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"edu_informatization_equip_info_8"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
 
 	 @GetMapping("classInfo")
 	 public Result<List<Map<String,Object>>> classInfo() {

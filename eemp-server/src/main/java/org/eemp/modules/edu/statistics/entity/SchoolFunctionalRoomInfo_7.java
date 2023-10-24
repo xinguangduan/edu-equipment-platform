@@ -130,6 +130,9 @@ public class SchoolFunctionalRoomInfo_7 implements Serializable {
 	@Excel(name = "特色功能室二面积（m2）", width = 15)
     @ApiModelProperty(value = "特色功能室二面积（m2）")
     private java.lang.Double secondFeaturedRoomArea;
+    /**上报状态*/
+    @ApiModelProperty(value = "上报状态")
+    private Integer reported;
 	/**创建人*/
     @ApiModelProperty(value = "创建人")
     private java.lang.String createBy;

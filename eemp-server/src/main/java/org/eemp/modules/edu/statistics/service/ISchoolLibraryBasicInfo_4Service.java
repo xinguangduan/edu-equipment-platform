@@ -14,5 +14,7 @@ import java.util.Map;
  */
 public interface ISchoolLibraryBasicInfo_4Service extends IService<SchoolLibraryBasicInfo_4> {
 
+    int changeReported(String id, int val);
+
     List<Map<String,Object>> getLibraryInfo(Date dayStart, Date dayEnd);
 }

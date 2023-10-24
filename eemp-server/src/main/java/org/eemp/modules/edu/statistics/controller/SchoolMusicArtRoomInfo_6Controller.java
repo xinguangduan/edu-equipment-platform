@@ -17,6 +17,7 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.statistics.entity.SchoolMusicArtRoomInfo_6;
 import org.eemp.modules.edu.statistics.service.ISchoolMusicArtRoomInfo_6Service;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class SchoolMusicArtRoomInfo_6Controller extends BaseController<SchoolMusicArtRoomInfo_6, ISchoolMusicArtRoomInfo_6Service> {
 	private final ISchoolMusicArtRoomInfo_6Service schoolMusicArtRoomInfo_6Service;
+	private final IFillingControlService fillingControlService;
 	
 	/**
 	 * 分页列表查询
@@ -70,6 +72,11 @@ public class SchoolMusicArtRoomInfo_6Controller extends BaseController<SchoolMus
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody SchoolMusicArtRoomInfo_6 schoolMusicArtRoomInfo_6) {
 		schoolMusicArtRoomInfo_6Service.save(schoolMusicArtRoomInfo_6);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				schoolMusicArtRoomInfo_6.getIdentificationCode(),
+				"school_music_art_room_info_6",
+				schoolMusicArtRoomInfo_6.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -99,7 +106,13 @@ public class SchoolMusicArtRoomInfo_6Controller extends BaseController<SchoolMus
 	@RequiresPermissions("edu.statistics:school_music_art_room_info_6:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		SchoolMusicArtRoomInfo_6 rec = schoolMusicArtRoomInfo_6Service.getById(id);
 		schoolMusicArtRoomInfo_6Service.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"school_music_art_room_info_6",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -143,6 +156,7 @@ public class SchoolMusicArtRoomInfo_6Controller extends BaseController<SchoolMus
     */
     @RequiresPermissions("edu.statistics:school_music_art_room_info_6:exportXls")
     @RequestMapping(value = "/exportXls")
+	@PermissionData(pageComponent = "edu/statistics/SchoolMusicArtRoomInfo_6List")
     public ModelAndView exportXls(HttpServletRequest request, SchoolMusicArtRoomInfo_6 schoolMusicArtRoomInfo_6) {
         return super.exportXls(request, schoolMusicArtRoomInfo_6, SchoolMusicArtRoomInfo_6.class, "中小学音乐、美术教学用房统计表（六）");
     }
@@ -159,5 +173,30 @@ public class SchoolMusicArtRoomInfo_6Controller extends BaseController<SchoolMus
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, SchoolMusicArtRoomInfo_6.class);
     }
+
+	@RequiresPermissions("edu.statistics:school_music_art_room_info_6:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		schoolMusicArtRoomInfo_6Service.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"school_music_art_room_info_6"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.statistics:school_music_art_room_info_6:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SchoolMusicArtRoomInfo_6 rec = schoolMusicArtRoomInfo_6Service.getById(id);
+			schoolMusicArtRoomInfo_6Service.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"school_music_art_room_info_6"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
 
 }

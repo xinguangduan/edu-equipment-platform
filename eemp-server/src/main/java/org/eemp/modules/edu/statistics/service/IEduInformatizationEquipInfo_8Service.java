@@ -14,6 +14,8 @@ import java.util.Map;
  */
 public interface IEduInformatizationEquipInfo_8Service extends IService<EduInformatizationEquipInfo_8> {
 
+    int changeReported(String id, int val);
+
     List<Map<String,Object>> getClassNumberInfo(Date dayStart, Date dayEnd);
 
     List<Map<String,Object>> getTeacherComputerNumberInfo(Date dayStart, Date dayEnd);

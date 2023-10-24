@@ -3106,6 +3106,7 @@ CREATE TABLE `edu_informatization_basic_info_2` (
   `equipment_funds_this_year` double NOT NULL COMMENT '本年设备维护投入资金（万元）',
   `full_time_teacher_num` int NOT NULL COMMENT '信息技术专职教师人数',
   `part_time_teacher_num` int NOT NULL COMMENT '信息技术兼职教师人数',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3146,6 +3147,7 @@ CREATE TABLE `school_lab_basic_info_3` (
   `hazardous_chemical_cabinet_num` int NOT NULL COMMENT '危化品专柜数量(口)',
   `full_time_lab_technician_num` int NOT NULL COMMENT '专职实验员人数',
   `part_time_lab_technician_num` int NOT NULL COMMENT '兼职实验员人数',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3177,6 +3179,7 @@ CREATE TABLE `school_library_basic_info_4` (
   `second_featured_place_area` double NOT NULL COMMENT '特色读书场所二总面积（m2）',
   `full_time_admin_name` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '专职管理员姓名',
   `part_time_admin_name` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '兼职管理员姓名',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3214,6 +3217,7 @@ CREATE TABLE `school_sport_room_info_5` (
   `sports_counseling_room_area` double NOT NULL COMMENT '心理咨询室面积（m2）',
   `full_time_pe_teacher_num` int NOT NULL COMMENT '专职体育教师（人）',
   `part_time_pe_teacher_num` int NOT NULL COMMENT '兼职体育教师（人）',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3249,6 +3253,7 @@ CREATE TABLE `school_music_art_room_info_6` (
   `calligraphy_classroom_area` double NOT NULL COMMENT '书法教室面积（m2）',
   `calligraphy_desk_num` int NOT NULL COMMENT '书法教室桌椅数（张）',
   `has_a_calligraphy_system` varchar(1) COLLATE utf8mb4_general_ci NOT NULL COMMENT '是否配备书法软件系统',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3287,6 +3292,7 @@ CREATE TABLE `school_functional_room_info_7` (
   `second_featured_room_name` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '特色功能室二名称',
   `second_featured_room_num` int NOT NULL COMMENT '特色功能室二间数',
   `second_featured_room_area` double NOT NULL COMMENT '特色功能室二面积（m2）',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3321,6 +3327,7 @@ CREATE TABLE `edu_informatization_equip_info_8` (
   `campus_surveillance_camera_num` int NOT NULL COMMENT '校园监控摄像头数',
   `campus_surveillance_dvr_num` int NOT NULL COMMENT '校园监控硬盘录像机数',
   `surveillance_retention_time` int NOT NULL COMMENT '校园监控留存时间(天)',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3346,6 +3353,25 @@ CREATE TABLE `filling_control` (
   `junior_school` longtext COLLATE utf8mb4_general_ci COMMENT '初中',
   `senior_school` longtext COLLATE utf8mb4_general_ci COMMENT '高中',
   `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for ps_mathematics_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `ps_mathematics_equipment_file`;
+CREATE TABLE `ps_mathematics_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
@@ -3442,17 +3468,20 @@ INSERT INTO sys_permission (id, parent_id, name, url, component, is_route, compo
     ('2023060312357030190',	'',	'学校管理',	'/edu/foudation/organizationDefinitionList',	'edu/foudation/OrganizationDefinitionList',	1,	NULL,	NULL,	0,	NULL,	'1',	0.10,	0,	'ant-design:read-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-03 12:35:19',	'admin',	'2023-09-07 19:51:43',	0,	0,	'1',	0),
     ('1666281667909779458',	'',	'教育信息化',	'/edu/statistics',	'layouts/RouteView',	1,	'',	NULL,	0,	NULL,	'0',	0.30,	0,	'ant-design:book-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-07 11:11:22',	'admin',	'2023-09-07 20:17:26',	0,	0,	NULL,	0),
     ('1666282632293515265',	'',	'教育装备管理',	'/edu/equipment',	'layouts/RouteView',	1,	'',	NULL,	0,	NULL,	'0',	0.40,	0,	'ant-design:calculator-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-06-07 11:15:12',	'admin',	'2023-09-07 20:24:38',	0,	0,	NULL,	0),
+    ('1714103540890349570',	'1666282632293515265',	'教学装备配置',	'/edu/register',	'layouts/RouteView',	1,	'',	NULL,	1,	NULL,	'0',	9.00,	0,	'ant-design:form-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-10-17 10:18:25',	'admin',	'2023-10-17 10:24:17',	0,	0,	NULL,	0),
     ('2023091403567720490',	'',	'填报控制',	'/edu/foudation/fillingControlList',	'edu/foudation/FillingControlList',	1,	NULL,	NULL,	0,	NULL,	'1',	0.20,	0,	'ant-design:lock-outlined',	0,	0,	0,	0,	NULL,	'admin',	'2023-09-14 15:56:49',	'admin',	'2023-09-14 16:55:01',	0,	0,	'1',	0);
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_route, is_leaf, keep_alive, hidden, hide_tab, description, status, del_flag, rule_flag, create_by, create_time, update_by, update_time, internal_or_external) VALUES
-     ('2023060402428380260', '1666281667909779458', '教育信息化基本情况统计表（一）', '/edu/statistics/eduInformatizationBasicInfo_1List', 'edu/statistics/EduInformatizationBasicInfo_1List', NULL, NULL, 1, NULL, '1', 1.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0),
-     ('2023070711112570320', '1666281667909779458', '教育信息化基本情况统计表（二）', '/edu/statistics/eduInformatizationBasicInfo_2List', 'edu/statistics/EduInformatizationBasicInfo_2List', NULL, NULL, 1, NULL, '1', 2.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0),
-     ('2023070704433360220', '1666282632293515265', '中小学实验室基本情况统计表（三）', '/edu/statistics/schoolLabBasicInfo_3List', 'edu/statistics/SchoolLabBasicInfo_3List', NULL, NULL, 1, NULL, '1', 3.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0),
-     ('2023070705157320330', '1666282632293515265', '中小学图书室（馆）基本情况统计表（四）', '/edu/statistics/schoolLibraryBasicInfo_4List', 'edu/statistics/SchoolLibraryBasicInfo_4List', NULL, NULL, 1, NULL, '1', 4.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0),
-     ('2023071505454370430', '1666282632293515265', '中小学体育用房统计表（五）', '/edu/statistics/schoolSportRoomInfo_5List', 'edu/statistics/SchoolSportRoomInfo_5List', NULL, NULL, 1, NULL, '1', 5.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0),
-     ('2023071506100910410', '1666282632293515265', '中小学音乐、美术教学用房统计表（六）', '/edu/statistics/schoolMusicArtRoomInfo_6List', 'edu/statistics/SchoolMusicArtRoomInfo_6List', NULL, NULL, 1, NULL, '1', 6.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0),
-     ('2023071507171810530', '1666282632293515265', '中小学功能室用房统计表（七）', '/edu/statistics/schoolFunctionalRoomInfo_7List', 'edu/statistics/SchoolFunctionalRoomInfo_7List', NULL, NULL, 1, NULL, '1', 7.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0),
-     ('2023071507187680160', '1666281667909779458', '教育信息化配备情况统计表（八）', '/edu/statistics/eduInformatizationEquipInfo_8List', 'edu/statistics/EduInformatizationEquipInfo_8List', NULL, NULL, 1, NULL, '1', 8.00, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0);
+     ('2023060402428380260', '1666281667909779458', '信息化基本情况统计表（一）', '/edu/statistics/eduInformatizationBasicInfo_1List', 'edu/statistics/EduInformatizationBasicInfo_1List', NULL, NULL, 1, NULL, '1', 1.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-06-04 14:42:26', NULL, NULL, 0),
+     ('2023070711112570320', '1666281667909779458', '信息化基本情况统计表（二）', '/edu/statistics/eduInformatizationBasicInfo_2List', 'edu/statistics/EduInformatizationBasicInfo_2List', NULL, NULL, 1, NULL, '1', 2.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0),
+     ('2023070704433360220', '1666282632293515265', '实验室基本情况统计表（三）', '/edu/statistics/schoolLabBasicInfo_3List', 'edu/statistics/SchoolLabBasicInfo_3List', NULL, NULL, 1, NULL, '1', 3.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0),
+     ('2023070705157320330', '1666282632293515265', '图书室（馆）基本情况统计表（四）', '/edu/statistics/schoolLibraryBasicInfo_4List', 'edu/statistics/SchoolLibraryBasicInfo_4List', NULL, NULL, 1, NULL, '1', 4.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0),
+     ('2023071505454370430', '1666282632293515265', '体育用房统计表（五）', '/edu/statistics/schoolSportRoomInfo_5List', 'edu/statistics/SchoolSportRoomInfo_5List', NULL, NULL, 1, NULL, '1', 5.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0),
+     ('2023071506100910410', '1666282632293515265', '音乐、美术教学用房统计表（六）', '/edu/statistics/schoolMusicArtRoomInfo_6List', 'edu/statistics/SchoolMusicArtRoomInfo_6List', NULL, NULL, 1, NULL, '1', 6.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0),
+     ('2023071507171810530', '1666282632293515265', '功能室用房统计表（七）', '/edu/statistics/schoolFunctionalRoomInfo_7List', 'edu/statistics/SchoolFunctionalRoomInfo_7List', NULL, NULL, 1, NULL, '1', 7.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0),
+     ('2023071507187680160', '1666281667909779458', '信息化配备情况统计表（八）', '/edu/statistics/eduInformatizationEquipInfo_8List', 'edu/statistics/EduInformatizationEquipInfo_8List', NULL, NULL, 1, NULL, '1', 8.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0)
+    ,('2023101809294300140', '1714103540890349570', '小学数学教学装备配置文件', '/edu/register/psMathematicsEquipmentFileList', 'edu/register/PsMathematicsEquipmentFileList', NULL, NULL, 1, NULL, '1', 1.00, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0)
+     ;
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
      ('2023060312357030191', '2023060312357030190', '添加学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
@@ -3475,48 +3504,75 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
      ('2023070711112570324', '2023070711112570320', '批量删除教育信息化基本情况统计表（二）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_2:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0, 0, '1', 0),
      ('2023070711112570325', '2023070711112570320', '导出excel_教育信息化基本情况统计表（二）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_2:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0, 0, '1', 0),
      ('2023070711112570326', '2023070711112570320', '导入excel_教育信息化基本情况统计表（二）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_basic_info_2:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 11:11:32', NULL, NULL, 0, 0, '1', 0),
+     ('2023070711112570327', '2023070711112570320',	'上报信息化基本情况统计表（二）',	NULL, NULL,	0,	NULL,	NULL,	2,	'edu.statistics:edu_informatization_basic_info_2:report', '1',	NULL, 0, NULL,	1,	0,	0,	0,	NULL, 'admin', '2023-09-28 15:49:06', NULL,	NULL, 0, 0,	'1', 0),
+     ('2023070711112570328', '2023070711112570320',	'退回信息化基本情况统计表（二）',	NULL, NULL,	0,	NULL,	NULL,	2,	'edu.statistics:edu_informatization_basic_info_2:revoke', '1',	NULL, 0, NULL,	1,	0,	0,	0,	NULL, 'admin', '2023-09-28 15:50:29', NULL,	NULL, 0, 0,	'1', 0),
      ('2023070704433370221', '2023070704433360220', '添加中小学实验室基本情况统计表（三）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_lab_basic_info_3:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0, 0, '1', 0),
      ('2023070704433370222', '2023070704433360220', '编辑中小学实验室基本情况统计表（三）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_lab_basic_info_3:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0, 0, '1', 0),
      ('2023070704433370223', '2023070704433360220', '删除中小学实验室基本情况统计表（三）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_lab_basic_info_3:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0, 0, '1', 0),
      ('2023070704433370224', '2023070704433360220', '批量删除中小学实验室基本情况统计表（三）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_lab_basic_info_3:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0, 0, '1', 0),
      ('2023070704433370225', '2023070704433360220', '导出excel_中小学实验室基本情况统计表（三）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_lab_basic_info_3:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0, 0, '1', 0),
      ('2023070704433370226', '2023070704433360220', '导入excel_中小学实验室基本情况统计表（三）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_lab_basic_info_3:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 16:43:22', NULL, NULL, 0, 0, '1', 0),
+     ('2023070704433370227', '2023070704433360220',	'上报实验室基本情况统计表（三）',	NULL, NULL,	0,	NULL, NULL,	2,	'edu.statistics:school_lab_basic_info_3:report', '1', NULL,	0,	NULL, 1, 0,	0,	0, NULL, 'admin', '2023-09-28 15:52:35', NULL, NULL, 0,	0, '1', 0),
+     ('2023070704433370228', '2023070704433360220',	'退回实验室基本情况统计表（三）',	NULL, NULL,	0,	NULL, NULL,	2,	'edu.statistics:school_lab_basic_info_3:revoke', '1', NULL,	0,	NULL, 1, 0,	0,	0, NULL, 'admin', '2023-09-28 15:53:29', NULL, NULL, 0,	0, '1', 0),
      ('2023070705157320331', '2023070705157320330', '添加中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
      ('2023070705157320332', '2023070705157320330', '编辑中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
      ('2023070705157320333', '2023070705157320330', '删除中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
      ('2023070705157320334', '2023070705157320330', '批量删除中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
      ('2023070705157320335', '2023070705157320330', '导出excel_中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
      ('2023070705157320336', '2023070705157320330', '导入excel_中小学图书室（馆）基本情况统计表（四）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_library_basic_info_4:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-07 17:15:33', NULL, NULL, 0, 0, '1', 0),
+     ('2023070705157320337', '2023070705157320330',	'上报图书室（馆）基本情况统计表（四）', NULL, NULL, 0,	NULL, NULL,	2, 'edu.statistics:school_library_basic_info_4:report',	'1', NULL, 0, NULL,	1, 0, 0, 0,	NULL, 'admin', '2023-09-28 16:03:11', NULL,	NULL, 0, 0,	'1', 0),
+     ('2023070705157320338', '2023070705157320330',	'退回图书室（馆）基本情况统计表（四）', NULL, NULL, 0,	NULL, NULL,	2, 'edu.statistics:school_library_basic_info_4:revoke',	'1', NULL, 0, NULL,	1, 0, 0, 0,	NULL, 'admin', '2023-09-28 16:10:29', NULL,	NULL, 0, 0,	'1', 0),
      ('2023071505454370431', '2023071505454370430', '添加中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
      ('2023071505454370432', '2023071505454370430', '编辑中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
      ('2023071505454370433', '2023071505454370430', '删除中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
      ('2023071505454370434', '2023071505454370430', '批量删除中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
      ('2023071505454370435', '2023071505454370430', '导出excel_中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
      ('2023071505454370436', '2023071505454370430', '导入excel_中小学体育用房统计表（五）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 17:45:43', NULL, NULL, 0, 0, '1', 0),
+     ('2023071505454370437', '2023071505454370430',	'上报体育用房统计表（五）',	NULL, NULL,	0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:report',	'1', NULL, 0, NULL,	1, 0, 0, 0,	NULL, 'admin', '2023-09-28 16:16:05', NULL,	NULL, 0, 0,	'1', 0),
+     ('2023071505454370438', '2023071505454370430',	'退回体育用房统计表（五）',	NULL, NULL,	0, NULL, NULL, 2, 'edu.statistics:school_sport_room_info_5:revoke',	'1', NULL, 0, NULL,	1, 0, 0, 0,	NULL, 'admin', '2023-09-28 16:17:00', NULL,	NULL, 0, 0,	'1', 0),
      ('2023071506100910411', '2023071506100910410', '添加中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
      ('2023071506100910412', '2023071506100910410', '编辑中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
      ('2023071506100910413', '2023071506100910410', '删除中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
      ('2023071506100910414', '2023071506100910410', '批量删除中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
      ('2023071506100910415', '2023071506100910410', '导出excel_中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
      ('2023071506100910416', '2023071506100910410', '导入excel_中小学音乐、美术教学用房统计表（六）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 18:10:41', NULL, NULL, 0, 0, '1', 0),
+     ('2023071506100910417', '2023071506100910410',	'上报音乐、美术教学用房统计表（六）',	NULL, NULL,	0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:report',	'1', NULL, 0, NULL,	1, 0, 0, 0,	NULL, 'admin', '2023-09-28 16:21:54', NULL,	NULL, 0, 0,	'1', 0),
+     ('2023071506100910418', '2023071506100910410',	'退回音乐、美术教学用房统计表（六）',	NULL, NULL,	0, NULL, NULL, 2, 'edu.statistics:school_music_art_room_info_6:revoke',	'1', NULL, 0, NULL,	1, 0, 0, 0,	NULL, 'admin', '2023-09-28 16:22:50', NULL,	NULL, 0, 0,	'1', 0),
      ('2023071507171810531', '2023071507171810530', '添加中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
      ('2023071507171810532', '2023071507171810530', '编辑中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
      ('2023071507171810533', '2023071507171810530', '删除中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
      ('2023071507171810534', '2023071507171810530', '批量删除中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
      ('2023071507171810535', '2023071507171810530', '导出excel_中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
      ('2023071507171810536', '2023071507171810530', '导入excel_中小学功能室用房统计表（七）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:school_functional_room_info_7:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507171810537', '2023071507171810530',	'上报功能室用房统计表（七）', NULL, NULL, 0,	NULL, NULL,	2, 'edu.statistics:school_functional_room_info_7:report', '1', NULL, 0,	NULL, 1, 0,	0, 0, NULL,	'admin', '2023-09-28 16:27:12',	NULL, NULL,	0, 0, '1', 0),
+     ('2023071507171810538', '2023071507171810530',	'退回功能室用房统计表（七）', NULL, NULL, 0,	NULL, NULL,	2, 'edu.statistics:school_functional_room_info_7:revoke', '1', NULL, 0,	NULL, 1, 0,	0, 0, NULL,	'admin', '2023-09-28 16:29:10',	NULL, NULL,	0, 0, '1', 0),
      ('2023071507187680161', '2023071507187680160', '添加教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
      ('2023071507187680162', '2023071507187680160', '编辑教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
      ('2023071507187680163', '2023071507187680160', '删除教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
      ('2023071507187680164', '2023071507187680160', '批量删除教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
      ('2023071507187680165', '2023071507187680160', '导出excel_教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
      ('2023071507187680166', '2023071507187680160', '导入excel_教育信息化配备情况统计表（八）', NULL, NULL, 0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0, 0, '1', 0),
+     ('2023071507187680167', '2023071507187680160',	'上报信息化配备情况统计表（八）',	NULL, NULL,	0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:report',	'1', NULL, 0, NULL,	1,	0,	0,	0, NULL, 'admin', '2023-09-28 16:30:20', NULL, NULL, 0,	0, '1',	0),
+     ('2023071507187680168', '2023071507187680160',	'退回信息化配备情况统计表（八）',	NULL, NULL,	0, NULL, NULL, 2, 'edu.statistics:edu_informatization_equip_info_8:revoke',	'1', NULL, 0, NULL,	1,	0,	0,	0, NULL, 'admin', '2023-09-28 16:31:01', NULL, NULL, 0,	0, '1',	0),
      ('2023091403567720491', '2023091403567720490', '添加填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
      ('2023091403567720492', '2023091403567720490', '编辑填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
      ('2023091403567720493', '2023091403567720490', '删除填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
      ('2023091403567720494', '2023091403567720490', '批量删除填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
      ('2023091403567720495', '2023091403567720490', '导出excel_填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0),
      ('2023091403567720496', '2023091403567720490', '导入excel_填报控制', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:filling_control:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-09-14 15:56:49', NULL, NULL, 0, 0, '1', 0);
+
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
+    ('2023101809294300141', '2023101809294300140', '添加小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300142', '2023101809294300140', '编辑小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300143', '2023101809294300140', '删除小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300144', '2023101809294300140', '批量删除小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300145', '2023101809294300140', '导出excel_小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300146', '2023101809294300140', '导入excel_小学数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0, 0, '1', 0),
+    ('2023101809294300147',	'2023101809294300140', '上报小学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023101809294300148',	'2023101809294300140', '退回小学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023101809294300149',	'2023101809294300140', '模板上传_小学数学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_mathematics_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023101809294300150',	'2023101809294300140', '模板下载_小学数学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_mathematics_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0)
+    ;
 
 -- 角色权限：系统管理员
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
@@ -3537,8 +3593,7 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1665258381981757443',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380266',	NULL,	'2023-06-04 15:25:12',	'127.0.0.1'),
      ('1704148738474614786',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380267',	NULL,	'2023-09-22 11:28:53',	'127.0.0.1'),
      ('1705133070140825601',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380268',	NULL,	'2023-09-22 16:12:58',	'127.0.0.1'),               -- 退回
-     ('1677176153070256129',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570320',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),               -- 教育信息化基本情况统计表（二）
-     ('1677176153082839042',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570321',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),
+     ('1677176153082839042',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570321',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),               -- 教育信息化基本情况统计表（二）
      ('1677176153087033345',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570322',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),
      ('1677176153087033346',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570323',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),
      ('1677176153087033347',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570324',	NULL,	'2023-07-07 12:42:10',	'127.0.0.1'),
@@ -3564,7 +3619,19 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1704051501875564546',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720493',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1'),
      ('1704051501875564547',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720494',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1'),
      ('1704051501879758850',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720495',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1'),
-     ('1704051501879758851',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720496',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1');
+     ('1704051501879758851',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023091403567720496',	NULL,	'2023-09-19 16:35:12',	'127.0.0.1')
+    ,('1714115193287618561',	'f6817f48af4fb3af11b9e8bf182f618b',	'1714103540890349570',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),               -- 教学装备配置
+     ('1714115193296007169',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300141',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),               -- 小学数学教学装备配置文件
+     ('1714115193296007170',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300142',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007171',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300143',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007172',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300144',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007173',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300145',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714115193296007174',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300146',	NULL,	'2023-10-17 11:04:43',	'127.0.0.1'),
+     ('1714574026732683265',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300147',	NULL,	'2023-10-18 17:27:58',	'127.0.0.1'),
+     ('1714574026749460482',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300148',	NULL,	'2023-10-18 17:27:58',	'127.0.0.1'),
+     ('1716713559892828162',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300149',	NULL,	'2023-10-24 15:09:42',	'127.0.0.1'),
+     ('1716713559943159809',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300150',	NULL,	'2023-10-24 15:09:42',	'127.0.0.1')
+     ;
 
 INSERT INTO `edu_informatization_basic_info_1` (`id`, `identification_code`, `fill_date`, `teacher_count`, `student_count`, `room_count`, `classroom_count`, `student_desk_count`, `connected_room_count`, `has_a_central_server_room`, `teaching_resource_capacity`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
      ('1665260317544001538',	'3142007024',	'2022-09-06',	210,	1600,	30,	22,	1800,	28,	'1',	21.86,	'admin_bbzx',	'2023-06-04 15:32:53',	NULL,	NULL,	'A01'),
@@ -3743,66 +3810,78 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
      ('1666285517177749508',	'1666258199747100674',	'1666281667909779458',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),               -- 教育信息化
      ('1699775146472218625',	'1666258199747100674',	'1666282632293515265',	NULL,	'2023-09-07 21:22:30',	'127.0.0.1'),               -- 教育装备管理
-     ('1666285517177749509',	'1666258199747100674',	'2023060402428380260',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),               -- 教育信息化基本情况统计表（一）
-     ('1666285517177749510',	'1666258199747100674',	'2023060402428380261',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),
+     ('1666285517177749510',	'1666258199747100674',	'2023060402428380261',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),               -- 教育信息化基本情况统计表（一）
      ('1666285517177749511',	'1666258199747100674',	'2023060402428380262',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),
      ('1666285517177749512',	'1666258199747100674',	'2023060402428380263',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),
      ('1666285517177749513',	'1666258199747100674',	'2023060402428380264',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),
      ('1666285517177749514',	'1666258199747100674',	'2023060402428380265',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),
      ('1666285517177749515',	'1666258199747100674',	'2023060402428380266',	NULL,	'2023-06-07 11:26:40',	'127.0.0.1'),
-     ('1677176328106950657',	'1666258199747100674',	'2023070711112570320',	NULL,	'2023-07-07 12:42:52',	'127.0.0.1'),               -- 教育信息化基本情况统计表（二）
-     ('1677176328115339267',	'1666258199747100674',	'2023070711112570321',	NULL,	'2023-07-07 12:42:52',	'127.0.0.1'),
+     ('1707331100394905602',	'1666258199747100674',	'2023060402428380268',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1'),
+     ('1677176328115339267',	'1666258199747100674',	'2023070711112570321',	NULL,	'2023-07-07 12:42:52',	'127.0.0.1'),               -- 教育信息化基本情况统计表（二）
      ('1677176328115339268',	'1666258199747100674',	'2023070711112570322',	NULL,	'2023-07-07 12:42:52',	'127.0.0.1'),
      ('1677176328115339269',	'1666258199747100674',	'2023070711112570323',	NULL,	'2023-07-07 12:42:52',	'127.0.0.1'),
      ('1677176328119533569',	'1666258199747100674',	'2023070711112570324',	NULL,	'2023-07-07 12:42:52',	'127.0.0.1'),
      ('1677176328119533570',	'1666258199747100674',	'2023070711112570325',	NULL,	'2023-07-07 12:42:52',	'127.0.0.1'),
      ('1677176328119533571',	'1666258199747100674',	'2023070711112570326',	NULL,	'2023-07-07 12:42:52',	'127.0.0.1'),
-     ('1677247092231462914',	'1666258199747100674',	'2023070704433360220',	NULL,	'2023-07-07 17:24:03',	'127.0.0.1'),               -- 中小学实验室基本情况统计表（三）
-     ('1677247092235657218',	'1666258199747100674',	'2023070704433370221',	NULL,	'2023-07-07 17:24:03',	'127.0.0.1'),
+     ('1707331100411682817',	'1666258199747100674',	'2023070711112570328',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1'),
+     ('1677247092235657218',	'1666258199747100674',	'2023070704433370221',	NULL,	'2023-07-07 17:24:03',	'127.0.0.1'),               -- 中小学实验室基本情况统计表（三）
      ('1677247092235657219',	'1666258199747100674',	'2023070704433370222',	NULL,	'2023-07-07 17:24:03',	'127.0.0.1'),
      ('1677247092235657220',	'1666258199747100674',	'2023070704433370223',	NULL,	'2023-07-07 17:24:03',	'127.0.0.1'),
      ('1677247092235657221',	'1666258199747100674',	'2023070704433370224',	NULL,	'2023-07-07 17:24:03',	'127.0.0.1'),
      ('1677247092235657222',	'1666258199747100674',	'2023070704433370225',	NULL,	'2023-07-07 17:24:03',	'127.0.0.1'),
      ('1677247092235657223',	'1666258199747100674',	'2023070704433370226',	NULL,	'2023-07-07 17:24:03',	'127.0.0.1'),
-     ('1678202369759961089',	'1666258199747100674',	'2023070705157320330',	NULL,	'2023-07-10 08:39:59',	'127.0.0.1'),               -- 中小学图书室（馆）基本情况统计表（四）
-     ('1678202369768349697',	'1666258199747100674',	'2023070705157320331',	NULL,	'2023-07-10 08:39:59',	'127.0.0.1'),
+     ('1707331100415877121',	'1666258199747100674',	'2023070704433370228',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1'),
+     ('1678202369768349697',	'1666258199747100674',	'2023070705157320331',	NULL,	'2023-07-10 08:39:59',	'127.0.0.1'),               -- 中小学图书室（馆）基本情况统计表（四）
      ('1678202369772544001',	'1666258199747100674',	'2023070705157320332',	NULL,	'2023-07-10 08:39:59',	'127.0.0.1'),
      ('1678202369772544002',	'1666258199747100674',	'2023070705157320333',	NULL,	'2023-07-10 08:39:59',	'127.0.0.1'),
      ('1678202369776738305',	'1666258199747100674',	'2023070705157320334',	NULL,	'2023-07-10 08:39:59',	'127.0.0.1'),
      ('1678202369776738306',	'1666258199747100674',	'2023070705157320335',	NULL,	'2023-07-10 08:39:59',	'127.0.0.1'),
      ('1678202369776738307',	'1666258199747100674',	'2023070705157320336',	NULL,	'2023-07-10 08:39:59',	'127.0.0.1'),
-     ('1680407502237335553',	'1666258199747100674',	'2023071505454370430',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),               -- 中小学体育用房统计表（五）
-     ('1680407502245724161',	'1666258199747100674',	'2023071505454370431',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
+     ('1707331100415877122',	'1666258199747100674',	'2023070705157320338',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1'),
+     ('1680407502245724161',	'1666258199747100674',	'2023071505454370431',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),               -- 中小学体育用房统计表（五）
      ('1680407502245724162',	'1666258199747100674',	'2023071505454370432',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502249918465',	'1666258199747100674',	'2023071505454370433',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502249918466',	'1666258199747100674',	'2023071505454370434',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502249918467',	'1666258199747100674',	'2023071505454370435',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502249918468',	'1666258199747100674',	'2023071505454370436',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
-     ('1680407502254112769',	'1666258199747100674',	'2023071506100910410',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),               -- 中小学音乐、美术教学用房统计表（六）
-     ('1680407502254112770',	'1666258199747100674',	'2023071506100910411',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
+     ('1707331100420071426',	'1666258199747100674',	'2023071505454370438',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1'),
+     ('1680407502254112770',	'1666258199747100674',	'2023071506100910411',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),               -- 中小学音乐、美术教学用房统计表（六）
      ('1680407502254112771',	'1666258199747100674',	'2023071506100910412',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502254112772',	'1666258199747100674',	'2023071506100910413',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502258307073',	'1666258199747100674',	'2023071506100910414',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502258307074',	'1666258199747100674',	'2023071506100910415',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502258307075',	'1666258199747100674',	'2023071506100910416',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
-     ('1680407502258307076',	'1666258199747100674',	'2023071507171810530',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),               -- 中小学功能室用房统计表（七）
-     ('1680407502262501378',	'1666258199747100674',	'2023071507171810531',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
+     ('1707331100420071427',	'1666258199747100674',	'2023071506100910418',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1'),
+     ('1680407502262501378',	'1666258199747100674',	'2023071507171810531',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),               -- 中小学功能室用房统计表（七）
      ('1680407502262501379',	'1666258199747100674',	'2023071507171810532',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502262501380',	'1666258199747100674',	'2023071507171810533',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502262501381',	'1666258199747100674',	'2023071507171810534',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502262501382',	'1666258199747100674',	'2023071507171810535',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502266695682',	'1666258199747100674',	'2023071507171810536',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
-     ('1680407502266695683',	'1666258199747100674',	'2023071507187680160',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),               -- 教育信息化配备情况统计表（八）
-     ('1680407502266695684',	'1666258199747100674',	'2023071507187680161',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
+     ('1707331100424265729',	'1666258199747100674',	'2023071507171810538',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1'),
+     ('1680407502266695684',	'1666258199747100674',	'2023071507187680161',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),               -- 教育信息化配备情况统计表（八）
      ('1680407502270889986',	'1666258199747100674',	'2023071507187680162',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502270889987',	'1666258199747100674',	'2023071507187680163',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502270889988',	'1666258199747100674',	'2023071507187680164',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
      ('1680407502270889989',	'1666258199747100674',	'2023071507187680165',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
-     ('1680407502270889990',	'1666258199747100674',	'2023071507187680166',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1');
+     ('1680407502270889990',	'1666258199747100674',	'2023071507187680166',	NULL,	'2023-07-16 10:42:24',	'127.0.0.1'),
+     ('1707331100424265730',	'1666258199747100674',	'2023071507187680168',	NULL,	'2023-09-28 17:47:10',	'127.0.0.1');
 
--- 角色权限：装备中心 – 登记册备案检查
+-- 角色权限：装备中心 – 装备管理检查
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
-     ('1698605380663459842',	'1698527018892869633',	'1666282632293515265',	NULL,	'2023-09-04 15:54:16',	'127.0.0.1');               -- 教育装备管理
+     ('1698605380663459842',	'1698527018892869633',	'1666282632293515265',	NULL,	'2023-09-04 15:54:16',	'127.0.0.1')                -- 教育装备管理
+    ,('1714117993681793025',	'1698527018892869633',	'1714103540890349570',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),               -- 教学装备配置
+--     ('1714117993685987331',	'1698527018892869633',	'2023101809294300141',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),               -- 小学数学教学装备配置文件
+--     ('1714117993685987332',	'1698527018892869633',	'2023101809294300142',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+--     ('1714117993685987333',	'1698527018892869633',	'2023101809294300143',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+--     ('1714117993685987334',	'1698527018892869633',	'2023101809294300144',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+--     ('1714117993685987335',	'1698527018892869633',	'2023101809294300145',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+--     ('1714117993685987336',	'1698527018892869633',	'2023101809294300146',	NULL,	'2023-10-17 11:15:51',	'127.0.0.1'),
+     ('1714518122247569409',	'1698527018892869633',	'2023101809294300147',	NULL,	'2023-10-18 20:23:11',	'127.0.0.1'),
+     ('1714573299817857026',	'1698527018892869633',	'2023101809294300148',	NULL,	'2023-10-18 17:25:05',	'127.0.0.1'),
+     ('1716714086718382081',	'1698527018892869633',	'2023101809294300149',	NULL,	'2023-10-24 15:11:48',	'127.0.0.1'),
+     ('1716713756068814850',	'1698527018892869633',	'2023101809294300150',	NULL,	'2023-10-24 15:10:29',	'127.0.0.1')
+     ;
 
 -- 角色权限：装备代表 – 高中
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
@@ -3811,51 +3890,60 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666313944958107651',	'1666258199679991810',	'2023060402428380261',	NULL,	'2023-06-07 13:19:38',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（一）
      ('1666313944958107652',	'1666258199679991810',	'2023060402428380262',	NULL,	'2023-06-07 13:19:38',	'127.0.0.1'),
      ('1666313944958107653',	'1666258199679991810',	'2023060402428380263',	NULL,	'2023-06-07 13:19:38',	'127.0.0.1'),
-     ('1666313944958107654',	'1666258199679991810',	'2023060402428380264',	NULL,	'2023-06-07 13:19:38',	'127.0.0.1'),
+--     ('1666313944958107654',	'1666258199679991810',	'2023060402428380264',	NULL,	'2023-06-07 13:19:38',	'127.0.0.1'),
      ('1666313944958107655',	'1666258199679991810',	'2023060402428380265',	NULL,	'2023-06-07 13:19:38',	'127.0.0.1'),
-     ('1666313944958107656',	'1666258199679991810',	'2023060402428380266',	NULL,	'2023-06-07 13:19:38',	'127.0.0.1'),
+--     ('1666313944958107656',	'1666258199679991810',	'2023060402428380266',	NULL,	'2023-06-07 13:19:38',	'127.0.0.1'),
+     ('1707327092645158913',	'1666258199679991810',	'2023060402428380267',	NULL,	'2023-09-28 17:31:14',	'127.0.0.1'),
      ('1677171641865617411',	'1666258199679991810',	'2023070711112570321',	NULL,	'2023-07-07 12:24:14',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（二）
      ('1677171641869811713',	'1666258199679991810',	'2023070711112570322',	NULL,	'2023-07-07 12:24:14',	'127.0.0.1'),
      ('1677171641869811714',	'1666258199679991810',	'2023070711112570323',	NULL,	'2023-07-07 12:24:14',	'127.0.0.1'),
-     ('1677171641869811715',	'1666258199679991810',	'2023070711112570324',	NULL,	'2023-07-07 12:24:14',	'127.0.0.1'),
+--     ('1677171641869811715',	'1666258199679991810',	'2023070711112570324',	NULL,	'2023-07-07 12:24:14',	'127.0.0.1'),
      ('1677171641869811716',	'1666258199679991810',	'2023070711112570325',	NULL,	'2023-07-07 12:24:14',	'127.0.0.1'),
-     ('1677171641874006017',	'1666258199679991810',	'2023070711112570326',	NULL,	'2023-07-07 12:24:14',	'127.0.0.1'),
+--     ('1677171641874006017',	'1666258199679991810',	'2023070711112570326',	NULL,	'2023-07-07 12:24:14',	'127.0.0.1'),
+     ('1707327092653547521',	'1666258199679991810',	'2023070711112570327',	NULL,	'2023-09-28 17:31:14',	'127.0.0.1'),
      ('1677247539147137026',	'1666258199679991810',	'2023070704433370221',	NULL,	'2023-07-07 17:25:50',	'127.0.0.1'),               -- 添加中小学实验室基本情况统计表（三）
      ('1677247539147137027',	'1666258199679991810',	'2023070704433370222',	NULL,	'2023-07-07 17:25:50',	'127.0.0.1'),
      ('1677247539151331330',	'1666258199679991810',	'2023070704433370223',	NULL,	'2023-07-07 17:25:50',	'127.0.0.1'),
-     ('1677247539151331331',	'1666258199679991810',	'2023070704433370224',	NULL,	'2023-07-07 17:25:50',	'127.0.0.1'),
+--     ('1677247539151331331',	'1666258199679991810',	'2023070704433370224',	NULL,	'2023-07-07 17:25:50',	'127.0.0.1'),
      ('1677247539155525633',	'1666258199679991810',	'2023070704433370225',	NULL,	'2023-07-07 17:25:50',	'127.0.0.1'),
-     ('1677247539155525634',	'1666258199679991810',	'2023070704433370226',	NULL,	'2023-07-07 17:25:50',	'127.0.0.1'),
+--     ('1677247539155525634',	'1666258199679991810',	'2023070704433370226',	NULL,	'2023-07-07 17:25:50',	'127.0.0.1'),
+     ('1707327092653547522',	'1666258199679991810',	'2023070704433370227',	NULL,	'2023-09-28 17:31:14',	'127.0.0.1'),
      ('1678202629416738817',	'1666258199679991810',	'2023070705157320331',	NULL,	'2023-07-10 08:41:01',	'127.0.0.1'),               -- 添加中小学图书室（馆）基本情况统计表（四）
      ('1678202629416738818',	'1666258199679991810',	'2023070705157320332',	NULL,	'2023-07-10 08:41:01',	'127.0.0.1'),
      ('1678202629416738819',	'1666258199679991810',	'2023070705157320333',	NULL,	'2023-07-10 08:41:01',	'127.0.0.1'),
-     ('1678202629416738820',	'1666258199679991810',	'2023070705157320334',	NULL,	'2023-07-10 08:41:01',	'127.0.0.1'),
+--     ('1678202629416738820',	'1666258199679991810',	'2023070705157320334',	NULL,	'2023-07-10 08:41:01',	'127.0.0.1'),
      ('1678202629416738821',	'1666258199679991810',	'2023070705157320335',	NULL,	'2023-07-10 08:41:01',	'127.0.0.1'),
-     ('1678202629416738822',	'1666258199679991810',	'2023070705157320336',	NULL,	'2023-07-10 08:41:01',	'127.0.0.1'),
+--     ('1678202629416738822',	'1666258199679991810',	'2023070705157320336',	NULL,	'2023-07-10 08:41:01',	'127.0.0.1'),
+     ('1707327092653547523',	'1666258199679991810',	'2023070705157320337',	NULL,	'2023-09-28 17:31:14',	'127.0.0.1'),
      ('1680408415911936002',	'1666258199679991810',	'2023071505454370431',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),               -- 添加中小学体育用房统计表（五）
      ('1680408415911936003',	'1666258199679991810',	'2023071505454370432',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
      ('1680408415916130306',	'1666258199679991810',	'2023071505454370433',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
-     ('1680408415916130307',	'1666258199679991810',	'2023071505454370434',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+--     ('1680408415916130307',	'1666258199679991810',	'2023071505454370434',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
      ('1680408415916130308',	'1666258199679991810',	'2023071505454370435',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
-     ('1680408415916130309',	'1666258199679991810',	'2023071505454370436',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+--     ('1680408415916130309',	'1666258199679991810',	'2023071505454370436',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+     ('1707327092653547524',	'1666258199679991810',	'2023071505454370437',	NULL,	'2023-09-28 17:31:14',	'127.0.0.1'),
      ('1680408415916130311',	'1666258199679991810',	'2023071506100910411',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),               -- 添加中小学音乐、美术教学用房统计表（六）
      ('1680408415916130312',	'1666258199679991810',	'2023071506100910412',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
      ('1680408415916130313',	'1666258199679991810',	'2023071506100910413',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
-     ('1680408415916130314',	'1666258199679991810',	'2023071506100910414',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+--     ('1680408415916130314',	'1666258199679991810',	'2023071506100910414',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
      ('1680408415916130315',	'1666258199679991810',	'2023071506100910415',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
-     ('1680408415916130316',	'1666258199679991810',	'2023071506100910416',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+--     ('1680408415916130316',	'1666258199679991810',	'2023071506100910416',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+     ('1707327092653547525',	'1666258199679991810',	'2023071506100910417',	NULL,	'2023-09-28 17:31:14',	'127.0.0.1'),
      ('1680408415916130318',	'1666258199679991810',	'2023071507171810531',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),               -- 添加中小学功能室用房统计表（七）
      ('1680408415916130319',	'1666258199679991810',	'2023071507171810532',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
      ('1680408415920324609',	'1666258199679991810',	'2023071507171810533',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
-     ('1680408415920324610',	'1666258199679991810',	'2023071507171810534',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+--     ('1680408415920324610',	'1666258199679991810',	'2023071507171810534',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
      ('1680408415920324611',	'1666258199679991810',	'2023071507171810535',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
-     ('1680408415920324612',	'1666258199679991810',	'2023071507171810536',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+--     ('1680408415920324612',	'1666258199679991810',	'2023071507171810536',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+     ('1707327092653547526',	'1666258199679991810',	'2023071507171810537',	NULL,	'2023-09-28 17:31:14',	'127.0.0.1'),
      ('1680408415920324614',	'1666258199679991810',	'2023071507187680161',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),               -- 添加教育信息化配备情况统计表（八）
      ('1680408415920324615',	'1666258199679991810',	'2023071507187680162',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
      ('1680408415920324616',	'1666258199679991810',	'2023071507187680163',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
-     ('1680408415920324617',	'1666258199679991810',	'2023071507187680164',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+--     ('1680408415920324617',	'1666258199679991810',	'2023071507187680164',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
      ('1680408415920324618',	'1666258199679991810',	'2023071507187680165',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
-     ('1680408415920324619',	'1666258199679991810',	'2023071507187680166',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1');
+--     ('1680408415920324619',	'1666258199679991810',	'2023071507187680166',	NULL,	'2023-07-16 10:46:01',	'127.0.0.1'),
+     ('1707327092657741825',	'1666258199679991810',	'2023071507187680167',	NULL,	'2023-09-28 17:31:14',	'127.0.0.1'),
+     ('1707329572028276737',	'1666258199679991810',	'1666282632293515265',	NULL,	'2023-09-28 17:41:05',	'127.0.0.1');               -- 教育装备管理
 
 -- 角色权限：装备代表 – 初中
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
@@ -3864,51 +3952,59 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666314346688544771',	'1666258199700963330',	'2023060402428380261',	NULL,	'2023-06-07 13:21:14',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（一）
      ('1666314346688544772',	'1666258199700963330',	'2023060402428380262',	NULL,	'2023-06-07 13:21:14',	'127.0.0.1'),
      ('1666314346688544773',	'1666258199700963330',	'2023060402428380263',	NULL,	'2023-06-07 13:21:14',	'127.0.0.1'),
-     ('1666314346688544774',	'1666258199700963330',	'2023060402428380264',	NULL,	'2023-06-07 13:21:14',	'127.0.0.1'),
+--     ('1666314346688544774',	'1666258199700963330',	'2023060402428380264',	NULL,	'2023-06-07 13:21:14',	'127.0.0.1'),
      ('1666314346688544775',	'1666258199700963330',	'2023060402428380265',	NULL,	'2023-06-07 13:21:14',	'127.0.0.1'),
-     ('1666314346688544776',	'1666258199700963330',	'2023060402428380266',	NULL,	'2023-06-07 13:21:14',	'127.0.0.1'),
+--     ('1666314346688544776',	'1666258199700963330',	'2023060402428380266',	NULL,	'2023-06-07 13:21:14',	'127.0.0.1'),
+     ('1707324885434621954',	'1666258199700963330',	'2023060402428380267',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
      ('1677171502006550529',	'1666258199700963330',	'2023070711112570321',	NULL,	'2023-07-07 12:23:41',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（二）
      ('1677171502006550530',	'1666258199700963330',	'2023070711112570322',	NULL,	'2023-07-07 12:23:41',	'127.0.0.1'),
      ('1677171502006550531',	'1666258199700963330',	'2023070711112570323',	NULL,	'2023-07-07 12:23:41',	'127.0.0.1'),
-     ('1677171502006550532',	'1666258199700963330',	'2023070711112570324',	NULL,	'2023-07-07 12:23:41',	'127.0.0.1'),
+--     ('1677171502006550532',	'1666258199700963330',	'2023070711112570324',	NULL,	'2023-07-07 12:23:41',	'127.0.0.1'),
      ('1677171502006550533',	'1666258199700963330',	'2023070711112570325',	NULL,	'2023-07-07 12:23:41',	'127.0.0.1'),
-     ('1677171502010744833',	'1666258199700963330',	'2023070711112570326',	NULL,	'2023-07-07 12:23:41',	'127.0.0.1'),
+--     ('1677171502010744833',	'1666258199700963330',	'2023070711112570326',	NULL,	'2023-07-07 12:23:41',	'127.0.0.1'),
+     ('1707324885443010561',	'1666258199700963330',	'2023070711112570327',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
      ('1677247485967556610',	'1666258199700963330',	'2023070704433370221',	NULL,	'2023-07-07 17:25:37',	'127.0.0.1'),               -- 添加中小学实验室基本情况统计表（三）
      ('1677247485967556611',	'1666258199700963330',	'2023070704433370222',	NULL,	'2023-07-07 17:25:37',	'127.0.0.1'),
      ('1677247485967556612',	'1666258199700963330',	'2023070704433370223',	NULL,	'2023-07-07 17:25:37',	'127.0.0.1'),
-     ('1677247485967556613',	'1666258199700963330',	'2023070704433370224',	NULL,	'2023-07-07 17:25:37',	'127.0.0.1'),
+--     ('1677247485967556613',	'1666258199700963330',	'2023070704433370224',	NULL,	'2023-07-07 17:25:37',	'127.0.0.1'),
      ('1677247485971750913',	'1666258199700963330',	'2023070704433370225',	NULL,	'2023-07-07 17:25:37',	'127.0.0.1'),
-     ('1677247485971750914',	'1666258199700963330',	'2023070704433370226',	NULL,	'2023-07-07 17:25:37',	'127.0.0.1'),
+--     ('1677247485971750914',	'1666258199700963330',	'2023070704433370226',	NULL,	'2023-07-07 17:25:37',	'127.0.0.1'),
+     ('1707324885443010562',	'1666258199700963330',	'2023070704433370227',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
      ('1678202572688777218',	'1666258199700963330',	'2023070705157320331',	NULL,	'2023-07-10 08:40:47',	'127.0.0.1'),               -- 添加中小学图书室（馆）基本情况统计表（四）
      ('1678202572692971521',	'1666258199700963330',	'2023070705157320332',	NULL,	'2023-07-10 08:40:47',	'127.0.0.1'),
      ('1678202572692971522',	'1666258199700963330',	'2023070705157320333',	NULL,	'2023-07-10 08:40:47',	'127.0.0.1'),
-     ('1678202572692971523',	'1666258199700963330',	'2023070705157320334',	NULL,	'2023-07-10 08:40:47',	'127.0.0.1'),
+--     ('1678202572692971523',	'1666258199700963330',	'2023070705157320334',	NULL,	'2023-07-10 08:40:47',	'127.0.0.1'),
      ('1678202572692971524',	'1666258199700963330',	'2023070705157320335',	NULL,	'2023-07-10 08:40:47',	'127.0.0.1'),
-     ('1678202572692971525',	'1666258199700963330',	'2023070705157320336',	NULL,	'2023-07-10 08:40:47',	'127.0.0.1'),
+--     ('1678202572692971525',	'1666258199700963330',	'2023070705157320336',	NULL,	'2023-07-10 08:40:47',	'127.0.0.1'),
+     ('1707324885447204865',	'1666258199700963330',	'2023070705157320337',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
      ('1680408226572664834',	'1666258199700963330',	'2023071505454370431',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),               -- 添加中小学体育用房统计表（五）
      ('1680408226572664835',	'1666258199700963330',	'2023071505454370432',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226572664836',	'1666258199700963330',	'2023071505454370433',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
-     ('1680408226572664837',	'1666258199700963330',	'2023071505454370434',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+--     ('1680408226572664837',	'1666258199700963330',	'2023071505454370434',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226572664838',	'1666258199700963330',	'2023071505454370435',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
-     ('1680408226572664839',	'1666258199700963330',	'2023071505454370436',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+--     ('1680408226572664839',	'1666258199700963330',	'2023071505454370436',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+     ('1707324885447204866',	'1666258199700963330',	'2023071505454370437',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
      ('1680408226576859139',	'1666258199700963330',	'2023071506100910411',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),               -- 添加中小学音乐、美术教学用房统计表（六）
      ('1680408226576859140',	'1666258199700963330',	'2023071506100910412',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226576859141',	'1666258199700963330',	'2023071506100910413',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
-     ('1680408226576859142',	'1666258199700963330',	'2023071506100910414',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+--     ('1680408226576859142',	'1666258199700963330',	'2023071506100910414',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226576859143',	'1666258199700963330',	'2023071506100910415',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
-     ('1680408226576859144',	'1666258199700963330',	'2023071506100910416',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+--     ('1680408226576859144',	'1666258199700963330',	'2023071506100910416',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+     ('1707324885447204867',	'1666258199700963330',	'2023071506100910417',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
      ('1680408226581053442',	'1666258199700963330',	'2023071507171810531',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),               -- 添加中小学功能室用房统计表（七）
      ('1680408226581053443',	'1666258199700963330',	'2023071507171810532',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226581053444',	'1666258199700963330',	'2023071507171810533',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
-     ('1680408226581053445',	'1666258199700963330',	'2023071507171810534',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+--     ('1680408226581053445',	'1666258199700963330',	'2023071507171810534',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226581053446',	'1666258199700963330',	'2023071507171810535',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
-     ('1680408226581053447',	'1666258199700963330',	'2023071507171810536',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+--     ('1680408226581053447',	'1666258199700963330',	'2023071507171810536',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+     ('1707324885447204868',	'1666258199700963330',	'2023071507171810537',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
      ('1680408226581053449',	'1666258199700963330',	'2023071507187680161',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),               -- 添加教育信息化配备情况统计表（八）
      ('1680408226585247746',	'1666258199700963330',	'2023071507187680162',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226585247747',	'1666258199700963330',	'2023071507187680163',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
-     ('1680408226585247748',	'1666258199700963330',	'2023071507187680164',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+--     ('1680408226585247748',	'1666258199700963330',	'2023071507187680164',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1680408226585247749',	'1666258199700963330',	'2023071507187680165',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
-     ('1680408226585247750',	'1666258199700963330',	'2023071507187680166',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+--     ('1680408226585247750',	'1666258199700963330',	'2023071507187680166',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
+     ('1707324885447204869',	'1666258199700963330',	'2023071507187680167',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
      ('1698622972362964993',	'1666258199700963330',	'1666282632293515265',	NULL,	'2023-09-04 17:04:10',	'127.0.0.1');               -- 教育装备管理
 
 -- 角色权限：装备代表 – 小学
@@ -3918,52 +4014,70 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666314712519933955',	'1666258199717740546',	'2023060402428380261',	NULL,	'2023-06-07 13:22:41',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（一）
      ('1666314712519933956',	'1666258199717740546',	'2023060402428380262',	NULL,	'2023-06-07 13:22:41',	'127.0.0.1'),
      ('1666314712519933957',	'1666258199717740546',	'2023060402428380263',	NULL,	'2023-06-07 13:22:41',	'127.0.0.1'),
-     ('1666314712519933958',	'1666258199717740546',	'2023060402428380264',	NULL,	'2023-06-07 13:22:41',	'127.0.0.1'),
+--     ('1666314712519933958',	'1666258199717740546',	'2023060402428380264',	NULL,	'2023-06-07 13:22:41',	'127.0.0.1'),
      ('1666314712519933959',	'1666258199717740546',	'2023060402428380265',	NULL,	'2023-06-07 13:22:41',	'127.0.0.1'),
-     ('1666314712524128257',	'1666258199717740546',	'2023060402428380266',	NULL,	'2023-06-07 13:22:41',	'127.0.0.1'),
+--     ('1666314712524128257',	'1666258199717740546',	'2023060402428380266',	NULL,	'2023-06-07 13:22:41',	'127.0.0.1'),
+     ('1707322226141028353',	'1666258199717740546',	'2023060402428380267',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
      ('1677171344715956226',	'1666258199717740546',	'2023070711112570321',	NULL,	'2023-07-07 12:23:04',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（二）
      ('1677171344715956227',	'1666258199717740546',	'2023070711112570322',	NULL,	'2023-07-07 12:23:04',	'127.0.0.1'),
      ('1677171344720150529',	'1666258199717740546',	'2023070711112570323',	NULL,	'2023-07-07 12:23:04',	'127.0.0.1'),
-     ('1677171344720150530',	'1666258199717740546',	'2023070711112570324',	NULL,	'2023-07-07 12:23:04',	'127.0.0.1'),
+--     ('1677171344720150530',	'1666258199717740546',	'2023070711112570324',	NULL,	'2023-07-07 12:23:04',	'127.0.0.1'),
      ('1677171344720150531',	'1666258199717740546',	'2023070711112570325',	NULL,	'2023-07-07 12:23:04',	'127.0.0.1'),
-     ('1677171344724344833',	'1666258199717740546',	'2023070711112570326',	NULL,	'2023-07-07 12:23:04',	'127.0.0.1'),
+--     ('1677171344724344833',	'1666258199717740546',	'2023070711112570326',	NULL,	'2023-07-07 12:23:04',	'127.0.0.1'),
+     ('1707322226166194177',	'1666258199717740546',	'2023070711112570327',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
      ('1677247422906195970',	'1666258199717740546',	'2023070704433370221',	NULL,	'2023-07-07 17:25:22',	'127.0.0.1'),               -- 添加中小学实验室基本情况统计表（三）
      ('1677247422906195971',	'1666258199717740546',	'2023070704433370222',	NULL,	'2023-07-07 17:25:22',	'127.0.0.1'),
      ('1677247422906195972',	'1666258199717740546',	'2023070704433370223',	NULL,	'2023-07-07 17:25:22',	'127.0.0.1'),
-     ('1677247422910390274',	'1666258199717740546',	'2023070704433370224',	NULL,	'2023-07-07 17:25:22',	'127.0.0.1'),
+--     ('1677247422910390274',	'1666258199717740546',	'2023070704433370224',	NULL,	'2023-07-07 17:25:22',	'127.0.0.1'),
      ('1677247422910390275',	'1666258199717740546',	'2023070704433370225',	NULL,	'2023-07-07 17:25:22',	'127.0.0.1'),
-     ('1677247422914584577',	'1666258199717740546',	'2023070704433370226',	NULL,	'2023-07-07 17:25:22',	'127.0.0.1'),
+--     ('1677247422914584577',	'1666258199717740546',	'2023070704433370226',	NULL,	'2023-07-07 17:25:22',	'127.0.0.1'),
+     ('1707322226170388482',	'1666258199717740546',	'2023070704433370227',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
      ('1678202511728762881',	'1666258199717740546',	'2023070705157320331',	NULL,	'2023-07-10 08:40:33',	'127.0.0.1'),               -- 添加中小学图书室（馆）基本情况统计表（四）
      ('1678202511728762882',	'1666258199717740546',	'2023070705157320332',	NULL,	'2023-07-10 08:40:33',	'127.0.0.1'),
      ('1678202511728762883',	'1666258199717740546',	'2023070705157320333',	NULL,	'2023-07-10 08:40:33',	'127.0.0.1'),
-     ('1678202511728762884',	'1666258199717740546',	'2023070705157320334',	NULL,	'2023-07-10 08:40:33',	'127.0.0.1'),
+--     ('1678202511728762884',	'1666258199717740546',	'2023070705157320334',	NULL,	'2023-07-10 08:40:33',	'127.0.0.1'),
      ('1678202511732957185',	'1666258199717740546',	'2023070705157320335',	NULL,	'2023-07-10 08:40:33',	'127.0.0.1'),
-     ('1678202511732957186',	'1666258199717740546',	'2023070705157320336',	NULL,	'2023-07-10 08:40:33',	'127.0.0.1'),
+--     ('1678202511732957186',	'1666258199717740546',	'2023070705157320336',	NULL,	'2023-07-10 08:40:33',	'127.0.0.1'),
+     ('1707322226174582786',	'1666258199717740546',	'2023070705157320337',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
      ('1680408000545816578',	'1666258199717740546',	'2023071505454370431',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),               -- 添加中小学体育用房统计表（五）
      ('1680408000545816579',	'1666258199717740546',	'2023071505454370432',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000545816580',	'1666258199717740546',	'2023071505454370433',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1680408000545816581',	'1666258199717740546',	'2023071505454370434',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+--     ('1680408000545816581',	'1666258199717740546',	'2023071505454370434',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000545816582',	'1666258199717740546',	'2023071505454370435',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1680408000545816583',	'1666258199717740546',	'2023071505454370436',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+--     ('1680408000545816583',	'1666258199717740546',	'2023071505454370436',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+     ('1707322226174582787',	'1666258199717740546',	'2023071505454370437',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
      ('1680408000550010881',	'1666258199717740546',	'2023071506100910411',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),               -- 添加中小学音乐、美术教学用房统计表（六）
      ('1680408000550010882',	'1666258199717740546',	'2023071506100910412',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000550010883',	'1666258199717740546',	'2023071506100910413',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1680408000550010884',	'1666258199717740546',	'2023071506100910414',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+--     ('1680408000550010884',	'1666258199717740546',	'2023071506100910414',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000550010885',	'1666258199717740546',	'2023071506100910415',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1680408000550010886',	'1666258199717740546',	'2023071506100910416',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+--     ('1680408000550010886',	'1666258199717740546',	'2023071506100910416',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+     ('1707322226174582788',	'1666258199717740546',	'2023071506100910417',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
      ('1680408000554205185',	'1666258199717740546',	'2023071507171810531',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),               -- 添加中小学功能室用房统计表（七）
      ('1680408000554205186',	'1666258199717740546',	'2023071507171810532',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000554205187',	'1666258199717740546',	'2023071507171810533',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1680408000554205188',	'1666258199717740546',	'2023071507171810534',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+--     ('1680408000554205188',	'1666258199717740546',	'2023071507171810534',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000554205189',	'1666258199717740546',	'2023071507171810535',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1680408000554205190',	'1666258199717740546',	'2023071507171810536',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+--     ('1680408000554205190',	'1666258199717740546',	'2023071507171810536',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+     ('1707322226178777089',	'1666258199717740546',	'2023071507171810537',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
      ('1680408000558399489',	'1666258199717740546',	'2023071507187680161',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),               -- 添加教育信息化配备情况统计表（八）
      ('1680408000558399490',	'1666258199717740546',	'2023071507187680162',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000558399491',	'1666258199717740546',	'2023071507187680163',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1680408000558399492',	'1666258199717740546',	'2023071507187680164',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+--     ('1680408000558399492',	'1666258199717740546',	'2023071507187680164',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
      ('1680408000558399493',	'1666258199717740546',	'2023071507187680165',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1680408000558399494',	'1666258199717740546',	'2023071507187680166',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
-     ('1698622269464723457',	'1666258199717740546',	'1666282632293515265',	NULL,	'2023-09-04 17:01:23',	'127.0.0.1');               -- 教育装备管理
+--     ('1680408000558399494',	'1666258199717740546',	'2023071507187680166',	NULL,	'2023-07-16 10:44:22',	'127.0.0.1'),
+     ('1707322226182971393',	'1666258199717740546',	'2023071507187680167',	NULL,	'2023-09-28 17:11:54',	'127.0.0.1'),
+     ('1698622269464723457',	'1666258199717740546',	'1666282632293515265',	NULL,	'2023-09-04 17:01:23',	'127.0.0.1')                -- 教育装备管理
+    ,('1714116811101974529',	'1666258199717740546',	'1714103540890349570',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),               -- 教学装备配置
+     ('1714116811106168834',	'1666258199717740546',	'2023101809294300141',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),               -- 小学数学教学装备配置文件
+     ('1714116811106168835',	'1666258199717740546',	'2023101809294300142',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+     ('1714116811106168836',	'1666258199717740546',	'2023101809294300143',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+--     ('1714116811106168837',	'1666258199717740546',	'2023101809294300144',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+--     ('1714116811106168838',	'1666258199717740546',	'2023101809294300145',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+--     ('1714116811110363138',	'1666258199717740546',	'2023101809294300146',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
+     ('1714571952708075521',	'1666258199717740546',	'2023101809294300147',	NULL,	'2023-10-18 17:19:43',	'127.0.0.1'),
+     ('1716713812910022658',	'1666258199717740546',	'2023101809294300150',	NULL,	'2023-10-24 15:10:43',	'127.0.0.1')
+     ;
 
 -- 角色权限：装备代表 – 幼儿园
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
@@ -3972,52 +4086,60 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1666313219406430212',	'1666258199734517761',	'2023060402428380261',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（一）
      ('1666313219406430213',	'1666258199734517761',	'2023060402428380262',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),
      ('1666313219406430214',	'1666258199734517761',	'2023060402428380263',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),
-     ('1666313219406430215',	'1666258199734517761',	'2023060402428380264',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),
+--     ('1666313219406430215',	'1666258199734517761',	'2023060402428380264',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),       -- 屏蔽 批量删除
      ('1666313219406430216',	'1666258199734517761',	'2023060402428380265',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),
-     ('1666313219406430217',	'1666258199734517761',	'2023060402428380266',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),
+--     ('1666313219406430217',	'1666258199734517761',	'2023060402428380266',	NULL,	'2023-06-07 13:16:45',	'127.0.0.1'),       -- 屏蔽 导入
      ('1705159882216448002',	'1666258199734517761',	'2023060402428380267',	NULL,	'2023-09-22 17:59:31',	'127.0.0.1'),               -- 上报
      ('1677171858836963329',	'1666258199734517761',	'2023070711112570321',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),               -- 添加教育信息化基本情况统计表（二）
      ('1677171858836963330',	'1666258199734517761',	'2023070711112570322',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
      ('1677171858836963331',	'1666258199734517761',	'2023070711112570323',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
-     ('1677171858836963332',	'1666258199734517761',	'2023070711112570324',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
+--     ('1677171858836963332',	'1666258199734517761',	'2023070711112570324',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
      ('1677171858836963333',	'1666258199734517761',	'2023070711112570325',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
-     ('1677171858836963334',	'1666258199734517761',	'2023070711112570326',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
+--     ('1677171858836963334',	'1666258199734517761',	'2023070711112570326',	NULL,	'2023-07-07 12:25:06',	'127.0.0.1'),
+     ('1707316213555912705',	'1666258199734517761',	'2023070711112570327',	NULL,	'2023-09-28 16:48:00',	'127.0.0.1'),
      ('1677247337745047554',	'1666258199734517761',	'2023070704433370221',	NULL,	'2023-07-07 17:25:02',	'127.0.0.1'),               -- 添加中小学实验室基本情况统计表（三）
      ('1677247337745047555',	'1666258199734517761',	'2023070704433370222',	NULL,	'2023-07-07 17:25:02',	'127.0.0.1'),
      ('1677247337745047556',	'1666258199734517761',	'2023070704433370223',	NULL,	'2023-07-07 17:25:02',	'127.0.0.1'),
-     ('1677247337745047557',	'1666258199734517761',	'2023070704433370224',	NULL,	'2023-07-07 17:25:02',	'127.0.0.1'),
+--     ('1677247337745047557',	'1666258199734517761',	'2023070704433370224',	NULL,	'2023-07-07 17:25:02',	'127.0.0.1'),
      ('1677247337745047558',	'1666258199734517761',	'2023070704433370225',	NULL,	'2023-07-07 17:25:02',	'127.0.0.1'),
-     ('1677247337745047559',	'1666258199734517761',	'2023070704433370226',	NULL,	'2023-07-07 17:25:02',	'127.0.0.1'),
+--     ('1677247337745047559',	'1666258199734517761',	'2023070704433370226',	NULL,	'2023-07-07 17:25:02',	'127.0.0.1'),
+     ('1707316213656576002',	'1666258199734517761',	'2023070704433370227',	NULL,	'2023-09-28 16:48:00',	'127.0.0.1'),
      ('1678202452798791681',	'1666258199734517761',	'2023070705157320331',	NULL,	'2023-07-10 08:40:19',	'127.0.0.1'),               -- 添加中小学图书室（馆）基本情况统计表（四）
      ('1678202452798791682',	'1666258199734517761',	'2023070705157320332',	NULL,	'2023-07-10 08:40:19',	'127.0.0.1'),
      ('1678202452802985986',	'1666258199734517761',	'2023070705157320333',	NULL,	'2023-07-10 08:40:19',	'127.0.0.1'),
-     ('1678202452802985987',	'1666258199734517761',	'2023070705157320334',	NULL,	'2023-07-10 08:40:19',	'127.0.0.1'),
+--     ('1678202452802985987',	'1666258199734517761',	'2023070705157320334',	NULL,	'2023-07-10 08:40:19',	'127.0.0.1'),
      ('1678202452807180289',	'1666258199734517761',	'2023070705157320335',	NULL,	'2023-07-10 08:40:19',	'127.0.0.1'),
-     ('1678202452807180290',	'1666258199734517761',	'2023070705157320336',	NULL,	'2023-07-10 08:40:19',	'127.0.0.1'),
+--     ('1678202452807180290',	'1666258199734517761',	'2023070705157320336',	NULL,	'2023-07-10 08:40:19',	'127.0.0.1'),
+     ('1707316213698519042',	'1666258199734517761',	'2023070705157320337',	NULL,	'2023-09-28 16:48:00',	'127.0.0.1'),
      ('1680407757699809282',	'1666258199734517761',	'2023071505454370431',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),               -- 添加中小学体育用房统计表（五）
      ('1680407757699809283',	'1666258199734517761',	'2023071505454370432',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757704003585',	'1666258199734517761',	'2023071505454370433',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
-     ('1680407757704003586',	'1666258199734517761',	'2023071505454370434',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+--     ('1680407757704003586',	'1666258199734517761',	'2023071505454370434',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757704003587',	'1666258199734517761',	'2023071505454370435',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
-     ('1680407757704003588',	'1666258199734517761',	'2023071505454370436',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+--     ('1680407757704003588',	'1666258199734517761',	'2023071505454370436',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+     ('1707316213715296257',	'1666258199734517761',	'2023071505454370437',	NULL,	'2023-09-28 16:48:00',	'127.0.0.1'),
      ('1680407757708197889',	'1666258199734517761',	'2023071506100910411',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),               -- 添加中小学音乐、美术教学用房统计表（六）
      ('1680407757708197890',	'1666258199734517761',	'2023071506100910412',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757708197891',	'1666258199734517761',	'2023071506100910413',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
-     ('1680407757708197892',	'1666258199734517761',	'2023071506100910414',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+--     ('1680407757708197892',	'1666258199734517761',	'2023071506100910414',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757708197893',	'1666258199734517761',	'2023071506100910415',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
-     ('1680407757712392193',	'1666258199734517761',	'2023071506100910416',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+--     ('1680407757712392193',	'1666258199734517761',	'2023071506100910416',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+     ('1707316213719490562',	'1666258199734517761',	'2023071506100910417',	NULL,	'2023-09-28 16:48:00',	'127.0.0.1'),
      ('1680407757712392195',	'1666258199734517761',	'2023071507171810531',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),               -- 添加中小学功能室用房统计表（七）
      ('1680407757712392196',	'1666258199734517761',	'2023071507171810532',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757712392197',	'1666258199734517761',	'2023071507171810533',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
-     ('1680407757712392198',	'1666258199734517761',	'2023071507171810534',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+--     ('1680407757712392198',	'1666258199734517761',	'2023071507171810534',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757716586498',	'1666258199734517761',	'2023071507171810535',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
-     ('1680407757716586499',	'1666258199734517761',	'2023071507171810536',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+--     ('1680407757716586499',	'1666258199734517761',	'2023071507171810536',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+     ('1707316213723684866',	'1666258199734517761',	'2023071507171810537',	NULL,	'2023-09-28 16:48:00',	'127.0.0.1'),
      ('1680407757716586501',	'1666258199734517761',	'2023071507187680161',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),               -- 添加教育信息化配备情况统计表（八）
      ('1680407757716586502',	'1666258199734517761',	'2023071507187680162',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757716586503',	'1666258199734517761',	'2023071507187680163',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
-     ('1680407757720780802',	'1666258199734517761',	'2023071507187680164',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+--     ('1680407757720780802',	'1666258199734517761',	'2023071507187680164',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
      ('1680407757720780803',	'1666258199734517761',	'2023071507187680165',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
-     ('1680407757720780804',	'1666258199734517761',	'2023071507187680166',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1');
+--     ('1680407757720780804',	'1666258199734517761',	'2023071507187680166',	NULL,	'2023-07-16 10:43:25',	'127.0.0.1'),
+     ('1707316213723684867',	'1666258199734517761',	'2023071507187680167',	NULL,	'2023-09-28 16:48:00',	'127.0.0.1'),
+     ('1707329989416050690',	'1666258199734517761',	'1666282632293515265',	NULL,	'2023-09-28 17:42:45',	'127.0.0.1');               -- 教育装备管理
 
 -- 预设账户：装备中心配置管理员、电教办、装备办
 INSERT INTO `sys_user` (`id`, `username`, `realname`, `password`, `salt`, `avatar`, `birthday`, `sex`, `email`, `phone`, `org_code`, `status`, `del_flag`, `third_id`, `third_type`, `activiti_sync`, `work_no`, `post`, `telephone`, `create_by`, `create_time`, `update_by`, `update_time`, `user_identity`, `depart_ids`, `client_id`, `login_tenant_id`, `bpm_status`) VALUES
@@ -4099,9 +4221,26 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
 
 -- 角色数据权限：电教中心仅能看到学校上报的统计数据
 INSERT INTO `sys_permission_data_rule` (`id`, `permission_id`, `rule_name`, `rule_column`, `rule_conditions`, `rule_value`, `status`, `create_time`, `create_by`, `update_time`, `update_by`) VALUES
-    ('1705486882726629378',	'2023060402428380260',	'电教中心仅能看到学校上报的统计数据#1',	'reported',	'=',	'1',	'1',	'2023-09-23 15:38:54',	'admin',	'2023-09-23 15:53:08',	'admin');
+    ('1705486882726629378',	'2023060402428380260',	'电教中心仅能看到学校上报的统计数据#1',	'reported',	'=',	'1',	'1',	'2023-09-23 15:38:54',	'admin',	'2023-09-23 15:53:08',	'admin'),
+    ('1707236117490950145',	'2023070711112570320',	'电教中心仅能看到学校上报的统计数据#2',	'reported',	'=',	'1',	'1',	'2023-09-28 11:29:44',	'admin',	NULL,	NULL),
+    ('1707236324123336705',	'2023070704433360220',	'电教中心仅能看到学校上报的统计数据#3',	'reported',	'=',	'1',	'1',	'2023-09-28 11:30:33',	'admin',	NULL,	NULL),
+    ('1707236505250160641',	'2023070705157320330',	'电教中心仅能看到学校上报的统计数据#4',	'reported',	'=',	'1',	'1',	'2023-09-28 11:31:16',	'admin',	NULL,	NULL),
+    ('1707236656136052737',	'2023071505454370430',	'电教中心仅能看到学校上报的统计数据#5',	'reported',	'=',	'1',	'1',	'2023-09-28 11:31:52',	'admin',	NULL,	NULL),
+    ('1707236823052574721',	'2023071506100910410',	'电教中心仅能看到学校上报的统计数据#6',	'reported',	'=',	'1',	'1',	'2023-09-28 11:32:32',	'admin',	NULL,	NULL),
+    ('1707236982457098242',	'2023071507171810530',	'电教中心仅能看到学校上报的统计数据#7',	'reported',	'=',	'1',	'1',	'2023-09-28 11:33:10',	'admin',	NULL,	NULL),
+    ('1707237138271297537',	'2023071507187680160',	'电教中心仅能看到学校上报的统计数据#8',	'reported',	'=',	'1',	'1',	'2023-09-28 11:33:47',	'admin',	NULL,	NULL);
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
-    ('1665258381948203009',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380260',	'1705486882726629378',	'2023-06-04 15:25:12',	'127.0.0.1');       -- 系统管理员 & #1
+    ('1665258381948203009',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023060402428380260',	'1705486882726629378',	'2023-06-04 15:25:12',	'127.0.0.1'),       -- 系统管理员 & #1
+    ('1677176153070256129',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023070711112570320',	'1707236117490950145',	'2023-07-07 12:42:10',	'127.0.0.1'),
+    ('1666285517177749509',	'1666258199747100674',	'2023060402428380260',	'1705486882726629378',	'2023-06-07 11:26:40',	'127.0.0.1'),                   -- 中心整体情况检查 & #1
+    ('1677176328106950657',	'1666258199747100674',	'2023070711112570320',	'1707236117490950145',	'2023-07-07 12:42:52',	'127.0.0.1'),
+    ('1677247092231462914',	'1666258199747100674',	'2023070704433360220',	'1707236324123336705',	'2023-07-07 17:24:03',	'127.0.0.1'),
+    ('1678202369759961089',	'1666258199747100674',	'2023070705157320330',	'1707236505250160641',	'2023-07-10 08:39:59',	'127.0.0.1'),
+    ('1680407502237335553',	'1666258199747100674',	'2023071505454370430',	'1707236656136052737',	'2023-07-16 10:42:24',	'127.0.0.1'),
+    ('1680407502254112769',	'1666258199747100674',	'2023071506100910410',	'1707236823052574721',	'2023-07-16 10:42:24',	'127.0.0.1'),
+    ('1680407502258307076',	'1666258199747100674',	'2023071507171810530',	'1707236982457098242',	'2023-07-16 10:42:24',	'127.0.0.1'),
+    ('1680407502266695683',	'1666258199747100674',	'2023071507187680160',	'1707237138271297537',	'2023-07-16 10:42:24',	'127.0.0.1');
+
 
 -- 字段列显示控制（目前框架采用的vben似乎不支持对列编辑的控制，故简单在前段硬编码控制）
 INSERT INTO `sys_permission` (`id`, `parent_id`, `name`, `url`, `component`, `is_route`, `component_name`, `redirect`, `menu_type`, `perms`, `perms_type`, `sort_no`, `always_show`, `icon`, `is_leaf`, `keep_alive`, `hidden`, `hide_tab`, `description`, `create_by`, `create_time`, `update_by`, `update_time`, `del_flag`, `rule_flag`, `status`, `internal_or_external`) VALUES
@@ -4126,6 +4265,33 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1680425174161293314',	'1666258199747100674',	'1680424349888282625',	NULL,	'2023-07-16 11:52:37',	'127.0.0.1'),
      ('1680425174161293315',	'1666258199747100674',	'1680424551021936641',	NULL,	'2023-07-16 11:52:37',	'127.0.0.1'),
      ('1680425174161293316',	'1666258199747100674',	'1680424755213238274',	NULL,	'2023-07-16 11:52:37',	'127.0.0.1');
+
+-- 角色数据权限：学校仅能看到本校的数据（教学装备相关）
+INSERT INTO `sys_permission_data_rule` (`id`, `permission_id`, `rule_name`, `rule_column`, `rule_conditions`, `rule_value`, `status`, `create_time`, `create_by`, `update_time`, `update_by`) VALUES
+    ('1714490122780745729',	'2023101809294300140',	'学校仅能看到本校的数据#小数',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-10-18 11:54:33',	'admin',	NULL,	NULL)
+    ;
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+    ('1714116811106168833',	'1666258199717740546',	'2023101809294300140',	'1714490122780745729',	'2023-10-17 11:11:09',	'127.0.0.1')            -- 小学
+    ;
+
+-- 角色数据权限：电教中心仅能看到学校上报的文件记录（教学装备相关）
+INSERT INTO `sys_permission_data_rule` (`id`, `permission_id`, `rule_name`, `rule_column`, `rule_conditions`, `rule_value`, `status`, `create_time`, `create_by`, `update_time`, `update_by`) VALUES
+    ('1714589058157723649',	'2023101809294300140',	'电教中心仅能看到学校上报的装备文件#小数',	'reported',	'=',	'1',	'1',	'2023-10-18 18:27:41',	'admin',	NULL,	NULL)
+    ;
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+    ('1714115193291812865',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300140',	'1714589058157723649',	'2023-10-17 11:04:43',	'127.0.0.1'),       -- 系统管理员 & #小数
+    ('1714117993685987330',	'1698527018892869633',	'2023101809294300140',	'1714589058157723649',	'2023-10-17 11:15:51',	'127.0.0.1')                    -- 中心装备管理检查 & #小数
+    ;
+
+
+-- 字段列显示控制（教学装备相关）
+INSERT INTO `sys_permission` (`id`, `parent_id`, `name`, `url`, `component`, `is_route`, `component_name`, `redirect`, `menu_type`, `perms`, `perms_type`, `sort_no`, `always_show`, `icon`, `is_leaf`, `keep_alive`, `hidden`, `hide_tab`, `description`, `create_by`, `create_time`, `update_by`, `update_time`, `del_flag`, `rule_flag`, `status`, `internal_or_external`) VALUES
+    ('1714484080747421697',	'2023101809294300140',	'学校名称列控制#小数',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-18 11:30:33',	NULL,	NULL,	0,	0,	'1',	0)
+    ;
+INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
+    ('1714485051762352129',	'1698527018892869633',	'1714484080747421697',	NULL,	'2023-10-18 11:34:25',	'127.0.0.1'),
+    ('1714484353075191809',	'f6817f48af4fb3af11b9e8bf182f618b',	'1714484080747421697',	NULL,	'2023-10-18 11:31:38',	'127.0.0.1')
+    ;
 
 /* 暂时屏蔽 教学器材配备标准模板 & 小学美术教学器材配备标准
 -- ----------------------------

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import javax.annotation.Resource;
+
 /**
  * @Description: 中小学体育用房统计表（五）
  * @Date:   2023-07-15
@@ -14,5 +16,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  */
 @Service
 public class SchoolSportRoomInfo_5ServiceImpl extends ServiceImpl<SchoolSportRoomInfo_5Mapper, SchoolSportRoomInfo_5> implements ISchoolSportRoomInfo_5Service {
+    @Resource
+    private SchoolSportRoomInfo_5Mapper mapper;
+
+    @Override
+    public int changeReported(String id, int val) {
+        return mapper.changeReported(id, val);
+    }
 
 }
