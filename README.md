@@ -70,4 +70,8 @@ Educational equipment management platform
 13. [jeecgboot(vue+springboot)前端往后台传数据](https://zhuanlan.zhihu.com/p/610027414)
 14. [SpringBoot整合H2数据库](https://blog.csdn.net/qq_46921028/article/details/129958593)
 15. [02SpringBoot配置文件详解](https://blog.csdn.net/nie13739606256/article/details/123068340)
+16. [前端文件下载](https://blog.csdn.net/m0_63685436/article/details/128165236)
+17. [vue+springboot（jeecgboot）模板文件下载](https://zhuanlan.zhihu.com/p/549528178)
+18. [java中Excel导入，下载模板，附带前端展示](https://codeleading.com/article/92135113000/)
+19. 
 
