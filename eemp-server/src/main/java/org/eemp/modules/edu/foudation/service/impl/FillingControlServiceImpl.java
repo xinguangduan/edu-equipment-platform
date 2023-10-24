@@ -175,4 +175,43 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
 
         return false;
     }
+
+    @Override
+    public JSONObject getTemplateInfo(String packageName) {
+        JSONObject fc_template_list = getFcTemplateList();
+
+        return fc_template_list.getJSONObject(packageName);
+    }
+
+    private JSONObject getFcTemplateList() {
+        String key = "fc-template-list";
+        JSONObject fc_template_list = (JSONObject)redisUtil.get(key);
+        if (null == fc_template_list) {
+            fc_template_list = new JSONObject();
+            redisUtil.set(key, fc_template_list);
+        }
+        return fc_template_list;
+    }
+
+    private void putFcTemplateList(JSONObject fc_template_list) {
+        String key = "fc-template-list";
+        redisUtil.set(key, fc_template_list);
+    }
+
+    @Override
+    public boolean updateTemplateInfo(String packageName, String templateUrl) {
+        JSONObject fc_template_list = getFcTemplateList();
+
+        JSONObject oneRec = fc_template_list.getJSONObject(packageName);
+        if (oneRec == null) {
+            oneRec = new JSONObject();
+        }
+        oneRec.put("packageName", packageName);
+        oneRec.put("templateUrl", templateUrl);
+        fc_template_list.put(packageName, oneRec);
+
+        putFcTemplateList(fc_template_list);
+
+        return true;
+    }
 }

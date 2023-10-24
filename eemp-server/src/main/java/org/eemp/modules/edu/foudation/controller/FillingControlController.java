@@ -166,4 +166,16 @@ public class FillingControlController extends BaseController<FillingControl, IFi
 		JSONObject json = service.getFillingControl(identificationCode, packageName);
 		return Result.OK(json);
 	}
+
+	 @PostMapping(value = "/getTemplateInfo")
+	 public Result getTemplateInfo(@RequestParam(name="packageName", required=true) String packageName) {
+		 JSONObject json = service.getTemplateInfo(packageName);
+		 return Result.OK(json);
+	 }
+
+	 @PostMapping(value = "/updateTemplateInfo")
+	 public Result updateTemplateInfo(@RequestParam(name="packageName", required=true) String packageName, @RequestParam(name="templateUrl", required=true) String templateUrl) {
+		 boolean ret = service.updateTemplateInfo(packageName, templateUrl);
+		 return Result.OK(ret);
+	 }
 }

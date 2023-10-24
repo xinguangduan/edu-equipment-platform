@@ -15,6 +15,8 @@ enum Api {
   batchRevoke = '/org.eemp.modules.edu.register/psMathematicsEquipmentFile/revoke',
 
   fillingControl = '/org.eemp.modules.edu.foudation/fillingControl/getFillingControl',
+  templateInfo = '/org.eemp.modules.edu.foudation/fillingControl/getTemplateInfo',
+  updateTemplateInfo = '/org.eemp.modules.edu.foudation/fillingControl/updateTemplateInfo',
 }
 /**
  * 导出api
@@ -26,6 +28,8 @@ export const getExportUrl = Api.exportXls;
  */
 export const getImportUrl = Api.importExcel;
 export const getFillingControlUrl = Api.fillingControl;
+export const getTemplateInfoUrl = Api.templateInfo;
+export const updateTemplateInfoUrl = Api.updateTemplateInfo;
 /**
  * 列表接口
  * @param params
