@@ -69,25 +69,10 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
         wrapper.eq(FillingControl::getControlType, fillingControlType);
         wrapper.le(FillingControl::getStartDate, inDate);
         wrapper.ge(FillingControl::getEndDate, inDate);
-        wrapper.and(qw -> qw.likeRight(FillingControl::getNurserySchool, identificationCode + ",")
-                .or().likeLeft(FillingControl::getNurserySchool, "," + identificationCode)
-                .or().eq(FillingControl::getNurserySchool, identificationCode)
-                .or().like(FillingControl::getNurserySchool, "," + identificationCode + ",")
-                .or()
-                .likeRight(FillingControl::getPrimarySchool, identificationCode + ",")
-                .or().likeLeft(FillingControl::getPrimarySchool, "," + identificationCode)
-                .or().eq(FillingControl::getPrimarySchool, identificationCode)
-                .or().like(FillingControl::getPrimarySchool, "," + identificationCode + ",")
-                .or()
-                .likeRight(FillingControl::getJuniorSchool, identificationCode + ",")
-                .or().likeLeft(FillingControl::getJuniorSchool, "," + identificationCode)
-                .or().eq(FillingControl::getJuniorSchool, identificationCode)
-                .or().like(FillingControl::getJuniorSchool, "," + identificationCode + ",")
-                .or()
-                .likeRight(FillingControl::getSeniorSchool, identificationCode + ",")
-                .or().likeLeft(FillingControl::getSeniorSchool, "," + identificationCode)
-                .or().eq(FillingControl::getSeniorSchool, identificationCode)
-                .or().like(FillingControl::getSeniorSchool, "," + identificationCode + ","));
+        wrapper.and(qw -> qw.likeRight(FillingControl::getSchoolList, identificationCode + ",")
+                .or().likeLeft(FillingControl::getSchoolList, "," + identificationCode)
+                .or().eq(FillingControl::getSchoolList, identificationCode)
+                .or().like(FillingControl::getSchoolList, "," + identificationCode + ","));
         wrapper.orderByDesc(FillingControl::getStartDate, FillingControl::getEndDate);
         wrapper.last("LIMIT 1");
         FillingControl fc = mapper.selectOne(wrapper);

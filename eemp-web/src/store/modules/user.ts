@@ -18,6 +18,7 @@ import { isArray } from '/@/utils/is';
 import { useGlobSetting } from '/@/hooks/setting';
 import { JDragConfigEnum } from '/@/enums/jeecgEnum';
 import { useSso } from '/@/hooks/web/useSso';
+import { useSchoolStoreWithOut } from '/@/store/modules/school';
 interface UserState {
   userInfo: Nullable<UserInfo>;
   token?: string;
@@ -165,6 +166,10 @@ export const useUserStore = defineStore({
           router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
           permissionStore.setDynamicAddedRoute(true);
         }
+        // 参考 permissionStore 加载 schoolStore 刷新内容   -- begin
+        const schoolStore = useSchoolStoreWithOut();
+        schoolStore.fetchSchoolTreeData()
+        // 参考 permissionStore 加载 schoolStore 刷新内容   -- end
         await this.setLoginInfo({ ...data, isLogin: true });
         //update-begin-author:liusq date:2022-5-5 for:登录成功后缓存拖拽模块的接口前缀
         localStorage.setItem(JDragConfigEnum.DRAG_BASE_URL, useGlobSetting().domainUrl);

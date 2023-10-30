@@ -2,6 +2,10 @@ import {BasicColumn} from '/@/components/Table';
 import {FormSchema} from '/@/components/Table';
 import { rules} from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
+import { useSchoolStoreWithOut } from '/@/store/modules/school';
+
+const schoolStore = useSchoolStoreWithOut();
+
 //列表数据
 export const columns: BasicColumn[] = [
    {
@@ -47,24 +51,9 @@ export const columns: BasicColumn[] = [
     },
    },
    {
-    title: '幼儿园',
+    title: '参与学校',
     align:"center",
-    dataIndex: 'nurserySchool_dictText'
-   },
-   {
-    title: '小学',
-    align:"center",
-    dataIndex: 'primarySchool_dictText'
-   },
-   {
-    title: '初中',
-    align:"center",
-    dataIndex: 'juniorSchool_dictText'
-   },
-   {
-    title: '高中',
-    align:"center",
-    dataIndex: 'seniorSchool_dictText'
+    dataIndex: 'schoolList_dictText'
    },
    {
     title: '备注',
@@ -174,35 +163,20 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
-    label: '幼儿园',
-    field: 'nurserySchool',
-    component: 'JSelectMultiple',
+    label: '参与学校',
+    field: 'schoolList',
+    component: 'JSelectDept',
     componentProps:{
-        dictCode:"organization_definition,institution_name,identification_code"
+        dictCode:"organization_definition,institution_name,identification_code",
+        modalTitle: '选择学校',
+        showButton: false,
+        sync: false,
+        treeData: schoolStore.schoolTreeData,
      },
-  },
-  {
-    label: '小学',
-    field: 'primarySchool',
-    component: 'JSelectMultiple',
-    componentProps:{
-        dictCode:"organization_definition,institution_name,identification_code"
-     },
-  },
-  {
-    label: '初中',
-    field: 'juniorSchool',
-    component: 'JSelectMultiple',
-    componentProps:{
-        dictCode:"organization_definition,institution_name,identification_code"
-     },
-  },
-  {
-    label: '高中',
-    field: 'seniorSchool',
-    component: 'JSelectMultiple',
-    componentProps:{
-        dictCode:"organization_definition,institution_name,identification_code"
+    dynamicRules: ({model,schema}) => {
+          return [
+                  { required: true, message: '请输入参与学校!'},
+          ];
      },
   },
   {

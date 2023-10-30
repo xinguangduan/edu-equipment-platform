@@ -3348,10 +3348,7 @@ CREATE TABLE `filling_control` (
   `end_date` date NOT NULL COMMENT '填报结束日期',
   `check_start_date` date NOT NULL COMMENT '审核开始日期',
   `check_end_date` date NOT NULL COMMENT '审核结束日期',
-  `nursery_school` longtext COLLATE utf8mb4_general_ci COMMENT '幼儿园',
-  `primary_school` longtext COLLATE utf8mb4_general_ci COMMENT '小学',
-  `junior_school` longtext COLLATE utf8mb4_general_ci COMMENT '初中',
-  `senior_school` longtext COLLATE utf8mb4_general_ci COMMENT '高中',
+  `school_list` longtext COLLATE utf8mb4_general_ci COMMENT '参与学校',
   `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
   `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
@@ -3687,8 +3684,8 @@ INSERT INTO `edu_informatization_equip_info_8` (`id`, `identification_code`, `fi
     ('1680579141503787008',	'2142004708',	'2023-06-07',	5,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL),
     ('1680579141503787010',	'2142004708',	'2023-07-16',	6,	35,	0,	35,	6,	2,	3,	1,	6,	0,	0,	2,	'1',	'0',	0,	7,	1,	30,	'admin_zzxx',	'2023-07-16 22:04:26',	NULL,	NULL,	NULL);
 
-INSERT INTO `filling_control` (`id`, `control_type`, `control_name`, `start_date`, `end_date`, `check_start_date`, `check_end_date`, `nursery_school`, `primary_school`, `junior_school`, `senior_school`, `memo`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
-    ('1705147748615184385',	'01',	'2023下半年填报',	'2023-09-01',	'2023-09-30',	'2023-10-01',	'2023-10-15',	'1232002606',	NULL,	NULL,	NULL,	NULL,	'admin',	'2023-09-22 17:11:18',	NULL,	NULL,	'A01');
+INSERT INTO `filling_control` (`id`, `control_type`, `control_name`, `start_date`, `end_date`, `check_start_date`, `check_end_date`, `school_list`, `memo`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
+    ('1705147748615184385',	'01',	'2023下半年填报',	'2023-09-01',	'2023-09-30',	'2023-10-01',	'2023-10-15',	'1232002606',	NULL,	'admin',	'2023-09-22 17:11:18',	NULL,	NULL,	'A01');
 
 /* 暂时屏蔽 小学器材设施配备要求模板表
 -- ----------------------------

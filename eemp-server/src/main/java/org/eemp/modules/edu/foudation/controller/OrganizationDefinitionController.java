@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.hutool.core.util.RandomUtil;
+import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -329,4 +330,20 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 		return result;
     }
 
+	 /**
+	  * 查询学校数据,并以树结构数据格式响应给前端
+	  */
+	 @RequestMapping(value = "/getSchoolTreeData", method = RequestMethod.GET)
+	 public Result<JSONArray> getSchoolTreeData() {
+		 Result<JSONArray> result = new Result<>();
+		 try {
+			 JSONArray tree = organizationDefinitionService.getSchoolTreeData();
+			 result.setResult(tree);
+			 result.setSuccess(true);
+		 } catch (Exception e) {
+			 log.error(e.getMessage(),e);
+		 }
+
+		 return result;
+	 }
 }
