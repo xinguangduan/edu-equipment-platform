@@ -1,5 +1,6 @@
 package org.eemp.modules.edu.foudation.service;
 
+import com.alibaba.fastjson.JSONArray;
 import org.eemp.modules.edu.foudation.entity.OrganizationDefinition;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public interface IOrganizationDefinitionService extends IService<OrganizationDefinition> {
 
     List<OrganizationDefinition> getImportedExcelRecords();
+    JSONArray getSchoolTreeData();
 
     void checkAndUpdateSchoolUser(String username);
 }

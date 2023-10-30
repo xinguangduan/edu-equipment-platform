@@ -64,26 +64,11 @@ public class FillingControl implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @ApiModelProperty(value = "审核结束日期")
     private java.util.Date checkEndDate;
-    /**幼儿园*/
-    @Excel(name = "幼儿园", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
+    /**参与学校*/
+    @Excel(name = "参与学校", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
     @Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
-    @ApiModelProperty(value = "幼儿园")
-    private java.lang.String nurserySchool;
-    /**小学*/
-    @Excel(name = "小学", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
-    @Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
-    @ApiModelProperty(value = "小学")
-    private java.lang.String primarySchool;
-    /**初中*/
-    @Excel(name = "初中", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
-    @Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
-    @ApiModelProperty(value = "初中")
-    private java.lang.String juniorSchool;
-    /**高中*/
-    @Excel(name = "高中", width = 15, dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
-    @Dict(dictTable = "organization_definition", dicText = "institution_name", dicCode = "identification_code")
-    @ApiModelProperty(value = "高中")
-    private java.lang.String seniorSchool;
+    @ApiModelProperty(value = "参与学校")
+    private java.lang.String schoolList;
 	/**备注*/
 	@Excel(name = "备注", width = 15)
     @ApiModelProperty(value = "备注")
