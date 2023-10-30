@@ -73,5 +73,6 @@ Educational equipment management platform
 16. [前端文件下载](https://blog.csdn.net/m0_63685436/article/details/128165236)
 17. [vue+springboot（jeecgboot）模板文件下载](https://zhuanlan.zhihu.com/p/549528178)
 18. [java中Excel导入，下载模板，附带前端展示](https://codeleading.com/article/92135113000/)
-19. 
+19. [ibatis.binding.BindingException: Invalidbound statement (not found)](https://blog.csdn.net/m0_49499183/article/details/122082333)
+20. [ibatis.binding.BindingException:Invalid bound statement (not found)绑定](https://blog.csdn.net/mfysss/article/details/129715505)
 
