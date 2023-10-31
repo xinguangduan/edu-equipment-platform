@@ -40,26 +40,21 @@
     </BasicTable>
     <!-- 表单区域 -->
     <OrganizationDefinitionModal @register="registerModal" @success="handleSuccess"></OrganizationDefinitionModal>
-    <!--修改密码-->
-    <PasswordModal @register="registerPasswordModal" @success="reload" />
   </div>
 </template>
 
 <script lang="ts" name="org.eemp.modules.edu.foudation-organizationDefinition" setup>
   import {ref, computed, unref} from 'vue';
   import {BasicTable, useTable, TableAction} from '/@/components/Table';
-  import PasswordModal from '/@/views/system/user/PasswordModal.vue';
   import {useModal} from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage'
   import OrganizationDefinitionModal from './components/OrganizationDefinitionModal.vue'
   import {columns, searchFormSchema} from './OrganizationDefinition.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './OrganizationDefinition.api';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, resetPassword} from './OrganizationDefinition.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   const checkedKeys = ref<Array<string | number>>([]);
   //注册model
   const [registerModal, {openModal}] = useModal();
-  //密码model
-  const [registerPasswordModal, { openModal: openPasswordModal }] = useModal();
 
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
@@ -144,10 +139,10 @@
    }
   
   /**
-   * 打开修改密码弹窗
+   * 重置密码
    */
-   function handleChangePassword(username) {
-    openPasswordModal(true, { username });
+  async function handleResetPassword(record) {
+    await resetPassword({username: record.adminCode}, handleSuccess);
   }
  
    /**
@@ -161,8 +156,10 @@
          },
          {
            label: '密码',
-           //auth: 'user:changepwd',
-           onClick: handleChangePassword.bind(null, record.adminCode),
+           popConfirm: {
+             title: '是否确认重置密码',
+             confirm: handleResetPassword.bind(null, record),
+           }
          }, {
            label: '删除',
            popConfirm: {

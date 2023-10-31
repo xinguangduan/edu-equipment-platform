@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface IOrganizationDefinitionService extends IService<OrganizationDefinition> {
 
+    OrganizationDefinition getSchoolRecordByAdminCode(String adminCode);
     List<OrganizationDefinition> getImportedExcelRecords();
     JSONArray getSchoolTreeData();
 
