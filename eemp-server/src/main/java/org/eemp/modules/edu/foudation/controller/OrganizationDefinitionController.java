@@ -330,22 +330,24 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 		return result;
     }
 
-	 /**
-	  * 查询学校数据,并以树结构数据格式响应给前端
-	  */
-	 @RequestMapping(value = "/getSchoolTreeData", method = RequestMethod.GET)
-	 public Result<JSONArray> getSchoolTreeData() {
-		 Result<JSONArray> result = new Result<>();
-		 try {
-			 JSONArray tree = organizationDefinitionService.getSchoolTreeData();
-			 result.setResult(tree);
-			 result.setSuccess(true);
-		 } catch (Exception e) {
-			 log.error(e.getMessage(),e);
-		 }
+	/**
+	 * 查询学校数据,并以树结构数据格式响应给前端
+	 */
+	@AutoLog(value = "学校管理-查询学校树结构")
+	@ApiOperation(value="学校管理-查询学校树结构", notes="学校管理-查询学校树结构")
+	@RequestMapping(value = "/getSchoolTreeData", method = RequestMethod.GET)
+	public Result<JSONArray> getSchoolTreeData() {
+		Result<JSONArray> result = new Result<>();
+		try {
+			JSONArray tree = organizationDefinitionService.getSchoolTreeData();
+			result.setResult(tree);
+			result.setSuccess(true);
+		} catch (Exception e) {
+			log.error(e.getMessage(),e);
+		}
 
-		 return result;
-	 }
+		return result;
+	}
 
 	/**
 	 *   重置密码

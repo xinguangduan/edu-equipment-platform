@@ -131,7 +131,7 @@ spring:
         connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
       datasource:
         master:
-          url: jdbc:mysql://127.0.0.1:3306/eemp?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+          url: jdbc:mysql://eemp-mysql:3306/eemp?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
           username: root
           password: root
           driver-class-name: com.mysql.cj.jdbc.Driver
@@ -144,12 +144,12 @@ spring:
   #redis 配置
   redis:
     database: 0
-    host: 127.0.0.1
+    host: eemp-redis
     port: 6379
     password: ''
 #mybatis plus 设置
 mybatis-plus:
-  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  mapper-locations: classpath*:org/eemp/modules/**/xml/*Mapper.xml
   global-config:
     # 关闭MP3.0自带的banner
     banner: false
@@ -166,7 +166,7 @@ mybatis-plus:
 #jeecg专用配置
 minidao:
   base-package: org.jeecg.modules.jmreport.*
-jeecg:
+eemp:
   # 是否启用安全模式
   safeMode: false
   # 签名密钥串(前后端要一致，正式发布请自行修改)
@@ -174,35 +174,23 @@ jeecg:
   # 签名拦截接口
   signUrls: /sys/dict/getDictItems/*,/sys/dict/loadDict/*,/sys/dict/loadDictOrderByValue/*,/sys/dict/loadDictItem/*,/sys/dict/loadTreeData,/sys/api/queryTableDictItemsByCode,/sys/api/queryFilterTableDictInfo,/sys/api/queryTableDictByKeys,/sys/api/translateDictFromTable,/sys/api/translateDictFromTableByKeys
   #local\minio\alioss
-  uploadType: alioss
+  uploadType: local
   # 前端访问地址
   domainUrl:
     pc: http://localhost:3100
     app: http://localhost:8051
   path:
     #文件上传根目录 设置
-    upload: /opt/jeecg-boot/upload
+    upload: /opt/eemp/upload
     #webapp文件路径
-    webapp: /opt/jeecg-boot/webapp
+    webapp: /opt/eemp/webapp
   shiro:
     excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**,/category/**,/visual/**,/map/**,/jmreport/bigscreen2/**,/api/getUserInfo
-  #阿里云oss存储和大鱼短信秘钥配置
-  oss:
-    accessKey: ??
-    secretKey: ??
-    endpoint: oss-cn-beijing.aliyuncs.com
-    bucketName: jeecgdev
-    staticDomain: https://static.jeecg.com
-  # ElasticSearch 设置
-  elasticsearch:
-    cluster-name: jeecg-ES
-    cluster-nodes: 127.0.0.1:9200
-    check-enabled: true
   # 在线预览文件服务器地址配置
-  file-view-domain: http://fileview.jeecg.com
+  file-view-domain: http://xxx.com
   # minio文件上传
   minio:
-    minio_url: http://minio.jeecg.com
+    minio_url: http://xxx.com
     minio_name: ??
     minio_pass: ??
     bucketName: otatest
@@ -242,7 +230,7 @@ cas:
 #Mybatis输出sql日志
 logging:
   level:
-    org.jeecg.modules.system.mapper: info
+    org.eemp.modules.system.mapper: info
 #swagger
 knife4j:
   #开启增强配置
@@ -251,53 +239,5 @@ knife4j:
   production: false
   basic:
     enable: true
-    username: jeecg
-    password: jeecg1314
-#第三方登录
-justauth:
-  enabled: true
-  type:
-    GITHUB:
-      client-id: ??
-      client-secret: ??
-      redirect-uri: http://sso.test.com:8080/jeecg-boot/sys/thirdLogin/github/callback
-    WECHAT_ENTERPRISE:
-      client-id: ??
-      client-secret: ??
-      redirect-uri: http://sso.test.com:8080/jeecg-boot/sys/thirdLogin/wechat_enterprise/callback
-      agent-id: ??
-    DINGTALK:
-      client-id: ??
-      client-secret: ??
-      redirect-uri: http://sso.test.com:8080/jeecg-boot/sys/thirdLogin/dingtalk/callback
-    WECHAT_OPEN:
-      client-id: ??
-      client-secret: ??
-      redirect-uri: http://sso.test.com:8080/jeecg-boot/sys/thirdLogin/wechat_open/callback
-  cache:
-    type: default
-    prefix: 'demo::'
-    timeout: 1h
-#第三方APP对接
-third-app:
-  enabled: false
-  type:
-    #企业微信
-    WECHAT_ENTERPRISE:
-      enabled: false
-      #CORP_ID
-      client-id: ??
-      #SECRET
-      client-secret: ??
-      #自建应用id
-      agent-id: ??
-      #自建应用秘钥（新版企微需要配置）
-      # agent-app-secret: ??
-    #钉钉
-    DINGTALK:
-      enabled: false
-      # appKey
-      client-id: ??
-      # appSecret
-      client-secret: ??
-      agent-id: ??
+    username: eemp
+    password: eemp1314

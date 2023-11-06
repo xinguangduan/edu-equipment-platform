@@ -201,7 +201,7 @@
   async function getFillingControl() {
     let params = {identificationCode: userStore.getUserInfo.telephone, packageName: packageName};
     await defHttp.post({url: getFillingControlUrl, params}, {joinParamsToUrl: true}).then((res) => {
-      console.log("res: " + res);
+      console.log("res: ", res);
       if (res !== null) {
         console.log("res !== null.")
         addable.value = res.addable
