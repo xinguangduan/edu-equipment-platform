@@ -11,6 +11,8 @@ enum Api {
   deleteBatch = '/org.eemp.modules.edu.foudation/organizationDefinition/deleteBatch',
   importExcel = '/org.eemp.modules.edu.foudation/organizationDefinition/importExcel',
   exportXls = '/org.eemp.modules.edu.foudation/organizationDefinition/exportXls',
+
+  resetPassword = '/org.eemp.modules.edu.foudation/organizationDefinition/resetPassword',
 }
 /**
  * 导出api
@@ -61,4 +63,12 @@ export const batchDelete = (params, handleSuccess) => {
 export const saveOrUpdate = (params, isUpdate) => {
   let url = isUpdate ? Api.edit : Api.save;
   return defHttp.post({url: url, params});
+}
+/**
+ * 重置密码
+ */
+export const resetPassword = (params, handleSuccess) => {
+  return defHttp.post({url: Api.resetPassword, params}, {joinParamsToUrl: true}).then(() => {
+    handleSuccess();
+  });
 }

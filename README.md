@@ -52,6 +52,21 @@ Educational equipment management platform
 1. cd edu-equipment-platform/docker
 2. docker compose down
 
+（生产）单体应用 docker镜像 生成及测试
+-----------------------------------
+0. 运行系统 /etc/hosts 中设置IP： eemp-mysql, eemp-redis, eemp-system
+1. 在 idea 中，激活 maven 的 prod 环境，执行类似 mvn clean install 生成部署包
+2. cd ~/edu-equipment-platform/
+   // 启动 mysql docker 容器时，会自动执行 docker-entrypoint-initdb.d/ 下的 .sh .sql 脚本，完成数据库初始化
+3. docker compose down; docker compose build; docker compose up -d
+4. 访问 http://eemp-system:8080/eemp/doc.html，输入用户及密码，可见 API 接口文档，则启动验证通过
+   // 以下准备 eemp vue3 前端镜像
+5. cd ~/edu-equipment-platform/eemp-web/
+6. pnpm i; npm run build
+7. docker build -t eemp-vue3 .
+8. docker run --name eemp-vue3-nginx -p 80:80 -d eemp-vue3
+9. 访问 http://eemp-system:80 验证业务功能
+
 
 参考资料
 -----------------------------------
@@ -83,3 +98,29 @@ Mybatis相关问题
 2. [ibatis.binding.BindingException: Invalidbound statement (not found)](https://blog.csdn.net/m0_49499183/article/details/122082333)
 3. [ibatis.binding.BindingException:Invalid bound statement (not found)绑定](https://blog.csdn.net/mfysss/article/details/129715505)
 
+测试相关
+-----------------------------------
+1. [使用Postman加Token测试JeecgBoot后端API接口](https://blog.csdn.net/daqiang012/article/details/120305574)
+
+前端构建相关
+-----------------------------------
+1. [husky install 失败，报 .git can't be found](https://blog.csdn.net/chengyikang20/article/details/131700318)
+
+Docker相关
+-----------------------------------
+1. [修改 daemon.json 配置文件，来更便捷无感的使用代理服务](https://dockerproxy.com/docs)
+
+Mysql相关
+-----------------------------------
+1. [mysql的全量备份和增量备份](https://blog.csdn.net/weixin_46471601/article/details/123334517)
+2. [MySQL数据库日志管理、备份与恢复](https://blog.csdn.net/A1100886/article/details/131286220)
+3. [MySQL 备份系列（1）-- 备份方案总结性梳理](https://www.cnblogs.com/kevingrace/p/6112565.html)
+4. [MySQL备份系列（2）-- mysqldump备份（全量+增量）方案操作记录](https://www.cnblogs.com/kevingrace/p/6114979.html)
+5. [MySQL 8.0安装部署-运维笔记](https://www.cnblogs.com/kevingrace/p/10482469.html)
+6. [Linux--MySQL 日志管理、备份与恢复](https://www.cnblogs.com/GXJ19900412nt/p/15249454.html)
+7. [Linux MySQL 备份与恢复 日志管理](https://betheme.net/houduan/157261.html)
+8. [mysql全量备份和增量备份方法](https://blog.csdn.net/weixin_38301116/article/details/130848151)
+
+基础环境搭建
+-----------------------------------
+1. [新一代多系统启动U盘解决方案Ventoy](https://www.ventoy.net/cn/index.html)

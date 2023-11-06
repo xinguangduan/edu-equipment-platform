@@ -26,11 +26,12 @@
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:pretty": "pretty-quick --staged",
     "test:unit": "jest",
+    "test:debug": "vitest --inspect-brk --single-thread",
     "test:unit-coverage": "jest --coverage",
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
     "reinstall": "rimraf pnpm-lock.yaml && yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
-    "prepare": "husky install",
+    "prepare": "cd .. && husky install eemp-web/.husky",
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "dependencies": {
@@ -174,6 +175,7 @@
     "@rys-fe/vite-plugin-theme": "^0.8.6",
     "vite-plugin-vue-setup-extend": "^0.4.0",
     "vite-plugin-windicss": "^1.8.7",
+    "vitest": "^0.34.3",
     "vue-eslint-parser": "^8.3.0",
     "vue-tsc": "^0.33.9"
   },

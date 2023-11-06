@@ -26,6 +26,15 @@ public class OrganizationDefinitionServiceImpl extends ServiceImpl<OrganizationD
     private OrganizationDefinitionMapper mapper;
 
     @Override
+    public OrganizationDefinition getSchoolRecordByAdminCode(String adminCode) {
+        LambdaQueryWrapper<OrganizationDefinition> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(OrganizationDefinition::getAdminCode, adminCode);
+        OrganizationDefinition rec = getOne(wrapper);
+
+        return rec;
+    }
+
+    @Override
     public List<OrganizationDefinition> getImportedExcelRecords() {
         DbType dbType = CommonUtils.getDatabaseTypeEnum();
         return mapper.getImportedExcelRecords(dbType.getDb());

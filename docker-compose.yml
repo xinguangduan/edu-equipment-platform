@@ -1,0 +1,50 @@
+version: '1'
+services:
+  eemp-mysql:
+    build:
+      context: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+      TZ: Asia/Shanghai
+    restart: always
+    container_name: eemp-mysql
+    image: eemp-mysql
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --max_allowed_packet=128M
+      --default-authentication-plugin=caching_sha2_password
+    ports:
+      - 3306:3306
+
+  eemp-db-admin:
+    image: adminer
+    container_name: eemp-db-admin
+    ports:
+      - 3006:8080
+    depends_on:
+      - eemp-mysql
+
+  eemp-redis:
+    image: redis:6.2
+    ports:
+      - 6379:6379
+    restart: always
+    hostname: eemp-redis
+    container_name: eemp-redis
+
+  eemp-system:
+    build:
+      context: ./eemp-server
+    restart: on-failure
+    depends_on:
+      - eemp-mysql
+      - eemp-redis
+    container_name: eemp-system
+    image: eemp-system
+    hostname: eemp-system
+    ports:
+      - 8080:8080
