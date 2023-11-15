@@ -39,6 +39,35 @@ public class InterfaceTest {
     private static String token = null;
 
     @Test
+    void testLoginAndFollowUp() {
+        gatherTokenAfterLogin();
+
+        String url = "http://localhost:8080/eemp/sys/user/getUserInfo";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-Access-Token", token);
+        headers.set("X-Version", "v3");
+
+        HttpEntity<Map> httpEntity = new HttpEntity<>(headers);
+        Result<Map<String, Map>> response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, Result.class).getBody();
+        log.info("获取 admin 用户信息结果：" + response.getResult());
+
+        assertThat(response.getCode()).isEqualTo(CommonConstant.SC_OK_200);
+        log.info("admin 的首页地址: " + response.getResult().get("userInfo").get("homePath"));
+
+        // 以下是 admin_bbxx 用户之前可用的 token，仅用于方法中获取用户名
+        headers.set("X-Access-Token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MDAwNzk5NDksInVzZXJuYW1lIjoiYWRtaW5fYmJ4eCJ9.E-URS0PDOvFdQgNc9PDAh_8TvArPav-b_eoPHjUwz0s");
+
+        httpEntity = new HttpEntity<>(headers);
+        response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, Result.class).getBody();
+        log.info("获取 admin_bbxx 用户信息结果：" + response.getResult());
+
+        assertThat(response.getCode()).isEqualTo(CommonConstant.SC_OK_200);
+        log.info("admin_bbxx 的首页地址: " + response.getResult().get("userInfo").get("homePath"));
+        assertThat(response.getResult().get("userInfo").get("homePath")).isEqualTo("/blank");
+    }
+
+    @Test
     void testLoginAndGetSchoolTreeData() {
         gatherTokenAfterLogin();
 

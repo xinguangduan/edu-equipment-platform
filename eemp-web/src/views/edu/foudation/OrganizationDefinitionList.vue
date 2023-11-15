@@ -75,7 +75,7 @@
             },
            actionColumn: {
                width: 120,
-               fixed:'right'
+               fixed:'left'
             },
       },
        exportConfig: {
@@ -155,16 +155,10 @@
            onClick: handleEdit.bind(null, record),
          },
          {
-           label: '密码',
+           label: '重置密码',
            popConfirm: {
              title: '是否确认重置密码',
              confirm: handleResetPassword.bind(null, record),
-           }
-         }, {
-           label: '删除',
-           popConfirm: {
-             title: '是否确认删除',
-             confirm: handleDelete.bind(null, record),
            }
          }
        ]

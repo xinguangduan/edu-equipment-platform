@@ -64,7 +64,7 @@ Educational equipment management platform
 5. cd ~/edu-equipment-platform/eemp-web/
 6. pnpm i; npm run build
 7. docker build -t eemp-vue3 .
-8. docker run --name eemp-vue3-nginx -p 80:80 -d eemp-vue3
+8. docker rm eemp-vue3-nginx; docker run --name eemp-vue3-nginx -p 80:80 -d eemp-vue3
 9. 访问 http://eemp-system:80 验证业务功能
 
 
@@ -166,3 +166,4 @@ Mysql相关
 2. [Ubuntu 22 服务器端安装图形化界面](https://blog.csdn.net/yezhijing/article/details/131358170)
 3. [Ubuntu Server安装图形界面](https://blog.csdn.net/feiniao8651/article/details/128314189)
 4. [ubuntu 22 虚拟机模板配置](https://blog.csdn.net/ringwater/article/details/128299382)
+5. [Ubuntu快速释放磁盘空间的方法（一）：清理系统日志](https://baijiahao.baidu.com/s?id=1755808847675598370)

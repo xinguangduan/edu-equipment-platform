@@ -16,7 +16,7 @@ import { primaryColor } from '../../build/config/themeConfig';
 // ! 改动后需要清空浏览器缓存
 const setting: ProjectConfig = {
   // 是否显示SettingButton
-  showSettingButton: true,
+  showSettingButton: false,
 
   // 是否显示主题切换按钮
   showDarkModeToggle: true,
@@ -77,9 +77,9 @@ const setting: ProjectConfig = {
     // 显示全屏按钮
     showFullScreen: true,
     // 显示文档按钮
-    showDoc: true,
+    showDoc: false,
     // 显示消息中心按钮
-    showNotice: true,
+    showNotice: false,
     // 显示菜单搜索按钮
     showSearch: true,
   },
@@ -134,7 +134,7 @@ const setting: ProjectConfig = {
     // 是否可以拖拽
     canDrag: true,
     // 开启快速操作
-    showQuick: true,
+    showQuick: false,
     // 是否显示刷新按钮
     showRedo: true,
     // 是否显示折叠按钮
