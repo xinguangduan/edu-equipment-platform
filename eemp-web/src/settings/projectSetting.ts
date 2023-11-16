@@ -79,7 +79,7 @@ const setting: ProjectConfig = {
     // 显示文档按钮
     showDoc: false,
     // 显示消息中心按钮
-    showNotice: false,
+    showNotice: true,
     // 显示菜单搜索按钮
     showSearch: true,
   },
