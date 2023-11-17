@@ -20,6 +20,10 @@
                 <Icon icon="mdi:chevron-down"></Icon>
               </a-button>
         </a-dropdown>
+        <a-upload name="file" :showUploadList="false" :action="uploadUrl" :headers="headers" @change="handleChange">
+          <a-button type="primary" preIcon="ant-design:upload-outlined" v-auth="'edu.foudation:organization_definition:uploadTemplate'">模板上传</a-button>
+        </a-upload>
+        <a-button preIcon="ant-design:download-outlined" type="primary" @click="downloadTemplate" v-auth="'edu.foudation:organization_definition:downloadTemplate'">模板下载</a-button>
       </template>
        <!--操作栏-->
       <template #action="{ record }">
@@ -50,9 +54,17 @@
   import { useListPage } from '/@/hooks/system/useListPage'
   import OrganizationDefinitionModal from './components/OrganizationDefinitionModal.vue'
   import {columns, searchFormSchema} from './OrganizationDefinition.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, resetPassword} from './OrganizationDefinition.api';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, resetPassword, updateTemplateInfoUrl, getTemplateInfoUrl} from './OrganizationDefinition.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
+  import { defHttp } from '/@/utils/http/axios';
+  import { useMessage } from '/@/hooks/web/useMessage';
+  import { getToken } from '/@/utils/auth';
+  import { uploadUrl } from '/@/api/common/api';
+  import { getFileAccessHttpUrl } from '/@/utils/common/compUtils';
   const checkedKeys = ref<Array<string | number>>([]);
+  
+  const packageName = 'organization_definition';
+
   //注册model
   const [registerModal, {openModal}] = useModal();
 
@@ -171,6 +183,56 @@
        ]
    }
 
+  const { createMessage } = useMessage();
+  const headers = { 'X-Access-Token': getToken() };
+
+  /**
+   * 文件上传事件
+   */
+  async function handleChange(info) {
+    if (info.file.status === 'done') {
+      if (info.file.response.success) {
+        reload();
+        info.file.url = getFileAccessHttpUrl(info.file.response.message);
+        console.log(info.file)
+        createMessage.success(`${info.file.name} 上传成功!`);
+
+        let params = {packageName: packageName, templateUrl: info.file.url};
+        await defHttp.post({url: updateTemplateInfoUrl, params}, {joinParamsToUrl: true}).then((res) => {
+          console.log("update template res: ", res);
+        });
+      } else {
+        createMessage.error(`${info.file.response.message}`);
+      }
+    } else if (info.file.status === 'error') {
+      createMessage.error(`${info.file.response.message}`);
+    }
+  }
+
+  async function downloadTemplate() {
+    let params = {packageName: packageName};
+    await defHttp.post({url: getTemplateInfoUrl, params}, {joinParamsToUrl: true}).then((res) => {
+      console.log("template res: ", res);
+      if (res !== null) {
+        console.log("template res !== null.")
+
+        const formObj = document.createElement('form');
+        formObj.action = res.templateUrl;
+        formObj.method = 'get';
+        formObj.style.display = 'none';
+        const formItem = document.createElement('input');
+        formItem.value = "模板文件.xlsx";
+        formItem.name = 'fileName';
+        formObj.appendChild(formItem);
+        document.body.appendChild(formObj);
+        formObj.submit();
+        document.body.removeChild(formObj);
+      } else {
+        console.log("template res === null.")
+        createMessage.error('请联系管理员，确认已上传模板文件！');
+      }
+    });
+  }
 
 </script>
 
