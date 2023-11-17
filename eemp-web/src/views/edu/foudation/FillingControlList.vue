@@ -76,7 +76,7 @@
             },
            actionColumn: {
                width: 120,
-               fixed:'right'
+               fixed:'left'
             },
       },
        exportConfig: {
@@ -146,6 +146,9 @@
          {
            label: '编辑',
            onClick: handleEdit.bind(null, record),
+         }, {
+           label: '详情',
+           onClick: handleDetail.bind(null, record),
          }
        ]
    }
@@ -154,16 +157,6 @@
         */
   function getDropDownAction(record){
        return [
-         {
-           label: '详情',
-           onClick: handleDetail.bind(null, record),
-         }, {
-           label: '删除',
-           popConfirm: {
-             title: '是否确认删除',
-             confirm: handleDelete.bind(null, record),
-           }
-         }
        ]
    }
 

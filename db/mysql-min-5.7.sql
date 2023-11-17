@@ -3789,10 +3789,10 @@ INSERT INTO `sys_role` (`id`, `role_name`, `role_code`, `description`, `create_b
      ('1666258199780655106',	'装备中心 – 系统管理',	'center_admin',	'及时更新维护学校、用户、模板、信息时段等基础定义',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0);
 
 INSERT INTO `sys_role_index` (`id`, `role_code`, `url`, `component`, `is_route`, `priority`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `sys_org_code`) VALUES
-    ('1724625643318243330',	'nursery_school',	'blank',	'blank',	1,	0,	'1',	'admin',	'2023-11-15 11:09:30',	NULL,	NULL,	'A01'),
-    ('1724627273279303682',	'primary_school',	'blank',	'blank',	1,	0,	'1',	'admin',	'2023-11-15 11:15:59',	NULL,	NULL,	'A01'),
-    ('1724627334956544001',	'junior_school',	'blank',	'blank',	1,	0,	'1',	'admin',	'2023-11-15 11:16:13',	NULL,	NULL,	'A01'),
-    ('1724627397283901442',	'senior_school',	'blank',	'blank',	1,	0,	'1',	'admin',	'2023-11-15 11:16:28',	NULL,	NULL,	'A01');
+    ('1724625643318243330',	'nursery_school',	'/edu/HomePage',	'/edu/HomePage',	1,	0,	'1',	'admin',	'2023-11-15 11:09:30',	NULL,	NULL,	'A01'),
+    ('1724627273279303682',	'primary_school',	'/edu/HomePage',	'/edu/HomePage',	1,	0,	'1',	'admin',	'2023-11-15 11:15:59',	NULL,	NULL,	'A01'),
+    ('1724627334956544001',	'junior_school',	'/edu/HomePage',	'/edu/HomePage',	1,	0,	'1',	'admin',	'2023-11-15 11:16:13',	NULL,	NULL,	'A01'),
+    ('1724627397283901442',	'senior_school',	'/edu/HomePage',	'/edu/HomePage',	1,	0,	'1',	'admin',	'2023-11-15 11:16:28',	NULL,	NULL,	'A01');
 
 -- 角色权限：装备中心 - 统计分析
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES

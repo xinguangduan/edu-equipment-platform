@@ -107,11 +107,12 @@ Mybatis相关问题
 5. [Spring之RestTemplate详解](https://blog.csdn.net/u012060033/article/details/123352747)
 6. [RestTemplate使用详解](https://blog.csdn.net/Sophia_0331/article/details/121196840)
 7. [RestTemplate](https://blog.csdn.net/D1842501760/article/details/124216538)
-8. [RestTemplate 以及 WebClient 调用第三方接口使用总结](https://www.cnblogs.com/fan223/articles/17079868.html)
-9. [SpringBoot之RestTemplate 简单常用使用示例](https://blog.csdn.net/JAVA_MHH/article/details/122535609)
-10. [【微服务~远程调用】整合RestTemplate、WebClient、Feign](https://blog.csdn.net/weixin_45481821/article/details/125357680)
-11. [Java-json相关转换，JSONObject与实体类/map互转、List/List＜map＞和JSONArray互转](https://blog.csdn.net/weixin_44436677/article/details/131269751)
-12. [Stream流中collect方法](https://blog.csdn.net/weixin_46146718/article/details/123791758)
+8. [springboot中RestTemplate的用法](https://blog.csdn.net/weixin_42304484/article/details/127742105)
+9. [RestTemplate 以及 WebClient 调用第三方接口使用总结](https://www.cnblogs.com/fan223/articles/17079868.html)
+10. [SpringBoot之RestTemplate 简单常用使用示例](https://blog.csdn.net/JAVA_MHH/article/details/122535609)
+11. [【微服务~远程调用】整合RestTemplate、WebClient、Feign](https://blog.csdn.net/weixin_45481821/article/details/125357680)
+12. [Java-json相关转换，JSONObject与实体类/map互转、List/List＜map＞和JSONArray互转](https://blog.csdn.net/weixin_44436677/article/details/131269751)
+13. [Stream流中collect方法](https://blog.csdn.net/weixin_46146718/article/details/123791758)
 
 开发基础
 -----------------------------------
