@@ -69,7 +69,7 @@
   const userStore = useUserStoreWithOut();
   const packageName = 'ps_mathematics_equipment_file';
 
-//注册model
+  //注册model
   const [registerModal, {openModal}] = useModal();
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({

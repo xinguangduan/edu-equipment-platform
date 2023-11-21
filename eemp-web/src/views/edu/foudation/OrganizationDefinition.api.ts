@@ -13,6 +13,8 @@ enum Api {
   exportXls = '/org.eemp.modules.edu.foudation/organizationDefinition/exportXls',
 
   resetPassword = '/org.eemp.modules.edu.foudation/organizationDefinition/resetPassword',
+  templateInfo = '/org.eemp.modules.edu.foudation/fillingControl/getTemplateInfo',
+  updateTemplateInfo = '/org.eemp.modules.edu.foudation/fillingControl/updateTemplateInfo',
 }
 /**
  * 导出api
@@ -23,6 +25,8 @@ export const getExportUrl = Api.exportXls;
  * 导入api
  */
 export const getImportUrl = Api.importExcel;
+export const getTemplateInfoUrl = Api.templateInfo;
+export const updateTemplateInfoUrl = Api.updateTemplateInfo;
 /**
  * 列表接口
  * @param params

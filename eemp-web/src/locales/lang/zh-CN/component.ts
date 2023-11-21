@@ -60,7 +60,7 @@ export default {
     settingDensDefault: '默认',
     settingDensMiddle: '中等',
     settingDensSmall: '紧凑',
-    settingColumn: '列设置',
+    settingColumn: '显示设置',
     settingColumnShow: '列展示',
     settingIndexColumnShow: '序号列',
     settingSelectColumnShow: '勾选列',

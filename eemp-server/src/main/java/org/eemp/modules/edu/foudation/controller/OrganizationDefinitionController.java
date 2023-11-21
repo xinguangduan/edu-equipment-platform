@@ -134,7 +134,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			user.setPassword(passwordEncode);
 			user.setStatus(1);
 			user.setDelFlag(CommonConstant.DEL_FLAG_0);							// 未删除
-			user.setOrgCode(null);
+			user.setOrgCode("A01");
 			user.setTelephone(organizationDefinition.getIdentificationCode());	// 借用保存学校用户对应的机构代码
 			// 保存用户走一个service 保证事务
 			//获取租户ids
@@ -306,7 +306,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 				user.setPassword(passwordEncode);
 				user.setStatus(1);
 				user.setDelFlag(CommonConstant.DEL_FLAG_0);							// 未删除
-				user.setOrgCode(null);
+				user.setOrgCode("A01");
 				user.setTelephone(rec.getIdentificationCode());	// 借用保存学校用户对应的机构代码
 				// 保存用户走一个service 保证事务
 				//获取租户ids

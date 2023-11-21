@@ -61,6 +61,18 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
                 fillingControlType = "01";
                 break;
             case "ps_mathematics_equipment_file":
+            case "ps_scientific_equipment_file":
+            case "ps_art_equipment_file":
+            case "ps_music_equipment_file":
+            case "ps_sport_equipment_file":
+            case "js_mathematics_equipment_file":
+            case "js_physics_equipment_file":
+            case "js_biology_equipment_file":
+            case "js_chemistry_equipment_file":
+            case "js_geography_equipment_file":
+            case "js_art_equipment_file":
+            case "js_music_equipment_file":
+            case "js_sport_equipment_file":
                 fillingControlType = "02";
                 break;
         }

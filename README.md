@@ -64,7 +64,7 @@ Educational equipment management platform
 5. cd ~/edu-equipment-platform/eemp-web/
 6. pnpm i; npm run build
 7. docker build -t eemp-vue3 .
-8. docker run --name eemp-vue3-nginx -p 80:80 -d eemp-vue3
+8. docker rm eemp-vue3-nginx; docker run --name eemp-vue3-nginx -p 80:80 -d eemp-vue3
 9. 访问 http://eemp-system:80 验证业务功能
 
 
@@ -98,9 +98,49 @@ Mybatis相关问题
 2. [ibatis.binding.BindingException: Invalidbound statement (not found)](https://blog.csdn.net/m0_49499183/article/details/122082333)
 3. [ibatis.binding.BindingException:Invalid bound statement (not found)绑定](https://blog.csdn.net/mfysss/article/details/129715505)
 
+开发相关
+-----------------------------------
+1. [别再使用 RestTemplate了，来了解一下官方推荐的 WebClient ！](https://zhuanlan.zhihu.com/p/659885945)
+2. [spring 发送http请求 RestTemplate、WebClient](https://blog.csdn.net/wangjun5159/article/details/115251134)
+3. [SpringBoot_RestTemplate的使用](https://blog.csdn.net/CodeWYX/article/details/122628626)
+4. [SpringBoot RestTemplate详解](https://blog.csdn.net/hc1285653662/article/details/126982218)
+5. [Spring之RestTemplate详解](https://blog.csdn.net/u012060033/article/details/123352747)
+6. [RestTemplate使用详解](https://blog.csdn.net/Sophia_0331/article/details/121196840)
+7. [RestTemplate](https://blog.csdn.net/D1842501760/article/details/124216538)
+8. [springboot中RestTemplate的用法](https://blog.csdn.net/weixin_42304484/article/details/127742105)
+9. [RestTemplate 以及 WebClient 调用第三方接口使用总结](https://www.cnblogs.com/fan223/articles/17079868.html)
+10. [SpringBoot之RestTemplate 简单常用使用示例](https://blog.csdn.net/JAVA_MHH/article/details/122535609)
+11. [【微服务~远程调用】整合RestTemplate、WebClient、Feign](https://blog.csdn.net/weixin_45481821/article/details/125357680)
+12. [Java-json相关转换，JSONObject与实体类/map互转、List/List＜map＞和JSONArray互转](https://blog.csdn.net/weixin_44436677/article/details/131269751)
+13. [Stream流中collect方法](https://blog.csdn.net/weixin_46146718/article/details/123791758)
+
+开发基础
+-----------------------------------
+1. [Spring框架使用@Autowired自动装配引发的讨论](https://zhuanlan.zhihu.com/p/76465110)
+2. [@Autowire和@Resource](https://blog.csdn.net/weixin_43472073/article/details/121485528)
+3. [Spring源码学习：@Autowire和@Resource原理解析](https://blog.csdn.net/weixin_45031612/article/details/129068496)
+4. [Spring中@Autowired和@Resource的区别](https://zhuanlan.zhihu.com/p/522095455)
+
+测试驱动开发相关
+-----------------------------------
+1. [TDD开发Vue3组件指南 ](https://article.juejin.cn/post/7208072274368757820)
+2. [Vue Testing Handbook（vue.js 2）](https://www.bookstack.cn/read/vue-testing-handbook-vue2-en/b2bdc1839972e076.md)
+
+项目实战参考
+-----------------------------------
+1. [Vue3 项目实战 — Vue3记账本项目（前端Vue3，后端node.js）](https://blog.csdn.net/weixin_42775304/article/details/132017610)
+
 测试相关
 -----------------------------------
 1. [使用Postman加Token测试JeecgBoot后端API接口](https://blog.csdn.net/daqiang012/article/details/120305574)
+2. [fiddler抓包工具和postman接口测试工具的使用](https://blog.csdn.net/weixin_44116098/article/details/117394126)
+3. [Ubuntu 安装Fiddler](https://blog.csdn.net/CatStarXcode/article/details/79302808)
+4. [ubuntun下安装Fiddler](https://www.pianshen.com/article/25472678697/)
+
+疑难问题相关
+-----------------------------------
+1. [springboot整合websocket后运行测试类报错：javax.websocket.server.ServerContainer not available](https://www.cnblogs.com/yourblog/p/10369713.html)
+
 
 前端构建相关
 -----------------------------------
@@ -124,3 +164,7 @@ Mysql相关
 基础环境搭建
 -----------------------------------
 1. [新一代多系统启动U盘解决方案Ventoy](https://www.ventoy.net/cn/index.html)
+2. [Ubuntu 22 服务器端安装图形化界面](https://blog.csdn.net/yezhijing/article/details/131358170)
+3. [Ubuntu Server安装图形界面](https://blog.csdn.net/feiniao8651/article/details/128314189)
+4. [ubuntu 22 虚拟机模板配置](https://blog.csdn.net/ringwater/article/details/128299382)
+5. [Ubuntu快速释放磁盘空间的方法（一）：清理系统日志](https://baijiahao.baidu.com/s?id=1755808847675598370)

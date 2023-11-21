@@ -54,6 +54,10 @@
       formConfig: {
         schemas: searchFormSchema,
       },
+      actionColumn: {
+        width: 120,
+        fixed:'left'
+      },
     },
     exportConfig: {
       url: Api.exportXls,
