@@ -4,9 +4,9 @@
    <BasicTable @register="registerTable" :rowSelection="rowSelection">
      <!--插槽:table标题-->
       <template #tableTitle>
-          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.register:ps_mathematics_equipment_file:add'" :disabled="!addable"> 新增</a-button>
-          <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.register:ps_mathematics_equipment_file:exportXls'"> 导出</a-button>
-          <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.register:ps_mathematics_equipment_file:importExcel'">导入</j-upload-button>
+          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.register:js_music_equipment_file:add'" :disabled="!addable"> 新增</a-button>
+          <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.register:js_music_equipment_file:exportXls'"> 导出</a-button>
+          <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.register:js_music_equipment_file:importExcel'">导入</j-upload-button>
           <a-dropdown v-if="selectedRowKeys.length > 0">
               <template #overlay>
                 <a-menu>
@@ -16,16 +16,16 @@
                   </a-menu-item>
                 </a-menu>
               </template>
-              <a-button v-auth="'edu.register:ps_mathematics_equipment_file:deleteBatch'">批量操作
+              <a-button v-auth="'edu.register:js_music_equipment_file:deleteBatch'">批量操作
                 <Icon icon="mdi:chevron-down"></Icon>
               </a-button>
         </a-dropdown>
-        <a-button type="primary" @click="handleReport" preIcon="ant-design:send-outlined" v-auth="'edu.register:ps_mathematics_equipment_file:report'" :disabled="!reportable">上报</a-button>
-        <a-button :ghost="true" type="primary" @click="handleRevoke" preIcon="ant-design:send-outlined" v-auth="'edu.register:ps_mathematics_equipment_file:revoke'">退回学校修改</a-button>
+        <a-button type="primary" @click="handleReport" preIcon="ant-design:send-outlined" v-auth="'edu.register:js_music_equipment_file:report'" :disabled="!reportable">上报</a-button>
+        <a-button :ghost="true" type="primary" @click="handleRevoke" preIcon="ant-design:send-outlined" v-auth="'edu.register:js_music_equipment_file:revoke'">退回学校修改</a-button>
         <a-upload name="file" :showUploadList="false" :action="uploadUrl" :headers="headers" @change="handleChange">
-          <a-button type="primary" preIcon="ant-design:upload-outlined" v-auth="'edu.register:ps_mathematics_equipment_file:uploadTemplate'">模板上传</a-button>
+          <a-button type="primary" preIcon="ant-design:upload-outlined" v-auth="'edu.register:js_music_equipment_file:uploadTemplate'">模板上传</a-button>
         </a-upload>
-        <a-button preIcon="ant-design:download-outlined" type="primary" @click="downloadTemplate" v-auth="'edu.register:ps_mathematics_equipment_file:downloadTemplate'">模板下载</a-button>
+        <a-button preIcon="ant-design:download-outlined" type="primary" @click="downloadTemplate" v-auth="'edu.register:js_music_equipment_file:downloadTemplate'">模板下载</a-button>
       </template>
        <!--操作栏-->
       <template #action="{ record }">
@@ -45,18 +45,18 @@
       </template>
     </BasicTable>
     <!-- 表单区域 -->
-    <PsMathematicsEquipmentFileModal @register="registerModal" @success="handleSuccess"></PsMathematicsEquipmentFileModal>
+    <JsMusicEquipmentFileModal @register="registerModal" @success="handleSuccess"></JsMusicEquipmentFileModal>
   </div>
 </template>
 
-<script lang="ts" name="org.eemp.modules.edu.register-psMathematicsEquipmentFile" setup>
+<script lang="ts" name="org.eemp.modules.edu.register-jsMusicEquipmentFile" setup>
   import {ref, computed, unref, onMounted} from 'vue';
   import {BasicTable, useTable, TableAction} from '/@/components/Table';
   import {useModal} from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage'
-  import PsMathematicsEquipmentFileModal from './components/PsMathematicsEquipmentFileModal.vue'
-  import {columns, searchFormSchema} from './PsMathematicsEquipmentFile.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, reportOne, batchRevoke, getFillingControlUrl, getTemplateInfoUrl, updateTemplateInfoUrl} from './PsMathematicsEquipmentFile.api';
+  import JsMusicEquipmentFileModal from './components/JsMusicEquipmentFileModal.vue'
+  import {columns, searchFormSchema} from './JsMusicEquipmentFile.data';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, reportOne, batchRevoke, getFillingControlUrl, getTemplateInfoUrl, updateTemplateInfoUrl} from './JsMusicEquipmentFile.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   import { defHttp } from '/@/utils/http/axios';
   import { useUserStoreWithOut } from '/@/store/modules/user';
@@ -67,14 +67,14 @@
   const checkedKeys = ref<Array<string | number>>([]);
 
   const userStore = useUserStoreWithOut();
-  const packageName = 'ps_mathematics_equipment_file';
+  const packageName = 'js_music_equipment_file';
 
   //注册model
   const [registerModal, {openModal}] = useModal();
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
       tableProps:{
-           title: '小学数学教学装备配置文件',
+           title: '初中音乐教学装备配置文件',
            api: list,
            columns,
            canResize:false,
@@ -94,7 +94,7 @@
             },
       },
        exportConfig: {
-            name:"小学数学教学装备配置文件",
+            name:"初中音乐教学装备配置文件",
             url: getExportUrl,
           },
           importConfig: {

@@ -3392,6 +3392,234 @@ CREATE TABLE `ps_mathematics_equipment_file` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for ps_scientific_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `ps_scientific_equipment_file`;
+CREATE TABLE `ps_scientific_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for ps_art_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `ps_art_equipment_file`;
+CREATE TABLE `ps_art_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for ps_music_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `ps_music_equipment_file`;
+CREATE TABLE `ps_music_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for ps_sport_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `ps_sport_equipment_file`;
+CREATE TABLE `ps_sport_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for js_mathematics_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `js_mathematics_equipment_file`;
+CREATE TABLE `js_mathematics_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for js_physics_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `js_physics_equipment_file`;
+CREATE TABLE `js_physics_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for js_biology_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `js_biology_equipment_file`;
+CREATE TABLE `js_biology_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for js_chemistry_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `js_chemistry_equipment_file`;
+CREATE TABLE `js_chemistry_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for js_geography_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `js_geography_equipment_file`;
+CREATE TABLE `js_geography_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for js_art_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `js_art_equipment_file`;
+CREATE TABLE `js_art_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for js_music_equipment_file
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `js_music_equipment_file`;
+CREATE TABLE `js_music_equipment_file` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
+-- Table structure for js_sport_
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `js_sport_`;
+CREATE TABLE `js_sport_` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识代码',
+  `register_date` date NOT NULL COMMENT '登记日期',
+  `register_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '登记文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3492,7 +3720,19 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, 
      ('2023071507171810530', '1666282632293515265', '其它设施情况', '/edu/statistics/schoolFunctionalRoomInfo_7List', 'edu/statistics/SchoolFunctionalRoomInfo_7List', NULL, NULL, 1, NULL, '1', 7.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:17:53', NULL, NULL, 0),
      ('2023071507187680160', '1666281667909779458', '配备情况', '/edu/statistics/eduInformatizationEquipInfo_8List', 'edu/statistics/EduInformatizationEquipInfo_8List', NULL, NULL, 1, NULL, '1', 8.00, 0, 'ant-design:arrow-right-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-07-15 19:18:16', NULL, NULL, 0)
     ,('2023101809294300140', '1714103540890349570', '小学数学', '/edu/register/psMathematicsEquipmentFileList', 'edu/register/PsMathematicsEquipmentFileList', NULL, NULL, 1, NULL, '1', 1.00, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-10-18 09:29:14', NULL, NULL, 0)
-     ;
+   ,('2023112012371130460', '1714103540890349570', '小学科学', '/edu/register/psScientificEquipmentFileList', 'edu/register/PsScientificEquipmentFileList', NULL, NULL, 0, NULL, '1', 1.10, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:37:46', NULL, NULL, 0),
+    ('2023112012382660480', '1714103540890349570', '小学美术', '/edu/register/psArtEquipmentFileList', 'edu/register/PsArtEquipmentFileList', NULL, NULL, 0, NULL, '1', 1.20, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:38:48', NULL, NULL, 0),
+    ('2023112012397210050', '1714103540890349570', '小学音乐', '/edu/register/psMusicEquipmentFileList', 'edu/register/PsMusicEquipmentFileList', NULL, NULL, 0, NULL, '1', 1.30, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:39:05', NULL, NULL, 0),
+    ('2023112012394190250', '1714103540890349570', '小学体育', '/edu/register/psSportEquipmentFileList', 'edu/register/PsSportEquipmentFileList', NULL, NULL, 0, NULL, '1', 1.40, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:39:25', NULL, NULL, 0),
+    ('2023112012394110390', '1714103540890349570', '初中数学', '/edu/register/jsMathematicsEquipmentFileList', 'edu/register/JsMathematicsEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.00, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:39:39', NULL, NULL, 0),
+    ('2023112012393340530', '1714103540890349570', '初中物理', '/edu/register/jsPhysicsEquipmentFileList', 'edu/register/JsPhysicsEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.10, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:39:53', NULL, NULL, 0),
+    ('2023112012402490060', '1714103540890349570', '初中生物', '/edu/register/jsBiologyEquipmentFileList', 'edu/register/JsBiologyEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.20, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:40:06', NULL, NULL, 0),
+    ('2023112012403930240', '1714103540890349570', '初中化学', '/edu/register/jsChemistryEquipmentFileList', 'edu/register/JsChemistryEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.30, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:40:24', NULL, NULL, 0),
+    ('2023112012403200400', '1714103540890349570', '初中地理', '/edu/register/jsGeographyEquipmentFileList', 'edu/register/JsGeographyEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.40, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:40:40', NULL, NULL, 0),
+    ('2023112012402560550', '1714103540890349570', '初中美术', '/edu/register/jsArtEquipmentFileList', 'edu/register/JsArtEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.50, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:40:55', NULL, NULL, 0),
+    ('2023112012416690100', '1714103540890349570', '初中音乐', '/edu/register/jsMusicEquipmentFileList', 'edu/register/JsMusicEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.60, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:41:10', NULL, NULL, 0),
+    ('2023112012411830230', '1714103540890349570', '初中体育', '/edu/register/jsSportEquipmentFileList', 'edu/register/JsSportEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.70, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:41:23', NULL, NULL, 0)
+    ;
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
      ('2023060312357030191', '2023060312357030190', '添加学校管理', NULL, NULL, 0, NULL, NULL, 2, 'edu.foudation:organization_definition:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-06-03 12:35:19', NULL, NULL, 0, 0, '1', 0),
@@ -3585,6 +3825,129 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
     ('2023101809294300148',	'2023101809294300140', '退回小学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_mathematics_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
     ('2023101809294300149',	'2023101809294300140', '模板上传_小学数学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_mathematics_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
     ('2023101809294300150',	'2023101809294300140', '模板下载_小学数学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_mathematics_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0)
+   ,('2023112012371130461', '2023112012371130460', '添加小学科学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_scientific_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:37:46', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012371130462', '2023112012371130460', '编辑小学科学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_scientific_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:37:46', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012371130463', '2023112012371130460', '删除小学科学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_scientific_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:37:46', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012371130464', '2023112012371130460', '批量删除小学科学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_scientific_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:37:46', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012371130465', '2023112012371130460', '导出excel_小学科学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_scientific_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:37:46', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012371130466', '2023112012371130460', '导入excel_小学科学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_scientific_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:37:46', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012371130467',	'2023112012371130460', '上报科学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_scientific_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012371130468',	'2023112012371130460', '退回科学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_scientific_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012371130469',	'2023112012371130460', '模板上传_小学科学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_scientific_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012371130470',	'2023112012371130460', '模板下载_小学科学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_scientific_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012382660481', '2023112012382660480', '添加小学美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_art_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:38:48', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012382660482', '2023112012382660480', '编辑小学美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_art_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:38:48', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012382660483', '2023112012382660480', '删除小学美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_art_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:38:48', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012382660484', '2023112012382660480', '批量删除小学美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_art_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:38:48', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012382660485', '2023112012382660480', '导出excel_小学美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_art_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:38:48', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012382660486', '2023112012382660480', '导入excel_小学美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_art_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:38:48', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012382660487',	'2023112012382660480', '上报美术数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_art_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012382660488',	'2023112012382660480', '退回美术数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_art_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012382660489',	'2023112012382660480', '模板上传_小学美术教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_art_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012382660490',	'2023112012382660480', '模板下载_小学美术教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_art_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012397210051', '2023112012397210050', '添加小学音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_music_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:05', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012397210052', '2023112012397210050', '编辑小学音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_music_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:05', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012397210053', '2023112012397210050', '删除小学音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_music_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:05', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012397210054', '2023112012397210050', '批量删除小学音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_music_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:05', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012397210055', '2023112012397210050', '导出excel_小学音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_music_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:05', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012397210056', '2023112012397210050', '导入excel_小学音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_music_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:05', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012397210057',	'2023112012397210050', '上报音乐数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_music_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012397210058',	'2023112012397210050', '退回音乐数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_music_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012397210059',	'2023112012397210050', '模板上传_小学音乐教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_music_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012397210060',	'2023112012397210050', '模板下载_小学音乐教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_music_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012394190251', '2023112012394190250', '添加小学体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_sport_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:25', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394190252', '2023112012394190250', '编辑小学体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_sport_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:25', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394190253', '2023112012394190250', '删除小学体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_sport_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:25', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394190254', '2023112012394190250', '批量删除小学体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_sport_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:25', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394190255', '2023112012394190250', '导出excel_小学体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_sport_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:25', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394190256', '2023112012394190250', '导入excel_小学体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:ps_sport_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:25', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394190257',	'2023112012394190250', '上报体育数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_sport_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012394190258',	'2023112012394190250', '退回体育数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:ps_sport_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012394190259',	'2023112012394190250', '模板上传_小学体育教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_sport_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012394190260',	'2023112012394190250', '模板下载_小学体育教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:ps_sport_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0)
+    ;
+
+INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
+    ('2023112012394110391', '2023112012394110390', '添加初中数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_mathematics_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:39', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394120392', '2023112012394110390', '编辑初中数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_mathematics_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:39', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394120393', '2023112012394110390', '删除初中数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_mathematics_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:39', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394120394', '2023112012394110390', '批量删除初中数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_mathematics_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:39', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394120395', '2023112012394110390', '导出excel_初中数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_mathematics_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:39', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394120396', '2023112012394110390', '导入excel_初中数学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_mathematics_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:39', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012394120397',	'2023112012394110390', '上报数学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_mathematics_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012394120398',	'2023112012394110390', '退回数学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_mathematics_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012394120399',	'2023112012394110390', '模板上传_初中数学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_mathematics_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012394120400',	'2023112012394110390', '模板下载_初中数学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_mathematics_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012393340531', '2023112012393340530', '添加初中物理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_physics_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:53', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012393340532', '2023112012393340530', '编辑初中物理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_physics_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:53', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012393340533', '2023112012393340530', '删除初中物理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_physics_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:53', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012393340534', '2023112012393340530', '批量删除初中物理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_physics_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:53', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012393340535', '2023112012393340530', '导出excel_初中物理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_physics_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:53', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012393340536', '2023112012393340530', '导入excel_初中物理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_physics_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:39:53', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012393340537',	'2023112012393340530', '上报物理数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_physics_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012393340538',	'2023112012393340530', '退回物理数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_physics_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012393340539',	'2023112012393340530', '模板上传_初中物理教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_physics_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012393340540',	'2023112012393340530', '模板下载_初中物理教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_physics_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012402490061', '2023112012402490060', '添加初中生物教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_biology_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:06', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402490062', '2023112012402490060', '编辑初中生物教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_biology_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:06', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402490063', '2023112012402490060', '删除初中生物教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_biology_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:06', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402490064', '2023112012402490060', '批量删除初中生物教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_biology_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:06', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402490065', '2023112012402490060', '导出excel_初中生物教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_biology_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:06', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402490066', '2023112012402490060', '导入excel_初中生物教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_biology_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:06', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402490067',	'2023112012402490060', '上报生物数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_biology_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012402490068',	'2023112012402490060', '退回生物数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_biology_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012402490069',	'2023112012402490060', '模板上传_初中生物教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_biology_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012402490070',	'2023112012402490060', '模板下载_初中生物教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_biology_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012403930241', '2023112012403930240', '添加初中化学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_chemistry_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:24', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403930242', '2023112012403930240', '编辑初中化学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_chemistry_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:24', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403930243', '2023112012403930240', '删除初中化学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_chemistry_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:24', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403930244', '2023112012403930240', '批量删除初中化学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_chemistry_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:24', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403930245', '2023112012403930240', '导出excel_初中化学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_chemistry_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:24', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403930246', '2023112012403930240', '导入excel_初中化学教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_chemistry_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:24', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403930247',	'2023112012403930240', '上报化学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_chemistry_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012403930248',	'2023112012403930240', '退回化学数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_chemistry_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012403930249',	'2023112012403930240', '模板上传_初中化学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_chemistry_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012403930250',	'2023112012403930240', '模板下载_初中化学教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_chemistry_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012403200401', '2023112012403200400', '添加初中地理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_geography_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:40', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403200402', '2023112012403200400', '编辑初中地理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_geography_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:40', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403200403', '2023112012403200400', '删除初中地理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_geography_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:40', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403200404', '2023112012403200400', '批量删除初中地理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_geography_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:40', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403200405', '2023112012403200400', '导出excel_初中地理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_geography_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:40', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403200406', '2023112012403200400', '导入excel_初中地理教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_geography_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:40', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012403200407',	'2023112012403200400', '上报地理数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_geography_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012403200408',	'2023112012403200400', '退回地理数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_geography_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012403200409',	'2023112012403200400', '模板上传_初中地理教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_geography_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012403200410',	'2023112012403200400', '模板下载_初中地理教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_geography_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012402570551', '2023112012402560550', '添加初中美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_art_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:55', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402570552', '2023112012402560550', '编辑初中美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_art_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:55', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402570553', '2023112012402560550', '删除初中美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_art_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:55', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402570554', '2023112012402560550', '批量删除初中美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_art_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:55', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402570555', '2023112012402560550', '导出excel_初中美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_art_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:55', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402570556', '2023112012402560550', '导入excel_初中美术教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_art_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:40:55', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012402570557',	'2023112012402560550', '上报美术数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_art_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012402570558',	'2023112012402560550', '退回美术数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_art_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012402570559',	'2023112012402560550', '模板上传_初中美术教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_art_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012402570560',	'2023112012402560550', '模板下载_初中美术教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_art_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012416690101', '2023112012416690100', '添加初中音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_music_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:10', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012416690102', '2023112012416690100', '编辑初中音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_music_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:10', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012416690103', '2023112012416690100', '删除初中音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_music_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:10', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012416690104', '2023112012416690100', '批量删除初中音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_music_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:10', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012416690105', '2023112012416690100', '导出excel_初中音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_music_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:10', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012416690106', '2023112012416690100', '导入excel_初中音乐教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_music_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:10', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012416690107',	'2023112012416690100', '上报音乐数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_music_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012416690108',	'2023112012416690100', '退回音乐数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_music_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012416690109',	'2023112012416690100', '模板上传_初中音乐教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_music_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012416690110',	'2023112012416690100', '模板下载_初中音乐教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_music_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012411830231', '2023112012411830230', '添加初中体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_sport_equipment_file:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:23', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012411830232', '2023112012411830230', '编辑初中体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_sport_equipment_file:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:23', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012411830233', '2023112012411830230', '删除初中体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_sport_equipment_file:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:23', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012411830234', '2023112012411830230', '批量删除初中体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_sport_equipment_file:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:23', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012411830235', '2023112012411830230', '导出excel_初中体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_sport_equipment_file:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:23', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012411830236', '2023112012411830230', '导入excel_初中体育教学装备配置文件', NULL, NULL, 0, NULL, NULL, 2, 'edu.register:js_sport_equipment_file:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-20 12:41:23', NULL, NULL, 0, 0, '1', 0),
+    ('2023112012411830237',	'2023112012411830230', '上报体育数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_sport_equipment_file:report', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:46:30',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012411830238',	'2023112012411830230', '退回体育数学教学装备配置文件', NULL,	NULL, 0, NULL, NULL, 2, 'edu.register:js_sport_equipment_file:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0),
+    ('2023112012411830239',	'2023112012411830230', '模板上传_初中体育教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_sport_equipment_file:uploadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:58:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('2023112012411830240',	'2023112012411830230', '模板下载_初中体育教学装备配置文件',	NULL,	NULL,	0,	NULL,	NULL,	2,	'edu.register:js_sport_equipment_file:downloadTemplate',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-24 14:59:15',	NULL,	NULL,	0,	0,	'1',	0)
     ;
 
 -- 角色权限：系统管理员
@@ -3912,6 +4275,54 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1714573299817857026',	'1698527018892869633',	'2023101809294300148',	NULL,	'2023-10-18 17:25:05',	'127.0.0.1'),
      ('1716714086718382081',	'1698527018892869633',	'2023101809294300149',	NULL,	'2023-10-24 15:11:48',	'127.0.0.1'),
      ('1716713756068814850',	'1698527018892869633',	'2023101809294300150',	NULL,	'2023-10-24 15:10:29',	'127.0.0.1')
+    ,('1726787511457644535',	'1698527018892869633',	'2023112012371130467',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),               -- 小学科学
+     ('1726787511457644546',	'1698527018892869633',	'2023112012371130468',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511461838849',	'1698527018892869633',	'2023112012371130469',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511461838850',	'1698527018892869633',	'2023112012371130470',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511466033153',	'1698527018892869633',	'2023112012382660487',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),               -- 小学美术
+     ('1726787511466033155',	'1698527018892869633',	'2023112012382660488',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511470227457',	'1698527018892869633',	'2023112012382660489',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511470227458',	'1698527018892869633',	'2023112012382660490',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511474421761',	'1698527018892869633',	'2023112012397210057',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),               -- 小学音乐
+     ('1726787511474421763',	'1698527018892869633',	'2023112012397210058',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511478616066',	'1698527018892869633',	'2023112012397210059',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511478616067',	'1698527018892869633',	'2023112012397210060',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511482810365',	'1698527018892869633',	'2023112012394190257',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),               -- 小学体育
+     ('1726787511482810371',	'1698527018892869633',	'2023112012394190258',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511487004673',	'1698527018892869633',	'2023112012394190259',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726787511487004674',	'1698527018892869633',	'2023112012394190260',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),
+     ('1726795080146321407',	'1698527018892869633',	'2023112012394120397',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中数学
+     ('1726795080146321410',	'1698527018892869633',	'2023112012394120398',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080150515713',	'1698527018892869633',	'2023112012394120399',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080150515714',	'1698527018892869633',	'2023112012394120400',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080163098622',	'1698527018892869633',	'2023112012393340537',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中物理
+     ('1726795080163098626',	'1698527018892869633',	'2023112012393340538',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080167292930',	'1698527018892869633',	'2023112012393340539',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080167292931',	'1698527018892869633',	'2023112012393340540',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080175681532',	'1698527018892869633',	'2023112012402490067',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中生物
+     ('1726795080175681537',	'1698527018892869633',	'2023112012402490068',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080179875842',	'1698527018892869633',	'2023112012402490069',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080184070145',	'1698527018892869633',	'2023112012402490070',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080192458751',	'1698527018892869633',	'2023112012403930247',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中化学
+     ('1726795080192458753',	'1698527018892869633',	'2023112012403930248',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080196653057',	'1698527018892869633',	'2023112012403930249',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080200847362',	'1698527018892869633',	'2023112012403930250',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080209235962',	'1698527018892869633',	'2023112012403200407',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中地理
+     ('1726795080209235970',	'1698527018892869633',	'2023112012403200408',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080213430273',	'1698527018892869633',	'2023112012403200409',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080217624577',	'1698527018892869633',	'2023112012403200410',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080221818880',	'1698527018892869633',	'2023112012402570557',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中美术
+     ('1726795080221818882',	'1698527018892869633',	'2023112012402570558',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080221818883',	'1698527018892869633',	'2023112012402570559',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080226013185',	'1698527018892869633',	'2023112012402570560',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080230207483',	'1698527018892869633',	'2023112012416690107',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中音乐
+     ('1726795080230207491',	'1698527018892869633',	'2023112012416690108',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080230207492',	'1698527018892869633',	'2023112012416690109',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080234401793',	'1698527018892869633',	'2023112012416690110',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080238596096',	'1698527018892869633',	'2023112012411830237',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中体育
+     ('1726795080238596098',	'1698527018892869633',	'2023112012411830238',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080242790401',	'1698527018892869633',	'2023112012411830239',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),
+     ('1726795080242790402',	'1698527018892869633',	'2023112012411830240',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1')
      ;
 
 -- 角色权限：装备中心 – 日常查看
@@ -4063,7 +4474,49 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1680408226585247749',	'1666258199700963330',	'2023071507187680165',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
 --     ('1680408226585247750',	'1666258199700963330',	'2023071507187680166',	NULL,	'2023-07-16 10:45:16',	'127.0.0.1'),
      ('1707324885447204869',	'1666258199700963330',	'2023071507187680167',	NULL,	'2023-09-28 17:22:28',	'127.0.0.1'),
-     ('1698622972362964993',	'1666258199700963330',	'1666282632293515265',	NULL,	'2023-09-04 17:04:10',	'127.0.0.1');               -- 教育装备管理
+     ('1698622972362964993',	'1666258199700963330',	'1666282632293515265',	NULL,	'2023-09-04 17:04:10',	'127.0.0.1'),               -- 教育装备管理
+     ('1726780954216988673',	'1666258199700963330',	'1714103540890349570',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 教学装备配置
+     ('1726780954246348801',	'1666258199700963330',	'2023112012394110391',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 初中数学
+     ('1726780954246348802',	'1666258199700963330',	'2023112012394120392',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954250543106',	'1666258199700963330',	'2023112012394120393',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954250543107',	'1666258199700963330',	'2023112012394120397',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954250543108',	'1666258199700963330',	'2023112012394120400',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954254737410',	'1666258199700963330',	'2023112012393340531',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 初中物理
+     ('1726780954258931714',	'1666258199700963330',	'2023112012393340532',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954263126017',	'1666258199700963330',	'2023112012393340533',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954263126018',	'1666258199700963330',	'2023112012393340537',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954267320322',	'1666258199700963330',	'2023112012393340540',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954271514626',	'1666258199700963330',	'2023112012402490061',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 初中生物
+     ('1726780954275708929',	'1666258199700963330',	'2023112012402490062',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954275708930',	'1666258199700963330',	'2023112012402490063',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954279903234',	'1666258199700963330',	'2023112012402490067',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954284097537',	'1666258199700963330',	'2023112012402490070',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954288291842',	'1666258199700963330',	'2023112012403930241',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 初中化学
+     ('1726780954292486145',	'1666258199700963330',	'2023112012403930242',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954292486146',	'1666258199700963330',	'2023112012403930243',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954296680450',	'1666258199700963330',	'2023112012403930247',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954296680451',	'1666258199700963330',	'2023112012403930250',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954305069057',	'1666258199700963330',	'2023112012403200401',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 初中地理
+     ('1726780954305069058',	'1666258199700963330',	'2023112012403200402',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954309263362',	'1666258199700963330',	'2023112012403200403',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954313457665',	'1666258199700963330',	'2023112012403200407',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954313457666',	'1666258199700963330',	'2023112012403200410',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954317651971',	'1666258199700963330',	'2023112012402570551',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 初中美术
+     ('1726780954317651972',	'1666258199700963330',	'2023112012402570552',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954321846274',	'1666258199700963330',	'2023112012402570553',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954321846275',	'1666258199700963330',	'2023112012402570557',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954326040577',	'1666258199700963330',	'2023112012402570560',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954330234881',	'1666258199700963330',	'2023112012416690101',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 初中音乐
+     ('1726780954334429185',	'1666258199700963330',	'2023112012416690102',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954334429186',	'1666258199700963330',	'2023112012416690103',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954338623490',	'1666258199700963330',	'2023112012416690107',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954338623491',	'1666258199700963330',	'2023112012416690110',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954342817795',	'1666258199700963330',	'2023112012411830231',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),               -- 初中体育
+     ('1726780954347012097',	'1666258199700963330',	'2023112012411830232',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954347012098',	'1666258199700963330',	'2023112012411830233',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954351206401',	'1666258199700963330',	'2023112012411830237',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1'),
+     ('1726780954355400705',	'1666258199700963330',	'2023112012411830240',	NULL,	'2023-11-21 09:53:56',	'127.0.0.1')
+     ;
 
 -- 角色权限：装备代表 – 小学
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
@@ -4135,6 +4588,26 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
 --     ('1714116811110363138',	'1666258199717740546',	'2023101809294300146',	NULL,	'2023-10-17 11:11:09',	'127.0.0.1'),
      ('1714571952708075521',	'1666258199717740546',	'2023101809294300147',	NULL,	'2023-10-18 17:19:43',	'127.0.0.1'),
      ('1716713812910022658',	'1666258199717740546',	'2023101809294300150',	NULL,	'2023-10-24 15:10:43',	'127.0.0.1')
+    ,('1726768181198159873',	'1666258199717740546',	'2023112012371130461',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),               -- 小学科学
+     ('1726768181202354177',	'1666258199717740546',	'2023112012371130462',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181202354178',	'1666258199717740546',	'2023112012371130463',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181206548482',	'1666258199717740546',	'2023112012371130467',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181223325698',	'1666258199717740546',	'2023112012371130470',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181231714305',	'1666258199717740546',	'2023112012382660481',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),               -- 小学美术
+     ('1726768181240102913',	'1666258199717740546',	'2023112012382660482',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181244297217',	'1666258199717740546',	'2023112012382660483',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181248491522',	'1666258199717740546',	'2023112012382660487',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181252685826',	'1666258199717740546',	'2023112012382660490',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181252685828',	'1666258199717740546',	'2023112012397210051',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),               -- 小学音乐
+     ('1726768181256880130',	'1666258199717740546',	'2023112012397210052',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181265268738',	'1666258199717740546',	'2023112012397210053',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181273657346',	'1666258199717740546',	'2023112012397210057',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181282045953',	'1666258199717740546',	'2023112012397210060',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181290434562',	'1666258199717740546',	'2023112012394190251',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),               -- 小学体育
+     ('1726768181294628865',	'1666258199717740546',	'2023112012394190252',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181298823170',	'1666258199717740546',	'2023112012394190253',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181303017473',	'1666258199717740546',	'2023112012394190257',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1'),
+     ('1726768181307211778',	'1666258199717740546',	'2023112012394190260',	NULL,	'2023-11-21 09:03:11',	'127.0.0.1')
      ;
 
 -- 角色权限：装备代表 – 幼儿园
@@ -4333,28 +4806,100 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
 -- 角色数据权限：学校仅能看到本校的数据（教学装备相关）
 INSERT INTO `sys_permission_data_rule` (`id`, `permission_id`, `rule_name`, `rule_column`, `rule_conditions`, `rule_value`, `status`, `create_time`, `create_by`, `update_time`, `update_by`) VALUES
     ('1714490122780745729',	'2023101809294300140',	'学校仅能看到本校的数据#小数',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-10-18 11:54:33',	'admin',	NULL,	NULL)
+   ,('1726599125908291585',	'2023112012371130460',	'学校仅能看到本校的数据#小科',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 21:51:25',	'admin',	NULL,	NULL),
+    ('1726598765760184321',	'2023112012382660480',	'学校仅能看到本校的数据#小美',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 21:49:59',	'admin',	NULL,	NULL),
+    ('1726598421412020225',	'2023112012397210050',	'学校仅能看到本校的数据#小音',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 21:48:37',	'admin',	NULL,	NULL),
+    ('1726597888022380545',	'2023112012394190250',	'学校仅能看到本校的数据#小体',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 21:46:30',	'admin',	NULL,	NULL),
+    ('1726600349210607618',	'2023112012394110390',	'学校仅能看到本校的数据#初数',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 21:56:17',	'admin',	NULL,	NULL),
+    ('1726600969413951490',	'2023112012393340530',	'学校仅能看到本校的数据#初物',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 21:58:44',	'admin',	NULL,	NULL),
+    ('1726601286738214914',	'2023112012402490060',	'学校仅能看到本校的数据#初生',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 22:00:00',	'admin',	NULL,	NULL),
+    ('1726601673813753858',	'2023112012403930240',	'学校仅能看到本校的数据#初化',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 22:01:32',	'admin',	NULL,	NULL),
+    ('1726602022834372609',	'2023112012403200400',	'学校仅能看到本校的数据#初地',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 22:02:56',	'admin',	NULL,	NULL),
+    ('1726602316133662721',	'2023112012402560550',	'学校仅能看到本校的数据#初美',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 22:04:06',	'admin',	NULL,	NULL),
+    ('1726602669403111425',	'2023112012416690100',	'学校仅能看到本校的数据#初音',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 22:05:30',	'admin',	NULL,	NULL),
+    ('1726602944482344962',	'2023112012411830230',	'学校仅能看到本校的数据#初体',	'createBy',	'=',	'#{sys_user_code}',	'1',	'2023-11-20 22:06:35',	'admin',	NULL,	NULL)
     ;
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
-    ('1714116811106168833',	'1666258199717740546',	'2023101809294300140',	'1714490122780745729',	'2023-10-17 11:11:09',	'127.0.0.1')            -- 小学
+    ('1714116811106168833',	'1666258199717740546',	'2023101809294300140',	'1714490122780745729',	'2023-10-17 11:11:09',	'127.0.0.1'),           -- 小学 & 小学数学
+    ('1726768181122662401',	'1666258199717740546',	'2023112012371130460',	'1726599125908291585',	'2023-11-21 09:03:11',	'127.0.0.1'),             -- 小学科学
+    ('1726768181223325699',	'1666258199717740546',	'2023112012382660480',	'1726598765760184321',	'2023-11-21 09:03:11',	'127.0.0.1'),             -- 小学美术
+    ('1726768181252685827',	'1666258199717740546',	'2023112012397210050',	'1726598421412020225',	'2023-11-21 09:03:11',	'127.0.0.1'),             -- 小学音乐
+    ('1726768181286240257',	'1666258199717740546',	'2023112012394190250',	'1726597888022380545',	'2023-11-21 09:03:11',	'127.0.0.1'),             -- 小学体育
+    ('1726780954242154497',	'1666258199700963330',	'2023112012394110390',	'1726600349210607618',	'2023-11-21 09:53:56',	'127.0.0.1'),           -- 初中 & 初中数学
+    ('1726780954254737409',	'1666258199700963330',	'2023112012393340530',	'1726600969413951490',	'2023-11-21 09:53:56',	'127.0.0.1'),             -- 初中物理
+    ('1726780954271514625',	'1666258199700963330',	'2023112012402490060',	'1726601286738214914',	'2023-11-21 09:53:56',	'127.0.0.1'),             -- 初中生物
+    ('1726780954288291841',	'1666258199700963330',	'2023112012403930240',	'1726601673813753858',	'2023-11-21 09:53:56',	'127.0.0.1'),             -- 初中化学
+    ('1726780954300874753',	'1666258199700963330',	'2023112012403200400',	'1726602022834372609',	'2023-11-21 09:53:56',	'127.0.0.1'),             -- 初中地理
+    ('1726780954317651970',	'1666258199700963330',	'2023112012402560550',	'1726602316133662721',	'2023-11-21 09:53:56',	'127.0.0.1'),             -- 初中美术
+    ('1726780954326040578',	'1666258199700963330',	'2023112012416690100',	'1726602669403111425',	'2023-11-21 09:53:56',	'127.0.0.1'),             -- 初中音乐
+    ('1726780954342817794',	'1666258199700963330',	'2023112012411830230',	'1726602944482344962',	'2023-11-21 09:53:56',	'127.0.0.1')              -- 初中体育
     ;
 
 -- 角色数据权限：电教中心仅能看到学校上报的文件记录（教学装备相关）
 INSERT INTO `sys_permission_data_rule` (`id`, `permission_id`, `rule_name`, `rule_column`, `rule_conditions`, `rule_value`, `status`, `create_time`, `create_by`, `update_time`, `update_by`) VALUES
     ('1714589058157723649',	'2023101809294300140',	'电教中心仅能看到学校上报的装备文件#小数',	'reported',	'=',	'1',	'1',	'2023-10-18 18:27:41',	'admin',	NULL,	NULL)
+   ,('1726599258599292929',	'2023112012371130460',	'电教中心仅能看到学校上报的装备文件#小科',	'reported',	'=',	'1',	'1',	'2023-11-20 21:51:57',	'admin',	NULL,	NULL),
+    ('1726598890054189058',	'2023112012382660480',	'电教中心仅能看到学校上报的装备文件#小美',	'reported',	'=',	'1',	'1',	'2023-11-20 21:50:29',	'admin',	NULL,	NULL),
+    ('1726598562982363137',	'2023112012397210050',	'电教中心仅能看到学校上报的装备文件#小音',	'reported',	'=',	'1',	'1',	'2023-11-20 21:49:11',	'admin',	NULL,	NULL),
+    ('1726598145103855618',	'2023112012394190250',	'电教中心仅能看到学校上报的装备文件#小体',	'reported',	'=',	'1',	'1',	'2023-11-20 21:47:31',	'admin',	NULL,	NULL),
+    ('1726600496967548930',	'2023112012394110390',	'电教中心仅能看到学校上报的装备文件#初数',	'reported',	'=',	'1',	'1',	'2023-11-20 21:56:52',	'admin',	NULL,	NULL),
+    ('1726601085067689985',	'2023112012393340530',	'电教中心仅能看到学校上报的装备文件#初物',	'reported',	'=',	'1',	'1',	'2023-11-20 21:59:12',	'admin',	NULL,	NULL),
+    ('1726601432695799810',	'2023112012402490060',	'电教中心仅能看到学校上报的装备文件#初生',	'reported',	'=',	'1',	'1',	'2023-11-20 22:00:35',	'admin',	NULL,	NULL),
+    ('1726601796627169281',	'2023112012403930240',	'电教中心仅能看到学校上报的装备文件#初化',	'reported',	'=',	'1',	'1',	'2023-11-20 22:02:02',	'admin',	NULL,	NULL),
+    ('1726602131676561410',	'2023112012403200400',	'电教中心仅能看到学校上报的装备文件#初地',	'reported',	'=',	'1',	'1',	'2023-11-20 22:03:22',	'admin',	NULL,	NULL),
+    ('1726602451026673666',	'2023112012402560550',	'电教中心仅能看到学校上报的装备文件#初美',	'reported',	'=',	'1',	'1',	'2023-11-20 22:04:38',	'admin',	NULL,	NULL),
+    ('1726602777230278657',	'2023112012416690100',	'电教中心仅能看到学校上报的装备文件#初音',	'reported',	'=',	'1',	'1',	'2023-11-20 22:05:55',	'admin',	NULL,	NULL),
+    ('1726603076711972866',	'2023112012411830230',	'电教中心仅能看到学校上报的装备文件#初体',	'reported',	'=',	'1',	'1',	'2023-11-20 22:07:07',	'admin',	NULL,	NULL)
     ;
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
     ('1714115193291812865',	'f6817f48af4fb3af11b9e8bf182f618b',	'2023101809294300140',	'1714589058157723649',	'2023-10-17 11:04:43',	'127.0.0.1'),       -- 系统管理员 & #小数
     ('1714117993685987330',	'1698527018892869633',	'2023101809294300140',	'1714589058157723649',	'2023-10-17 11:15:51',	'127.0.0.1')                    -- 中心装备管理检查 & #小数
+   ,('1726787511440867330',	'1698527018892869633',	'2023112012371130460',	'1726599258599292929',	'2023-11-21 10:20:00',	'127.0.0.1'),                     -- 小学科学
+    ('1726787511461838851',	'1698527018892869633',	'2023112012382660480',	'1726598890054189058',	'2023-11-21 10:20:00',	'127.0.0.1'),                     -- 小学美术
+    ('1726787511470227459',	'1698527018892869633',	'2023112012397210050',	'1726598562982363137',	'2023-11-21 10:20:00',	'127.0.0.1'),                     -- 小学音乐
+    ('1726787511478616068',	'1698527018892869633',	'2023112012394190250',	'1726598145103855618',	'2023-11-21 10:20:00',	'127.0.0.1'),                     -- 小学体育
+    ('1726795080116961282',	'1698527018892869633',	'2023112012394110390',	'1726600496967548930',	'2023-11-21 10:50:04',	'127.0.0.1'),                     -- 初中数学
+    ('1726795080154710017',	'1698527018892869633',	'2023112012393340530',	'1726601085067689985',	'2023-11-21 10:50:04',	'127.0.0.1'),                     -- 初中物理
+    ('1726795080171487234',	'1698527018892869633',	'2023112012402490060',	'1726601432695799810',	'2023-11-21 10:50:04',	'127.0.0.1'),                     -- 初中生物
+    ('1726795080184070146',	'1698527018892869633',	'2023112012403930240',	'1726601796627169281',	'2023-11-21 10:50:04',	'127.0.0.1'),                     -- 初中化学
+    ('1726795080205041665',	'1698527018892869633',	'2023112012403200400',	'1726602131676561410',	'2023-11-21 10:50:04',	'127.0.0.1'),                     -- 初中地理
+    ('1726795080217624578',	'1698527018892869633',	'2023112012402560550',	'1726602451026673666',	'2023-11-21 10:50:04',	'127.0.0.1'),                     -- 初中美术
+    ('1726795080226013186',	'1698527018892869633',	'2023112012416690100',	'1726602777230278657',	'2023-11-21 10:50:04',	'127.0.0.1'),                     -- 初中音乐
+    ('1726795080234401794',	'1698527018892869633',	'2023112012411830230',	'1726603076711972866',	'2023-11-21 10:50:04',	'127.0.0.1')                      -- 初中体育
     ;
 
 
 -- 字段列显示控制（教学装备相关）
 INSERT INTO `sys_permission` (`id`, `parent_id`, `name`, `url`, `component`, `is_route`, `component_name`, `redirect`, `menu_type`, `perms`, `perms_type`, `sort_no`, `always_show`, `icon`, `is_leaf`, `keep_alive`, `hidden`, `hide_tab`, `description`, `create_by`, `create_time`, `update_by`, `update_time`, `del_flag`, `rule_flag`, `status`, `internal_or_external`) VALUES
     ('1714484080747421697',	'2023101809294300140',	'学校名称列控制#小数',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-10-18 11:30:33',	NULL,	NULL,	0,	0,	'1',	0)
+   ,('1726588656619323393',	'2023112012371130460',	'学校名称列控制#小科',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:09:49',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726588949134278657',	'2023112012382660480',	'学校名称列控制#小美',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:10:59',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726589155678584833',	'2023112012397210050',	'学校名称列控制#小音',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:11:48',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726589310700060674',	'2023112012394190250',	'学校名称列控制#小体',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:12:25',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726596327946813441',	'2023112012394110390',	'学校名称列控制#初数',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:40:18',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726596163983081474',	'2023112012393340530',	'学校名称列控制#初物',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:39:39',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726596054012624897',	'2023112012402490060',	'学校名称列控制#初生',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:39:13',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726595896277434370',	'2023112012403930240',	'学校名称列控制#初化',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:38:35',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726595799405789185',	'2023112012403200400',	'学校名称列控制#初地',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:38:12',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726595621567299585',	'2023112012402560550',	'学校名称列控制#初美',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:37:29',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726595439299624961',	'2023112012416690100',	'学校名称列控制#初音',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:36:46',	NULL,	NULL,	0,	0,	'1',	0),
+    ('1726595312216408066',	'2023112012411830230',	'学校名称列控制#初体',	NULL,	NULL,	0,	NULL,	NULL,	2,	'column_control_school_name',	'1',	NULL,	0,	NULL,	1,	0,	0,	0,	NULL,	'admin',	'2023-11-20 21:36:16',	NULL,	NULL,	0,	0,	'1',	0)
     ;
 INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_ids`, `operate_date`, `operate_ip`) VALUES
-    ('1714485051762352129',	'1698527018892869633',	'1714484080747421697',	NULL,	'2023-10-18 11:34:25',	'127.0.0.1'),
-    ('1714484353075191809',	'f6817f48af4fb3af11b9e8bf182f618b',	'1714484080747421697',	NULL,	'2023-10-18 11:31:38',	'127.0.0.1')
+    ('1714484353075191809',	'f6817f48af4fb3af11b9e8bf182f618b',	'1714484080747421697',	NULL,	'2023-10-18 11:31:38',	'127.0.0.1'),
+    ('1714485051762352129',	'1698527018892869633',	'1714484080747421697',	NULL,	'2023-10-18 11:34:25',	'127.0.0.1'),             -- 中心装备管理检查 & #小数
+    ('1726787511457644545',	'1698527018892869633',	'1726588656619323393',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),               -- 小学科学
+    ('1726787511466033154',	'1698527018892869633',	'1726588949134278657',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),               -- 小学美术
+    ('1726787511474421762',	'1698527018892869633',	'1726589155678584833',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),               -- 小学音乐
+    ('1726787511482810370',	'1698527018892869633',	'1726589310700060674',	NULL,	'2023-11-21 10:20:00',	'127.0.0.1'),               -- 小学体育
+    ('1726795080137932802',	'1698527018892869633',	'1726596327946813441',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中数学
+    ('1726795080158904321',	'1698527018892869633',	'1726596163983081474',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中物理
+    ('1726795080171487235',	'1698527018892869633',	'1726596054012624897',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中生物
+    ('1726795080188264449',	'1698527018892869633',	'1726595896277434370',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中化学
+    ('1726795080205041666',	'1698527018892869633',	'1726595799405789185',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中地理
+    ('1726795080221818881',	'1698527018892869633',	'1726595621567299585',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中美术
+    ('1726795080230207490',	'1698527018892869633',	'1726595439299624961',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1'),               -- 初中音乐
+    ('1726795080234401795',	'1698527018892869633',	'1726595312216408066',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1')                -- 初中体育
     ;
 
 /* 暂时屏蔽 教学器材配备标准模板 & 小学美术教学器材配备标准
