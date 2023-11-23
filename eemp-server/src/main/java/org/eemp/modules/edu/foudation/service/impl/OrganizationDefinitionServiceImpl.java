@@ -49,6 +49,7 @@ public class OrganizationDefinitionServiceImpl extends ServiceImpl<OrganizationD
         buildSubSchoolTree(tree, "fps", "完全小学", 13);
         buildSubSchoolTree(tree, "js", "初中", 14);
         buildSubSchoolTree(tree, "ss", "高中", 15);
+        buildSubSchoolTree(tree, "os", "其它", 16);
 
         return tree;
     }

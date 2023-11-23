@@ -25,4 +25,6 @@ public interface EduInformatizationBasicInfo_1Mapper extends BaseMapper<EduInfor
     List<Map<String,Object>> getStudentNumberInfo(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
     List<Map<String,Object>> getCentralRoomInfo(@Param("dbType") String dbType);
 
+    List<Map<String,Object>> getTeacherNumberInfoBySchoolType(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
+    List<Map<String,Object>> getStudentNumberInfoBySchoolType(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
 }

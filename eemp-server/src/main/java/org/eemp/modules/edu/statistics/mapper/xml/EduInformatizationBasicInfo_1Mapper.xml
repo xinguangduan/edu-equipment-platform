@@ -179,4 +179,70 @@
         </if>
     </select>
 
+    <!-- 获取教师人数统计（按学校类型维度） -->
+    <select id="getTeacherNumberInfoBySchoolType" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select chart_group, concat(year, half) as type, sum(teacher_count) as value
+            from
+              ( edu_informatization_basic_info_1 a
+                join
+                ( select
+                    identification_code,
+                    date_format(fill_date, '%Y') as year,
+                    if(date_format(fill_date, '%m') >= 7, '下半年', '上半年') as half,
+                    max(fill_date) maxdate
+                  from edu_informatization_basic_info_1
+                  where fill_date &gt;= #{dayStart} and fill_date &lt; #{dayEnd}
+                  group by identification_code, year, half ) b
+                join
+                ( select
+                    identification_code,
+                    institution_type
+                  from organization_definition ) c
+                join
+                ( select
+                    item_text chart_group,
+                    item_value
+                  from sys_dict_item
+                  where dict_id in (select id from sys_dict where dict_code = 'institution_type')) d
+                on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+                  and a.identification_code = c.identification_code
+                  and c.institution_type = d.item_value )
+            group by chart_group, year, half
+        </if>
+    </select>
+
+    <!-- 获取学生人数统计 -->
+    <select id="getStudentNumberInfoBySchoolType" resultType="java.util.HashMap">
+        <if test="dbType == 'mysql'">
+            select chart_group, concat(year, half) as type, sum(student_count) as value
+            from
+              ( edu_informatization_basic_info_1 a
+                join
+                ( select
+                    identification_code,
+                    date_format(fill_date, '%Y') as year,
+                    if(date_format(fill_date, '%m') >= 7, '下半年', '上半年') as half,
+                    max(fill_date) maxdate
+                  from edu_informatization_basic_info_1
+                  where fill_date &gt;= #{dayStart} and fill_date &lt; #{dayEnd}
+                  group by identification_code, year, half ) b
+                join
+                ( select
+                    identification_code,
+                    institution_type
+                  from organization_definition ) c
+                join
+                ( select
+                    item_text chart_group,
+                    item_value
+                  from sys_dict_item
+                  where dict_id in (select id from sys_dict where dict_code = 'institution_type')) d
+                on a.identification_code = b.identification_code and a.fill_date = b.maxdate
+                  and a.identification_code = c.identification_code
+                  and c.institution_type = d.item_value )
+            group by chart_group, year, half
+        </if>
+    </select>
+
 </mapper>

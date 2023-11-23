@@ -3699,6 +3699,7 @@ INSERT INTO `sys_dict_item` (id,dict_id,item_text,item_value,description,sort_or
 	 ('1664818711713857538','1664818329461768194','完全小学','13',NULL,1,1,'admin','2023-06-03 10:18:06',NULL,NULL),
 	 ('1664818781993615362','1664818329461768194','初中','14',NULL,1,1,'admin','2023-06-03 10:18:23',NULL,NULL),
 	 ('1664818888109506562','1664818329461768194','高中','15','普通/职教',1,1,'admin','2023-06-03 10:18:48',NULL,NULL),
+	 ('1727592791831265282','1664818329461768194','其它','16','特殊学校等',1,1,'admin','2023-11-23 15:39:53',NULL,NULL),
 	 ('1668874021735313410',	'1668873268455092226',	'八宝镇',	'11',	NULL,	1,	1,	'admin',	'2023-06-14 14:52:28',	NULL,	NULL),
 	 ('1668874146243227650',	'1668873268455092226',	'陈店镇',	'12',	NULL,	2,	1,	'admin',	'2023-06-14 14:52:57',	NULL,	NULL),
 	 ('1668874236567564289',	'1668873268455092226',	'街河市镇',	'13',	NULL,	3,	1,	'admin',	'2023-06-14 14:53:19',	NULL,	NULL),
@@ -3978,6 +3979,8 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
     ('2023112211067320494', '2023112211067320490', '批量删除实验室安全防护与化学危险品管理月报表', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:monthly_doc_of_chemical_hazards:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-22 11:06:49', NULL, NULL, 0, 0, '1', 0),
     ('2023112211067320495', '2023112211067320490', '导出excel_实验室安全防护与化学危险品管理月报表', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:monthly_doc_of_chemical_hazards:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-22 11:06:49', NULL, NULL, 0, 0, '1', 0),
     ('2023112211067320496', '2023112211067320490', '导入excel_实验室安全防护与化学危险品管理月报表', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:monthly_doc_of_chemical_hazards:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-22 11:06:49', NULL, NULL, 0, 0, '1', 0)
+   ,('2023112211067320499',	'2023112211067320490', '模板上传_实验室安全防护与化学危险品管理月报表',	NULL, NULL,	0, NULL, NULL, 2, 'edu.hazard:monthly_doc_of_chemical_hazards:uploadTemplate', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-24 14:58:35', NULL, NULL, 0, 0, '1',	0),
+    ('2023112211067320500',	'2023112211067320490', '模板下载_实验室安全防护与化学危险品管理月报表',	NULL, NULL,	0, NULL, NULL, 2, 'edu.hazard:monthly_doc_of_chemical_hazards:downloadTemplate', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-24 14:59:15', NULL, NULL, 0, 0, '1', 0)
     ;
 
 -- 角色权限：系统管理员
@@ -4180,6 +4183,7 @@ INSERT INTO `sys_role` (`id`, `role_name`, `role_code`, `description`, `create_b
      ('1666258199700963330',	'装备代表 - 初中',	'junior_school',	'录入/编辑（初中）学校的信息化、装备情况及明细',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
      ('1666258199717740546',	'装备代表 - 小学',	'primary_school',	'录入/编辑（小学）学校的信息化、装备情况及明细',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
      ('1666258199734517761',	'装备代表 – 幼儿园',	'nursery_school',	'录入/编辑（幼儿园）学校的信息化、装备情况及明细',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
+     ('1666258199734983170',	'装备代表 - 其它',	'other_school',	'录入/编辑（其它）学校的信息化、装备情况及明细',	'admin',	'2023-11-23 15:51:53',	NULL,	NULL,	0),
      ('1666258199747100674',	'装备中心 – 整体情况检查',	'center_check',	'检查学校录入的信息化、装备整体情况数据',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
      ('1666258199763877889',	'装备中心 – 统计分析',	'center_analysis',	'多维度汇总展现信息化、装备情况',	'admin',	'2023-06-07 09:38:07',	NULL,	NULL,	0),
      ('1698527018892869633',	'装备中心 - 装备管理检查',	'center_book_check',	'检查学校对装备管理的备案执行情况',	'admin',	'2023-09-04 10:42:53',	NULL,	NULL,	0),
@@ -4355,6 +4359,8 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
      ('1726795080242790402',	'1698527018892869633',	'2023112012411830240',	NULL,	'2023-11-21 10:50:04',	'127.0.0.1')
     ,('1727217595599519746',	'1698527018892869633',	'1714103540890349576',	NULL,	'2023-11-22 14:49:00',	'127.0.0.1'),               -- 化学危险品管理
      ('1727217595637268482',	'1698527018892869633',	'2023112211067320490',	NULL,	'2023-11-22 14:49:00',	'127.0.0.1')                -- 月报表归档
+    ,('1727259587658354689',	'1698527018892869633',	'2023112211067320499',	NULL,	'2023-11-22 17:35:51',	'127.0.0.1'),                 -- 模板上传
+     ('1727259587683520513',	'1698527018892869633',	'2023112211067320500',	NULL,	'2023-11-22 17:35:51',	'127.0.0.1')                  -- 模板下载
      ;
 
 -- 角色权限：装备中心 – 日常查看
@@ -4453,6 +4459,8 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
 --     ('1727221859210199042',	'1666258199679991810',	'2023112211067320494',	NULL,	'2023-11-22 15:05:56',	'127.0.0.1'),
 --     ('1727221859214393346',	'1666258199679991810',	'2023112211067320495',	NULL,	'2023-11-22 15:05:56',	'127.0.0.1'),
 --     ('1727221859214393347',	'1666258199679991810',	'2023112211067320496',	NULL,	'2023-11-22 15:05:56',	'127.0.0.1'),
+--     ('1727260845920194560',	'1666258199679991810',	'2023112211067320499',	NULL,	'2023-11-22 17:40:51',	'127.0.0.1'),
+    ,('1727260845920194561',	'1666258199679991810',	'2023112211067320500',	NULL,	'2023-11-22 17:40:51',	'127.0.0.1')
      ;
 
 -- 角色权限：装备代表 – 初中
@@ -4565,6 +4573,8 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
 --     ('1727220339697745923',	'1666258199700963330',	'2023112211067320494',	NULL,	'2023-11-22 14:59:54',	'127.0.0.1'),
 --     ('1727220339701940226',	'1666258199700963330',	'2023112211067320495',	NULL,	'2023-11-22 14:59:54',	'127.0.0.1'),
 --     ('1727220339701940227',	'1666258199700963330',	'2023112211067320496',	NULL,	'2023-11-22 14:59:54',	'127.0.0.1'),
+--     ('1727260702898622464',	'1666258199700963330',	'2023112211067320499',	NULL,	'2023-11-22 17:40:17',	'127.0.0.1')
+    ,('1727260702898622465',	'1666258199700963330',	'2023112211067320500',	NULL,	'2023-11-22 17:40:17',	'127.0.0.1')
      ;
 
 -- 角色权限：装备代表 – 小学
@@ -5076,3 +5086,30 @@ VALUES ('2023082703451490316', '2023082703451490310', '导入excel_小学美术�
 */
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+truncate organization_definition;
+truncate edu_informatization_basic_info_1;
+truncate edu_informatization_basic_info_2;
+truncate school_lab_basic_info_3;
+truncate school_library_basic_info_4;
+truncate school_sport_room_info_5;
+truncate school_music_art_room_info_6;
+truncate school_functional_room_info_7;
+truncate edu_informatization_equip_info_8;
+truncate filling_control;
+truncate ps_mathematics_equipment_file;
+truncate ps_scientific_equipment_file;
+truncate ps_art_equipment_file;
+truncate ps_music_equipment_file;
+truncate ps_sport_equipment_file;
+truncate js_mathematics_equipment_file;
+truncate js_physics_equipment_file;
+truncate js_biology_equipment_file;
+truncate js_chemistry_equipment_file;
+truncate js_geography_equipment_file;
+truncate js_art_equipment_file;
+truncate js_music_equipment_file;
+truncate js_sport_equipment_file;
+truncate monthly_doc_of_chemical_hazards;
+delete from sys_user_role where user_id in (select id from sys_user where username in ('admin_bbzx', 'admin_bbxx', 'admin_zzxx', 'admin_syz', 'admin_jgyey'));
+delete from sys_user where username in ('admin_bbzx', 'admin_bbxx', 'admin_zzxx', 'admin_syz', 'admin_jgyey');

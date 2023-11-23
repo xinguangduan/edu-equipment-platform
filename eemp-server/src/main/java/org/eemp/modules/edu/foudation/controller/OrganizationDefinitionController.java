@@ -101,6 +101,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			case "13":	roleIds = "1666258199717740546";	break;			// primary_school	完全小学
 			case "14":	roleIds = "1666258199700963330";	break;			// junior_school	初中
 			case "15":	roleIds = "1666258199679991810";	break;			// senior_school	高中
+			case "16":  roleIds = "1666258199734983170";	break;			// other_school		其它
 			default:
 				result.setMessage("学校类型非标准值");
 				result.setSuccess(false);
@@ -117,6 +118,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 		}
 		switch (organizationDefinition.getInstitutionType()) {
 			case "11":																	// nursery_school	幼儿园
+			case "16":																	// other_school		其它
 			case "15":	organizationDefinition.setChartGroup("高职特幼");	break;		// senior_school	高中
 			case "12":	organizationDefinition.setChartGroup("中心小学");	break;		// primary_school	中心小学
 			case "13":	organizationDefinition.setChartGroup("完全小学");	break;		// primary_school	完全小学
@@ -273,6 +275,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 				case "13":	roleIds = "1666258199717740546";	break;			// primary_school	完全小学
 				case "14":	roleIds = "1666258199700963330";	break;			// junior_school	初中
 				case "15":	roleIds = "1666258199679991810";	break;			// senior_school	高中
+				case "16":  roleIds = "1666258199734983170";	break;			// other_school		其它
 				default:
 					result.setMessage("学校类型非标准值");
 					result.setSuccess(false);
@@ -289,6 +292,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			}
 			switch (rec.getInstitutionType()) {
 				case "11":												// nursery_school	幼儿园
+				case "16":												// other_school		其它
 				case "15":	rec.setChartGroup("高职特幼");	break;		// senior_school	高中
 				case "12":	rec.setChartGroup("中心小学");	break;		// primary_school	中心小学
 				case "13":	rec.setChartGroup("完全小学");	break;		// primary_school	完全小学

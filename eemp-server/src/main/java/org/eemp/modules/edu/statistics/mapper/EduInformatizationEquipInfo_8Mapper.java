@@ -27,4 +27,9 @@ public interface EduInformatizationEquipInfo_8Mapper extends BaseMapper<EduInfor
 
     List<Map<String,Object>> getClassCommunicationNumberInfo(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
 
+    List<Map<String,Object>> getClassNumberInfoBySchoolType(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
+    List<Map<String,Object>> getTeacherComputerNumberInfoBySchoolType(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
+    List<Map<String,Object>> getStudentComputerNumberInfoBySchoolType(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
+    List<Map<String,Object>> getClassCommunicationNumberInfoBySchoolType(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd, @Param("dbType") String dbType);
+
 }
