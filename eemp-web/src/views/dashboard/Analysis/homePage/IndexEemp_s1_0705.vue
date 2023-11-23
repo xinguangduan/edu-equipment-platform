@@ -100,11 +100,14 @@
   const studentInfo = ref([])
   const classInfo = ref([])
 
+  const refCode = {'中心小学': 10, '完全小学': 20, '初中': 30, '高中': 40, '幼儿园': 50, '其它': 60};
+  const cmpfun = it => refCode[it.chart_group] + it.type;
+
   function initClassAndTeacherAndStudentInfo() {
     getClassInfo(null).then((res) => {
       if (res.success) {
         classInfo.value = [];
-        res.result.forEach((item) => {
+        res.result.sort((a, b) => cmpfun(a) > cmpfun(b) ? 1 : -1).forEach((item) => {
           classInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
         });
       }
@@ -113,7 +116,7 @@
       if (res.success) {
         // teacherInfo.value = res.result;
         teacherInfo.value = [];
-        res.result.forEach((item) => {
+        res.result.sort((a, b) => cmpfun(a) > cmpfun(b) ? 1 : -1).forEach((item) => {
           teacherInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
         });
       }
@@ -121,7 +124,7 @@
     getStudentInfo(null).then((res) => {
       if (res.success) {
         studentInfo.value = [];
-        res.result.forEach((item) => {
+        res.result.sort((a, b) => cmpfun(a) > cmpfun(b) ? 1 : -1).forEach((item) => {
           studentInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
         });
       }
@@ -137,7 +140,7 @@
     getTeacherComputerInfo(null).then((res) => {
       if (res.success) {
         teacherComputerInfo.value = [];
-        res.result.forEach((item) => {
+        res.result.sort((a, b) => cmpfun(a) > cmpfun(b) ? 1 : -1).forEach((item) => {
           teacherComputerInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
         });
       }
@@ -145,7 +148,7 @@
     getStudentComputerInfo(null).then((res) => {
       if (res.success) {
         studentComputerInfo.value = [];
-        res.result.forEach((item) => {
+        res.result.sort((a, b) => cmpfun(a) > cmpfun(b) ? 1 : -1).forEach((item) => {
           studentComputerInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
         });
       }
@@ -160,7 +163,7 @@
     getClassCommunicationInfo(null).then((res) => {
       if (res.success) {
         classCommunicationInfo.value = [];
-        res.result.forEach((item) => {
+        res.result.sort((a, b) => cmpfun(a) > cmpfun(b) ? 1 : -1).forEach((item) => {
           classCommunicationInfo.value.push({ name: item.chart_group, type: item.type, value: item.value });
         });
       }
