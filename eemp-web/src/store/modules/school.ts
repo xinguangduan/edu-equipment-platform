@@ -22,7 +22,7 @@ export const useSchoolStore = defineStore({
         }
       });
     
-//       console.log("fetch schoolTreeData ret: ", response)
+      console.log("fetch schoolTreeData ret: ", response)
       this.schoolTreeData = response;
     },
   },

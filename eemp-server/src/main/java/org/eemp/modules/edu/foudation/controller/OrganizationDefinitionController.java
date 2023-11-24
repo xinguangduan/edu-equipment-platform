@@ -346,6 +346,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			JSONArray tree = organizationDefinitionService.getSchoolTreeData();
 			result.setResult(tree);
 			result.setSuccess(true);
+			log.info("schoolTreeData: " + tree);
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
 		}
