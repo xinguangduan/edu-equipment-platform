@@ -35,7 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 @RequiredArgsConstructor
 public class JsMathematicsEquipmentFileController extends BaseController<JsMathematicsEquipmentFile, IJsMathematicsEquipmentFileService> {
-	private IJsMathematicsEquipmentFileService jsMathematicsEquipmentFileService;
+	private final IJsMathematicsEquipmentFileService jsMathematicsEquipmentFileService;
 	private final IFillingControlService fillingControlService;
 
 	/**
