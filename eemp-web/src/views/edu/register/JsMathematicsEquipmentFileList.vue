@@ -4,10 +4,8 @@
    <BasicTable @register="registerTable" :rowSelection="rowSelection">
      <!--插槽:table标题-->
       <template #tableTitle>
-          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.register:js_mathematics_equipment_file:add'" :disabled="!addable"> 新增</a-button>
-          <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.register:js_mathematics_equipment_file:exportXls'"> 导出</a-button>
-          <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.register:js_mathematics_equipment_file:importExcel'">导入</j-upload-button>
-          <a-dropdown v-if="selectedRowKeys.length > 0">
+        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.register:js_mathematics_equipment_file:add'" :disabled="!addable"> 新增</a-button>
+        <a-dropdown v-if="selectedRowKeys.length > 0">
               <template #overlay>
                 <a-menu>
                   <a-menu-item key="1" @click="batchHandleDelete">
@@ -26,6 +24,8 @@
           <a-button type="primary" preIcon="ant-design:upload-outlined" v-auth="'edu.register:js_mathematics_equipment_file:uploadTemplate'">模板上传</a-button>
         </a-upload>
         <a-button preIcon="ant-design:download-outlined" type="primary" @click="downloadTemplate" v-auth="'edu.register:js_mathematics_equipment_file:downloadTemplate'">模板下载</a-button>
+        <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.register:js_mathematics_equipment_file:exportXls'"> 导出</a-button>
+        <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.register:js_mathematics_equipment_file:importExcel'">导入</j-upload-button>
       </template>
        <!--操作栏-->
       <template #action="{ record }">
