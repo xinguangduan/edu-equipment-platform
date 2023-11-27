@@ -17,12 +17,13 @@ import org.eemp.common.aspect.annotation.AutoLog;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.hazard.entity.MonthlyDocOfChemicalHazards;
 import org.eemp.modules.edu.hazard.service.IMonthlyDocOfChemicalHazardsService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
- /**
+/**
  * @Description: 实验室安全防护与化学危险品管理月报表
  * @Date:   2023-11-22
  * @Version: V1.0
@@ -34,7 +35,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class MonthlyDocOfChemicalHazardsController extends BaseController<MonthlyDocOfChemicalHazards, IMonthlyDocOfChemicalHazardsService> {
 	private final IMonthlyDocOfChemicalHazardsService monthlyDocOfChemicalHazardsService;
-	
+	private final IFillingControlService fillingControlService;
+
 	/**
 	 * 分页列表查询
 	 *
@@ -70,6 +72,11 @@ public class MonthlyDocOfChemicalHazardsController extends BaseController<Monthl
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody MonthlyDocOfChemicalHazards monthlyDocOfChemicalHazards) {
 		monthlyDocOfChemicalHazardsService.save(monthlyDocOfChemicalHazards);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				monthlyDocOfChemicalHazards.getIdentificationCode(),
+				"monthly_doc_of_chemical_hazards",
+				monthlyDocOfChemicalHazards.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -99,7 +106,13 @@ public class MonthlyDocOfChemicalHazardsController extends BaseController<Monthl
 	@RequiresPermissions("edu.hazard:monthly_doc_of_chemical_hazards:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		MonthlyDocOfChemicalHazards rec = monthlyDocOfChemicalHazardsService.getById(id);
 		monthlyDocOfChemicalHazardsService.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"monthly_doc_of_chemical_hazards",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -160,5 +173,30 @@ public class MonthlyDocOfChemicalHazardsController extends BaseController<Monthl
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, MonthlyDocOfChemicalHazards.class);
     }
+
+	@RequiresPermissions("edu.hazard:monthly_doc_of_chemical_hazards:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		monthlyDocOfChemicalHazardsService.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"monthly_doc_of_chemical_hazards"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.hazard:monthly_doc_of_chemical_hazards:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			MonthlyDocOfChemicalHazards rec = monthlyDocOfChemicalHazardsService.getById(id);
+			monthlyDocOfChemicalHazardsService.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"monthly_doc_of_chemical_hazards"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
 
 }

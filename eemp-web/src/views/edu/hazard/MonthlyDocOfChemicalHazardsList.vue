@@ -4,7 +4,7 @@
    <BasicTable @register="registerTable" :rowSelection="rowSelection">
      <!--插槽:table标题-->
       <template #tableTitle>
-          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:add'"> 新增</a-button>
+          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:add'" :disabled="!addable"> 新增</a-button>
           <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:exportXls'"> 导出</a-button>
           <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:importExcel'">导入</j-upload-button>
           <a-dropdown v-if="selectedRowKeys.length > 0">
@@ -16,10 +16,12 @@
                   </a-menu-item>
                 </a-menu>
               </template>
-              <a-button>批量操作
+              <a-button v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:deleteBatch'">批量操作
                 <Icon icon="mdi:chevron-down"></Icon>
               </a-button>
         </a-dropdown>
+        <a-button type="primary" @click="handleReport" preIcon="ant-design:send-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:report'" :disabled="!reportable">上报</a-button>
+        <a-button :ghost="true" type="primary" @click="handleRevoke" preIcon="ant-design:send-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:revoke'">退回学校修改</a-button>
         <a-upload name="file" :showUploadList="false" :action="uploadUrl" :headers="headers" @change="handleChange">
           <a-button type="primary" preIcon="ant-design:upload-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:uploadTemplate'">模板上传</a-button>
         </a-upload>
@@ -27,7 +29,7 @@
       </template>
        <!--操作栏-->
       <template #action="{ record }">
-        <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
+        <TableAction v-if="record.id === recId.valueOf() && reportable" :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
       </template>
       <!--字段回显插槽-->
       <template #htmlSlot="{text}">
@@ -48,21 +50,23 @@
 </template>
 
 <script lang="ts" name="org.eemp.modules.edu.hazard-monthlyDocOfChemicalHazards" setup>
-  import {ref, computed, unref} from 'vue';
+  import {ref, computed, unref, onMounted} from 'vue';
   import {BasicTable, useTable, TableAction} from '/@/components/Table';
   import {useModal} from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage'
   import MonthlyDocOfChemicalHazardsModal from './components/MonthlyDocOfChemicalHazardsModal.vue'
   import {columns, searchFormSchema} from './MonthlyDocOfChemicalHazards.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, getTemplateInfoUrl, updateTemplateInfoUrl} from './MonthlyDocOfChemicalHazards.api';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl, reportOne, batchRevoke, getFillingControlUrl, getTemplateInfoUrl, updateTemplateInfoUrl} from './MonthlyDocOfChemicalHazards.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   import { defHttp } from '/@/utils/http/axios';
+  import { useUserStoreWithOut } from '/@/store/modules/user';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { getToken } from '/@/utils/auth';
   import { uploadUrl } from '/@/api/common/api';
   import { getFileAccessHttpUrl } from '/@/utils/common/compUtils';
   const checkedKeys = ref<Array<string | number>>([]);
 
+  const userStore = useUserStoreWithOut();
   const packageName = 'monthly_doc_of_chemical_hazards';
 
   //注册model
@@ -146,7 +150,7 @@
     * 成功回调
     */
   function handleSuccess() {
-      (selectedRowKeys.value = []) && reload();
+      (selectedRowKeys.value = []) && getFillingControl() && reload();
    }
    /**
       * 操作栏
@@ -176,6 +180,39 @@
         //  }
        ]
    }
+
+  async function handleReport() {
+   await reportOne({identificationCode: userStore.getUserInfo.telephone, id: recId.value}, handleSuccess);
+  }
+  async function handleRevoke() {
+   await batchRevoke({ids: selectedRowKeys.value}, handleSuccess);
+  }
+ 
+  const addable = ref(false)
+  const reportable = ref(false)
+  const revokable = ref(false)
+  const recId = ref(0)
+
+  onMounted(() => {
+    getFillingControl()
+    console.log("onMounted...")
+  })
+
+  async function getFillingControl() {
+    let params = {identificationCode: userStore.getUserInfo.telephone, packageName: packageName};
+    await defHttp.post({url: getFillingControlUrl, params}, {joinParamsToUrl: true}).then((res) => {
+      console.log("res: ", res);
+      if (res !== null) {
+        console.log("res !== null.")
+        addable.value = res.addable
+        reportable.value = res.reportable
+        revokable.value = res.revokable
+        recId.value = res.id
+      } else {
+        console.log("res === null.")
+      }
+    });
+  }
 
   const { createMessage } = useMessage();
   const headers = { 'X-Access-Token': getToken() };
