@@ -8,10 +8,8 @@
           <a-button type="primary" preIcon="ant-design:upload-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:uploadTemplate'">模板上传</a-button>
         </a-upload>
         <a-button preIcon="ant-design:download-outlined" type="primary" @click="downloadTemplate" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:downloadTemplate'">模板下载</a-button>
-          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:add'" :disabled="!addable"> 新增</a-button>
-          <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:exportXls'"> 导出</a-button>
-          <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:importExcel'">导入</j-upload-button>
-          <a-dropdown v-if="selectedRowKeys.length > 0">
+        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:add'" :disabled="!addable"> 新增</a-button>
+        <a-dropdown v-if="selectedRowKeys.length > 0">
               <template #overlay>
                 <a-menu>
                   <a-menu-item key="1" @click="batchHandleDelete">
@@ -26,6 +24,8 @@
         </a-dropdown>
         <a-button type="primary" @click="handleReport" preIcon="ant-design:send-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:report'" :disabled="!reportable">上报</a-button>
         <a-button :ghost="true" type="primary" @click="handleRevoke" preIcon="ant-design:send-outlined" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:revoke'">退回学校修改</a-button>
+        <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:exportXls'"> 导出</a-button>
+        <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.hazard:monthly_doc_of_chemical_hazards:importExcel'">导入</j-upload-button>
       </template>
        <!--操作栏-->
       <template #action="{ record }">
