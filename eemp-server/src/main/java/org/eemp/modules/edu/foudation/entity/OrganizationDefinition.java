@@ -77,10 +77,10 @@ public class OrganizationDefinition implements Serializable {
 	@Excel(name = "初始密码", width = 15)
     @ApiModelProperty(value = "初始密码")
     private java.lang.String initialPassword;
-	/**账户生成是否成功*/
-	@Excel(name = "账户生成是否成功", width = 18, dicCode = "yn")
+	/**账号是否生成*/
+	@Excel(name = "账号是否生成", width = 18, dicCode = "yn")
 	@Dict(dicCode = "yn")
-    @ApiModelProperty(value = "账户生成是否成功")
+    @ApiModelProperty(value = "账号是否生成")
     private java.lang.String adminGenerationSuccess;
 	/**失败原因*/
 	@Excel(name = "失败原因", width = 15)
