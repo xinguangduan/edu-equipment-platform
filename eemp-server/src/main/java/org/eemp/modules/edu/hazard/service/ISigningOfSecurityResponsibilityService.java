@@ -10,4 +10,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISigningOfSecurityResponsibilityService extends IService<SigningOfSecurityResponsibility> {
 
+    int changeReported(String id, int val);
+
 }

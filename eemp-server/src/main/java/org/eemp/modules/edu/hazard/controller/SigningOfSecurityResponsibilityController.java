@@ -9,6 +9,7 @@ import org.eemp.common.api.vo.Result;
 import org.eemp.common.aspect.annotation.PermissionData;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.util.oConvertUtils;
+import org.eemp.modules.edu.foudation.service.IFillingControlService;
 import org.eemp.modules.edu.hazard.entity.SigningOfSecurityResponsibility;
 import org.eemp.modules.edu.hazard.service.ISigningOfSecurityResponsibilityService;
 
@@ -25,7 +26,7 @@ import io.swagger.annotations.ApiOperation;
 import org.eemp.common.aspect.annotation.AutoLog;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
- /**
+/**
  * @Description: 安全责任书签订
  * @Date:   2023-11-29
  * @Version: V1.0
@@ -37,7 +38,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 @RequiredArgsConstructor
 public class SigningOfSecurityResponsibilityController extends BaseController<SigningOfSecurityResponsibility, ISigningOfSecurityResponsibilityService> {
 	private final ISigningOfSecurityResponsibilityService signingOfSecurityResponsibilityService;
-	
+	private final IFillingControlService fillingControlService;
+
 	/**
 	 * 分页列表查询
 	 *
@@ -73,6 +75,11 @@ public class SigningOfSecurityResponsibilityController extends BaseController<Si
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody SigningOfSecurityResponsibility signingOfSecurityResponsibility) {
 		signingOfSecurityResponsibilityService.save(signingOfSecurityResponsibility);
+		boolean rst = fillingControlService.updateFillingControlAfterNewData(
+				signingOfSecurityResponsibility.getIdentificationCode(),
+				"signing_of_security_responsibility",
+				signingOfSecurityResponsibility.getId()
+		);
 		return Result.OK("添加成功！");
 	}
 	
@@ -102,7 +109,13 @@ public class SigningOfSecurityResponsibilityController extends BaseController<Si
 	@RequiresPermissions("edu.hazard:signing_of_security_responsibility:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
+		SigningOfSecurityResponsibility rec = signingOfSecurityResponsibilityService.getById(id);
 		signingOfSecurityResponsibilityService.removeById(id);
+		boolean rst = fillingControlService.updateFillingControlAfterDeleteData(
+				rec.getIdentificationCode(),
+				"signing_of_security_responsibility",
+				id
+		);
 		return Result.OK("删除成功!");
 	}
 	
@@ -163,5 +176,30 @@ public class SigningOfSecurityResponsibilityController extends BaseController<Si
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, SigningOfSecurityResponsibility.class);
     }
+
+	@RequiresPermissions("edu.hazard:signing_of_security_responsibility:report")
+	@PostMapping(value = "/report")
+	public Result<String> report(@RequestParam(name="identificationCode", required=true) String identificationCode, @RequestParam(name="id", required=true) String id) {
+		signingOfSecurityResponsibilityService.changeReported(id, 1);
+		boolean rst = fillingControlService.updateFillingControlAfterReported(
+				identificationCode,
+				"signing_of_security_responsibility"
+		);
+		return Result.OK("上报成功!");
+	}
+
+	@RequiresPermissions("edu.hazard:signing_of_security_responsibility:revoke")
+	@PostMapping(value = "/revoke")
+	public Result<String> revoke(@RequestParam(name="ids", required=true) String ids) {
+		for (String id: ids.split(",")) {
+			SigningOfSecurityResponsibility rec = signingOfSecurityResponsibilityService.getById(id);
+			signingOfSecurityResponsibilityService.changeReported(id, 0);
+			boolean rst = fillingControlService.updateFillingControlAfterRevoked(
+					rec.getIdentificationCode(),
+					"signing_of_security_responsibility"
+			);
+		}
+		return Result.OK("退回成功!");
+	}
 
 }

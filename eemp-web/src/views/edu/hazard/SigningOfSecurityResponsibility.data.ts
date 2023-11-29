@@ -2,12 +2,18 @@ import {BasicColumn} from '/@/components/Table';
 import {FormSchema} from '/@/components/Table';
 import { rules} from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
+import { useUserStoreWithOut } from "/@/store/modules/user";
+import dayjs from 'dayjs';
+
+const userStore = useUserStoreWithOut();
+
 //列表数据
 export const columns: BasicColumn[] = [
    {
     title: '学校名称',
     align:"center",
-    dataIndex: 'identificationCode_dictText'
+    dataIndex: 'identificationCode_dictText',
+    auth: 'column_control_school_name',
    },
    {
     title: '上传日期',
@@ -52,6 +58,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '学校名称',
     field: 'identificationCode',
+    defaultValue: userStore.getUserInfo.telephone,
     component: 'JDictSelectTag',
     componentProps:{
         dictCode:"organization_definition,institution_name,identification_code"
@@ -61,16 +68,19 @@ export const formSchema: FormSchema[] = [
                  { required: true, message: '请输入学校名称!'},
           ];
      },
+     dynamicDisabled:true
   },
   {
     label: '上传日期',
     field: 'uploadDate',
+    defaultValue: dayjs(new Date()).format('YYYY-MM-DD'),
     component: 'DatePicker',
     dynamicRules: ({model,schema}) => {
           return [
                  { required: true, message: '请输入上传日期!'},
           ];
      },
+     dynamicDisabled:true
   },
   {
     label: '上传文件',
