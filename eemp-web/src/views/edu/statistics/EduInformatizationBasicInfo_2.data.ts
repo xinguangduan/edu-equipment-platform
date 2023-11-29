@@ -132,6 +132,7 @@ export const formSchema: FormSchema[] = [
                  { required: true, message: '请选择学校名称!'},
           ];
      },
+    dynamicDisabled:true,
   },
   {
     label: '填报日期',
