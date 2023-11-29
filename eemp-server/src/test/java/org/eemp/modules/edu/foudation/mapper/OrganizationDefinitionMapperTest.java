@@ -1,5 +1,6 @@
 package org.eemp.modules.edu.foudation.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.test.autoconfigure.MybatisPlusTest;
 import org.assertj.core.data.Percentage;
 import org.eemp.modules.edu.foudation.entity.OrganizationDefinition;
@@ -45,5 +46,16 @@ public class OrganizationDefinitionMapperTest {
         assertThat(result.getId()).isEqualTo("104");
         assertThat(result.getTownship()).isEqualTo("11");
         assertThat(result.getLastLoginTime().getTime()).isCloseTo(new Date().getTime(), Percentage.withPercentage(0.0001));
+    }
+
+    @Test
+    void testMemberInfo() {
+        OrganizationDefinition rec = mapper.selectOne(new LambdaQueryWrapper<OrganizationDefinition>().eq(OrganizationDefinition::getAdminCode, "admin_104"));
+        mapper.update(new OrganizationDefinition().setAdminName("张三").setPhoneNumber("1321"), new LambdaQueryWrapper<OrganizationDefinition>().eq(OrganizationDefinition::getAdminCode, "admin_104"));
+        OrganizationDefinition upd_rec = mapper.selectOne(new LambdaQueryWrapper<OrganizationDefinition>().eq(OrganizationDefinition::getAdminCode, "admin_104"));
+        assertThat(rec.getAdminName()).isNull();
+        assertThat(rec.getPhoneNumber()).isNull();
+        rec.setAdminName("张三").setPhoneNumber("1321");
+        assertThat(rec).isEqualTo(upd_rec);
     }
 }

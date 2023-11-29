@@ -13,6 +13,7 @@
       <Menu @click="handleMenuClick">
         <MenuItem key="doc" :text="t('layout.header.dropdownItemDoc')" icon="ion:document-text-outline" v-if="getShowDoc" />
         <MenuDivider v-if="getShowDoc" />
+        <MenuItem key="memberInfo" :text="t('layout.header.dropdownItemMemberInfo')" icon="ant-design:user-outlined" />
         <MenuItem key="account" :text="t('layout.header.dropdownItemSwitchAccount')" icon="ant-design:setting-outlined" v-if="getShowDoc" />
         <MenuItem key="password" :text="t('layout.header.dropdownItemSwitchPassword')" icon="ant-design:edit-outlined" />
         <MenuItem key="depart" :text="t('layout.header.dropdownItemSwitchDepart')" icon="ant-design:cluster-outlined" v-if="getShowDoc" />
@@ -27,6 +28,7 @@
       </Menu>
     </template>
   </Dropdown>
+  <MemberInfo ref="memberInfoRef" />
   <LockAction @register="register" />
   <DepartSelect ref="loginSelectRef" />
   <UpdatePassword ref="updatePasswordRef" />
@@ -57,7 +59,7 @@
   import { removeAuthCache, setAuthCache } from '/src/utils/auth';
   import { getFileAccessHttpUrl } from '/@/utils/common/compUtils';
 
-  type MenuEvent = 'logout' | 'doc' | 'lock' | 'cache' | 'depart';
+  type MenuEvent = 'logout' | 'doc' | 'memberInfo' | 'lock' | 'cache' | 'depart';
   const { createMessage } = useMessage();
   export default defineComponent({
     name: 'UserDropdown',
@@ -66,6 +68,7 @@
       Menu,
       MenuItem: createAsyncComponent(() => import('./DropMenuItem.vue')),
       MenuDivider: Menu.Divider,
+      MemberInfo: createAsyncComponent(() => import('../../../../../views/edu/foudation/MemberInfo.vue')),
       LockAction: createAsyncComponent(() => import('../lock/LockModal.vue')),
       DepartSelect: createAsyncComponent(() => import('./DepartSelect.vue')),
       UpdatePassword: createAsyncComponent(() => import('./UpdatePassword.vue')),
@@ -113,6 +116,12 @@
         openWindow(SITE_URL);
       }
 
+      // member info
+      const memberInfoRef = ref();
+      function handleMemberInfo() {
+        memberInfoRef.value.show(userStore.getUserInfo.username);
+      }
+
       // 清除缓存
       async function clearCache() {
         const result = await refreshCache();
@@ -143,6 +152,9 @@
           case 'doc':
             openDoc();
             break;
+          case 'memberInfo':
+            handleMemberInfo();
+            break;
           case 'lock':
             handleLock();
             break;
@@ -171,6 +183,7 @@
         handleMenuClick,
         getShowDoc,
         register,
+        memberInfoRef,
         getUseLockPage,
         loginSelectRef,
         updatePasswordRef,

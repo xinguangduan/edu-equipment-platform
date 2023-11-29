@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import org.eemp.common.api.vo.Result;
 import org.eemp.common.util.CommonUtils;
 import org.eemp.modules.edu.foudation.entity.OrganizationDefinition;
 import org.eemp.modules.edu.foudation.mapper.OrganizationDefinitionMapper;
@@ -80,5 +81,12 @@ public class OrganizationDefinitionServiceImpl extends ServiceImpl<OrganizationD
             // 符合学校用户，更新最近访问时间
             mapper.updateLastLoginTimeByAdminCode(username);
         }
+    }
+
+    @Override
+    public Result<?> memberInfo(String adminCode, String adminName, String phoneNumber) {
+        mapper.update(new OrganizationDefinition().setAdminName(adminName).setPhoneNumber(phoneNumber),
+                new LambdaQueryWrapper<OrganizationDefinition>().eq(OrganizationDefinition::getAdminCode, adminCode));
+        return Result.ok("基本信息更新成功!");
     }
 }
