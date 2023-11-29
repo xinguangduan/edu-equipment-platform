@@ -102,7 +102,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '填报类型',
     field: 'controlType',
-    component: 'JDictSelectTag',
+    component: 'JSelectMultiple',
     componentProps:{
         dictCode:"filling_control_type"
      },

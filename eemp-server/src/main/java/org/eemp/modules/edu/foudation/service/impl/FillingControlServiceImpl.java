@@ -48,7 +48,7 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
     }
 
     private void buildFillingControl(String identificationCode, String packageName, Date inDate, long extendSecs) {
-        String fillingControlType = "";
+        final String fillingControlType;
         switch (packageName) {
             case "edu_informatization_basic_info_1":
             case "edu_informatization_basic_info_2":
@@ -78,10 +78,15 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
             case "monthly_doc_of_chemical_hazards":
                 fillingControlType = "03";
                 break;
+            default:
+                fillingControlType = "";
         }
 
         LambdaQueryWrapper<FillingControl> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(FillingControl::getControlType, fillingControlType);
+        wrapper.and(qw -> qw.likeRight(FillingControl::getControlType, fillingControlType + ",")
+                .or().likeLeft(FillingControl::getControlType, "," + fillingControlType)
+                .or().eq(FillingControl::getControlType, fillingControlType)
+                .or().like(FillingControl::getControlType, "," + fillingControlType + ","));
         wrapper.le(FillingControl::getStartDate, inDate);
         wrapper.ge(FillingControl::getEndDate, inDate);
         wrapper.and(qw -> qw.likeRight(FillingControl::getSchoolList, identificationCode + ",")
