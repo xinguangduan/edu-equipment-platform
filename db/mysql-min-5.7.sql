@@ -3639,6 +3639,25 @@ CREATE TABLE `monthly_doc_of_chemical_hazards` (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- --------------------------------------------------------------
+-- Table structure for signing_of_security_responsibility
+-- --------------------------------------------------------------
+DROP TABLE IF EXISTS `signing_of_security_responsibility`;
+CREATE TABLE `signing_of_security_responsibility` (
+  `id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `identification_code` varchar(18) COLLATE utf8mb4_general_ci NOT NULL COMMENT '学校名称',
+  `upload_date` date NOT NULL COMMENT '上传日期',
+  `upload_file` varchar(120) COLLATE utf8mb4_general_ci NOT NULL COMMENT '上传文件',
+  `memo` longtext COLLATE utf8mb4_general_ci COMMENT '备注',
+  `reported` int DEFAULT NULL COMMENT '上报状态',
+  `create_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `sys_org_code` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所属部门',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- --------------------------------------------------------------
 -- Dict increase data
 -- --------------------------------------------------------------
 INSERT INTO `sys_dict` (id,dict_name,dict_code,description,del_flag,create_by,create_time,update_by,update_time,`type`,tenant_id,low_app_id) VALUES
@@ -3756,6 +3775,7 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, component_name, 
     ('2023112012416690100', '1714103540890349570', '初中音乐', '/edu/register/jsMusicEquipmentFileList', 'edu/register/JsMusicEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.60, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:41:10', NULL, NULL, 0),
     ('2023112012411830230', '1714103540890349570', '初中体育', '/edu/register/jsSportEquipmentFileList', 'edu/register/JsSportEquipmentFileList', NULL, NULL, 0, NULL, '1', 2.70, 0, 'ant-design:project-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-20 12:41:23', NULL, NULL, 0)
    ,('2023112211067320490', '1714103540890349576', '月报表归档', '/edu/hazard/monthlyDocOfChemicalHazardsList', 'edu/hazard/MonthlyDocOfChemicalHazardsList', NULL, NULL, 0, NULL, '1', 0.00, 0, 'ant-design:inbox-outlined', 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-22 11:06:49', NULL, NULL, 0)
+   ,('2023112905055350290', '1666282632293515265', '安全责任书签订', '/edu/hazard/signingOfSecurityResponsibilityList', 'edu/hazard/SigningOfSecurityResponsibilityList', NULL, NULL, 0, NULL, '1', 9.10, 0, NULL, 1, 0, 0, 0, 0, NULL, '1', 0, 0, 'admin', '2023-11-29 17:05:29', NULL, NULL, 0)
     ;
 
 INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, component_name, redirect, menu_type, perms, perms_type, sort_no, always_show, icon, is_leaf, keep_alive, hidden, hide_tab, description, create_by, create_time, update_by, update_time, del_flag, rule_flag, status, internal_or_external) VALUES
@@ -3985,6 +4005,12 @@ INSERT INTO sys_permission(id, parent_id, name, url, component, is_route, compon
     ('2023112211067320498',	'2023112211067320490', '退回实验室安全防护与化学危险品管理月报表', NULL,	NULL, 0, NULL, NULL, 2, 'edu.hazard:monthly_doc_of_chemical_hazards:revoke', '1', NULL,	0, NULL, 1,	0,	0,	0,	NULL, 'admin',	'2023-10-18 16:47:12',	NULL,	NULL,	0,	0,	'1', 0)
    ,('2023112211067320499',	'2023112211067320490', '模板上传_实验室安全防护与化学危险品管理月报表',	NULL, NULL,	0, NULL, NULL, 2, 'edu.hazard:monthly_doc_of_chemical_hazards:uploadTemplate', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-24 14:58:35', NULL, NULL, 0, 0, '1',	0),
     ('2023112211067320500',	'2023112211067320490', '模板下载_实验室安全防护与化学危险品管理月报表',	NULL, NULL,	0, NULL, NULL, 2, 'edu.hazard:monthly_doc_of_chemical_hazards:downloadTemplate', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-10-24 14:59:15', NULL, NULL, 0, 0, '1', 0)
+   ,('2023112905055350291', '2023112905055350290', '添加安全责任书签订', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:signing_of_security_responsibility:add', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-29 17:05:29', NULL, NULL, 0, 0, '1', 0),
+    ('2023112905055360292', '2023112905055350290', '编辑安全责任书签订', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:signing_of_security_responsibility:edit', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-29 17:05:29', NULL, NULL, 0, 0, '1', 0),
+    ('2023112905055360293', '2023112905055350290', '删除安全责任书签订', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:signing_of_security_responsibility:delete', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-29 17:05:29', NULL, NULL, 0, 0, '1', 0),
+    ('2023112905055360294', '2023112905055350290', '批量删除安全责任书签订', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:signing_of_security_responsibility:deleteBatch', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-29 17:05:29', NULL, NULL, 0, 0, '1', 0),
+    ('2023112905055360295', '2023112905055350290', '导出excel_安全责任书签订', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:signing_of_security_responsibility:exportXls', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-29 17:05:29', NULL, NULL, 0, 0, '1', 0),
+    ('2023112905055360296', '2023112905055350290', '导入excel_安全责任书签订', NULL, NULL, 0, NULL, NULL, 2, 'edu.hazard:signing_of_security_responsibility:importExcel', '1', NULL, 0, NULL, 1, 0, 0, 0, NULL, 'admin', '2023-11-29 17:05:29', NULL, NULL, 0, 0, '1', 0)
     ;
 
 -- 角色权限：系统管理员
