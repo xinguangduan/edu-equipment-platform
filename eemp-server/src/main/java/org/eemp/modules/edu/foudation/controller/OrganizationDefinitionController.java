@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -15,6 +17,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.eemp.common.api.CommonAPI;
 import org.eemp.common.api.vo.Result;
@@ -23,6 +26,7 @@ import org.eemp.common.constant.CommonConstant;
 import org.eemp.common.system.base.controller.BaseController;
 import org.eemp.common.system.query.QueryGenerator;
 import org.eemp.common.system.vo.DictModel;
+import org.eemp.common.system.vo.LoginUser;
 import org.eemp.common.util.PasswordUtil;
 import org.eemp.common.util.oConvertUtils;
 import org.eemp.modules.base.service.BaseCommonService;
@@ -33,7 +37,7 @@ import org.eemp.modules.system.service.ISysUserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
- /**
+/**
  * @Description: 学校管理
  * @Date:   2023-06-03
  * @Version: V1.0
@@ -101,6 +105,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			case "13":	roleIds = "1666258199717740546";	break;			// primary_school	完全小学
 			case "14":	roleIds = "1666258199700963330";	break;			// junior_school	初中
 			case "15":	roleIds = "1666258199679991810";	break;			// senior_school	高中
+			case "16":  roleIds = "1666258199734983170";	break;			// other_school		其它
 			default:
 				result.setMessage("学校类型非标准值");
 				result.setSuccess(false);
@@ -117,6 +122,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 		}
 		switch (organizationDefinition.getInstitutionType()) {
 			case "11":																	// nursery_school	幼儿园
+			case "16":																	// other_school		其它
 			case "15":	organizationDefinition.setChartGroup("高职特幼");	break;		// senior_school	高中
 			case "12":	organizationDefinition.setChartGroup("中心小学");	break;		// primary_school	中心小学
 			case "13":	organizationDefinition.setChartGroup("完全小学");	break;		// primary_school	完全小学
@@ -273,6 +279,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 				case "13":	roleIds = "1666258199717740546";	break;			// primary_school	完全小学
 				case "14":	roleIds = "1666258199700963330";	break;			// junior_school	初中
 				case "15":	roleIds = "1666258199679991810";	break;			// senior_school	高中
+				case "16":  roleIds = "1666258199734983170";	break;			// other_school		其它
 				default:
 					result.setMessage("学校类型非标准值");
 					result.setSuccess(false);
@@ -289,6 +296,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			}
 			switch (rec.getInstitutionType()) {
 				case "11":												// nursery_school	幼儿园
+				case "16":												// other_school		其它
 				case "15":	rec.setChartGroup("高职特幼");	break;		// senior_school	高中
 				case "12":	rec.setChartGroup("中心小学");	break;		// primary_school	中心小学
 				case "13":	rec.setChartGroup("完全小学");	break;		// primary_school	完全小学
@@ -342,6 +350,7 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 			JSONArray tree = organizationDefinitionService.getSchoolTreeData();
 			result.setResult(tree);
 			result.setSuccess(true);
+			log.info("schoolTreeData: " + tree);
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
 		}
@@ -372,4 +381,34 @@ public class OrganizationDefinitionController extends BaseController<Organizatio
 
 		return Result.OK("用户【" + username + "】重置密码（" + password + "）成功!");
 	}
+
+	@GetMapping(value = "/queryByAdminCode")
+	public Result<OrganizationDefinition> queryByAdminCode(@RequestParam(name="adminCode", required=true) String adminCode) {
+		OrganizationDefinition organizationDefinition = organizationDefinitionService.getSchoolRecordByAdminCode(adminCode);
+		if(organizationDefinition == null) {
+			return Result.error("非学校用户，无对应数据");
+		}
+		return Result.OK(organizationDefinition);
+	}
+
+	//	@RequiresPermissions("edu.foudation:organization_definition:memberInfo")
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.PUT)
+	public Result<?> memberInfo(@RequestBody JSONObject json) {
+		String username = json.getString("username");
+		String adminName = json.getString("adminName");
+		String phoneNumber = json.getString("phoneNumber");
+		LoginUser loginUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+		if(!loginUser.getUsername().equals(username)){
+			return Result.error("只允许修改自己的基本信息！");
+		}
+		OrganizationDefinition rec = organizationDefinitionService.getOne(new LambdaQueryWrapper<OrganizationDefinition>().eq(OrganizationDefinition::getAdminCode, username));
+		if(rec == null) {
+			return Result.error("学校记录不存在！");
+		}
+		// 修改学校用户的基本信息 添加敏感日志------------
+		baseCommonService.addLog("修改学校用户的基本信息，adminCode： " + loginUser.getUsername(), CommonConstant.LOG_TYPE_2, 2);
+
+		return organizationDefinitionService.memberInfo(username, adminName, phoneNumber);
+	}
+
 }

@@ -4,6 +4,7 @@ export default {
     // user dropdown
     dropdownItemDoc: '官网',
     dropdownItemLoginOut: '退出系统',
+    dropdownItemMemberInfo: '基本信息',
     dropdownItemSwitchPassword: '密码修改',
     dropdownItemSwitchDepart: '切换部门',
     dropdownItemRefreshCache: '刷新缓存',

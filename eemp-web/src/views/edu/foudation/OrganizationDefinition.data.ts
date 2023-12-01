@@ -12,16 +12,19 @@ export const columns: BasicColumn[] = [
    {
     title: '乡镇',
     align:"center",
+    width: 120,
     dataIndex: 'township_dictText'
    },
    {
     title: '学校名称',
     align:"center",
+    width: 240,
     dataIndex: 'institutionName'
    },
    {
     title: '学校类型',
     align:"center",
+    width: 120,
     dataIndex: 'institutionType_dictText'
    },
    {
@@ -45,8 +48,9 @@ export const columns: BasicColumn[] = [
     dataIndex: 'phoneNumber'
    },
    {
-    title: '账户生成是否成功',
+    title: '账号是否生成',
     align:"center",
+    width: 120,
     dataIndex: 'adminGenerationSuccess_dictText'
    },
 ];
@@ -101,7 +105,7 @@ export const searchFormSchema: FormSchema[] = [
       colProps: {span: 6},
   },
   {
-      label: "账户生成是否成功",
+      label: "账号是否生成",
       field: 'adminGenerationSuccess',
       component: 'JDictSelectTag',
       componentProps:{

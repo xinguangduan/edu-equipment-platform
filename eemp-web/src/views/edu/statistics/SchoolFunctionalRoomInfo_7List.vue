@@ -4,10 +4,8 @@
    <BasicTable @register="registerTable" :rowSelection="rowSelection">
      <!--插槽:table标题-->
       <template #tableTitle>
-          <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.statistics:school_functional_room_info_7:add'" :disabled="!addable"> 新增</a-button>
-          <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.statistics:school_functional_room_info_7:exportXls'"> 导出</a-button>
-          <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.statistics:school_functional_room_info_7:importExcel'">导入</j-upload-button>
-          <a-dropdown v-if="selectedRowKeys.length > 0">
+        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined" v-auth="'edu.statistics:school_functional_room_info_7:add'" :disabled="!addable"> 新增</a-button>
+        <a-dropdown v-if="selectedRowKeys.length > 0">
               <template #overlay>
                 <a-menu>
                   <a-menu-item key="1" @click="batchHandleDelete">
@@ -22,6 +20,8 @@
         </a-dropdown>
         <a-button type="primary" @click="handleReport" preIcon="ant-design:send-outlined" v-auth="'edu.statistics:school_functional_room_info_7:report'" :disabled="!reportable">上报</a-button>
         <a-button :ghost="true" type="primary" @click="handleRevoke" preIcon="ant-design:send-outlined" v-auth="'edu.statistics:school_functional_room_info_7:revoke'">退回学校修改</a-button>
+        <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" v-auth="'edu.statistics:school_functional_room_info_7:exportXls'"> 导出</a-button>
+        <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls" v-auth="'edu.statistics:school_functional_room_info_7:importExcel'">导入</j-upload-button>
       </template>
        <!--操作栏-->
       <template #action="{ record }">

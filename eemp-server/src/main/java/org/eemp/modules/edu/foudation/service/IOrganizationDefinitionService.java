@@ -1,6 +1,7 @@
 package org.eemp.modules.edu.foudation.service;
 
 import com.alibaba.fastjson.JSONArray;
+import org.eemp.common.api.vo.Result;
 import org.eemp.modules.edu.foudation.entity.OrganizationDefinition;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -18,4 +19,5 @@ public interface IOrganizationDefinitionService extends IService<OrganizationDef
     JSONArray getSchoolTreeData();
 
     void checkAndUpdateSchoolUser(String username);
+    Result<?> memberInfo(String adminCode, String adminName, String phoneNumber);
 }
