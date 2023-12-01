@@ -39,6 +39,38 @@ public class FillingControlServiceTest {
     }
 
     @Test
+    void testGetAnotherCurrentFillingControl() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, 2023);
+        calendar.set(Calendar.MONTH, Calendar.DECEMBER);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        Date testDate = calendar.getTime();
+        JSONObject json = service.getFillingControl("3142000822", "edu_informatization_basic_info_1", testDate, 1);
+        assertThat(json).isNull();
+
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        testDate = calendar.getTime();
+        json = service.getFillingControl("3142000822", "edu_informatization_basic_info_1", testDate, 1);
+        assertThat(json.get("addable")).isEqualTo(true);
+        assertThat(json.get("reportable")).isNull();
+        assertThat(json.get("revokable")).isNull();
+        System.out.println(json);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        testDate = new Date(2023 - 1900, Calendar.DECEMBER, 2);
+        json = service.getFillingControl("3142000822", "edu_informatization_basic_info_1", testDate, 2);
+        assertThat(json).isNull();
+    }
+
+    @Test
     void testUpdateFillingControl() throws ParseException {
         Date testDate = new Date(2023 - 1900, Calendar.FEBRUARY, 18);
         JSONObject json = service.getFillingControl("school_02", "edu_informatization_basic_info_1", testDate, 10);

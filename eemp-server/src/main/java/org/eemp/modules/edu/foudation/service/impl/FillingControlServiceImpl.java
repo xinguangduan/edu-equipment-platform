@@ -12,6 +12,7 @@ import org.eemp.common.util.RedisUtil;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -28,7 +29,13 @@ public class FillingControlServiceImpl extends ServiceImpl<FillingControlMapper,
 
     @Override
     public JSONObject getFillingControl(String identificationCode, String packageName) {
-        return getFillingControl(identificationCode, packageName, new Date());
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        Date currentDate = calendar.getTime();
+        return getFillingControl(identificationCode, packageName, currentDate);
     }
 
     @Override
