@@ -7,6 +7,7 @@ services:
             - ${REAL_MYSQL_PORT}:3306
         volumes:
             - ${MYSQL_DIR}/data:/var/lib/mysql
+            - ${MYSQL_DIR}/mysql-files:/var/lib/mysql-files
             - ${MYSQL_DIR}/my.cnf:/etc/mysql/my.cnf
             - ${MYSQL_DIR}/logs:/logs
         environment:
