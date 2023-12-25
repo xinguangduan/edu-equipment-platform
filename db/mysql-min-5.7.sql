@@ -2635,7 +2635,7 @@ CREATE TABLE `sys_user`  (
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('3d464b4ea0d2491aab8a7bde74c57e95', 'zhangsan', '张三', '02ea098224c7d0d2077c14b9a3a1ed16', 'x5xRdeKB', 'https://static.xxx.com/images/eemp.png', NULL, NULL, NULL, NULL, '财务部', 1, 0, NULL, NULL, 1, '0005', '总经理', NULL, 'admin', '2020-05-14 21:26:24', 'admin', '2020-09-09 14:42:51', 1, '', NULL, NULL, NULL);
-INSERT INTO `sys_user` VALUES ('e9ca23d68d884d4ebb19d07889727dae', 'admin', '管理员', 'cb362cfeefbf3d8d', 'RCGTeGiH', 'https://static.xxx.com/images/eemp.png', '2018-12-05 00:00:00', 1, 'xxxx@163.com', '18611111111', 'A01', 1, 0, NULL, NULL, 1, '00001', '总经理', NULL, NULL, '2019-06-21 17:54:10', 'admin', '2023-03-09 20:29:46', 2, '', NULL, 1000, NULL);
+--INSERT INTO `sys_user` VALUES ('e9ca23d68d884d4ebb19d07889727dae', 'admin', '管理员', 'cb362cfeefbf3d8d', 'RCGTeGiH', 'https://static.xxx.com/images/eemp.png', '2018-12-05 00:00:00', 1, 'xxxx@163.com', '18611111111', 'A01', 1, 0, NULL, NULL, 1, '00001', '总经理', NULL, NULL, '2019-06-21 17:54:10', 'admin', '2023-03-09 20:29:46', 2, '', NULL, 1000, NULL);
 INSERT INTO `sys_user` VALUES ('f0019fdebedb443c98dcb17d88222c38', 'zhagnxiao', '张小红12', 'f898134e5e52ae11a2ffb2c3b57a4e90', 'go3jJ4zX', 'https://static.xxx.com/images/eemp.png', '2019-04-01 00:00:00', NULL, NULL, '18611711111', '研发部,财务部', 1, 0, NULL, NULL, 1, '00003', 'devleader,总经理', NULL, 'admin', '2020-10-01 19:34:10', 'admin', '2023-03-09 19:44:13', 2, '1582683631414632450', NULL, NULL, NULL);
 
 -- ----------------------------

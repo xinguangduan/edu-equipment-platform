@@ -89,6 +89,19 @@ Educational equipment management platform
 17. [vue+springboot（jeecgboot）模板文件下载](https://zhuanlan.zhihu.com/p/549528178)
 18. [java中Excel导入，下载模板，附带前端展示](https://codeleading.com/article/92135113000/)
 
+flowable相关
+-----------------------------------
+1. [基于jeecgboot的flowable流程管理平台最新更新发布](https://zhuanlan.zhihu.com/p/575896096)
+2. [JEECG集成flowable](https://blog.csdn.net/u010568976/article/details/123727154)
+3. [基于Jeecg-boot前后端分离的flowable流程管理平台主页调整](https://blog.csdn.net/qq_40032778/article/details/130849804)
+4. [基于jeecgboot的flowable流程支持online表单(一)](https://blog.51cto.com/u_15070324/6090648)
+5. [基于jeecgboot的flowable流程支持online表单(三)](https://blog.51cto.com/u_15070324/6088488)
+6. [Jeecg集成Flowable关于Log的坑](https://www.cnblogs.com/RAYMOND2015/p/17064913.html)
+7. [基于jeecgboot的flowable增加流程节点抄送功能](https://blog.csdn.net/qq_40032778/article/details/127405740)
+8. [基于jeecgboot的支持flowable的排它网关之后的会签功能（二）](https://blog.xiaobaicai.fun/java/15880.html)
+9. [基于jeecg-boot的flowable流程跳转功能实现](https://blog.csdn.net/qq_40032778/article/details/132467252)
+10. 
+
 Mybatis相关问题
 -----------------------------------
 1. [【报错解决】org.apache.ibatis.binding.BindingException: Invalid bound statement (not found)](https://blog.csdn.net/qq_50914927/article/details/127091350)
@@ -145,6 +158,7 @@ Mybatis相关问题
 前端构建相关
 -----------------------------------
 1. [husky install 失败，报 .git can't be found](https://blog.csdn.net/chengyikang20/article/details/131700318)
+2. [Nginx 前端部署配置](https://www.cnblogs.com/yuzhihui/p/17074551.html)
 
 Docker相关
 -----------------------------------
@@ -160,6 +174,7 @@ Mysql相关
 6. [Linux--MySQL 日志管理、备份与恢复](https://www.cnblogs.com/GXJ19900412nt/p/15249454.html)
 7. [Linux MySQL 备份与恢复 日志管理](https://betheme.net/houduan/157261.html)
 8. [mysql全量备份和增量备份方法](https://blog.csdn.net/weixin_38301116/article/details/130848151)
+9. [Docker 容器内的 MySQL 数据备份](https://www.cnblogs.com/livebz/p/17269970.html)
 
 基础环境搭建
 -----------------------------------
